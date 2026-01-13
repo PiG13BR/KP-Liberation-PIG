@@ -33,11 +33,20 @@ KPLIB_doBuild_eachFrame = addMissionEventHandler ["EachFrame", {
     
     _thisArgs params ["_object", "_player", "_posCenter", "_maxDist", "_typeNumber"];
 
-    //private _spheres = _object getVariable ["KPLIB_BUILD_objectSpheres", []];
+    private _spheres = _object getVariable ["KPLIB_BUILD_objectSpheres", []];
     private _areaSpheres = localNamespace getVariable ["KPLIB_BUILD_areaSpheres", []];
     private _objectSize = (boundingBoxReal _object # 2) * 1.05;
     private _nearObjects = nearestObjects [_object, ["AllVehicles", "Things", "ThingX", "Building", "Ruins"], _objectSize, false] - [_object, _player] - _areaSpheres; 
     private _distanceFromFob = _object distance2D _posCenter;
+
+    /*
+    private _dist = 0.6 * (boundingBoxReal _object # 2);
+    if (_dist < 5) then { _dist = 5 };
+    {	
+        _x setPos (_object getPos [_dist, 12 * _forEachIndex]);
+        _x attachTo [_object];
+    }forEach _spheres;
+    */
 
     // Check if the building can be placed and set a variable to it
     if (((_distanceFromFob > _maxDist) && {_typeNumber != BUILDTYPE_FOB}) || {((surfaceIsWater (getPosASL _object))) && !((typeOf _object) in boats_names)} || {_nearObjects isNotEqualTo [] && !((typeOf _object) in KPLIB_collisionIgnoreObjects)}) then {

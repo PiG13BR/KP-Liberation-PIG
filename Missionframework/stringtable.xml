@@ -4497,7 +4497,7 @@
             <Czech>Slot pro výrobu letadel</Czech>
             <Japanese>航空機製造スロット</Japanese>
         </Key>
-        <Key ID="STR_BARACK_ENTRY">
+        <Key ID="STR_BARRACK_ENTRY">
 			<Original>Barrack</Original>
 			<Portuguese>Alojamento</Portuguese>
         </Key>
@@ -5767,34 +5767,6 @@
             <Korean>&lt;br/&gt;&lt;br/&gt;- 지휘 :&lt;br/&gt; &lt;br/&gt;지휘권한은 관리자가 허가한 자만이 획득할 수 있다. 지휘자는 각 거점에서 생산되고 있는 군수물자를 지정하거나 내역을 살펴 볼 수 있고, 각 군수물자를 AI수송부대를 이용하여 운반할 수 있다. 또한 제우스 기능을 사용할 수 있다.&lt;br/&gt; &lt;br/&gt;- 기타 정보 :&lt;br/&gt; &lt;br/&gt;항공기를 사용하기 위해서는 반드시 '비행 관제소'를 먼저 만들어야만 한다. 이후 '항공기 격납고'를 만들고 항공기를 배치한다. 항공기 격납고 수에 따라 운행할 수 있는 항공기 숫자가 결정된다.&lt;br/&gt; &lt;br/&gt;비행장은 평지라 할지라도 습기가 많은 지역은 항공기 이착률이 힘들기 때문에 적군 비행장을 점령하여 사용하기를 권한다.&lt;br/&gt; &lt;br/&gt;고급 장비는 특정한 군사기지를 점령해야만 전초기지에서 생산(배치)할 수 있다. 지도에 보면 군사기지 이름 옆에 원이 그려져 있고 체크가 된 곳이 있는데 이 곳을 점령하게되면 체크 옆에 표기되어 있는 장비를 생산(배치)할 수 있게 된다.&lt;br/&gt; &lt;br/&gt;전투에 사용한 장비는 반드시 전초기지로 가지고 귀환해야 한다. 전초기지범위 밖에 있으면 사라지기 때문이다. 노획장비 또한 없어지지 않기 때문에 반드시 전초기지로 귀환해서 접속종료를 하기 바란다.&lt;br/&gt; &lt;br/&gt;AI은 1플레이어가 최대 12명까지 뽑아서 사용할 수있으나, 지휘하기엔 의무병과 공병을 포함하여 3~5명정도를 추천한다.&lt;br/&gt; &lt;br/&gt;함부로 민간인을 학살하거나 재산(특히 집)을 파괴하거나 약탈(차량같은 것)하지 말라. 민병대 출현하게 되면 머리 아프다.&lt;br/&gt; &lt;br/&gt;민간인들에게 환영받기 위해서는 부상당한 민간인(간혹 지도에 보라색이 생김)들을 도와줘라.&lt;br/&gt; &lt;br/&gt;끝으로 재미있는 게임 시간이 되길 바란다!&lt;br/&gt; &lt;br/&gt;</Korean>
             <Czech>&lt;br/&gt;&lt;br/&gt;Když hráč použije roli Velitele, získá přístup k rozhraní Zeus stisknutím odpovídající klávesy (ve výchozím nastavení Y). Toto rozhraní umožňuje velení přátelských sil v zobrazení 3D nebo mapy.&lt;br/&gt; &lt;br/&gt;Navíc komandér získá přístup postavit vozidla s posádkou nebo celé předvytvořené družstva.&lt;br/&gt; &lt;br/&gt;Tato role je důležitá, a jako taková dává přímý přístup k spravování produkce v sektorech a logistice AI. Pokud budete stát na FOB, dostanete možnosti "Nastavení produkce" a "Logistický přehled".&lt;br/&gt; &lt;br/&gt; První vám dá možnost nastavit která továrna bude produkovat kterou surovinu, jako také detailní přehled.&lt;br/&gt; &lt;br/&gt; Písmena vám dovolí rozkazovat AI logistickým konvojům, kde můžete "Přidat" logistické skupiny, koupit jakékoliv množství náklaďáků na skupinu a přikázat jim převážet specifické množství surovin napříč celou oblastí pro vás.&lt;br/&gt; &lt;br/&gt;</Czech>
             <Japanese>&lt;br/&gt;&lt;br/&gt;プレイヤーが司令官役割を使用すると、対応するキー（デフォルトではY）を押すことでZeusインターフェースにアクセスできます。このインターフェースにより、3Dまたはマップビューで友好部隊を指揮することができます。&lt;br/&gt; &lt;br/&gt;さらに、司令官は、クルー付きの車両や完全に作成された分隊などの追加の製造オプションを取得できます。&lt;br/&gt; &lt;br/&gt;この役割は今では必須であり、生産セクターの管理とAIロジスティクスへの直接的なアクセスを提供するためです。あなたがFOBに配置されているということを考慮すると、「生産設定」と「物流管理」のオプションが表示されます。&lt;br/&gt; &lt;br/&gt;前者は、どの工場がどの資源を生産するかを決定し、現在の詳細な概要を示す能力を提供します。&lt;br/&gt; &lt;br/&gt;後者は、AIロジスティクス輸送隊を指揮でき、輸送グループを「追加」し、グループごとにトラックの数量を購入し、特定の量の資源を地域全体で移動させることができます。&lt;br/&gt; &lt;br/&gt;</Japanese>
-        </Key>
-        <Key ID="STR_PARAMS_ARSENALUSEPRESET">
-            <Original>Arsenal mode</Original>
-            <German>Arsenalmodus</German>
-            <Spanish>Modo Arsenal</Spanish>
-            <Russian>Режим арсенала</Russian>
-            <Italian>Modalità Arsenale</Italian>
-            <Chinesesimp>军火库模式</Chinesesimp>
-            <Chinese>軍火庫模式</Chinese>
-            <Turkish>Ekipman(Arsenal) modu</Turkish>
-            <Portuguese>Modo do Arsenal</Portuguese>
-            <Korean>무기고 모델</Korean>
-            <Czech>Nastavení Zbrojnice</Czech>
-            <Japanese>アーセナルの仕様</Japanese>
-        </Key>
-        <Key ID="STR_PARAMS_NORESTRICTIONS">
-            <Original>No restrictions</Original>
-            <German>Keine Einschränkungen</German>
-            <Spanish>Sin restricciones</Spanish>
-            <Russian>Без ограничений</Russian>
-            <Italian>Senza Restrizioni</Italian>
-            <Chinesesimp>无限制</Chinesesimp>
-            <Chinese>無限制</Chinese>
-            <Turkish>Kısıtlama yok</Turkish>
-            <Portuguese>Sem restrições</Portuguese>
-            <Korean>제한 없음</Korean>
-            <Czech>Bez Omezení</Czech>
-            <Japanese>無制限</Japanese>
         </Key>
         <Key ID="STR_PARAMS_USEPRESET">
             <Original>Use preset from config</Original>
@@ -8644,10 +8616,6 @@
         </Container>
 
         <Container name="Clear Brushes">
-            <Key ID="STR_CLEAR_BRUSHES_TITLE">
-                <Original>Clear Brush/Trees Action</Original>
-                <Portuguese>Ação para Derrubar Vegetação/Árvores</Portuguese>
-            </Key>
             <Key ID="STR_CLEAR_BRUSHES_TITLE">
                 <Original>Clear Brush/Trees Action</Original>
                 <Portuguese>Ação para Derrubar Vegetação/Árvores</Portuguese>

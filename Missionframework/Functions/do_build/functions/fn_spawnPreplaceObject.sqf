@@ -86,6 +86,7 @@ if (_buildType != BUILDTYPE_FOB) then {
 };
 
 //[_object, _buildCenterPos, _player] call KPLIB_fnc_spawnSpheresObject;
+[_object, _player, _buildCenterPos] call KPLIB_fnc_buildEachFrame;
 
 // Add build actions
 [_object, _player] call KPLIB_fnc_addBuildActions;

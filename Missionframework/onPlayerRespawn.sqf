@@ -2,9 +2,6 @@ params ["_newUnit", "_oldUnit"];
 
 waitUntil {!isNil "KPLIB_postInit" && !isNil "KPLIB_initServerDone"};
 
-// Opens redeploy menu
-[] call KPLIB_fnc_deploy_createMenuRsc;
-
 if !(_newUnit isUniformAllowed KPLIB_b_basic_uniform) then {
 _newUnit forceAddUniform KPLIB_b_basic_uniform;
 } else {
@@ -71,3 +68,6 @@ if ([
         [KPLIB_param_supportModule_arty] call BIS_fnc_moduleSupportsInitProvider;
     };
 };
+
+// Opens redeploy menu
+[] call KPLIB_fnc_deploy_createMenuRsc;

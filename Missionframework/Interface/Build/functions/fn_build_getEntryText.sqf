@@ -1,8 +1,9 @@
+#include "..\defines.hpp"
 /*
     File: fn_build_getEntryText.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 10/11/2025
-    Last Update: 12/11/2025
+    Last Update: 13/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -16,7 +17,7 @@
         Entry Text [STRING]
 */
 
-params[["_class", "", [""]], ["_cfg", configFile >> "cfgVehicles"]];
+params[["_class", "", [""]],  ["_buildType", 7], ["_cfg", configFile >> "cfgVehicles"]];
 
 if (_class isEqualTo "") exitWith {};
 
@@ -44,20 +45,29 @@ if (_class in KPLIB_b_mobileRespawns) then {
     };
 };
 
-switch (_class) do {
-    case KPLIB_b_fobBox: {_entryText = localize "STR_FOBBOX";};
-    case KPLIB_b_arsenal: {if (KPLIB_param_mobileArsenal) then {_entryText = localize "STR_ARSENAL_BOX";};};
-    case KPLIB_b_fobTruck: {_entryText = localize "STR_FOBTRUCK";};
-    case "Flag_White_F": {_entryText = localize "STR_INDIV_FLAG";};
-    case KPLIB_b_smallStorage: {_entryText = localize "STR_SMALL_STORAGE";};
-    case KPLIB_b_largeStorage: {_entryText = localize "STR_LARGE_STORAGE";};
-    case KPLIB_b_logiStation: {_entryText = localize "STR_RECYCLE_BUILDING";};
-    case KPLIB_b_airControl: {_entryText = localize "STR_AIRCONTROL_BUILDING";};             
-    case KPLIB_b_slotHeli: {_entryText = localize "STR_HELI_SLOT";};
-    case KPLIB_b_slotPlane: {_entryText = localize "STR_PLANE_SLOT";};
-    case KPLIB_b_supplyDump : {_entryText = localize "STR_SUPPLY_DUMP_ENTRY";};
-    case KPLIB_b_barrack : {_entryText = localize "STR_BARRACK_ENTRY";};
-    default {};
+if (_buildType == BUILDTYPE_SUPPORT) then {
+    // Support names
+    switch (_class) do {
+        case KPLIB_b_fobBox: {_entryText = localize "STR_FOBBOX";};
+        case KPLIB_b_arsenal: {if (KPLIB_param_mobileArsenal) then {_entryText = localize "STR_ARSENAL_BOX";};};
+        case KPLIB_b_fobTruck: {_entryText = localize "STR_FOBTRUCK";};
+        case KPLIB_b_smallStorage: {_entryText = localize "STR_SMALL_STORAGE";};
+        case KPLIB_b_largeStorage: {_entryText = localize "STR_LARGE_STORAGE";};
+        case KPLIB_b_logiStation: {_entryText = localize "STR_RECYCLE_BUILDING";};
+        case KPLIB_b_airControl: {_entryText = localize "STR_AIRCONTROL_BUILDING";};             
+        case KPLIB_b_slotHeli: {_entryText = localize "STR_HELI_SLOT";};
+        case KPLIB_b_slotPlane: {_entryText = localize "STR_PLANE_SLOT";};
+        case KPLIB_b_supplyDump : {_entryText = localize "STR_SUPPLY_DUMP_ENTRY";};
+        case KPLIB_b_barrack : {_entryText = localize "STR_BARRACK_ENTRY";};
+        default {};
+    };
+} else {
+    switch (_class) do {
+        case "Flag_White_F": {_entryText = localize "STR_INDIV_FLAG";};
+        default {};
+    }
 };
+
+
 
 _entryText

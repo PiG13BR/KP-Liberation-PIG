@@ -3,7 +3,7 @@
     File: fn_build_fillLnb.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 09/11/2025
-    Last Update: 12/11/2025
+    Last Update: 13/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -81,14 +81,14 @@ private _cfg = configFile >> "cfgVehicles";
         if (_fuel > 0) then {_fuel = _fuel + round(_fuel * _priceAdd);};  
     };
 
-    if (_buildType != 8) then {
+    if (_buildType != BUILDTYPE_SQUAD) then {
         // Not squad composition
 
         private _class = (_x select 0);
         private _customName = (_x select 4);
 
         // Get entry text to show on lnb
-        private _entryText = [_class] call KPLIB_fnc_build_getEntryText; 
+        private _entryText = [_class, _buildType] call KPLIB_fnc_build_getEntryText; 
 
         _listNboxCtrl lnbAddRow [_entryText, format ["%1", _supplies], format ["%1", _ammo], format ["%1", _fuel]];
 

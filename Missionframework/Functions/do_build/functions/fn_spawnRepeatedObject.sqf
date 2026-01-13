@@ -64,6 +64,7 @@ localNamespace setVariable ["KPLIB_BUILD_objectYCoord", _objYCoords];
 private _posFOB = [getPosATL _player] call KPLIB_fnc_getNearestFob;
 [_posFOB, _player] call KPLIB_fnc_spawnSpheresArea;
 //[_object, _posFOB, _player] call KPLIB_fnc_spawnSpheresObject;
+[_object, _player, _posFOB] call KPLIB_fnc_buildEachFrame;
 
 // Add build actions
 [_object, _player] call KPLIB_fnc_addBuildActions;
