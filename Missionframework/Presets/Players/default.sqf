@@ -33,6 +33,8 @@ KPLIB_b_fobBuilding     = "Land_Cargo_HQ_V1_F";                         // This 
 KPLIB_b_fobBox          = "B_Slingload_01_Cargo_F";                     // This is the FOB as a container.
 KPLIB_b_fobTruck        = "B_Truck_01_box_F";                           // This is the FOB as a vehicle.
 KPLIB_b_arsenal         = "B_supplyCrate_F";                            // This is the virtual arsenal as portable supply crates.
+KPLIB_b_fortify_small   = "Box_NATO_Support_F";                         // This defines small crate for usage with Ace fortify
+KPLIB_b_fortify_medium  = "C_IDAP_supplyCrate_F";                       // This defines medium crate for usage with Ace fortify
 
 // This is the mobile respawn (and medical) truck.
 KPLIB_b_mobileRespawn   = ["B_Truck_01_medical_F","B_T_Truck_01_medical_F"];
