@@ -1,0 +1,1 @@
+#define MIN_DIST_TO_DEPLOY 100

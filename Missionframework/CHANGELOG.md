@@ -1,0 +1,69 @@
+# CHANGELOG
+
+## 0.97.0 (08/01/2026)
+- Added Extension: Enemy artillery.
+- Added Extension: Artillery menu for the players as a replacer for the BIS support module.
+- Added Extension: Clear bushes/trees action for the players (from the clear brush Ampersand).
+- Added Extension: Lock/Unlock arsenal items by sectors.
+- Added Extension: Pylon Manager for air assets.
+- Added Extension: Rally point system (BF2:PR inspired).
+- Added Extension: Enemy SAM Sites (inspired by Nicoman's SAM turrets manager)
+- Added Extension: Sector custom events.
+- Added Extension: Sector object and static weapons manager.
+- Added: New build framework to replace `do_build.sqf`. 
+- Added: More client and server CBA events.
+- Added: Arsenal whitelist by role.
+- Added: Mission parameters options for the additions.
+- Added: Paradrop supply action for air assets.
+- Added: Default enemy and player presets to handle new variables.
+- Added: Outpost sector to spawn enemy position.
+- Added: Clear garbage action for the commander role. Available near FOB and Op. base.
+- Added: Some CBA Settings under category KP Liberation.
+- Added: Supply Menu/Virtual dump logistic for items with its own preset configuration.
+- Added: Presets in mission parameters (https://github.com/KillahPotatoes/KP-Liberation/pull/973).
+- Added: Enemies have a chance to surrender when flashbanged indoor. 
+- Tweaked: Folder and files reorganization.
+- Tweaked: Mission init with XEH.
+- Tweaked: Battlegroup framework.
+- Tweaked: Build Menu interface.
+- Tweaked: Redeploy Menu interface and framework.
+- Tweaked: Production Menu interface and framework.
+- Tweaked: Recycle interface.
+- Tweaked: Sector activation framework.
+- Tweaked: Some scripts with CBA functions.
+- Tweaked: Storage, supply, unload, unflip and recycle actions.
+- Tweaked: Sector's building garrisons.
+- Tweaked: Prisonner and intel scripts.
+- Tweaked: Resource manager.
+- Tweaked: Mission makers can now add a tag (supply, ammo or fuel) to a factory as the first resource that can produce.
+- Tweaked: Moved KP Player Menu to extensions. Added BIS Dynamic Groups as default.
+- Tweaked: Civilian reputation now gives build menu discount/surcharge (fatrefrigerator's idea).
+- Tweaked: FOB templates with static weapons and garrisons spawns.
+- Tweaked: FOB Hunting with task framework.
+- Removed: Push supply action.
+- Removed: GREUH player menu.
+- Removed: Useless enemy patrols.
+- Removed: Useless civilians patrols between sectors.
+- Removed: Infantry only battlegroup.
+- Fixed: Collision with carrying supply crates.
+
+## CHECKING / PRODUCING
+- Add Task framework to handle secondary objectives.
+- Check despawn of groups/objects in FOB hunting.
+- Review actions from supply dump (globalEventJIP).
+- Delete resources crates from destroyed vehicles.
+
+## STANDING BY
+- Prisoners can reveal outposts, artillery position, SAM sites before delivering him to a FOB, in exchange to intel points.
+- Barracks for FOBs. Required to redeploy and build IA/squads. Spawn addition supplies on first fob deployed.
+- Add enemy jet fighter spawns cycle on player flying an airplane. 
+- Add enemy plane CAS support.
+- Create drone framework to detect players between sectors + QRF (OT simil) / Create useful patrols between sectors + QRF.
+- FOB with triggers?
+- Possible a replacer for convoy objective: kill commander on route to a military base.
+- Make guerrilla fight every side as a mission parameter.
+- Airport sector.
+- Convert some variables in `KPLIB_config.sqf` into CBA setting or mission parameter
+- Guerrilla can attack factory sectors. Stop production.
+- Add building to able arsenal.
+- Use paratroopers battlegroup script to paradrop enemy vehicles. Enemy helicopter slingload vehicles.
