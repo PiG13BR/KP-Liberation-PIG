@@ -113,6 +113,12 @@ switch _objectClass do {
         [west, 250, false] call ace_fortify_fnc_updateBudget;
         ace_fortify_locations pushBack [_objectSpawned, 50, 50, 0, false];
     };
+
+   case KPLIB_b_uav_box: {
+        _objectSpawned addBackpackCargoGlobal ["B_UAV_06_medical_backpack_F", 3];
+        _objectSpawned addBackpackCargoGlobal ["B_UAV_01_backpack_F", 3];
+        _objectSpawned addBackpackCargoGlobal ["C_IDAP_UAV_06_antimine_backpack_F", 2];
+    };
     default {}
 };
 

@@ -57,6 +57,7 @@ KPLIB_b_crateAmmo       = "B_CargoNet_01_ammo_F";                       // This 
 KPLIB_b_crateFuel       = "CargoNet_01_barrels_F";                      // This defines the fuel crates.
 KPLIB_b_supplyDump      = "Land_Cargo20_military_green_F";              // This defines supply dump for the supply menu
 KPLIB_b_barrack         = "Land_Cargo_House_V1_F";                      // The building defined to unlock FOB redeploy and IA/squads buying
+KPLIB_b_uav_box         = "Box_AAF_Equip_F";                            // This crate will recieve UAV backpacks on fn_spawnBuildedObject.sqf
 
 // Basic uniform to spawn with
 KPLIB_b_basic_uniform = "U_B_CombatUniform_mcam";
@@ -74,6 +75,7 @@ KPLIB_supply_crates = [
     ["Box_NATO_Grenades_F",10,0,0],
     ["Box_NATO_WpsLaunch_F",10,0,0],
     ["Box_NATO_Support_F",10,0,0],
+    [KPLIB_b_uav_box, 50, 50, 0], // UAV box, TODO: change display name on Build menu
     ["ACE_medicalSupplyCrate_advanced",10,0,0]
 ];
 
