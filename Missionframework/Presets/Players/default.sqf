@@ -67,14 +67,14 @@ KPLIB_b_basic_uniform = "U_B_CombatUniform_mcam";
 */
 
 KPLIB_supply_crates = [
-    ["C_IDAP_supplyCrate_F",10,0,0],
+    ["C_IDAP_supplyCrate_F",50,0,0], // Increased from 10,0,0 because it is also used by ACE Fortify as medium preset, and PIG's Virtual arsenal
     ["Box_NATO_Equip_F",10,0,0],
     ["Box_NATO_Ammo_F",10,0,0],
     ["Box_NATO_Wps_F",10,0,0],
     ["Box_NATO_AmmoOrd_F",10,0,0],
     ["Box_NATO_Grenades_F",10,0,0],
     ["Box_NATO_WpsLaunch_F",10,0,0],
-    ["Box_NATO_Support_F",10,0,0],
+    ["Box_NATO_Support_F",20,0,0], // Increased from 10,0,0 because it is also used by ACE Fortify as small preset, and PIG's Virtual arsenal
     [KPLIB_b_uav_box, 50, 50, 0], // UAV box, TODO: change display name on Build menu
     ["ACE_medicalSupplyCrate_advanced",10,0,0]
 ];
