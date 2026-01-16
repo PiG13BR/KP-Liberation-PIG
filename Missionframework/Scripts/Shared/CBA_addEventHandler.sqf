@@ -327,7 +327,7 @@
                 {_target getVariable ["KPLIB_CARGO_loadedCargo", []] isNotEqualTo []} &&
                 {_target getVariable ["KPLIB_CARGO_isTransportVeh", true]} && 
                 {(speed _target < 2) ||
-                {_target isKindOf "Air" && {!(isEngineOn _target)}} && {isTouchingGround _target}}
+                {_target isKindOf "Air" && {!(isEngineOn _target)} && {isTouchingGround _target}}}
             },
             5
         ];

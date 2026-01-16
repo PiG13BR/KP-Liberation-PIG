@@ -54,7 +54,4 @@ private _pos = getPos _storage;
     };
 } forEach [_supply, _ammo, _fuel];
 
-// Sort
-[_storage] call KPLIB_fnc_sortStorage;
-
 true
