@@ -756,6 +756,36 @@
             <Korean>전초기지 설치차량</Korean>
             <Czech>FOB Náklaďák</Czech>
             <Japanese>FOB トラック</Japanese>
+        </Key> 
+        <Key ID="STR_FORTIFY_SMALL_ENTRY">
+            <Original>Small fortify box</Original>
+            <French>Petite caisse de fortification</French>
+            <German>Kleine Befestigungskiste</German>
+            <Spanish>Caja pequeña de fortificación</Spanish>
+            <Russian>Малый ящик укреплений</Russian>
+            <Italian>Piccola cassa di fortificazione</Italian>
+            <Chinesesimp>小型工事箱</Chinesesimp>
+            <Chinese>小型工事箱</Chinese>
+            <Turkish>Küçük tahkimat kutusu</Turkish>
+            <Portuguese>Caixa pequena de fortificação</Portuguese>
+            <Korean>소형 방어 상자</Korean>
+            <Czech>Malá fortifikační bedna</Czech>
+            <Japanese>小型要塞化ボックス</Japanese>
+        </Key>
+        <Key ID="STR_FORTIFY_MEDIUM_ENTRY">
+            <Original>Medium fortify box</Original>
+            <French>Caisse moyenne de fortification</French>
+            <German>Mittlere Befestigungskiste</German>
+            <Spanish>Caja mediana de fortificación</Spanish>
+            <Russian>Средний ящик укреплений</Russian>
+            <Italian>Cassa media di fortificazione</Italian>
+            <Chinesesimp>中型工事箱</Chinesesimp>
+            <Chinese>中型工事箱</Chinese>
+            <Turkish>Orta tahkimat kutusu</Turkish>
+            <Portuguese>Caixa média de fortificação</Portuguese>
+            <Korean>중형 방어 상자</Korean>
+            <Czech>Střední fortifikační bedna</Czech>
+            <Japanese>中型要塞化ボックス</Japanese>
         </Key>
         <Key ID="STR_RESPAWN_TRUCK">
             <Original>Mobile respawn</Original>
