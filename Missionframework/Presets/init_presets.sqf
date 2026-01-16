@@ -93,9 +93,6 @@ switch (KPLIB_presetCivilians) do {
     default  {[] call compile preprocessFileLineNumbers "Presets\Civilians\custom.sqf";};
 };
 
-// Supply dump preset
-[] call compile preprocessFileLineNumbers 'Extensions\Supply_Menu\supply_preset.sqf';
-
 if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_supplyDump)}) < 0) then {
     // No supply dump found in support label, add it.
     KPLIB_b_vehSupport pushBack [KPLIB_b_supplyDump, 250,1000,0]
@@ -308,7 +305,7 @@ KPLIB_o_allVeh_classes = KPLIB_o_allVeh_classes arrayIntersect KPLIB_o_allVeh_cl
 // All opfor statics
 KPLIB_o_allStatics_classes = [];
 {
-    KPLIB_o_allStatics append _x
+    KPLIB_o_allStatics_classes append _x
 }forEach [KPLIB_o_statics_H_HMG, KPLIB_o_statics_L_HMG, KPLIB_o_statics_H_GMG, KPLIB_o_statics_L_GMG, KPLIB_o_statics_AT, KPLIB_o_statics_AA];
 KPLIB_o_allStatics_classes = KPLIB_o_allStatics_classes apply {toLowerANSI _x};
 KPLIB_o_allStatics_classes = KPLIB_o_allStatics_classes arrayIntersect KPLIB_o_allStatics_classes;

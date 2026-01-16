@@ -2,7 +2,7 @@
     File: fn_fillStorage.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2019-12-03
-    Last Update: 2020-05-04
+    Last Update: 2026-01-15
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -53,5 +53,8 @@ private _pos = getPos _storage;
         
     };
 } forEach [_supply, _ammo, _fuel];
+
+// Sort
+[_storage] call KPLIB_fnc_sortStorage;
 
 true

@@ -2,7 +2,7 @@
 	File: fn_doUnloadCrate.sqf
 	Author: PiG13BR (https://github.com/PiG13BR)
 	Date: 21/10/2025
-	Last update: 11/01/2026
+	Last update: 16/01/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -52,7 +52,7 @@ _player addAction [
 		["KPLIB_crateCollisionChange", [_crate, true]] call CBA_fnc_globalEventJIP;
 		detach _crate;
 		_crate awake true;
-		[_crate, true] remoteExec ["enableRopeAttach"];
+		_crate enableRopeAttach true;
 		_player removeAction _actionId; // Remove action from player
 	},
 	nil,

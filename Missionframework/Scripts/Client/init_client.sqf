@@ -1,7 +1,5 @@
 [] call compile preprocessFileLineNumbers "Scripts\Client\misc\init_markers.sqf";
 
-sleep 1;
-
 [player] call KPLIB_fnc_initArsenal;
 [player] call KPLIB_fnc_addPlayerEH;
 
@@ -10,8 +8,6 @@ cinematic_camera = compile preprocessFileLineNumbers "Scripts\Client\ui\cinemati
 write_credit_line = compile preprocessFileLineNumbers "Scripts\Client\ui\write_credit_line.sqf";
 kp_fuel_consumption = compile preprocessFileLineNumbers "Scripts\Client\misc\kp_fuel_consumption.sqf";
 kp_vehicle_permissions = compile preprocessFileLineNumbers "Scripts\Client\misc\vehicle_permissions.sqf";
-
-sleep 1;
 
 //execVM "Scripts\Client\actions\intel_manager.sqf";
 execVM "Scripts\Client\commander\enforce_whitelist.sqf";

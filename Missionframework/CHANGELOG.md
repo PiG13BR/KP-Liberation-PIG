@@ -40,6 +40,7 @@
 - Tweaked: Civilian reputation now gives build menu discount/surcharge (fatrefrigerator's idea).
 - Tweaked: FOB templates with static weapons and garrisons spawns.
 - Tweaked: FOB Hunting with task framework.
+- Tweaked: Zeus owner is now admin logged.
 - Removed: Push supply action.
 - Removed: GREUH player menu.
 - Removed: Useless enemy patrols.
@@ -52,6 +53,8 @@
 - Check despawn of groups/objects in FOB hunting.
 - Review actions from supply dump (globalEventJIP).
 - Delete resources crates from destroyed vehicles.
+- Fix build area sphere persistent.
+- Fix fetch parameters. Some clients are not getting the right parameters.
 
 ## STANDING BY
 - Prisoners can reveal outposts, artillery position, SAM sites before delivering him to a FOB, in exchange to intel points.
@@ -67,3 +70,4 @@
 - Guerrilla can attack factory sectors. Stop production.
 - Add building to able arsenal.
 - Use paratroopers battlegroup script to paradrop enemy vehicles. Enemy helicopter slingload vehicles.
+- Commander can change FOB names.

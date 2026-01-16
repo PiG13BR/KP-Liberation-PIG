@@ -2,7 +2,7 @@
 	File: fn_doLoadCrate.sqf
 	Author: PiG13BR (https://github.com/PiG13BR)
 	Date: 21/10/2025
-	Last update: 21/12/2025
+	Last update: 16/101/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -39,6 +39,7 @@ _transport setVariable ["KPLIB_CARGO_nextOffSet", (_transport getVariable ["KPLI
 private _loadedCargo = _transport getVariable ["KPLIB_CARGO_loadedCargo", []];
 _loadedCargo pushBack _cargo; // Pushback the last object loaded
 _transport setVariable ["KPLIB_CARGO_loadedCargo", _loadedCargo, true];
+_cargo enableRopeAttach false;
 
 removeAllActions _cargo; // Remove all actions (add them back on unload)
 

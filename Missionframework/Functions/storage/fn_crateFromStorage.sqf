@@ -2,7 +2,7 @@
     File: fn_crateFromStorage.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-03-27
-    Last Update: 2026-01-11
+    Last Update: 2026-01-16
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -50,10 +50,7 @@ private _crate = _storedCrates deleteAt (_storedCrates findIf {(typeOf _x) == _c
 if (isNil "_crate") exitWith {false};
 
 // Unload crate
-//detach _crate;
 [_crate, true] call KPLIB_fnc_clearCargo;
-//_crate setPos _unloadPos;
-//[_crate, true] remoteExec ["enableRopeAttach"];
 _crate lockInventory true;
 
 // Fill the possible gap in the storage area
@@ -65,6 +62,8 @@ _i = 0;
     _i = _i + 1;
 } forEach (_storedCrates apply {[_x, [typeOf _x] call KPLIB_fnc_getCrateHeight]});
 
+_crate setVariable ["KPLIB_crateInStorage", false, true];
+
 // Update sector resources
 if (_update) then {
     if (_storage getVariable ["KPLIB_factoryStorage", false]) then {
@@ -75,7 +74,6 @@ if (_update) then {
 
 // Add actions back to the crate
 [{["KPLIB_addActionsCrate", _this] call CBA_fnc_globalEventJIP;}, _crate , 1] call CBA_fnc_waitAndExecute;
-
 
 // Carry
 _crate attachTo [_player, [0, 2, 1]];
@@ -102,7 +100,7 @@ _player addAction [
         ["KPLIB_crateCollisionChange", [_crate, true]] call CBA_fnc_globalEventJIP;
         detach _crate;
         _crate awake true;
-        [_crate, true] remoteExec ["enableRopeAttach"];
+        _crate enableRopeAttach true;
         _player removeAction _actionId; // Remove action from player
     },
     nil,

@@ -283,3 +283,9 @@ KPLIB_sectorObject_radius = 350;
 
 // Building time coeficient (building size dependent)
 KPLIB_doBuildCoef = 1.1;
+
+// Potato respawn delay
+KPLIB_potatoRespawnDelay = 300;
+
+// Start base vehicles (boats and little bird)
+KPLIB_startVehRespawnDelay = 300;

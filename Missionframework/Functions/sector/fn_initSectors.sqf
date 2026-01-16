@@ -2,7 +2,7 @@
     File: fn_initSectors.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2020-04-29
-    Last Update: 2025-11-23
+    Last Update: 2026-01-14
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:

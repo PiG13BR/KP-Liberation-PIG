@@ -100,15 +100,17 @@ KPLIB_b_vehLight = [
     ["CUP_I_LR_AA_AAF",100,300,50],                                     // Land Rover 110 (AA)
     ["CUP_B_Ridgback_HMG_GB_W",250,50,75],                              // Ridgeback PPV (HMG)
     ["B_Boat_Transport_01_F",100,0,25],                                 // Assault Boat
-    ["B_Boat_Armed_01_minigun_F",200,150,75]                            // Speedboat Minigun
+    ["B_Boat_Armed_01_minigun_F",200,150,75],                           // Speedboat Minigun
+    ["CUP_B_MK10_GB",250,0,100],                                        // LCU Mk.10
+    ["CUP_B_LCU1600_USMC",400,0,100],                                   // LCU 1610                               
+    ["CUP_B_nM1036_TOW_DF_NATO",400,0,100]                              // Humvee TOW         
 ];
 
 KPLIB_b_vehHeavy = [
     ["CUP_I_M113A3_AAF",150,75,100],                                    // M113 (M2)
     ["CUP_I_M163_Vulcan_AAF",150,300,100],                              // M163 Vulcan (AA)
     ["CUP_B_FV432_Bulldog_GB_W_RWS",200,75,100],                        // Bulldog
-    ["CUP_B_LAV25_HQ_green",200,60,100],                                // LAV-25 (HQ)
-    ["CUP_B_LAV25M240_greenF",200,150,125],                             // LAV-25 (M240)
+    ["CUP_B_LAV25M240_green",250,150,125],                              // LAV-25 (M240)
     ["I_APC_tracked_03_cannon_F",300,150,150],                          // FV510 Warrior
     ["CUP_B_M1A1FEP_OD_USMC",700,400,300],                              // M1A1 FEP
     ["CUP_B_M1A1EP_TUSK_OD_USMC",900,400,300],                          // M1A1 FEP (Full TUSK)
@@ -123,6 +125,9 @@ KPLIB_b_vehAir = [
     ["CUP_I_Mi24_D_Dynamic_AAF",600,500,300],                           // Mi-24D
     ["CUP_I_AH1Z_Dynamic_AAF",750,750,250],                             // AH-1Z
     ["CUP_B_Merlin_HC3_VIV_GB",275,0,175],                              // Merlin HC3 (Cargo)
+    ["CUP_B_MH47E_USA",400,0,100],                                      // Chinook MH47E
+    ["Flex_CUP_USA_MH6J",300,0,100],                                    // Littlebird MH6J  
+    ["Flex_CUP_USA_AH6M",300,300,100],                                  // Littlebird AH6M       
     ["CUP_B_C130J_USMC",200,0,250],                                     // C-130J Super Hercules
     ["CUP_B_C130J_Cargo_USMC",200,0,250],                               // C-130J Super Hercules (Cargo)
     ["Flex_CUP_USA_UAV_MQ9",500,750,200],                               // MQ-9 Reaper
@@ -358,5 +363,8 @@ KPLIB_b_vehToUnlock = [
     ["FIR_AV8B_GR9A", "military_8"],
     ["FIR_F16C", "military_14"],
     ["Flex_CUP_USA_UAV_MQ9", "military_5"],
-    ["B_Boat_Armed_01_minigun_F", "military_19"]
+    ["B_Boat_Armed_01_minigun_F", "military_19"],
+    ["Flex_CUP_USA_AH6M", "military_7"],
+    ["CUP_B_MH47E_USA", "factory_ammo"],
+    ["CUP_B_LCU1600_USMC", "factory_fuel_7"]   
 ];

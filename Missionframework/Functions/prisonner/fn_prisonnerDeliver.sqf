@@ -1,5 +1,5 @@
 /*
-    File: fn_setCapturable.sqf
+    File: fn_prisonnerDeliver.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 24/11/2025
     Last Update: 24/11/2025

@@ -2,7 +2,7 @@
     File: fn_crateToStorage.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-03-27
-    Last Update: 2025-11-23
+    Last Update: 2026-01-16
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -45,7 +45,7 @@ if (!isNull _storage) then {
 
     // Store crate
     _crate attachTo [_storage, [(_storage_positions select _crates_count) select 0, (_storage_positions select _crates_count) select 1, _height]];
-    [_crate, false] remoteExec ["enableRopeAttach"];
+    _crate enableRopeAttach true;
 
     // Remove all actions
     [{
@@ -66,5 +66,7 @@ if (!isNull _storage) then {
         [localize "STR_BOX_CANTSTORE", true, 2] call KPLIB_fnc_hint;
     };
 };
+
+_crate setVariable ["KPLIB_crateInStorage", true, true];
 
 true

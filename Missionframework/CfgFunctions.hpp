@@ -93,6 +93,7 @@ class KPLIB {
         class lambs_enableReinforcements{};
         class protectObject             {};
         class setLoadableViV            {};
+        class skipBriefing              {preInit = 1;};
 
     };
     class Player {
@@ -234,6 +235,7 @@ class KPLIB {
 
         class overlayUpdateResources    {};
     };
+
     #include "Functions\do_build\cfgFunctions.hpp"
 
     #include "Scripts\Client\CfgFunctions.hpp"

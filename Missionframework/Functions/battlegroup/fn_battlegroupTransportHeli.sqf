@@ -122,7 +122,7 @@ _newHeli landAt [_heliPad, "GetOut", 30];
     {
         _x setUnitPos "MIDDLE";
         unassignVehicle _x;
-        //moveout _x;
+        moveout _x;
     } forEach (units _infGrp);
 }, [_newHeli, _infGrp, _heliPad]
 ] call CBA_fnc_waitUntilAndExecute;

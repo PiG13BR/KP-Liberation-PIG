@@ -3,7 +3,7 @@
     File: fn_cancelBuilding.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 11/11/2025
-    Last update: 24/11/2025
+    Last update: 14/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -27,11 +27,11 @@ if (_buildType != BUILDTYPE_FACTORY_STORAGE) then {
     ["KPLIB_restoreResources", [_buildSelected]] call CBA_fnc_serverEvent;
 };
 
-/*
+
 // Remove spheres
-private _spheres = (_object getVariable ["KPLIB_BUILD_objectSpheres", []]) + (localNamespace getVariable ["KPLIB_BUILD_areaSpheres", []]);
+private _spheres = (localNamespace getVariable ["KPLIB_BUILD_areaSpheres", []]);
 {deleteVehicle _x}forEach _spheres;
-*/
+
 // Delete the object
 deleteVehicle _object;
 

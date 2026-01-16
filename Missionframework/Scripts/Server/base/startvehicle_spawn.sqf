@@ -23,6 +23,42 @@
 waitUntil {!isNil "KPLIB_saveLoaded"};
 waitUntil {KPLIB_saveLoaded};
 
+KPLIB_fnc_addKilledEH_startVeh = {
+    params["_startVeh"];
+
+    _startVeh addEventHandler ["Killed", {
+        params["_vehicle"];
+
+        [_vehicle] spawn {
+            sleep KPLIB_startVehRespawnDelay;
+
+            params["_vehicle"];
+            // Delete wreck, if near startbase
+            if (_vehicle distance startbase < 500) then {
+                deletevehicle _vehicle;
+            };
+
+            private _startVeh = (typeOf _vehicle) createVehicle [(getposATL huronspawn) select 0, (getposATL huronspawn) select 1, ((getposATL huronspawn) select 2) + 0.2];
+            _startVeh enableSimulationGlobal false;
+            _startVeh allowdamage false;
+            _startVeh setDir (getDir huronspawn);
+            _startVeh setPosATL (getposATL huronspawn);
+            _startVeh setDamage 0;
+            sleep 0.5;
+            _startVeh enableSimulationGlobal true;
+            _startVeh setDamage 0;
+            _startVeh allowdamage true;
+            [_startVeh] call KPLIB_fnc_addObjectInit;
+
+            [_startVeh] call KPLIB_fnc_clearCargo;
+
+            [_startVeh] call KPLIB_fnc_addKilledEH_startVeh;
+        };
+        _vehicle removeEventHandler [_thisEvent, _thisEventHandler];
+    }];
+};
+publicVariable "KPLIB_fnc_addKilledEH_startVeh";
+
 private _placeholder = objNull;
 private _spawnPos = [];
 private _veh = objNull;
@@ -44,6 +80,7 @@ private _veh = objNull;
         _veh allowDamage true;
         _veh setVariable ["KPLIB_preplaced", true, true];
         [_veh] call KPLIB_fnc_addObjectInit;
+        [_veh] call KPLIB_fnc_addKilledEH_startVeh;
     };
 } forEach [
     ["littlebird_", KPLIB_b_addHeli],

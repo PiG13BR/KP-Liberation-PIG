@@ -55,7 +55,7 @@ private _crate = _cargoLoaded deleteAt (count _cargoLoaded - 1);
     // Create parachute
     [_crate, "B_Parachute_02_F", [0, 0, 1]] call _fnc_createParachute;
 
-    [_crate, true] remoteExec ["enableRopeAttach"];
+    _crate enableRopeAttach true;
 
     [{["KPLIB_addActionsCrate", _this] call CBA_fnc_globalEventJIP;}, _crate , 1] call CBA_fnc_waitAndExecute;
 

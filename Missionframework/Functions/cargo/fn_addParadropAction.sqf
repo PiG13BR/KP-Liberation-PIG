@@ -28,7 +28,7 @@ if !(_transport isKindOf "Air") exitWith {false};
         alive _target &&
         {driver _target == _this} &&
         {_target getVariable ["KPLIB_CARGO_loadedCargo", []] isNotEqualTo []} &&
-        {_target getVariable ["KPLIB_CARGO_isTransportVeh", true]} &&
+        {_target getVariable ["KPLIB_CARGO_isTransportVeh", false]} &&
         {isEngineOn _target && {(getPosATL _target # 2) > 20}}
     }, toString {
         private _minSpeed = 100;

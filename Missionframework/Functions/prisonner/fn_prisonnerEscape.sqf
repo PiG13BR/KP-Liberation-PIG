@@ -35,7 +35,6 @@ if (KPLIB_ace) then {
     _x doFollow (leader _grp)
 } foreach (units _grp);
 
-
 private _possibleSectors = (KPLIB_sectors_all - KPLIB_sectors_player);
 private _movePos = [];
 if (count _possibleSectors > 0) then {

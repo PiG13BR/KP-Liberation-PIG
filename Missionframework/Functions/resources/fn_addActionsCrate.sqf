@@ -2,7 +2,7 @@
     File: fn_addActionsCrate.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 2017-05-26
-    Last Update: 2026-12-11
+    Last Update: 16/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -36,7 +36,8 @@ _crate addAction [
         {isNull objectParent _this} &&
         {[5] call KPLIB_fnc_hasPermission} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
-        {!(_target getVariable ["KPLIB_beignCarried", false])}
+        {!(_target getVariable ["KPLIB_beignCarried", false])} &&
+        {!(_target getVariable ["KPLIB_crateInStorage", false])}
     },
     5
 ];
@@ -59,7 +60,8 @@ _crate addAction [
         {nearestObjects [_target, KPLIB_storageBuildings, 20] isNotEqualTo []} &&
         {[5] call KPLIB_fnc_hasPermission} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
-        {!(_target getVariable ["KPLIB_beignCarried", false])}
+        {!(_target getVariable ["KPLIB_beignCarried", false])} &&
+        {!(_target getVariable ["KPLIB_crateInStorage", false])}
     },
     5
     
@@ -80,7 +82,8 @@ _crate addAction [
         {isNull objectParent _this} &&
         {[5] call KPLIB_fnc_hasPermission} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
-        {!(_target getVariable ["KPLIB_beignCarried", false])}
+        {!(_target getVariable ["KPLIB_beignCarried", false])} &&
+        {!(_target getVariable ["KPLIB_crateInStorage", false])}
     },
     5
 ];
@@ -94,7 +97,7 @@ _crate addAction [
         ["KPLIB_crateCollisionChange", [_crate, false]] call CBA_fnc_globalEventJIP;
         _crate setVariable ["KPLIB_beignCarried", true, true];
         _player setVariable ["KPLIB_carriedObject", _crate];
-        [_crate, false] remoteExec ["enableRopeAttach"];
+        _crate enableRopeAttach true;
 
         // Drop crate action
         _player addAction [
@@ -115,7 +118,7 @@ _crate addAction [
                 ["KPLIB_crateCollisionChange", [_crate, true]] call CBA_fnc_globalEventJIP;
                 detach _crate;
                 _crate awake true;
-                [_crate, true] remoteExec ["enableRopeAttach"];
+                _crate enableRopeAttach true;
                 _player removeAction _actionId; // Remove action from player
             },
             nil,
@@ -139,7 +142,8 @@ _crate addAction [
         {isNull objectParent _this} &&
         {[5] call KPLIB_fnc_hasPermission} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
-        {!(_target getVariable ["KPLIB_beignCarried", false])}
+        {!(_target getVariable ["KPLIB_beignCarried", false])} &&
+        {!(_target getVariable ["KPLIB_crateInStorage", false])}
     },
     5
 ];

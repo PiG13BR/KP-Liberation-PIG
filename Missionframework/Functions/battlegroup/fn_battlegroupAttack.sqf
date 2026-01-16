@@ -37,6 +37,15 @@ _grp setCombatMode "RED";
 if (([_grp] call BIS_fnc_groupVehicles) isEqualTo []) then {
     // Inf
 
+    // Start Assaulting
+    _grp setVariable ["KPLIB_o_infantryIsAssaulting", true];
+    
+    [_grp, true] call lambs_wp_fnc_taskReset; {deleteWaypoint _x}forEachReversed (waypoints _grp);
+    private _wp1 = _grp addWaypoint [_objPos, 25];
+    _wp1 setWaypointType "SAD";
+    _wp1 setWaypointFormation (selectRandom ["STAG COLUMN", "WEDGE", "VEE", "LINE", "ECH LEFT", "ECH RIGHT", "DIAMOND"]);
+
+    /*
     if (KPLIB_LAMBS) then {
         // Check for allied forces inside sector
         if (({_x distance _objPos < KPLIB_range_sectorCapture * 1.4} count (allUnits select {side _x == KPLIB_side_player})) > 0) then {
@@ -65,6 +74,8 @@ if (([_grp] call BIS_fnc_groupVehicles) isEqualTo []) then {
             // Check for allied forces inside sector
             if (({_x distance _objPos < KPLIB_range_sectorCapture * 1.4} count (allPlayers select {side _x == KPLIB_side_player})) > 0) then {
                 // Change mode only if necessary
+                systemChat str "ASSAULTING";
+                
                 if (_grp getVariable ["KPLIB_o_infantryIsAssaulting", false]) then {
                     // Rush
                     _grp setVariable ["KPLIB_o_infantryIsAssaulting", false];
@@ -95,6 +106,7 @@ if (([_grp] call BIS_fnc_groupVehicles) isEqualTo []) then {
         _wp1 setWaypointType "SAD";
         _wp1 setWaypointFormation (selectRandom ["STAG COLUMN", "WEDGE", "VEE", "LINE", "ECH LEFT", "ECH RIGHT", "DIAMOND"]);
     };
+    */
 } else {
     // Veh
     _waypoint = _grp addWaypoint [_objPos, 100];

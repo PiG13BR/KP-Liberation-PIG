@@ -1,8 +1,8 @@
 /*
-    File: fn_getOpforSpawnPoint.sqf
+    File: fn_getOpforRoadSpawnPoint.sqf
     Author: PiG13BR - https://github.com/PiG13BR
-    Date: 2019-11-25
-    Last Update: 2020-05-22
+    Date: 07/11/2025
+    Last Update: 13/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -34,7 +34,13 @@ params [
 private _possibleSpawns = [];
 
 // Only check for opfor spawn points which aren't used already in the current session
-private _spawnsToCheck = KPLIB_road_spawn;
+private _spawnsToCheck = [];
+if (KPLIB_road_spawn isEqualTo []) then {
+    _spawnsToCheck = KPLIB_sectors_spawn
+} else {
+    _spawnsToCheck = KPLIB_road_spawn;
+};
+
 if (!isNil "KPLIB_usedOpforSpawnPoints") then {
     _spawnsToCheck = KPLIB_road_spawn - KPLIB_usedOpforSpawnPoints;
 };

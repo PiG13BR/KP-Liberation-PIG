@@ -2,7 +2,7 @@
     File: fn_addPlayerEH.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 13/11/2025
-    Last Update: 04/12/2025
+    Last Update: 16/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -126,7 +126,7 @@ _player addEventHandler ["Killed", {
         ["KPLIB_crateCollisionChange", [_crate, true]] call CBA_fnc_globalEventJIP;
         detach _crate;
         _crate awake true;
-        [_crate, true] remoteExec ["enableRopeAttach"];
+        _crate enableRopeAttach true;
     }
 }];
 

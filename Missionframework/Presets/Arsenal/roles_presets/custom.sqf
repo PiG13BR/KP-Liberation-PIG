@@ -414,7 +414,9 @@ _sniper_caps = [
 
 _backpacks = [
     "B_AssaultPack_dgtl",
-    "CUP_B_AlicePack_OD"
+    "CUP_B_AlicePack_OD",
+    "CUP_T10_Parachute_backpack",
+    "B_Parachute"
 ];
 
 _backpacks_radio = [
@@ -560,7 +562,8 @@ _ace_misc = [
     "ACE_Canteen",
     "ACE_EarPlugs",
     "ACE_IR_Strobe_Item",
-    "ACE_UAVBattery"
+    "ACE_UAVBattery",
+    "ACE_Altimeter"
 ];
 
 // Items & Communication
@@ -581,6 +584,8 @@ _radio = [
 _uav_terminal = [
     "B_UavTerminal"
 ];
+
+sleep 1;
 
 // ---------------------------------------------------------- Defined roles classnames
 // The playable characters in the editor must match these classnames below

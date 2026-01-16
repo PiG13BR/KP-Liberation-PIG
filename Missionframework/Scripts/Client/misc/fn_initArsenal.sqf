@@ -17,6 +17,8 @@
 
 params[["_player", player, [objNull]]];
 
+["Arsenal Init", "ARSENAL"] call KPLIB_fnc_log;
+
 if (KPLIB_param_useArsenalPreset > 0) then {
     KPLIB_arsenalWeapons = [];
     KPLIB_arsenalMagazines = [];
