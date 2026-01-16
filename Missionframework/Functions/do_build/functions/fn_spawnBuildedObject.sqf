@@ -104,7 +104,7 @@ if(_buildType == BUILDTYPE_FACTORY_STORAGE) then {
 switch _objectClass do {
     case KPLIB_b_fortify_small: {
         [west, 0, [["Land_BagFence_Long_F", 5], ["Land_SandbagBarricade_01_half_F", 5], ["Land_Razorwire_F", 5], ["Land_Rampart_F", 5]]] call ace_fortify_fnc_registerObjects;
-        _objectSpawned addItemCargo ["ACE_FortifyToken", 50]; // 250%
+        _objectSpawned addItemCargo ["ACE_FortifyToken", 50]; // 250$
         [west, 0, false] call ace_fortify_fnc_updateBudget;
         ace_fortify_locations pushBack [_objectSpawned, 50, 50, 0, false];
     };
