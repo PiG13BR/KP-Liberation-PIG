@@ -33,6 +33,8 @@ KPLIB_b_fobBuilding     = "Land_Cargo_HQ_V1_F";                         // This 
 KPLIB_b_fobBox          = "B_Slingload_01_Cargo_F";                     // This is the FOB as a container.
 KPLIB_b_fobTruck        = "B_Truck_01_box_F";                           // This is the FOB as a vehicle.
 KPLIB_b_arsenal         = "B_supplyCrate_F";                            // This is the virtual arsenal as portable supply crates.
+KPLIB_b_fortify_small   = "Box_NATO_Support_F";                         // This defines small crate for usage with Ace fortify
+KPLIB_b_fortify_medium  = "C_IDAP_supplyCrate_F";                       // This defines medium crate for usage with Ace fortify
 
 // This is the mobile respawn (and medical) truck.
 KPLIB_b_mobileRespawn   = ["B_Truck_01_medical_F","B_T_Truck_01_medical_F"];
@@ -65,14 +67,14 @@ KPLIB_b_basic_uniform = "U_B_CombatUniform_mcam";
 */
 
 KPLIB_supply_crates = [
-    ["C_IDAP_supplyCrate_F",50,0,0], // Increased from 10,0,0 because it is also used by ACE Fortify as medium preset, and PIG's Virtual arsenal
+    [KPLIB_b_fortify_medium,50,0,0], // Increased from 10,0,0 because it is also used by ACE Fortify as medium preset, and PIG's Virtual arsenal
     ["Box_NATO_Equip_F",10,0,0],
     ["Box_NATO_Ammo_F",10,0,0],
     ["Box_NATO_Wps_F",10,0,0],
     ["Box_NATO_AmmoOrd_F",10,0,0],
     ["Box_NATO_Grenades_F",10,0,0],
     ["Box_NATO_WpsLaunch_F",10,0,0],
-    ["Box_NATO_Support_F",20,0,0], // Increased from 10,0,0 because it is also used by ACE Fortify as small preset, and PIG's Virtual arsenal
+    [KPLIB_b_fortify_small,20,0,0], // Increased from 10,0,0 because it is also used by ACE Fortify as small preset, and PIG's Virtual arsenal
     [KPLIB_b_uav_box, 50, 50, 0], // UAV box, TODO: change display name on Build menu
     ["ACE_medicalSupplyCrate_advanced",10,0,0]
 ];
