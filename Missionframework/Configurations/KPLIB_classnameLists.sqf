@@ -137,9 +137,6 @@ KPLIB_ace_crates = [
     "BWA3_box_120mm_Mo_Illum",
     "BWA3_box_120mm_Mo_Smoke",
 
-    "Box_AAF_Equip_F", // UAV Crate
-    "Box_NATO_Support_F", // Fortify related crates
-    "C_IDAP_supplyCrate_F",
 
     "ACE_Box_82mm_Mo_Combo",
     "ACE_Box_82mm_Mo_HE",
