@@ -103,7 +103,7 @@ KPLIB_b_vehLight = [
     ["B_Boat_Armed_01_minigun_F",200,150,75],                           // Speedboat Minigun
     ["CUP_B_MK10_GB",250,0,100],                                        // LCU Mk.10
     ["CUP_B_LCU1600_USMC",400,0,100],                                   // LCU 1610                               
-    ["CUP_B_nM1036_TOW_DF_NATO",100,150,50],                            // Humvee TOW
+    ["CUP_B_nM1036_TOW_DF_NATO",400,0,100],                             // Humvee TOW
     ["Flex_CUP_USA_TowingTractor",100,0,50]                             // Towing truck        
 ];
 
@@ -142,7 +142,7 @@ KPLIB_b_vehAir = [
 
 KPLIB_b_vehStatic = [
     ["Flex_CUP_USA_HMG_high",25,40,0],                                  // M2 HMG (Raised)
-    ["Flex_CUP_USA_TOW2",50,150,0],                                     // TOW-2
+    ["Flex_CUP_USA_TOW2",50,100,0],                                     // TOW-2
     ["Flex_CUP_USA_Stinger_AA_pod",50,100,0],                           // Stinger AA pod
     ["Flex_CUP_USA_M252",200,150,0],                                    // M252 Mortar
     ["B_Radar_System_01_F",700,0,0],                                    // AN/MPQ-105 Radar

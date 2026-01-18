@@ -361,7 +361,7 @@ if (!isNil "_saveData") then {
     private _object = objNull;
     {
         // Fetch data of saved object
-        _x params ["_class", "_pos", "_vecDir", "_vecUp", ["_hasCrew", false]];
+        _x params ["_class", "_pos", "_vecDir", "_vecUp", ["_hasCrew", false], ["_weaponsCargo", []], ["_magsCargo", [[], []]], ["_itemsCargo", [[], []]], ["_backpacksCargo", [[],[]]], ["_hitPoints", []], ["_fuel", 100], ["_ammo", []]];
 
         // This will be removed if we reach a 0.96.7 due to more released Arma 3 DLCs until we finish 0.97.0
         if !(((_saveData select 0) select 0) isEqualType 0) then {
@@ -381,7 +381,7 @@ if (!isNil "_saveData") then {
 
             // Create object without damage handling and simulation
             _object = createVehicle [_class, _pos, [], 0, "CAN_COLLIDE"];
-            _object allowdamage false;
+            //_object allowdamage false;
             _object enableSimulation false;
 
             // Add object to spawned objects collection
@@ -419,14 +419,50 @@ if (!isNil "_saveData") then {
             if ((unitIsUAV _object) || _hascrew) then {
                 [_object] call KPLIB_fnc_forceBluforCrew;
             };
+
+            // Cargo
+            if (_weaponsCargo isNotEqualTo []) then {
+                {_object addWeaponWithAttachmentsCargoGlobal [_x, 1]}forEach _weaponsCargo;
+            };
+            if (_magsCargo isNotEqualTo [[],[]]) then {
+                private _names = _magsCargo # 0;
+                private _count = _magsCargo # 1;
+                {_object addMagazineCargoGlobal [_x, _count # _forEachIndex]}forEach _names;
+            };
+            if (_itemsCargo isNotEqualTo [[],[]]) then {
+                private _names = _itemsCargo # 0;
+                private _count = _itemsCargo # 1;
+                {_object addItemCargoGlobal [_x, _count # _forEachIndex]}forEach _names;
+            };
+            if (_backpacksCargo isNotEqualTo [[],[]]) then {
+                private _names = _backpacksCargo # 0;
+                private _count = _backpacksCargo # 1;
+                {_object addBackpackCargoGlobal [_x, _count # _forEachIndex]}forEach _names;
+            };
+            
+            // Attributes
+            if (_hitPoints isNotEqualTo []) then {
+                private _hitNames = (_hitPoints # 0);
+                private _damages = (_hitPoints # 2);
+                {
+                    _object setHitPointDamage [_x, _damages # _forEachIndex];
+                }forEach _hitNames;
+            };
+            [_object, _fuel] remoteExec ["setFuel"];
+            {
+                params["_class", "turret", "_count"];
+
+                _object removeMagazinesTurret [_class, _turret];
+                _object addMagazineTurret [_class, _turret, _count];
+            }forEach _ammo;
         };
     } forEach _objectsToSave;
 
     // Re-enable physics on the spawned objects
     {
         _x enableSimulation true;
-        _x setdamage 0;
-        _x allowdamage true;
+        //_x setdamage 0;
+        //_x allowdamage true;
     } forEach _spawnedObjects;
     ["Saved buildings and vehicles placed", "SAVE"] call KPLIB_fnc_log;
 

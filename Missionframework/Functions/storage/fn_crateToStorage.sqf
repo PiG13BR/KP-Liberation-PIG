@@ -2,7 +2,7 @@
     File: fn_crateToStorage.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-03-27
-    Last Update: 2026-01-16
+    Last Update: 2026-01-18
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -66,6 +66,8 @@ if (!isNull _storage) then {
         [localize "STR_BOX_CANTSTORE", true, 2] call KPLIB_fnc_hint;
     };
 };
+
+_crate enableRopeAttach false;
 
 _crate setVariable ["KPLIB_crateInStorage", true, true];
 
