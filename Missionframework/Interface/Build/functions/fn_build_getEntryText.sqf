@@ -59,8 +59,6 @@ if (_buildType == BUILDTYPE_SUPPORT) then {
         case KPLIB_b_slotPlane: {_entryText = localize "STR_PLANE_SLOT";};
         case KPLIB_b_supplyDump : {_entryText = localize "STR_SUPPLY_DUMP_ENTRY";};
         case KPLIB_b_barrack : {_entryText = localize "STR_BARRACK_ENTRY";};
-        case KPLIB_b_fortify_small : {_entryText = localize "STR_FORTIFY_SMALL_ENTRY";};
-        case KPLIB_b_fortify_medium : {_entryText = localize "STR_FORTIFY_MEDIUM_ENTRY";};
         default {};
     };
 } else {
