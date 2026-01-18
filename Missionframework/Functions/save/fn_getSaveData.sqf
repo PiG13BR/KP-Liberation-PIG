@@ -78,6 +78,17 @@ private ["_savedPos", "_savedVecDir", "_savedVecUp", "_class", "_hasCrew"];
     _class = typeOf _x;
     _hasCrew = false;
 
+    // Storage data
+    private _weaponsCargo = weaponsItems _x;
+    private _magsCargo = getMagazineCargo _x;
+    private _itemsCargo = getItemCargo _x;
+    private _backpacksCargo = getBackpackCargo _x;
+
+    // Vehicle attributes
+    private _hitPoints = getAllHitPointsDamage _x;
+    private _fuel = fuel _x;
+    private _ammo = magazinesAllTurrets [_x, true];
+
     // Determine if vehicle is crewed
     if ((toLowerANSI _class) in KPLIB_b_allVeh_classes) then {
         if (({!isPlayer _x} count (crew _x) ) > 0) then {
@@ -90,7 +101,7 @@ private ["_savedPos", "_savedVecDir", "_savedVecUp", "_class", "_hasCrew"];
         (!(_class in KPLIB_c_vehicles) || {_x getVariable ["KPLIB_seized", false]}) &&
         (!((toLowerANSI _class) in KPLIB_o_allVeh_classes) || {_x getVariable ["KPLIB_captured", false]})
     ) then {
-        _objectsToSave pushBack [_class, _savedPos, _savedVecDir, _savedVecUp, _hasCrew];
+        _objectsToSave pushBack [_class, _savedPos, _savedVecDir, _savedVecUp, _hasCrew, _weaponsCargo, _magsCargo, _itemsCargo, _backpacksCargo, _hitPoints, _fuel, _ammo];
     };
 } forEach _allObjects;
 

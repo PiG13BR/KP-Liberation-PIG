@@ -51,6 +51,13 @@ if (([] call KPLIB_fnc_getPlayerCount) > 0) then {
 
     private _tempProduction = [];
 
+    private _timeCoef = -1;
+    if (KPLIB_civ_rep >= round (30 + (10 * KPLIB_param_difficulty))) then {
+        _timeCoef = _timeCoef - 1;
+    };
+
+    if (_time < abs(_timeCoef)) then {_time = 0};
+
     // Check if it's time to produce it
     if ((_time - 1) < 1) then {
         // Produce resource
@@ -72,10 +79,17 @@ if (([] call KPLIB_fnc_getPlayerCount) > 0) then {
             [_crate, _storage] call KPLIB_fnc_crateToStorage;
         };
     } else {
-        // Update timer.
-        _time = _time - 1;
-    };
+        // Update timer
+        private _timeCoef = -1;
 
+        // Civ rep
+        if (KPLIB_civ_rep >= round (30 + (10 * KPLIB_param_difficulty))) then {
+            _timeCoef = _timeCoef - 1;
+        };
+
+        _time = _time - abs(_timeCoef);
+    };
+    
     // Get resources amount
     {
         switch ((typeOf _x)) do {
