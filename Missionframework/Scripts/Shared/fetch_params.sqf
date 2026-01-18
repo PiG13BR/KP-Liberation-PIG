@@ -129,8 +129,6 @@ if(isServer) then {
     GET_PARAM_BOOL(KPLIB_param_clearCargo, "ClearCargo", 1);
     GET_PARAM(KPLIB_param_allowEnemiesInImmobile, "AllowEnemiesInImmobile", 50);
     GET_PARAM(KPLIB_param_maxDespawnDelay, "DelayDespawnMax", 5);
-    GET_PARAM_BOOL(KPLIB_param_zeusLimited, "LimitedZeus", 1);
-    GET_PARAM_BOOL(KPLIB_param_zeusCommander, "CommanderZeus", 1);
     GET_PARAM_BOOL(KPLIB_param_zeusAddEnemies, "ZeusAddEnemies", 1);
     GET_PARAM_BOOL(KPLIB_param_highCommand, "HighCommand", 1);
     GET_PARAM(KPLIB_param_supportModule, "SuppMod", 1);
@@ -252,14 +250,6 @@ if(isServer) then {
 if (!isDedicated && hasInterface) then {
     // Create diary section for an overview of actual mission parameters
     player createDiarySubject ["parameters", "Mission Parameters"];
-
-    GET_PARAM(KPLIB_presetPlayer, "BLUFORPreset", 0);
-    GET_PARAM(KPLIB_presetEnemy, "OPFORPreset", 0);
-    GET_PARAM(KPLIB_presetResistance, "guerPreset", 0);
-    GET_PARAM(KPLIB_presetCivilians, "civPreset", 0);
-    GET_PARAM(KPLIB_param_useArsenalPreset, "ArsenalUsePreset", 1);
-    GET_PARAM(KPLIB_presetArsenal, "arsenalPreset", 0);
-    GET_PARAM(KPLIB_presetArsenalWhitelist, "arsenalWhiteListPreset", 0);
 
     private _value = 0;
     private _text = "";
@@ -680,14 +670,6 @@ if (!isDedicated && hasInterface) then {
 
     _param = localize "STR_PARAM_DELAY_DESPAWN_MAX";
     _value = if (KPLIB_param_maxDespawnDelay == 0) then {localize "STR_PARAMS_DISABLED";} else {KPLIB_param_maxDespawnDelay;};
-    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
-
-    _param = localize "STR_PARAM_COMMANDERZEUS";
-    _value = if (KPLIB_param_zeusCommander) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
-    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
-
-    _param = localize "STR_PARAM_LIMITEDZEUS";
-    _value = if (KPLIB_param_zeusLimited) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAM_ZEUSADDENEMIES";

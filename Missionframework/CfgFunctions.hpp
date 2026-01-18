@@ -41,8 +41,6 @@ class KPLIB {
     class Curator {
         file = "Functions\curator";
 
-        class initCuratorHandlers       {postInit = 1;};
-        class requestZeus               {};
         class handlePlacedZeusObject    {};
     };
     class Fob {

@@ -2,7 +2,7 @@
     File: fn_factoryProduceResource.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 14/11/2025
-    Last Update: 20/11/2025
+    Last Update: 17/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -21,7 +21,7 @@ if (!isServer) exitWith {false};
 if !(_factory in KPLIB_production) exitWith {["This sector is not in the production list"] call BIS_fnc_error; false};
 
 // Only run if there are players connected
-if ((count (allPlayers - entities "HeadlessClient_F")) > 0) then {
+if (([] call KPLIB_fnc_getPlayerCount) > 0) then {
 
     private _factoryProduction = KPLIB_production getOrDefault [_factory, []]; // Get updated version
 

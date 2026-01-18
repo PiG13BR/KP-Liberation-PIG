@@ -2,7 +2,7 @@
     File: cup_aaf_deserters.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 20/10/2025
-    Last Update: 21/11/2025
+    Last Update: 17/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -103,18 +103,23 @@ KPLIB_b_vehLight = [
     ["B_Boat_Armed_01_minigun_F",200,150,75],                           // Speedboat Minigun
     ["CUP_B_MK10_GB",250,0,100],                                        // LCU Mk.10
     ["CUP_B_LCU1600_USMC",400,0,100],                                   // LCU 1610                               
-    ["CUP_B_nM1036_TOW_DF_NATO",400,0,100]                              // Humvee TOW         
+    ["CUP_B_nM1036_TOW_DF_NATO",400,0,100],                             // Humvee TOW
+    ["Flex_CUP_USA_TowingTractor",100,0,50]                             // Towing truck        
 ];
 
 KPLIB_b_vehHeavy = [
     ["CUP_I_M113A3_AAF",150,75,100],                                    // M113 (M2)
     ["CUP_I_M163_Vulcan_AAF",150,300,100],                              // M163 Vulcan (AA)
+    ["CUP_B_M1126_ICV_M2_Woodland", 250, 250, 150],                     // Stryker M1126 (M2)
+    ["CUP_B_M1126_ICV_MK19_Woodland", 250, 350, 150],                   // Stryker M1126 (MK19)
     ["CUP_B_FV432_Bulldog_GB_W_RWS",200,75,100],                        // Bulldog
     ["CUP_B_LAV25M240_green",250,150,125],                              // LAV-25 (M240)
-    ["I_APC_tracked_03_cannon_F",300,150,150],                          // FV510 Warrior
-    ["CUP_B_M1A1FEP_OD_USMC",700,400,300],                              // M1A1 FEP
-    ["CUP_B_M1A1EP_TUSK_OD_USMC",900,400,300],                          // M1A1 FEP (Full TUSK)
+    ["CUP_B_FV510_GB_W_SLAT",500,250,175],                              // FV510 Warrior (SLAT)
+    ["CUP_B_M1A1FEP_OD_USMC",750,400,300],                              // M1A1 FEP
+    ["CUP_B_M1A1EP_TUSK_OD_USMC",1000,400,300],                         // M1A1 FEP (Full TUSK)
     ["CUP_B_Challenger2_Woodland_BAF",1100,500,300],                    // Challanger 2
+    ["CUP_B_M2A3Bradley_USA_W", 1250,600,175],                          // M3A3 Bradley IFV  
+    ["CUP_B_M3A3BradleyCFV_USA_W",1500,750,175],                        // M3A3 Bradley CFV
     ["CUP_B_M270_HE_BAF_WOOD",800,1750,400]                             // M270 MLRS (HE)
 ];
 
@@ -351,7 +356,7 @@ KPLIB_b_vehToUnlock = [
     ["CUP_B_Ridgback_HMG_GB_W", "military_1"],
     ["Flex_CUP_USA_M252", "military_22"],
     ["Flex_CUP_USA_M119", "military_16"],
-    ["I_APC_tracked_03_cannon_F", "bigtown_1"],
+    ["CUP_B_FV510_GB_W_SLAT", "bigtown_1"],
     ["CUP_B_M1A1FEP_OD_USMC", "military_3"],
     ["CUP_B_M1A1EP_TUSK_OD_USMC", "bigtown_2"],
     ["CUP_B_Challenger2_Woodland_BAF", "bigtown_9"],

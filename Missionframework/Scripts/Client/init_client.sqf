@@ -37,13 +37,6 @@ if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {
     if (KPLIB_param_tutorial) then {
         [] call KPLIB_fnc_tutorial;
     };
-    // Request Zeus if enabled
-    if (KPLIB_param_zeusCommander) then {
-        [] spawn {
-            sleep 5;
-            [] call KPLIB_fnc_requestZeus;
-        };
-    };
 };
 
 // Extensions
@@ -64,3 +57,8 @@ if (KPLIB_param_VAMGUI) then {
     [] call compile preprocessFileLineNumbers 'Extensions\VAM_GUI\VAM_GUI_init.sqf'
 };
 
+/*
+// Create a zeus interface for the player to access
+if ((getPlayerUID player) in KPLIB_whitelist_Zeus) then {
+    [player] call KPLIB_fnc_initZeusPlayer;
+}

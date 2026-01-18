@@ -116,6 +116,7 @@ _player addAction [
             || {_originalTarget getVariable ['KPLIB_isNearArsenal', false]}
             || {_originalTarget getVariable ['KPLIB_isNearMobRespawn', false]}
             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
+            || {_originalTarget getVariable ['KPLIB_isNearDump', false]}
         }
         && {!(_originalTarget getVariable ['KPLIB_BUILD_isBuilding', false])} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
@@ -359,25 +360,6 @@ _player addAction [
         && {!(_originalTarget getVariable ['KPLIB_BUILD_isBuilding', false])}
     "
 ];
-
-// Reassign Zeus
-if (player == ([] call KPLIB_fnc_getCommander)) then {
-    _player addAction [
-        ["<t color='#FF0000'>", localize "STR_REASSIGN_ZEUS", "</t>"] joinString "",
-        {[] call KPLIB_fnc_requestZeus},
-        nil,
-        -870,
-        false,
-        true,
-        "",
-        "
-            KPLIB_param_zeusCommander
-            && alive _originalTarget
-            && {isNull (_originalTarget getVariable ['KPLIB_ownedZeusModule', objNull])}
-            && {!(_originalTarget getVariable ['KPLIB_BUILD_isBuilding', false])}
-        "
-    ];
-};
 
 // Create small FOB clearance
 _player addAction [

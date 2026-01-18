@@ -3375,23 +3375,6 @@
             <Czech>Maximální zpoždění deaktivace sektoru (začíná se zvyšovat po 5. aktivační minutě)</Czech>
             <Japanese>最大セクター不活性化遅延(5番目の活性化後に増加し始めます)</Japanese>
         </Key>
-        <Key ID="STR_PARAM_LIMITEDZEUS">
-            <Original>Limited Zeus interface</Original>
-            <German>Eingeschränkte Zeus Funktionen</German>
-            <Spanish>Interface de Zeus limitada</Spanish>
-            <Russian>Ограниченный интерфейс Zeus</Russian>
-            <Italian>Limita interfaccia Zeus</Italian>
-            <Korean>제한된 제우스 인터페이스</Korean>
-            <Turkish>Sınırlı Zeus Arayüzü</Turkish>
-            <Czech>Omezené rozhraní Zeus</Czech>
-            <Japanese>ZEUSインターフェイスの制限</Japanese>
-        </Key>
-        <Key ID="STR_PARAM_COMMANDERZEUS">
-            <Original>Zeus for Commander</Original>
-            <German>Zeus für Kommandant</German>
-            <Italian>Zeus per Comandante</Italian>
-            <Japanese>指揮官用ZEUS</Japanese>
-        </Key>
         <Key ID="STR_PARAM_ALLOW_ENEMIES_IN_IMMOBILE">
             <Original>Chance that enemies will stay in immobile/damaged vehicles</Original>
             <German>Chance, dass Feinde in fahrunfähigen/beschädigten Fahrzeugen verbleiben</German>

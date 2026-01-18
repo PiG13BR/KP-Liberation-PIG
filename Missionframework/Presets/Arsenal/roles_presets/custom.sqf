@@ -2,7 +2,7 @@
     File: custom.sqf
     Author: PIG13BR (https://github.com/PiG13BR)
     Date: 26/07/2024
-    Updated: 10/01/2026
+    Updated: 17/01/2026
 
     Description:
         Set up your arsenal inventory based on role selection in this file.
@@ -469,6 +469,8 @@ _nvgs = [
     "G_Armband_NVG_afia_F",
     "ACE_NVG_Gen1",
     "ACE_NVG_Gen2_Black",
+    "ACE_NVG_Gen4_Black_WP",
+    "CUP_NVG_PVS15_black_WP",
     "G_Armband_NVG_Cross_alt_F",
     "G_Armband_NVG_Cross_F",
     "G_Armband_NVG_grn_F",

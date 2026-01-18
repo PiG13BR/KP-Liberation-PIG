@@ -6,10 +6,10 @@
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
-        CUP AAF (ACW).
+        CUP AAF (ACW)
 
     Needed Mods:
-        - None
+        - CUP AAF (ACW)
 
     Optional Mods:
         - None
