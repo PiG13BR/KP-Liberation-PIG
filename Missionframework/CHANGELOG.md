@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.97.0 (08/01/2026)
+## 0.97.0 (19/01/2026)
 - Added Extension: Enemy artillery.
 - Added Extension: Artillery menu for the players as a replacer for the BIS support module.
 - Added Extension: Clear bushes/trees action for the players (from the clear brush Ampersand).
@@ -22,8 +22,10 @@
 - Added: Supply Menu/Virtual dump logistic for items with its own preset configuration.
 - Added: Presets in mission parameters (https://github.com/KillahPotatoes/KP-Liberation/pull/973).
 - Added: Enemies have a chance to surrender when flashbanged indoor. 
+- Added: Ace fortify, buyable crates with Fortify token inside, players with fortify tool + token can build in a 50 meters radius of said crate.
+- Added: UAV Crate, buyable crate with 3x Medical drones (DLC), 3x AR2-dart, 2x Demining drones IDAP (DLC).
+- Tweaked: AI Prices, before almost all of them didn't use ammo, now it has a little of an ammo cost.
 - Tweaked: Folder and files reorganization.
-- Tweaked: Mission init with XEH.
 - Tweaked: Battlegroup framework.
 - Tweaked: Build Menu interface.
 - Tweaked: Redeploy Menu interface and framework.
@@ -40,6 +42,7 @@
 - Tweaked: Civilian reputation now gives build menu discount/surcharge (fatrefrigerator's idea).
 - Tweaked: FOB templates with static weapons and garrisons spawns.
 - Tweaked: FOB Hunting with task framework.
+- Tweaked: Civilian reputation can decrease production time above certain value.
 - Removed: Push supply action.
 - Removed: GREUH player menu.
 - Removed: Useless enemy patrols.
@@ -49,11 +52,12 @@
 - Fixed: Collision with carrying supply crates.
 
 ## CHECKING / PRODUCING
-- Add Task framework to handle secondary objectives.
 - Check despawn of groups/objects in FOB hunting.
-- Review actions from supply dump (globalEventJIP).
+- Add control to Production Interface showing benefits of higher civilian reputation.
+- Fixing enemy artillery firing at FOB in an infinite loop.
 
 ## STANDING BY
+- Add Task framework to handle secondary objectives.
 - Prisoners can reveal outposts, artillery position, SAM sites before delivering him to a FOB, in exchange to intel points.
 - Barracks for FOBs. Required to redeploy and build IA/squads. Spawn addition supplies on first fob deployed.
 - Add enemy jet fighter spawns cycle on player flying an airplane. 
@@ -69,3 +73,4 @@
 - Use paratroopers battlegroup script to paradrop enemy vehicles. Enemy helicopter slingload vehicles.
 - Commander can change FOB names.
 - Make zeus whitelist.
+- Replace supply storage for container with virtual supply values. Same deal, but without actual objects.
