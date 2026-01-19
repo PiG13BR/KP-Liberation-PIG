@@ -126,18 +126,6 @@ if ((KPLIB_b_vehStatic findIf {(_x#0 == KPLIB_b_fortify_medium)}) < 0) then {
     KPLIB_b_vehStatic pushBack [KPLIB_b_fortify_medium, 100,0,0]
 };
 
-if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_uav_spoter)}) < 0) then {
-    KPLIB_b_vehSupport pushBack [KPLIB_b_uav_spoter, 50,0,0]
-};
-
-if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_uav_medical)}) < 0) then {
-    KPLIB_b_vehSupport pushBack [KPLIB_b_uav_medical, 50,0,0]
-};
-
-if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_uav_demining)}) < 0) then {
-    KPLIB_b_vehSupport pushBack [KPLIB_b_uav_demining, 50,50,0]
-};
-
 // Compatibility check and fix for vehicles to unlock
 KPLIB_b_vehToUnlock = KPLIB_b_vehToUnlock apply {if (_x isEqualType "") then {[_x, ""]} else {_x}};
 
