@@ -136,7 +136,7 @@ KPLIB_ace_crates = [
     "BWA3_box_120mm_Mo_HE_dpz",
     "BWA3_box_120mm_Mo_Illum",
     "BWA3_box_120mm_Mo_Smoke",
-    
+
     "ACE_Box_82mm_Mo_Combo",
     "ACE_Box_82mm_Mo_HE",
     "ACE_Box_82mm_Mo_Illum",

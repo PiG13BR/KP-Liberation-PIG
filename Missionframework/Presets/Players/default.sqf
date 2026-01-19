@@ -2,7 +2,7 @@
     File: custom.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-10-07
-    Last Update: 2024-06-20
+    Last Update: 2026-01-19
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -55,6 +55,9 @@ KPLIB_b_crateAmmo       = "B_CargoNet_01_ammo_F";                       // This 
 KPLIB_b_crateFuel       = "CargoNet_01_barrels_F";                      // This defines the fuel crates.
 KPLIB_b_supplyDump      = "Land_Cargo20_military_green_F";              // This defines supply dump for the supply menu
 KPLIB_b_barrack         = "Land_Cargo_House_V1_F";                      // The building defined to unlock FOB redeploy and IA/squads buying
+KPLIB_b_fortify_small   = "Box_GEN_Equip_F";                            // This defines small crate for usage with Ace fortify
+KPLIB_b_fortify_medium  = "I_EAF_supplyCrate_F";                        // This defines medium crate for usage with Ace fortify
+KPLIB_b_uav_box         = "Box_AAF_Equip_F";                            // This crate will recieve UAV backpacks on fn_spawnBuildedObject.sqf
 
 // Basic uniform to spawn with
 KPLIB_b_basic_uniform = "U_B_CombatUniform_mcam";
@@ -241,7 +244,8 @@ KPLIB_b_vehAir = [
     ["B_Plane_Fighter_01_Stealth_F",1500,1750,450],                     // F/A-181 Black Wasp II (Stealth)
     ["B_T_VTOL_01_armed_F",750,1500,500],                               // V-44 X Blackfish (Armed)
     ["B_T_VTOL_01_infantry_F",750,0,500],                               // V-44 X Blackfish (Infantry)
-    ["B_T_VTOL_01_vehicle_F",750,0,500]                                 // V-44 X Blackfish (Vehicle)
+    ["B_T_VTOL_01_vehicle_F",750,0,500],                                // V-44 X Blackfish (Vehicle)
+    [KPLIB_b_uav_box, 150, 50, 0]                                       // UAV Crate
 ];
 
 KPLIB_b_vehStatic = [
@@ -256,7 +260,9 @@ KPLIB_b_vehStatic = [
     ["B_Mortar_01_F",80,150,0],                                         // Mk6 Mortar
     ["RHS_M119_WD",100,200,0],                                          // M119A2
     ["B_Radar_System_01_F",700,0,0],                                    // AN/MPQ-105 Radar
-    ["B_SAM_System_03_F",250,500,0]                                     // MIM-145 Defender
+    ["B_SAM_System_03_F",250,500,0],                                    // MIM-145 Defender
+    [KPLIB_b_fortify_small, 50, 0 ,0],                                  // Fortify Small crate
+    [KPLIB_b_fortify_medium, 100, 0,0]                                  // Fortify Medium crate
 ];
 
 KPLIB_b_objectsDeco = [
