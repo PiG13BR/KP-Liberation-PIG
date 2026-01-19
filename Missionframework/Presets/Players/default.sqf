@@ -57,7 +57,6 @@ KPLIB_b_supplyDump      = "Land_Cargo20_military_green_F";              // This 
 KPLIB_b_barrack         = "Land_Cargo_House_V1_F";                      // The building defined to unlock FOB redeploy and IA/squads buying
 KPLIB_b_fortify_small   = "Box_GEN_Equip_F";                            // This defines small crate for usage with Ace fortify
 KPLIB_b_fortify_medium  = "I_EAF_supplyCrate_F";                        // This defines medium crate for usage with Ace fortify
-KPLIB_b_uav_box         = "Box_AAF_Equip_F";                            // This crate will recieve UAV backpacks on fn_spawnBuildedObject.sqf
 
 // Basic uniform to spawn with
 KPLIB_b_basic_uniform = "U_B_CombatUniform_mcam";
@@ -357,6 +356,9 @@ KPLIB_b_vehSupport = [
     [KPLIB_b_slotPlane,1000,0,0],
     [KPLIB_b_supplyDump, 250,1000,0],                                  // Supply dump
     [KPLIB_b_barrack, 150,0,0],                                        // Barrack
+    ["B_UAV_01_F", 50, 0, 0],
+    ["B_UAV_06_medical_F", 50, 0, 0],
+    ["C_IDAP_UAV_06_antimine_F", 50, 50, 0],
     ["ACE_medicalSupplyCrate_advanced",50,0,0],
     ["ACE_Box_82mm_Mo_HE",50,40,0],
     ["ACE_Box_82mm_Mo_Smoke",50,10,0],
@@ -388,8 +390,7 @@ KPLIB_b_vehSupport = [
     ["rhsusf_M977A4_AMMO_BKIT_usarmy_wd",125,200,75],                   // M977A4 Ammo
     ["B_Slingload_01_Repair_F",275,0,0],                                // Huron Repair
     ["B_Slingload_01_Fuel_F",75,0,200],                                 // Huron Fuel
-    ["B_Slingload_01_Ammo_F",75,200,0],                                 // Huron Ammo
-    [KPLIB_b_uav_box,150,50,0]                                          // UAV Crate
+    ["B_Slingload_01_Ammo_F",75,200,0]                                 // Huron Ammo
 ];
 
 /*
