@@ -244,8 +244,8 @@ KPLIB_b_vehAir = [
     ["B_Plane_Fighter_01_Stealth_F",1500,1750,450],                     // F/A-181 Black Wasp II (Stealth)
     ["B_T_VTOL_01_armed_F",750,1500,500],                               // V-44 X Blackfish (Armed)
     ["B_T_VTOL_01_infantry_F",750,0,500],                               // V-44 X Blackfish (Infantry)
-    ["B_T_VTOL_01_vehicle_F",750,0,500],                                 // V-44 X Blackfish (Vehicle)
-    [KPLIB_b_uav_box, 150, 50, 0]                                     // UAV Crate
+    ["B_T_VTOL_01_vehicle_F",750,0,500],                                // V-44 X Blackfish (Vehicle)
+    [KPLIB_b_uav_box, 150, 50, 0]                                       // UAV Crate
 ];
 
 KPLIB_b_vehStatic = [
@@ -260,9 +260,9 @@ KPLIB_b_vehStatic = [
     ["B_Mortar_01_F",80,150,0],                                         // Mk6 Mortar
     ["RHS_M119_WD",100,200,0],                                          // M119A2
     ["B_Radar_System_01_F",700,0,0],                                    // AN/MPQ-105 Radar
-    ["B_SAM_System_03_F",250,500,0],                                     // MIM-145 Defender
-    [KPLIB_b_fortify_small, 50, 0 ,0],                                 // Fortify Small crate
-    [KPLIB_b_fortify_medium, 100, 0,0]                                // Fortify Medium crate
+    ["B_SAM_System_03_F",250,500,0],                                    // MIM-145 Defender
+    [KPLIB_b_fortify_small, 50, 0 ,0],                                  // Fortify Small crate
+    [KPLIB_b_fortify_medium, 100, 0,0]                                  // Fortify Medium crate
 ];
 
 KPLIB_b_objectsDeco = [
