@@ -130,6 +130,20 @@ KPLIB_b_allSquads = [
     [KPLIB_b_squadPara,50,0,0]
 ];
 
+// Prices for ACE Fortify and UAV create
+
+if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_fortify_small)}) < 0) then {
+    KPLIB_b_vehSupport pushBack [KPLIB_b_fortify_small, 50,0,0]
+};
+
+if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_fortify_medium)}) < 0) then {
+    KPLIB_b_vehSupport pushBack [KPLIB_b_fortify_medium, 100,0,0]
+};
+
+if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_uav_box)}) < 0) then {
+    KPLIB_b_vehSupport pushBack [KPLIB_b_uav_box, 150,50,0]
+};
+
 // Squad names for build menu
 KPLIB_b_squadNames = [
     localize "STR_LIGHT_RIFLE_SQUAD",

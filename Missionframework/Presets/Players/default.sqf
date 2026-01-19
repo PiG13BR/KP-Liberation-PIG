@@ -33,8 +33,6 @@ KPLIB_b_fobBuilding     = "Land_Cargo_HQ_V1_F";                         // This 
 KPLIB_b_fobBox          = "B_Slingload_01_Cargo_F";                     // This is the FOB as a container.
 KPLIB_b_fobTruck        = "B_Truck_01_box_F";                           // This is the FOB as a vehicle.
 KPLIB_b_arsenal         = "B_supplyCrate_F";                            // This is the virtual arsenal as portable supply crates.
-KPLIB_b_fortify_small   = "Box_NATO_Support_F";                         // This defines small crate for usage with Ace fortify
-KPLIB_b_fortify_medium  = "C_IDAP_supplyCrate_F";                       // This defines medium crate for usage with Ace fortify
 
 // This is the mobile respawn (and medical) truck.
 KPLIB_b_mobileRespawn   = ["B_Truck_01_medical_F","B_T_Truck_01_medical_F"];
@@ -57,6 +55,9 @@ KPLIB_b_crateAmmo       = "B_CargoNet_01_ammo_F";                       // This 
 KPLIB_b_crateFuel       = "CargoNet_01_barrels_F";                      // This defines the fuel crates.
 KPLIB_b_supplyDump      = "Land_Cargo20_military_green_F";              // This defines supply dump for the supply menu
 KPLIB_b_barrack         = "Land_Cargo_House_V1_F";                      // The building defined to unlock FOB redeploy and IA/squads buying
+KPLIB_b_fortify_small   = "Box_NATO_Support_F";   // This defines small crate for usage with Ace fortify
+KPLIB_b_fortify_medium  = "C_IDAP_supplyCrate_F"; // This defines medium crate for usage with Ace fortify
+KPLIB_b_uav_box         = "Box_AAF_Equip_F";      // This crate will recieve UAV backpacks on fn_spawnBuildedObject.sqf
 
 // Basic uniform to spawn with
 KPLIB_b_basic_uniform = "U_B_CombatUniform_mcam";
@@ -354,6 +355,9 @@ KPLIB_b_vehSupport = [
     [KPLIB_b_slotPlane,1000,0,0],
     [KPLIB_b_supplyDump, 250,1000,0],                                  // Supply dump
     [KPLIB_b_barrack, 150,0,0],                                        // Barrack
+    [KPLIB_b_fortify_small, 50, 0 ,0],                                 // Fortify Small crate
+    [KPLIB_b_fortify_medium, 100, 0,0],                                // Fortify Medium crate
+    [KPLIB_b_uav_box, 150, 50, 0],                                     // UAV Crate
     ["ACE_medicalSupplyCrate_advanced",50,0,0],
     ["ACE_Box_82mm_Mo_HE",50,40,0],
     ["ACE_Box_82mm_Mo_Smoke",50,10,0],
