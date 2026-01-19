@@ -59,6 +59,7 @@ if (_buildType == BUILDTYPE_SUPPORT) then {
         case KPLIB_b_slotPlane: {_entryText = localize "STR_PLANE_SLOT";};
         case KPLIB_b_supplyDump : {_entryText = localize "STR_SUPPLY_DUMP_ENTRY";};
         case KPLIB_b_barrack : {_entryText = localize "STR_BARRACK_ENTRY";};
+        case KPLIB_b_uav_box: {_entryText = localize "STR_UAV_CRATE_ENTRY";};
         default {};
     };
 } else {
@@ -81,16 +82,6 @@ if (_buildType == BUILDTYPE_DEFENCE) then {
     };
 };
 
-if (_buildType == BUILDTYPE_SUPPORT) then {
-    switch (_class) do {
-        case KPLIB_b_uav_box: {_entryText = localize "STR_UAV_CRATE_ENTRY";};
-        default {};
-    };
-} else {
-    switch (_class) do {
-        default {};
-    };
-};
 
 
 _entryText
