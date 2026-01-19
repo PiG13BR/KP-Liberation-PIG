@@ -57,7 +57,9 @@ KPLIB_b_supplyDump      = "Land_Cargo20_military_green_F";              // This 
 KPLIB_b_barrack         = "Land_Cargo_House_V1_F";                      // The building defined to unlock FOB redeploy and IA/squads buying
 KPLIB_b_fortify_small   = "Box_GEN_Equip_F";                            // This defines small crate for usage with Ace fortify
 KPLIB_b_fortify_medium  = "I_EAF_supplyCrate_F";                        // This defines medium crate for usage with Ace fortify
-KPLIB_b_uav_box         = "Box_AAF_Equip_F";                            // This crate will recieve UAV backpacks on fn_spawnBuildedObject.sqf
+KPLIB_b_uav_spoter      = "B_UAV_01_F";                                 // AR-darter 2 vanilla
+KPLIB_b_uav_medical     = "B_UAV_06_medical_F";                         // DLC AL-6
+KPLIB_b_uav_demining    = "C_IDAP_UAV_06_antimine_F";                   // DLC AL-6
 
 // Basic uniform to spawn with
 KPLIB_b_basic_uniform = "U_B_CombatUniform_mcam";
@@ -357,7 +359,9 @@ KPLIB_b_vehSupport = [
     [KPLIB_b_slotPlane,1000,0,0],
     [KPLIB_b_supplyDump, 250,1000,0],                                  // Supply dump
     [KPLIB_b_barrack, 150,0,0],                                        // Barrack
-    [KPLIB_b_uav_box, 150, 50, 0],                                     // UAV Crate
+    [KPLIB_b_uav_spoter, 50, 0, 0],
+    [KPLIB_b_uav_medical, 50, 0, 0],
+    [KPLIB_b_uav_demining, 50, 50, 0],
     ["ACE_medicalSupplyCrate_advanced",50,0,0],
     ["ACE_Box_82mm_Mo_HE",50,40,0],
     ["ACE_Box_82mm_Mo_Smoke",50,10,0],

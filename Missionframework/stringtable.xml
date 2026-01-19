@@ -787,21 +787,6 @@
             <Czech>Střední fortifikační bedna</Czech>
             <Japanese>中型要塞化ボックス</Japanese>
         </Key>
-        <Key ID="STR_UAV_CRATE_ENTRY">
-            <Original>UAV Crate</Original>
-            <French>Caisse de drones</French>
-            <German>UAV-Kiste</German>
-            <Spanish>Caja de drones (UAV)</Spanish>
-            <Russian>Ящик с БПЛА</Russian>
-            <Italian>Cassa di droni (UAV)</Italian>
-            <Chinesesimp>无人机箱</Chinesesimp>
-            <Chinese>無人機箱</Chinese>
-            <Turkish>İHA Kutusu</Turkish>
-            <Portuguese>Caixa de drones (UAV)</Portuguese>
-            <Korean>UAV 상자</Korean>
-            <Czech>Bedna s bezpilotními letouny</Czech>
-            <Japanese>UAVボックス</Japanese>
-        </Key>
         <Key ID="STR_RESPAWN_TRUCK">
             <Original>Mobile respawn</Original>
             <French>Respawn mobile</French>
