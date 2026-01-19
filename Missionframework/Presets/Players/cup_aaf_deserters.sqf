@@ -371,5 +371,6 @@ KPLIB_b_vehToUnlock = [
     ["B_Boat_Armed_01_minigun_F", "military_19"],
     ["Flex_CUP_USA_AH6M", "military_7"],
     ["CUP_B_MH47E_USA", "factory_ammo"],
+    ["CUP_B_CH47F_VIV_GB","factory_1"],                                         
     ["CUP_B_LCU1600_USMC", "factory_fuel_7"]   
 ];
