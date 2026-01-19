@@ -150,5 +150,7 @@ KPLIB_arsenalBlacklist = [
     "uns_MK18_low_US_Bag",
     "uns_STABO_US_Bag",
     "uns_Tripod_Bag",
+    "DRNP_AR2_Item",
+    "DRNP_AL6_Item",
     "Uns_US_searchlight_Bag"
 ];
