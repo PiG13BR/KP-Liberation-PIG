@@ -393,8 +393,7 @@ KPLIB_b_vehSupport = [
     ["rhsusf_M977A4_AMMO_BKIT_usarmy_wd",125,200,75],                   // M977A4 Ammo
     ["B_Slingload_01_Repair_F",275,0,0],                                // Huron Repair
     ["B_Slingload_01_Fuel_F",75,0,200],                                 // Huron Fuel
-    ["B_Slingload_01_Ammo_F",75,200,0],                                 // Huron Ammo
-    [KPLIB_b_uav_box,150,50,0]                                          // UAV Crate
+    ["B_Slingload_01_Ammo_F",75,200,0]                                 // Huron Ammo
 ];
 
 /*
