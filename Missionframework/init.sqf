@@ -192,5 +192,5 @@ if (!isDedicated && hasInterface) then {
     };
 };
 
-["XEH Postinit done", "XEH POSTNIT"] call KPLIB_fnc_log;
-KPLIB_postInit = true;
+["INIT DONE", "INIT"] call KPLIB_fnc_log;
+KPLIB_init = true;

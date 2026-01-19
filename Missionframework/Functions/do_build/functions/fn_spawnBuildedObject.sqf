@@ -1,9 +1,9 @@
 #include "..\defines.hpp"
 /*
     File: fn_spawnBuildedObject.sqf
-    Author: PiG13BR (https://github.com/PiG13BR)
+    Author: PiG13BR (https://github.com/PiG13BR), FernandimModelador https://github.com/FernandimModelador
     Date: 28/08/2025
-    Last update: 26/11/2025
+    Last update: 19/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
