@@ -82,6 +82,4 @@ if (_buildType == BUILDTYPE_DEFENCE) then {
     };
 };
 
-
-
 _entryText

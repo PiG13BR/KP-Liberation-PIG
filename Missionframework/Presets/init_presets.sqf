@@ -126,8 +126,8 @@ if ((KPLIB_b_vehStatic findIf {(_x#0 == KPLIB_b_fortify_medium)}) < 0) then {
     KPLIB_b_vehStatic pushBack [KPLIB_b_fortify_medium, 100,0,0]
 };
 
-if ((KPLIB_b_vehAir findIf {(_x#0 == KPLIB_b_uav_box)}) < 0) then {
-    KPLIB_b_vehAir pushBack [KPLIB_b_uav_box, 150,50,0]
+if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_uav_box)}) < 0) then {
+    KPLIB_b_vehSupport pushBack [KPLIB_b_uav_box, 150,50,0]
 };
 
 // Compatibility check and fix for vehicles to unlock

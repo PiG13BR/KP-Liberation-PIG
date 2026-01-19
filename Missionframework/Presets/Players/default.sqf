@@ -244,7 +244,7 @@ KPLIB_b_vehAir = [
     ["B_Plane_Fighter_01_Stealth_F",1500,1750,450],                     // F/A-181 Black Wasp II (Stealth)
     ["B_T_VTOL_01_armed_F",750,1500,500],                               // V-44 X Blackfish (Armed)
     ["B_T_VTOL_01_infantry_F",750,0,500],                               // V-44 X Blackfish (Infantry)
-    ["B_T_VTOL_01_vehicle_F",750,0,500],                                // V-44 X Blackfish (Vehicle)
+    ["B_T_VTOL_01_vehicle_F",750,0,500]                                 // V-44 X Blackfish (Vehicle)
 ];
 
 KPLIB_b_vehStatic = [
@@ -389,7 +389,8 @@ KPLIB_b_vehSupport = [
     ["rhsusf_M977A4_AMMO_BKIT_usarmy_wd",125,200,75],                   // M977A4 Ammo
     ["B_Slingload_01_Repair_F",275,0,0],                                // Huron Repair
     ["B_Slingload_01_Fuel_F",75,0,200],                                 // Huron Fuel
-    ["B_Slingload_01_Ammo_F",75,200,0]                                  // Huron Ammo
+    ["B_Slingload_01_Ammo_F",75,200,0],                                 // Huron Ammo
+    [KPLIB_b_uav_box,150,50,0]                                          // UAV Crate
 ];
 
 /*
