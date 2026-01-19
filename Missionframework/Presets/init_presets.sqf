@@ -122,12 +122,12 @@ KPLIB_b_vehToUnlock = KPLIB_b_vehToUnlock apply {if (_x isEqualType "") then {[_
 
 // Prices for the blufor infantry squads (supplies, ammo, fuel)
 KPLIB_b_allSquads = [
-    [KPLIB_b_squadLight,50,0,0],
+    [KPLIB_b_squadLight,50,20,0],
     [KPLIB_b_squadInf,75,25,0],
     [KPLIB_b_squadAT,50,50,0],
     [KPLIB_b_squadAA,50,50,0],
-    [KPLIB_b_squadRecon,75,0,0],
-    [KPLIB_b_squadPara,50,0,0]
+    [KPLIB_b_squadRecon,75,10,0],
+    [KPLIB_b_squadPara,50,10,0]
 ];
 
 // Squad names for build menu

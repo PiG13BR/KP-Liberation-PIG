@@ -103,7 +103,7 @@ KPLIB_b_vehLight = [
     ["B_Boat_Armed_01_minigun_F",200,150,75],                           // Speedboat Minigun
     ["CUP_B_MK10_GB",250,0,100],                                        // LCU Mk.10
     ["CUP_B_LCU1600_USMC",400,0,100],                                   // LCU 1610                               
-    ["CUP_B_nM1036_TOW_DF_NATO",400,0,100],                             // Humvee TOW
+    ["CUP_B_nM1036_TOW_DF_NATO",400,100,100],                           // Humvee TOW
     ["Flex_CUP_USA_TowingTractor",100,0,50]                             // Towing truck        
 ];
 
