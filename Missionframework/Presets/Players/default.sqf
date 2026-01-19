@@ -1,12 +1,12 @@
 /*
-    File: custom.sqf
+    File: default.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-10-07
-    Last Update: 2026-01-19
+    Last Update: 2024-06-20
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
-        Custom (default NATO) player preset.
+        Default NATO player preset.
 
     Needed Mods:
         - None
@@ -245,7 +245,7 @@ KPLIB_b_vehAir = [
     ["B_T_VTOL_01_armed_F",750,1500,500],                               // V-44 X Blackfish (Armed)
     ["B_T_VTOL_01_infantry_F",750,0,500],                               // V-44 X Blackfish (Infantry)
     ["B_T_VTOL_01_vehicle_F",750,0,500],                                // V-44 X Blackfish (Vehicle)
-    [KPLIB_b_uav_box, 150, 50, 0]                                       // UAV Crate
+    [KPLIB_b_uav_box,150,50,0]                                          // UAV Crate
 ];
 
 KPLIB_b_vehStatic = [

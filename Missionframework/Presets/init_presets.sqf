@@ -117,6 +117,19 @@ if (typeName KPLIB_b_mobileRespawn == typeName "") then {
     KPLIB_b_mobileRespawns = KPLIB_b_mobileRespawn;
 };
 
+// Fortify and UAV check
+if ((KPLIB_b_vehStatic findIf {(_x#0 == KPLIB_b_fortify_small)}) < 0) then {
+    KPLIB_b_vehStatic pushBack [KPLIB_b_fortify_small, 50,0,0]
+};
+
+if ((KPLIB_b_vehStatic findIf {(_x#0 == KPLIB_b_fortify_medium)}) < 0) then {
+    KPLIB_b_vehStatic pushBack [KPLIB_b_fortify_medium, 100,0,0]
+};
+
+if ((KPLIB_b_vehAir findIf {(_x#0 == KPLIB_b_uav_box)}) < 0) then {
+    KPLIB_b_vehAir pushBack [KPLIB_b_uav_box, 150,50,0]
+};
+
 // Compatibility check and fix for vehicles to unlock
 KPLIB_b_vehToUnlock = KPLIB_b_vehToUnlock apply {if (_x isEqualType "") then {[_x, ""]} else {_x}};
 
@@ -129,20 +142,6 @@ KPLIB_b_allSquads = [
     [KPLIB_b_squadRecon,75,0,0],
     [KPLIB_b_squadPara,50,0,0]
 ];
-
-// Prices for ACE Fortify and UAV create
-
-if ((KPLIB_b_vehStatic findIf {(_x#0 == KPLIB_b_fortify_small)}) < 0) then {
-    KPLIB_b_vehStatic pushBack [KPLIB_b_fortify_small, 50,0,0]
-};
-
-if ((KPLIB_b_vehStatic findIf {(_x#0 == KPLIB_b_fortify_medium)}) < 0) then {
-    KPLIB_b_vehStatic pushBack [KPLIB_b_fortify_medium, 100,0,0]
-};
-
-if ((KPLIB_b_vehAir findIf {(_x#0 == KPLIB_b_uav_box)}) < 0) then {
-    KPLIB_b_vehAir pushBack [KPLIB_b_uav_box, 150,50,0]
-};
 
 // Squad names for build menu
 KPLIB_b_squadNames = [

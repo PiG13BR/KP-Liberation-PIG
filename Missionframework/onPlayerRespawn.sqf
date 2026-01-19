@@ -1,6 +1,6 @@
 params ["_newUnit", "_oldUnit"];
 
-waitUntil {!isNil "KPLIB_postInit" && !isNil "KPLIB_initServerDone"};
+waitUntil {!isNil "KPLIB_init" && !isNil "KPLIB_initServerDone"};
 
 if !(_newUnit isUniformAllowed KPLIB_b_basic_uniform) then {
 _newUnit forceAddUniform KPLIB_b_basic_uniform;

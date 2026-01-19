@@ -759,53 +759,55 @@ if ((_lockedVehCount < (count KPLIB_sectors_all)) && (_lockedVehCount < (count K
 };
 publicVariable "KPLIB_sector_vehicleLinks";
 
-// Arsenal lock Crosscheck
-KPLIB_sector_arsenalLink = KPLIB_sector_arsenalLink select {
-    _x params ["_marker", "_items"];
-    ((KPLIB_b_lockedArsenal apply {_x#1}) find _items >= 0) && {_marker in KPLIB_sectors_all}
-};
-
-private _lockedArsenalCount = count KPLIB_sector_arsenalLink;
-if ((_lockedArsenalCount < (count KPLIB_sectors_all)) && (_lockedArsenalCount < (count KPLIB_b_lockedArsenal))) then {
-
-    private _assignedSector = [];
-    private _nextArsenal = "";
-    private _nextSector = "";
-
-    private _assignedArsenal = KPLIB_sector_arsenalLink apply {
-        _assignedArsenal pushBack (_x select 0);
-        (_x select 1);
+if (KPLIB_param_lockArsenal > 0 && !isNil "KPLIB_b_lockedArsenal") then {
+    // Arsenal lock Crosscheck
+    KPLIB_sector_arsenalLink = KPLIB_sector_arsenalLink select {
+        _x params ["_marker", "_items"];
+        ((KPLIB_b_lockedArsenal apply {_x#1}) find _items >= 0) && {_marker in KPLIB_sectors_all}
     };
 
-    // Add new entries, when there are elite vehicles and military sectors are not yet assigned 
-    {
-        _x params ["_nextSector", "_nextArsenal"];
+    private _lockedArsenalCount = count KPLIB_sector_arsenalLink;
+    if ((_lockedArsenalCount < (count KPLIB_sectors_all)) && (_lockedArsenalCount < (count KPLIB_b_lockedArsenal))) then {
 
-        if (_nextSector isEqualTo "") then {
-            // Select a random base
-            _nextSector = selectRandom ((KPLIB_sectors_military) - _assignedSector);
-            _assignedSector pushBack _nextSector;
-        } else {
-            _assignedSector pushBack _nextSector;
+        private _assignedSector = [];
+        private _nextArsenal = "";
+        private _nextSector = "";
+
+        private _assignedArsenal = KPLIB_sector_arsenalLink apply {
+            _assignedArsenal pushBack (_x select 0);
+            (_x select 1);
         };
 
-        KPLIB_sector_arsenalLink pushBack [_nextSector, _nextArsenal];
-    }forEach KPLIB_b_lockedArsenal;
+        // Add new entries, when there are elite vehicles and military sectors are not yet assigned 
+        {
+            _x params ["_nextSector", "_nextArsenal"];
 
-    ["Additional sectors or unlockable arsenal detected and assigned", "SAVE"] call KPLIB_fnc_log;
+            if (_nextSector isEqualTo "") then {
+                // Select a random base
+                _nextSector = selectRandom ((KPLIB_sectors_military) - _assignedSector);
+                _assignedSector pushBack _nextSector;
+            } else {
+                _assignedSector pushBack _nextSector;
+            };
+
+            KPLIB_sector_arsenalLink pushBack [_nextSector, _nextArsenal];
+        }forEach KPLIB_b_lockedArsenal;
+
+        ["Additional sectors or unlockable arsenal detected and assigned", "SAVE"] call KPLIB_fnc_log;
+    };
+
+    _lockedArsenalHash = createHashMapFromArray [];
+
+    {
+        _lockedArsenalHash set [_x # 0, _x # 1];
+    }forEach KPLIB_sector_arsenalLink;
+
+    diag_log format["ARSENAL LINK, %1", KPLIB_sector_arsenalLink];
+
+    // It's now a hashmap
+    KPLIB_sector_arsenalLink = _lockedArsenalHash;
+    publicVariable "KPLIB_sector_arsenalLink";
 };
-
-_lockedArsenalHash = createHashMapFromArray [];
-
-{
-    _lockedArsenalHash set [_x # 0, _x # 1];
-}forEach KPLIB_sector_arsenalLink;
-
-diag_log format["ARSENAL LINK, %1", KPLIB_sector_arsenalLink];
-
-// It's now a hashmap
-KPLIB_sector_arsenalLink = _lockedArsenalHash;
-publicVariable "KPLIB_sector_arsenalLink";
 
 publicVariable "KPLIB_permissions";
 KPLIB_saveLoaded = true; publicVariable "KPLIB_saveLoaded";
