@@ -450,7 +450,7 @@ if (!isNil "_saveData") then {
             };
             [_object, _fuel] remoteExec ["setFuel"];
             {
-                params["_class", "turret", "_count"];
+                params["_class", "_turret", "_count"];
 
                 _object removeMagazinesTurret [_class, _turret];
                 _object addMagazineTurret [_class, _turret, _count];
