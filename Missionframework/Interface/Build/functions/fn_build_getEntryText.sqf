@@ -1,9 +1,9 @@
 #include "..\defines.hpp"
 /*
     File: fn_build_getEntryText.sqf
-    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR, FernandimModelador https://github.com/FernandimModelador
     Date: 10/11/2025
-    Last Update: 13/01/2026
+    Last Update: 19/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -59,9 +59,6 @@ if (_buildType == BUILDTYPE_SUPPORT) then {
         case KPLIB_b_slotPlane: {_entryText = localize "STR_PLANE_SLOT";};
         case KPLIB_b_supplyDump : {_entryText = localize "STR_SUPPLY_DUMP_ENTRY";};
         case KPLIB_b_barrack : {_entryText = localize "STR_BARRACK_ENTRY";};
-        case KPLIB_b_fortify_small : {_entryText = localize "STR_FORTIFY_SMALL_ENTRY";};
-        case KPLIB_b_fortify_medium : {_entryText = localize "STR_FORTIFY_MEDIUM_ENTRY";};
-        case KPLIB_b_uav_box : {_entryText = localize "STR_UAV_CRATE_ENTRY";};
         default {};
     };
 } else {
@@ -71,6 +68,29 @@ if (_buildType == BUILDTYPE_SUPPORT) then {
     }
 };
 
+// New statements made for Fortify crates and UAV crate
+if (_buildType == BUILDTYPE_DEFENCE) then {
+    switch (_class) do {
+        case KPLIB_b_fortify_small: {_entryText = localize "STR_FORTIFY_SMALL_ENTRY";};
+        case KPLIB_b_fortify_medium: {_entryText = localize "STR_FORTIFY_MEDIUM_ENTRY";};
+        default {};
+    };
+} else {
+    switch (_class) do {
+        default {};
+    };
+};
+
+if (_buildType == BUILDTYPE_AERIAL) then {
+    switch (_class) do {
+        case KPLIB_b_uav_box: {_entryText = localize "STR_UAV_CRATE_ENTRY";};
+        default {};
+    };
+} else {
+    switch (_class) do {
+        default {};
+    };
+};
 
 
 _entryText
