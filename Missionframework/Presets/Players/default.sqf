@@ -75,7 +75,6 @@ KPLIB_supply_crates = [
     ["Box_NATO_Grenades_F",10,0,0],
     ["Box_NATO_WpsLaunch_F",10,0,0],
     ["Box_NATO_Support_F",10,0,0],
-    [KPLIB_b_uav_box, 150, 50, 0],                                       // UAV Crate
     ["ACE_medicalSupplyCrate_advanced",10,0,0]
 ];
 
@@ -358,6 +357,7 @@ KPLIB_b_vehSupport = [
     [KPLIB_b_slotPlane,1000,0,0],
     [KPLIB_b_supplyDump, 250,1000,0],                                  // Supply dump
     [KPLIB_b_barrack, 150,0,0],                                        // Barrack
+    [KPLIB_b_uav_box, 150, 50, 0],                                     // UAV Crate
     ["ACE_medicalSupplyCrate_advanced",50,0,0],
     ["ACE_Box_82mm_Mo_HE",50,40,0],
     ["ACE_Box_82mm_Mo_Smoke",50,10,0],
