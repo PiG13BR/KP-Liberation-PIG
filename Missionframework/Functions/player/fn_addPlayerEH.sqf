@@ -2,7 +2,7 @@
     File: fn_addPlayerEH.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 13/11/2025
-    Last Update: 16/01/2026
+    Last Update: 19/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -99,7 +99,7 @@ _player addEventHandler ["GetInMan", {
     if (toLowerANSI (typeOf _vehicle) in KPLIB_b_heavy_classes || toLowerANSI (typeOf _vehicle) in KPLIB_b_air_classes) then {
         ["KPLIB_generateLog", 
             [
-                format ["Player %1 entered vehicle class %3 in %2 role", _unit, _role, typeOf _vehicle],
+                format ["Player %1 entered vehicle class %3 in %2 role", name _unit, _role, typeOf _vehicle],
                 "VEHICLE LOG"
             ]
         ] call CBA_fnc_serverEvent;

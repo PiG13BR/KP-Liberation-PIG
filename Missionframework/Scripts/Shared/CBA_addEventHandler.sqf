@@ -190,30 +190,13 @@
     private _ammoPrice = _buildSelected # 2;
     private _fuelPrice = _buildSelected # 3;
 
-        // Update values based on civillian reputation
-    private _priceAdd = 0;
-    if (KPLIB_civ_rep >= 0) then {
-        if (KPLIB_civ_rep >= 10) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 20) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 30) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 40) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 50) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 75) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 100) then {_priceAdd = _priceAdd - 0.05};
-    } else {
-        if (KPLIB_civ_rep <= -10) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -20) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -30) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -40) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -50) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -75) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -100) then {_priceAdd = _priceAdd + 0.05};
-    };
+    // Update values based on civillian reputation
+    private _priceAdd = -(KPLIB_civ_rep/1000);
 
     if (_priceAdd < 0) then {
-        if (_supplyPrice > 0) then {_supplyPrice = (_supplyPrice - round(_supplyPrice * abs(_priceAdd))) min 0;};
-        if (_ammoPrice > 0) then {_ammoPrice = (_ammoPrice - round(_ammoPrice * abs(_priceAdd))) min 0;};
-        if (_fuelPrice > 0) then {_fuelPrice = (_fuelPrice - round(_fuelPrice * abs(_priceAdd))) min 0;};
+        if (_supplyPrice > 0) then {_supplyPrice = (_supplyPrice - round(_supplyPrice * abs(_priceAdd))) max 0;};
+        if (_ammoPrice > 0) then {_ammoPrice = (_ammoPrice - round(_ammoPrice * abs(_priceAdd))) max 0;};
+        if (_fuelPrice > 0) then {_fuelPrice = (_fuelPrice - round(_fuelPrice * abs(_priceAdd))) max 0;};
     } else {
         if (_supplyPrice > 0) then {_supplyPrice = _supplyPrice + round(_supplyPrice * _priceAdd);};
         if (_ammoPrice > 0) then {_ammoPrice = _ammoPrice + round(_ammoPrice * _priceAdd);};
@@ -307,6 +290,8 @@
 
 // Add actions to transport vehicles
 ["KPLIB_addActionUnloadCrate", {
+    if (isDedicated) exitWith {};
+
     _this spawn {
         waitUntil {sleep 1; alive player};
         _this addAction [
@@ -323,7 +308,7 @@
             toString {
                 alive _target && 
                 {isNull objectParent _this} &&
-                !(_this getVariable ['KPLIB_BUILD_isBuilding', false]) &&
+                {!(_this getVariable ['KPLIB_BUILD_isBuilding', false])} &&
                 {_target getVariable ["KPLIB_CARGO_loadedCargo", []] isNotEqualTo []} &&
                 {_target getVariable ["KPLIB_CARGO_isTransportVeh", true]} && 
                 {(speed _target < 2) ||
