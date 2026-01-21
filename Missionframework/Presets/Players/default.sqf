@@ -86,35 +86,35 @@ KPLIB_supply_crates = [
     IMPORTANT: The last element inside each array must have no comma at the end!
 */
 KPLIB_b_infantry = [
-    ["B_Soldier_lite_F",15,0,0],                                        // Rifleman (Light)
-    ["B_Soldier_F",20,0,0],                                             // Rifleman
-    ["B_soldier_LAT_F",30,0,0],                                         // Rifleman (AT)
-    ["B_Soldier_GL_F",25,0,0],                                          // Grenadier
-    ["B_soldier_AR_F",25,0,0],                                          // Autorifleman
-    ["B_HeavyGunner_F",35,0,0],                                         // Heavygunner
-    ["B_soldier_M_F",30,0,0],                                           // Marksman
-    ["B_Sharpshooter_F",40,0,0],                                        // Sharpshooter
-    ["B_soldier_AT_F",50,10,0],                                         // AT Specialist
-    ["B_soldier_AA_F",50,10,0],                                         // AA Specialist
-    ["B_medic_F",30,0,0],                                               // Combat Life Saver
-    ["B_engineer_F",30,0,0],                                            // Engineer
-    ["B_soldier_exp_F",30,0,0],                                         // Explosives Specialist
-    ["B_recon_F",20,0,0],                                               // Recon Scout
-    ["B_recon_LAT_F",30,0,0],                                           // Recon Scout (AT)
-    ["B_recon_M_F",30,0,0],                                             // Recon Marksman
-    ["B_Recon_Sharpshooter_F",40,0,0],                                  // Recon Sharpshooter
-    ["B_recon_medic_F",30,0,0],                                         // Recon Paramedic
-    ["B_recon_exp_F",30,0,0],                                           // Recon Demolition Expert
-    ["B_sniper_F",70,5,0],                                              // Sniper
-    ["B_ghillie_ard_F",70,5,0],                                         // Sniper (Arid)
-    ["B_ghillie_lsh_F",70,5,0],                                         // Sniper (Lush)
-    ["B_ghillie_sard_F",70,5,0],                                        // Sniper (Semi-Arid)
-    ["B_spotter_F",20,0,0],                                             // Spotter
-    ["B_crew_F",10,0,0],                                                // Crewman
-    ["B_soldier_PG_F",20,0,0],                                          // Para Trooper
-    ["B_helicrew_F",10,0,0],                                            // Helicopter Crew
-    ["B_Helipilot_F",10,0,0],                                           // Helicopter Pilot
-    ["B_Pilot_F",10,0,0]                                                // Pilot
+    ["B_Soldier_lite_F",15,10,0],                                        // Rifleman (Light)
+    ["B_Soldier_F",20,10,0],                                             // Rifleman
+    ["B_soldier_LAT_F",30,15,0],                                         // Rifleman (AT)
+    ["B_Soldier_GL_F",25,10,0],                                          // Grenadier
+    ["B_soldier_AR_F",25,15,0],                                          // Autorifleman
+    ["B_HeavyGunner_F",35,20,0],                                         // Heavygunner
+    ["B_soldier_M_F",30,10,0],                                           // Marksman
+    ["B_Sharpshooter_F",40,10,0],                                        // Sharpshooter
+    ["B_soldier_AT_F",50,50,0],                                          // AT Specialist
+    ["B_soldier_AA_F",50,50,0],                                          // AA Specialist
+    ["B_medic_F",30,10,0],                                               // Combat Life Saver
+    ["B_engineer_F",30,10,0],                                            // Engineer
+    ["B_soldier_exp_F",30,20,0],                                         // Explosives Specialist
+    ["B_recon_F",20,10,0],                                               // Recon Scout
+    ["B_recon_LAT_F",30,10,0],                                           // Recon Scout (AT)
+    ["B_recon_M_F",30,10,0],                                             // Recon Marksman
+    ["B_Recon_Sharpshooter_F",40,10,0],                                  // Recon Sharpshooter
+    ["B_recon_medic_F",30,10,0],                                         // Recon Paramedic
+    ["B_recon_exp_F",30,15,0],                                           // Recon Demolition Expert
+    ["B_sniper_F",70,10,0],                                              // Sniper
+    ["B_ghillie_ard_F",70,15,0],                                         // Sniper (Arid)
+    ["B_ghillie_lsh_F",70,15,0],                                         // Sniper (Lush)
+    ["B_ghillie_sard_F",70,15,0],                                        // Sniper (Semi-Arid)
+    ["B_spotter_F",20,10,0],                                             // Spotter
+    ["B_crew_F",10,5,0],                                                 // Crewman
+    ["B_soldier_PG_F",20,10,0],                                          // Para Trooper
+    ["B_helicrew_F",10,0,0],                                             // Helicopter Crew
+    ["B_Helipilot_F",10,0,0],                                            // Helicopter Pilot
+    ["B_Pilot_F",10,0,0]                                                 // Pilot
 ];
 
 KPLIB_b_vehLight = [
@@ -156,6 +156,7 @@ KPLIB_b_vehLight = [
     ["B_Boat_Armed_01_minigun_F",200,80,75],                            // Speedboat Minigun
     ["rhsusf_mkvsoc",250,200,100],                                      // Mk.V SOCOM
     ["B_SDV_01_F",150,0,50]                                             // SDV
+    ["CUP_B_nM1036_TOW_DF_NATO", 400, 100, 100]                         // Humvee TOW
 ];
 
 KPLIB_b_vehHeavy = [
@@ -210,6 +211,7 @@ KPLIB_b_vehAir = [
     ["RHS_UH60M",250,80,150],                                           // UH-60M
     ["RHS_UH60M_MEV2",300,0,150],                                       // UH-60M MEV2
     ["RHS_CH_47F",275,80,175],                                          // CH-47 Chinook (Armed)
+    ["CUP_B_CH47F_VIV_GB", 350, 80, 175],                               // CH-47 Chinook (ViV)
     ["I_Heli_Transport_02_F",275,0,175],                                // CH-49 Mohawk
     ["rhsusf_CH53E_USMC",300,0,175],                                    // CH-53E Super Stallion
     ["rhsusf_CH53E_USMC_GAU21_D",300,100,175],                          // CH-53E Super Stallion (GAU-21)
@@ -522,5 +524,6 @@ KPLIB_b_vehToUnlock = [
     ["JS_JC_FA18F",""],                                                 // F/A-18 F Super Hornet
     ["B_Plane_Fighter_01_F",""],                                        // F/A-181 Black Wasp II
     ["B_Plane_Fighter_01_Stealth_F",""],                                // F/A-181 Black Wasp II (Stealth)
+    ["CUP_B_CH47F_VIV_GB",""]                                           // CH-47 (VIV)
     ["B_T_VTOL_01_armed_F",""]                                          // V-44 X Blackfish (Armed)
 ];
