@@ -326,6 +326,7 @@ KPLIB_b_objectsDeco = [
     ["GRAD_envelope_short",0,0,0],
     ["ACE_envelope_small",0,0,0],
     ["GRAD_envelope_vehicle",0,0,0],
+    ["Land_Pier_F",20,0,0],                      // Pier block, to have a plane surface to build
     ["Land_SandbagBarricade_01_hole_F",0,0,0],
     ["Land_BagBunker_Small_F",0,0,0],
     ["Land_BagBunker_Large_F",0,0,0],
