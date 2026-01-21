@@ -63,23 +63,23 @@ KPLIB_b_basic_uniform = "U_I_CombatUniform_shortsleeve";
 
 
 KPLIB_b_infantry = [
-    ["Flex_CUP_USA_rifleman_lite",15,0,0],                              // Rifleman (Light)
-    ["Flex_CUP_USA_rifleman",20,0,0],                                   // Rifleman
-    ["Flex_CUP_USA_antitank_light",30,0,0],                             // Rifleman (AT)
-    ["Flex_CUP_USA_antitank",35,0,0],                                   // Rifleman (AT)
-    ["Flex_CUP_USA_grenadier",25,0,0],                                  // Grenadier
-    ["Flex_CUP_USA_machinegunner",25,0,0],                              // Autorifleman
-    ["B_HeavyGunner_F",35,0,0],                                         // Heavygunner
-    ["Flex_CUP_USA_marksman",30,0,0],                                   // Marksman
-    ["B_Sharpshooter_F",40,0,0],                                        // Sharpshooter
-    ["Flex_CUP_USA_antitank_missle",50,10,0],                           // AT Specialist
-    ["Flex_CUP_USA_antiair",50,10,0],                                   // AA Specialist
-    ["Flex_CUP_USA_medic",30,0,0],                                      // Combat Life Saver
-    ["Flex_CUP_USA_mechanic",30,0,0],                                   // Engineer
-    ["Flex_CUP_USA_pathfinder",20,0,0],                                 // Recon Scout
-    ["Flex_CUP_USA_helipilot",10,0,0],                                  // Helicopter Crew
-    ["Flex_CUP_USA_helipilot",10,0,0],                                  // Helicopter Pilot
-    ["Flex_CUP_USA_pilot",10,0,0]                                       // Pilot
+    ["Flex_CUP_USA_rifleman_lite",15,5,0],                              // Rifleman (Light)
+    ["Flex_CUP_USA_rifleman",20,10,0],                                   // Rifleman
+    ["Flex_CUP_USA_antitank_light",30,15,0],                             // Rifleman (AT)
+    ["Flex_CUP_USA_antitank",35,20,0],                                   // Rifleman (AT)
+    ["Flex_CUP_USA_grenadier",25,15,0],                                  // Grenadier
+    ["Flex_CUP_USA_machinegunner",25,15,0],                              // Autorifleman
+    ["B_HeavyGunner_F",35,15,0],                                         // Heavygunner
+    ["Flex_CUP_USA_marksman",30,15,0],                                   // Marksman
+    ["B_Sharpshooter_F",40,15,0],                                        // Sharpshooter
+    ["Flex_CUP_USA_antitank_missle",50,30,0],                           // AT Specialist
+    ["Flex_CUP_USA_antiair",50,30,0],                                   // AA Specialist
+    ["Flex_CUP_USA_medic",30,15,0],                                      // Combat Life Saver
+    ["Flex_CUP_USA_mechanic",30,10,0],                                   // Engineer
+    ["Flex_CUP_USA_pathfinder",20,10,0],                                 // Recon Scout
+    ["Flex_CUP_USA_helipilot",10,10,0],                                  // Helicopter Crew
+    ["Flex_CUP_USA_helipilot",10,10,0],                                  // Helicopter Pilot
+    ["Flex_CUP_USA_pilot",10,5,0]                                       // Pilot
 ];
 
 KPLIB_b_vehLight = [
