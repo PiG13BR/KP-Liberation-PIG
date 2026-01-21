@@ -4,7 +4,7 @@
     Steam: https://steamcommunity.com/id/Thomasangel/
     Github: https://github.com/rekterakathom
     Date: 2021-12-27
-    Last Update: 2025-12-05
+    Last Update: 2026-01-21
     Description:
         Completely rewritten version of the original checkGear by KillahPotatoes.
         Identical functionality.
@@ -43,6 +43,21 @@ private _allowedItems = KPLIB_arsenalAllowed;
         }forEach (weapons player);
     };
 } forEach _uniqueUnitItems;
+
+// Check weapon items
+private _weapons = (weapons player);
+if (_weapons isNotEqualTo []) then {
+    {   
+        private _acc = player weaponAccessories _x;
+        {
+            private _currentElement = toLowerANSI _x;
+
+            if !(_currentElement in _allowedItems) then {
+                player removePrimaryWeaponItem _currentElement;
+            };   
+        }forEach _acc;
+    }forEach _weapons;
+};
 
 // Show hint and log list, if something was found
 if (_removedItems isNotEqualTo []) exitWith {

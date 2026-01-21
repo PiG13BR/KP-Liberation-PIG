@@ -55,6 +55,7 @@
 - Check despawn of groups/objects in FOB hunting.
 - Add control to Production Interface showing benefits of higher civilian reputation.
 - Fixing enemy artillery firing at FOB in an infinite loop.
+- Change redeploy cost. No cost for FOB with barracks.
 
 ## STANDING BY
 - Add Task framework to handle secondary objectives.

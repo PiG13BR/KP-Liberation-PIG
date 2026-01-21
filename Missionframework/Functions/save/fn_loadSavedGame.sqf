@@ -449,12 +449,14 @@ if (!isNil "_saveData") then {
                 }forEach _hitNames;
             };
             [_object, _fuel] remoteExec ["setFuel"];
-            {
-                params["_class", "_turret", "_count"];
+            if (_ammo isNotEqualTo []) then {
+                {
+                    params["_class", "_turret", "_count"];
 
-                _object removeMagazinesTurret [_class, _turret];
-                _object addMagazineTurret [_class, _turret, _count];
-            }forEach _ammo;
+                    _object removeMagazinesTurret [_class, _turret];
+                    _object addMagazineTurret [_class, _turret, _count];
+                }forEach _ammo;
+            };
         };
     } forEach _objectsToSave;
 

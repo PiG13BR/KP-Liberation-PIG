@@ -346,8 +346,8 @@ KPLIB_b_vehSupport = [
     [KPLIB_b_arsenal,100,200,0],
     [(KPLIB_b_mobileRespawn select 0),200,0,100],
     [(KPLIB_b_mobileRespawn select 1),200,0,100],
-    [KPLIB_b_fobBox,300,500,0],
-    [KPLIB_b_fobTruck,300,500,75],
+    [KPLIB_b_fobBox,500,500,0],
+    [KPLIB_b_fobTruck,500,500,75],
     [KPLIB_b_smallStorage,0,0,0],
     [KPLIB_b_largeStorage,0,0,0],
     [KPLIB_b_logiStation,250,0,0],
@@ -355,7 +355,7 @@ KPLIB_b_vehSupport = [
     [KPLIB_b_slotHeli,500,0,0],
     [KPLIB_b_slotPlane,1000,0,0],
     [KPLIB_b_supplyDump, 250,1000,0],                                  // Supply dump
-    [KPLIB_b_barrack, 150,0,0],                                        // Barrack
+    [KPLIB_b_barrack, 200,0,0],                                        // Barrack
     ["B_UAV_01_F", 50, 0, 0],
     ["B_UAV_06_medical_F", 50, 0, 0],
     ["C_IDAP_UAV_06_antimine_F", 50, 50, 0],

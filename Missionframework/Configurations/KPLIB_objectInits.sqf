@@ -359,5 +359,14 @@ KPLIB_objectInits = [
                 ["KPLIB_addActionSupplyCrates", _crate] call CBA_fnc_globalEventJIP;
             }, [_this]] call CBA_fnc_waitUntilAndExecute;
         }
+    ],
+
+    // Radars
+    [
+        ["B_SAM_System_03_F","B_AAA_System_01_F"],
+        {
+            _this setVehicleRadar 1;
+            (group _this) setBehaviour "AWARE"
+        }
     ]
 ];

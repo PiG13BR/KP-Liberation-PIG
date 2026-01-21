@@ -52,24 +52,7 @@ private _cfg = configFile >> "cfgVehicles";
     private _fuel = _x # 3;
 
     // Update values based on civillian reputation
-    private _priceAdd = 0;
-    if (KPLIB_civ_rep >= 0) then {
-        if (KPLIB_civ_rep >= 10) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 20) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 30) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 40) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 50) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 75) then {_priceAdd = _priceAdd - 0.05};
-        if (KPLIB_civ_rep >= 100) then {_priceAdd = _priceAdd - 0.05};
-    } else {
-        if (KPLIB_civ_rep <= -10) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -20) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -30) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -40) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -50) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -75) then {_priceAdd = _priceAdd + 0.05};
-        if (KPLIB_civ_rep <= -100) then {_priceAdd = _priceAdd + 0.05};
-    };
+    private _priceAdd = -(KPLIB_civ_rep/1000);
 
     if (_priceAdd < 0) then {
         if (_supplies > 0) then {_supplies = (_supplies - round(_supplies * abs(_priceAdd))) max 0;};

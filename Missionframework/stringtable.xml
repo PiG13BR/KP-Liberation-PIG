@@ -8029,10 +8029,6 @@
             <Original>DISABLED</Original>
             <Portuguese>DESABILITADO</Portuguese>
         </Key>
-        <Key ID="STR_DEPLOY_NOBARRACKS">
-            <Original>FOB %1 requires (2) barracks to be able to redeploy</Original>
-            <Portuguese>A FOB %1 requer (2) alojamentos para habilitar o realocamento</Portuguese>
-        </Key>
         <Key ID="STR_DEPLOY_NORESOURCES">
             <Original>No resources available in the FOB %1 to redeploy</Original>
             <Portuguese>Não há recursos disponíveis na FOB %1 para o realocamento</Portuguese>

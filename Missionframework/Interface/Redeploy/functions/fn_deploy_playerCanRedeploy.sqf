@@ -31,10 +31,10 @@ private _closestFobPos = [_respawnPos] call KPLIB_fnc_getNearestFob;
 if ((_respawnPos distance2D _closestFobPos < KPLIB_range_fob) && {_player distance2D _closestFobPos < KPLIB_range_fob}) exitWith {_canRespawn};
 
 // Respawn pos is outside of fob minimal cost range, ignore cost
-if ((_respawnPos distance2D _closestFobPos) > (KPLIB_range_fob * 4)) exitWith {_canRespawn};
+if ((_respawnPos distance2D _closestFobPos) > (KPLIB_range_fob * 2)) exitWith {_canRespawn};
 
 // Respawn pos is inside of fob minimal cost range, return fob name to warn players
-if (_respawnPos distance2D _closestFobPos < (KPLIB_range_fob * 4)) then {_canRespawn set [1, [_closestFobPos] call KPLIB_fnc_getFobName];};
+if (_respawnPos distance2D _closestFobPos < (KPLIB_range_fob * 2)) then {_canRespawn set [1, [_closestFobPos] call KPLIB_fnc_getFobName];};
 
 // Respawn cost
 private _supplies = KPLIB_param_respawnCost;

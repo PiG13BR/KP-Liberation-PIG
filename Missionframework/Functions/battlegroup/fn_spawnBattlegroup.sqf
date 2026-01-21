@@ -68,7 +68,7 @@ private _paraTrooperSpawnedOnce = false; // Spawns only once paratroopers
                 [_class, _objPos, _spawnPoint] call KPLIB_fnc_battlegroupTransportHeli;
             } else {
                 // Spawn attack helicopter
-                if (((toLowerANSI _class) in KPLIB_o_attackHelicopters) && {!_heliAspawnedOnce}) then {
+                if ((_class in KPLIB_o_attackHelicopters) && {!_heliAspawnedOnce}) then {
                     _spawnPoint = [2000, 4000, false, _objPos] call KPLIB_fnc_getOpforSpawnPoint;
                     [_class, _objPos, _spawnPoint] call KPLIB_fnc_battlegroupAttackHeli;
                     _heliAspawnedOnce = true;

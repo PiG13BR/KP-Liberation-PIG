@@ -19,7 +19,7 @@
     };
 
     // Supply dump preset
-    [] call compile preprocessFileLineNumbers 'Extensions\Supply_Menu\supply_preset.sqf';
+    [] call compile preprocessFileLineNumbers 'Extensions\Supply_Menu\presets\custom.sqf';
 }] call CBA_fnc_addEventHandler;
 
 ["KPLIB_removeArsenalItems", {
@@ -42,5 +42,5 @@
     };
 
     // Supply dump preset
-    [] call compile preprocessFileLineNumbers 'Extensions\Supply_Menu\supply_preset.sqf';
+    [] call compile preprocessFileLineNumbers 'Extensions\Supply_Menu\presets\custom.sqf';
 }] call CBA_fnc_addEventHandler;
