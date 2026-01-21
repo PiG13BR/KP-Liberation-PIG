@@ -100,7 +100,7 @@ if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_supplyDump)}) < 0) then {
 
 if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_barrack)}) < 0) then {
     // No barrack found in support label, add it
-    KPLIB_b_vehSupport pushBack [KPLIB_b_barrack, 150,0,0]
+    KPLIB_b_vehSupport pushBack [KPLIB_b_barrack, 200,0,0]
 };
 
 // Add crates to the support label

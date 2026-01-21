@@ -30,7 +30,7 @@ if (hasPilotCamera _aircraft) then {
 				[_target] call KPLIB_fnc_createPylonManagerRsc
 			}, 
 			{
-				PIG_PylonManager_Setting_Enabled && {_player == driver _target} && {speed _target < 1} && {!isEngineOn _target} && {_target nearEntities [PIG_PylonManager_RequireNearby, 50] isNotEqualTo []}
+				KPLIB_param_pylonManager && {_player == driver _target} && {speed _target < 1} && {!isEngineOn _target} && {_target nearEntities [parseSimpleArray PIG_PylonManager_RequireNearby, 50] isNotEqualTo []}
 			}
 		] call ace_interact_menu_fnc_createAction;
 

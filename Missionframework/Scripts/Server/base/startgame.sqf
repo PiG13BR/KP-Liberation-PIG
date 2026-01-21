@@ -44,6 +44,18 @@ if (KPLIB_sectors_fob isEqualTo []) then {
         sleep 10;
     };
 
+    // Create parachute function
+    private _fnc_createParachute = {
+        // Author: Bohemia Interactive, mharis001
+        params ["_object", "_attachPos"];
+
+        private _parachute = createVehicle ["B_Parachute_02_F", _object, [], 0, "NONE"];
+        _parachute setDir getDir _object;
+        _parachute setVelocity [0, 0, -1];
+
+        _object attachTo [_parachute, _attachPos];
+    };
+
     // Spawn start resource crates and attach them to parachutes
     KPLIB_startCrates = [];
     private _crate = objNull;
@@ -58,10 +70,14 @@ if (KPLIB_sectors_fob isEqualTo []) then {
         [_crate, true] call KPLIB_fnc_clearCargo;
         _crate setVariable ["KPLIB_crate_value", 100, true];
         [_crate, 500] remoteExec ["setMass", _crate];
+        [_crate, [0, 0, -1.3]] call _fnc_createParachute;
         //[objNull, _crate] call BIS_fnc_curatorObjectEdited;
-        sleep 0.1;
+        /*
+        
+
         private _chute = createVehicle ["B_Parachute_02_F", getPosATL _crate, [], 0, "FLY"];
         _chute attachTo [_crate, [0, 0, -1.3]];
+        */
         _crate lockInventory true;
         if (KPLIB_ace) then {
             [_crate, true, [0, 1.5, 0], 0] remoteExec ["ace_dragging_fnc_setCarryable"];

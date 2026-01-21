@@ -236,15 +236,28 @@
     if (_buildSelected isEqualTo []) exitWith {};
 
     // Get item cost
-    private _suppliesPrice = _buildSelected # 1;
+    private _supplyPrice = _buildSelected # 1;
     private _ammoPrice = _buildSelected # 2;
     private _fuelPrice = _buildSelected # 3;
+
+    // Update values based on civillian reputation
+    private _priceAdd = -(KPLIB_civ_rep/1000);
+
+    if (_priceAdd < 0) then {
+        if (_supplyPrice > 0) then {_supplyPrice = (_supplyPrice - round(_supplyPrice * abs(_priceAdd))) max 0;};
+        if (_ammoPrice > 0) then {_ammoPrice = (_ammoPrice - round(_ammoPrice * abs(_priceAdd))) max 0;};
+        if (_fuelPrice > 0) then {_fuelPrice = (_fuelPrice - round(_fuelPrice * abs(_priceAdd))) max 0;};
+    } else {
+        if (_supplyPrice > 0) then {_supplyPrice = _supplyPrice + round(_supplyPrice * _priceAdd);};
+        if (_ammoPrice > 0) then {_ammoPrice = _ammoPrice + round(_ammoPrice * _priceAdd);};
+        if (_fuelPrice > 0) then {_fuelPrice = _fuelPrice + round(_fuelPrice * _priceAdd);};  
+    };
 
     // Get storage areas
     private _nearfob = [] call KPLIB_fnc_getNearestFob;
     private _storage_areas = (_nearfob nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false]};
     
-    _supplyCrates = ceil (_suppliesPrice / 100);
+    _supplyCrates = ceil (_supplyPrice / 100);
     _ammoPriceCrates = ceil (_ammoPrice / 100);
     _fuelCrates = ceil (_fuelPrice / 100);
     private _crateSum = _supplyCrates + _ammoPriceCrates + _fuelCrates;
@@ -263,7 +276,7 @@
     if (_spaceSum < _crateSum) then {
         [localize "STR_CANCEL_ERROR", true, 3] call KPLIB_fnc_hint;
     } else {
-        [_suppliesPrice, _ammoPrice, _fuelPrice, _storage_areas] call KPLIB_fnc_restoreResources;
+        [_supplyPrice, _ammoPrice, _fuelPrice, _storage_areas] call KPLIB_fnc_restoreResources;
     };
 }] call CBA_fnc_addEventHandler;
 
@@ -310,7 +323,8 @@
                 {isNull objectParent _this} &&
                 {!(_this getVariable ['KPLIB_BUILD_isBuilding', false])} &&
                 {_target getVariable ["KPLIB_CARGO_loadedCargo", []] isNotEqualTo []} &&
-                {_target getVariable ["KPLIB_CARGO_isTransportVeh", true]} && 
+                {_target getVariable ["KPLIB_CARGO_isTransportVeh", true]} &&
+                {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
                 {(speed _target < 2) ||
                 {_target isKindOf "Air" && {!(isEngineOn _target)} && {isTouchingGround _target}}}
             },

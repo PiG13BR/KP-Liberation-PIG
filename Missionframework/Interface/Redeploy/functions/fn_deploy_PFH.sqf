@@ -40,18 +40,9 @@ KPLIB_REDEPLOY_pfhandle = [
             _buttonControl ctrlSetTooltip (localize "STR_DEPLOY_ENEMIESNEARBY");
         };
 
-        // Check for barracks
-        ([_objectPos] call KPLIB_fnc_deploy_barracksNearby) params ["_canRespawn", "_fobName"];
-
-        if !(_canRespawn) exitWith {
-            _buttonControl ctrlSetText (localize "STR_DEPLOY_DISABLED");
-            _buttonControl ctrlEnable false;
-            _buttonControl ctrlSetTooltip format [localize "STR_DEPLOY_NOBARRACKS", _fobName];
-        };
-
-        if (KPLIB_param_respawnCost > 1) then {
+        if (KPLIB_param_respawnCost > 0) then {
             ([_objectPos] call KPLIB_fnc_deploy_playerCanRedeploy) params ["_canRespawn", "_fobName"];
-            
+
             // Respawn cost (FOB)
             if !(_canRespawn) then {
                 _buttonControl ctrlSetText (localize "STR_DEPLOY_DISABLED");
@@ -59,10 +50,17 @@ KPLIB_REDEPLOY_pfhandle = [
                 _buttonControl ctrlSetTooltip format [localize "STR_DEPLOY_NORESOURCES", _fobName];
             } else {
                 if (_fobName isNotEqualTo "") then {
-                    // Fob nearby, warn costs
-                    _buttonControl ctrlSetText (localize "STR_DEPLOY_BUTTON");
-                    _buttonControl ctrlEnable true;
-                    _buttonControl ctrlSetTooltip  format [localize "STR_DEPLOY_COST_WARNING", KPLIB_param_respawnCost, _fobName];
+                    // Check for barracks
+                    if ([_objectPos] call KPLIB_fnc_deploy_barracksNearby) then {
+                        _buttonControl ctrlSetText (localize "STR_DEPLOY_BUTTON");
+                        _buttonControl ctrlEnable true;
+                        _buttonControl ctrlSetTooltip (localize "STR_DEPLOY_NOCOST_WARNING");
+                    } else {
+                        // Fob nearby and no barracks, warn costs
+                        _buttonControl ctrlSetText (localize "STR_DEPLOY_BUTTON");
+                        _buttonControl ctrlEnable true;
+                        _buttonControl ctrlSetTooltip  format [localize "STR_DEPLOY_COST_WARNING", KPLIB_param_respawnCost, _fobName];
+                    };
                 } else {
                     // No fob nearby
                     _buttonControl ctrlSetText (localize "STR_DEPLOY_BUTTON");

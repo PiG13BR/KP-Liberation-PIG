@@ -27,7 +27,10 @@ private _slotItemHandle = _player addEventHandler ["SlotItemChanged", {
         if (_weapon isNotEqualTo "") then {
             // Some weapon acc 
             _unit removePrimaryWeaponItem _name; // Just remove it
-            [_unit, _name] call CBA_fnc_addItem; // Add it back
+            private _canLoad = [_unit, _name] call CBA_fnc_canAddItem;
+            if !(_canLoad) then {
+                [_unit, _name, false] call CBA_fnc_addItem; // Add it back
+            };
         } else {
             // Item
             _unit unassignItem _name;

@@ -32,10 +32,10 @@ while { KPLIB_endgame == 0 } do {
             sleep 1;
         };
 
-        _spawnpos = getpos _nearestroad;
+        _spawnpos = getPosATL _nearestroad;
 
         [selectRandom KPLIB_c_units, _spawnpos, _grp, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
-        _civveh = createVehicle [(selectRandom KPLIB_c_vehicles), _spawnpos, [], 5, "NONE"];
+        _civveh = createVehicle [(selectRandom KPLIB_c_vehicles), _spawnpos, [], 10, "NONE"];
         _civveh limitSpeed 50;
         //_civveh setVehiclePosition [_spawnpos, [], 5, "NONE"];
         _civveh addMPEventHandler ["MPKilled", {

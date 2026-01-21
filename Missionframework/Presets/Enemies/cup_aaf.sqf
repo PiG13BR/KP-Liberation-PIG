@@ -124,7 +124,6 @@ KPLIB_o_battleGrpVehicles = [
     KPLIB_o_transportTruck,                                             // Kamaz Transport (Covered)
     "Flex_CUP_AAF_LR_SF_HMG",                                           // Land Rover 110 (SF HMG)
     "Flex_CUP_AAF_LR_SF_GMG",                                           // Land Rover 110 (SF GMG)
-    "Flex_CUP_AAF_LR_SF_GMG",                                           // Land Rover 110 (SF GMG)
     "Flex_CUP_AAF_ZSU23",                                               // ZSU-23-4
     "Flex_CUP_AAF_Leopard_1A3",                                         // Leopard 1A3
     "Flex_CUP_AAF_Leopard2A6",                                          // Leopard 2A6

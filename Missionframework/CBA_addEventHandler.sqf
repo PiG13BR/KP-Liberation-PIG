@@ -3,6 +3,10 @@ if (isServer) then {
     #include "Scripts\Server\CBA_addEventHandler.sqf"
 };
 
+if (!isDedicated && hasInterface) then {
+    #include "Scripts\Client\CBA_addEventHandler.sqf"
+};
+
 #include "Scripts\Shared\CBA_addEventHandler.sqf"
 #include "Functions\do_build\CBA_addEventHandler.sqf"
 

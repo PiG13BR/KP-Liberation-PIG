@@ -16,7 +16,7 @@
 */
 params[["_respawnPos", [0,0,0], [[]]]];
 
-private _canRespawn = [true, ""];
+private _canRespawn = true;
 
 if (_respawnPos isEqualTo [0,0,0]) exitWith {_canRespawn};
 if (KPLIB_sectors_FOB isEqualTo []) exitWith {_canRespawn};
@@ -29,8 +29,7 @@ if (_respawnPos distance2D _closestFobPos > KPLIB_range_fob) exitWith {_canRespa
 
 // Check for neaby barracks
 if (count (_closestFobPos nearObjects [KPLIB_b_barrack, KPLIB_range_fob]) < 2) then {
-    _canRespawn set [0, false];
-    _canRespawn set [1, [_closestFobPos] call KPLIB_fnc_getFobName];
+    _canRespawn = false
 };
 
 _canRespawn
