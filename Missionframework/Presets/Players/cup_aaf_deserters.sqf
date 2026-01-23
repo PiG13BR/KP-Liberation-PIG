@@ -126,11 +126,12 @@ KPLIB_b_vehHeavy = [
 KPLIB_b_vehAir = [
     ["CUP_I_Wildcat_Unarmed_Digital_AAF",225,0,150],                    // AW159 Wildcat
     ["CUP_I_Ka60_GL_Digi_AAF",275,200,175],                             // Ka-60 Kasatka (Rockets)
-    ["CUP_I_412_Military_Armed_AAF",200,500,125],                       // CH-146 Griffon (Dynamic Loadout)
+    ["CUP_I_412_Military_Armed_AAF",200,500,125],                       // CH-146 Griffon (Armed)
     ["CUP_I_Mi24_D_Dynamic_AAF",600,500,300],                           // Mi-24D
     ["CUP_I_AH1Z_Dynamic_AAF",750,750,250],                             // AH-1Z
     ["CUP_B_Merlin_HC3_VIV_GB",275,0,175],                              // Merlin HC3 (Cargo)
-    ["CUP_B_MH47E_USA",400,0,100],                                      // Chinook MH47E
+    ["CUP_B_MH47E_USA",400,80,175],                                     // Chinook MH47E
+    ["CUP_B_CH47F_VIV_GB", 450, 80, 175],                               // CH-47 Chinook (ViV)
     ["Flex_CUP_USA_MH6J",300,0,100],                                    // Littlebird MH6J  
     ["Flex_CUP_USA_AH6M",300,300,100],                                  // Littlebird AH6M       
     ["CUP_B_C130J_USMC",200,0,250],                                     // C-130J Super Hercules
