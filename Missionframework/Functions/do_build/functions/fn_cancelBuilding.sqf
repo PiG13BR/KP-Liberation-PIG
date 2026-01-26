@@ -22,9 +22,10 @@ if (isNull _object) exitWith {};
 
 // Resources management
 private _buildType = localNamespace getVariable ["KPLIB_BUILD_buildType", 1];
+private _fobPos = [] call KPLIB_fnc_getNearestFob;
 if (_buildType != BUILDTYPE_FACTORY_STORAGE) then {
     private _buildSelected = localNamespace getVariable ["KPLIB_BUILD_itemToBuild", []];
-    ["KPLIB_restoreResources", [_buildSelected]] call CBA_fnc_serverEvent;
+    ["KPLIB_restoreResources", [_buildSelected, _fobPos]] call CBA_fnc_serverEvent;
 };
 
 

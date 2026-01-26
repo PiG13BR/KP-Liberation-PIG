@@ -2,7 +2,7 @@
     File: fn_deploy_PFH.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 04/11/2025
-    Last Update: 18/11/2025
+    Last Update: 21/11/2025
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -43,15 +43,16 @@ KPLIB_REDEPLOY_pfhandle = [
         if (KPLIB_param_respawnCost > 0) then {
             ([_objectPos] call KPLIB_fnc_deploy_playerCanRedeploy) params ["_canRespawn", "_fobName"];
 
+            private _barracks = ([_objectPos] call KPLIB_fnc_deploy_barracksNearby);
             // Respawn cost (FOB)
-            if !(_canRespawn) then {
+            if (!_canRespawn && !_barracks) then {
                 _buttonControl ctrlSetText (localize "STR_DEPLOY_DISABLED");
                 _buttonControl ctrlEnable false;
                 _buttonControl ctrlSetTooltip format [localize "STR_DEPLOY_NORESOURCES", _fobName];
             } else {
                 if (_fobName isNotEqualTo "") then {
                     // Check for barracks
-                    if ([_objectPos] call KPLIB_fnc_deploy_barracksNearby) then {
+                    if (_barracks) then {
                         _buttonControl ctrlSetText (localize "STR_DEPLOY_BUTTON");
                         _buttonControl ctrlEnable true;
                         _buttonControl ctrlSetTooltip (localize "STR_DEPLOY_NOCOST_WARNING");

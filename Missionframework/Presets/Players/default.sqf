@@ -155,7 +155,7 @@ KPLIB_b_vehLight = [
     ["B_Boat_Transport_01_F",100,0,25],                                 // Assault Boat
     ["B_Boat_Armed_01_minigun_F",200,80,75],                            // Speedboat Minigun
     ["rhsusf_mkvsoc",250,200,100],                                      // Mk.V SOCOM
-    ["B_SDV_01_F",150,0,50]                                             // SDV
+    ["B_SDV_01_F",150,0,50],                                            // SDV
     ["CUP_B_nM1036_TOW_DF_NATO", 400, 100, 100]                         // Humvee TOW
 ];
 
@@ -261,8 +261,8 @@ KPLIB_b_vehStatic = [
     ["RHS_M119_WD",100,200,0],                                          // M119A2
     ["B_Radar_System_01_F",700,0,0],                                    // AN/MPQ-105 Radar
     ["B_SAM_System_03_F",250,500,0],                                    // MIM-145 Defender
-    [KPLIB_b_fortify_small, 50, 0 ,0],                                  // Fortify Small crate
-    [KPLIB_b_fortify_medium, 100, 0,0]                                  // Fortify Medium crate
+    [KPLIB_b_fortify_small,50,0,0],                                     // Fortify Small crate
+    [KPLIB_b_fortify_medium,100,0,0]                                    // Fortify Medium crate
 ];
 
 KPLIB_b_objectsDeco = [
@@ -524,6 +524,5 @@ KPLIB_b_vehToUnlock = [
     ["JS_JC_FA18F",""],                                                 // F/A-18 F Super Hornet
     ["B_Plane_Fighter_01_F",""],                                        // F/A-181 Black Wasp II
     ["B_Plane_Fighter_01_Stealth_F",""],                                // F/A-181 Black Wasp II (Stealth)
-    ["CUP_B_CH47F_VIV_GB",""]                                           // CH-47 (VIV)
     ["B_T_VTOL_01_armed_F",""]                                          // V-44 X Blackfish (Armed)
 ];

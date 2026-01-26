@@ -2,7 +2,7 @@
     File: fn_initArsenal.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2020-05-11
-    Last Update: 2025-11-06
+    Last Update: 2026-01-23
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -63,22 +63,6 @@ if (KPLIB_param_useArsenalPreset > 0) then {
     if (KPLIB_param_lockArsenal > 0) then {
         [] call KPLIB_fnc_lockArsenalItems;
     };
-
-    diag_log "";
-    diag_log "===============================";
-    ["WEAPONS LOADED", "ARSENAL"] call KPLIB_fnc_log;
-    {diag_log _x}forEach KPLIB_arsenalWeapons;
-    diag_log "";
-    ["MAGAZINES LOADED", "ARSENAL"] call KPLIB_fnc_log;
-    {diag_log _x}forEach KPLIB_arsenalMagazines;
-    diag_log "";
-    ["ITEMS LOADED", "ARSENAL"] call KPLIB_fnc_log;
-    {diag_log _x}forEach KPLIB_arsenalItems;
-    diag_log "";
-    ["BACKPACKS LOADED", "ARSENAL"] call KPLIB_fnc_log;
-    {diag_log _x}forEach KPLIB_arsenalBackpacks;
-    diag_log "===============================";
-    diag_log "";
     
     if (KPLIB_arsenalWeapons isEqualTo []) then {KPLIB_arsenalWeapons = (_crawled select 0) select {!(_x in KPLIB_arsenalBlacklist)};};
     [missionNamespace, KPLIB_arsenalWeapons] call BIS_fnc_addVirtualWeaponCargo;

@@ -1,30 +1,5 @@
 params ["_newUnit", "_oldUnit"];
 
-waitUntil {!isNil "KPLIB_init" && !isNil "KPLIB_initServerDone"};
-
-if !(_newUnit isUniformAllowed KPLIB_b_basic_uniform) then {
-_newUnit forceAddUniform KPLIB_b_basic_uniform;
-} else {
-    _newUnit addUniform KPLIB_b_basic_uniform;
-};
-
-/*
-if ((uniform _oldUnit) isEqualTo "" ) then {
-    if !(_newUnit isUniformAllowed KPLIB_b_basic_uniform) then {
-    _newUnit forceAddUniform KPLIB_b_basic_uniform;
-    } else {
-        _newUnit addUniform KPLIB_b_basic_uniform;
-    };
-} else {
-    removeUniform _newUnit;
-    if !(_newUnit isUniformAllowed (uniform _oldUnit)) then {
-    _newUnit forceAddUniform (uniform _oldUnit);
-    } else {
-        _newUnit addUniform (uniform _oldUnit);
-    };
-};
-*/
-
 if (isNil "KPLIB_respawn_loadout") then {
     removeAllWeapons _newUnit;
     removeAllItems _newUnit;
@@ -41,6 +16,24 @@ if (isNil "KPLIB_respawn_loadout") then {
 } else {
     sleep 4;
     [_newUnit, KPLIB_respawn_loadout] call KPLIB_fnc_setLoadout;
+};
+
+// Init
+if (isNil "KPLIB_initServerDone") then {
+    _newUnit enableSimulation false;
+    while {isNil "KPLIB_initServerDone" || isNil "KPLIB_init"} do {
+        sleep 0.1;
+        "KPLIB_start" cutText ["<t size='3'>Loading Liberation...</t>", "BLACK FADED", 2, false, true]
+    };
+
+    "KPLIB_start" cutFadeOut 0.1;
+    _newUnit enableSimulation true;
+};
+
+if !(_newUnit isUniformAllowed KPLIB_b_basic_uniform) then {
+_newUnit forceAddUniform KPLIB_b_basic_uniform;
+} else {
+    _newUnit addUniform KPLIB_b_basic_uniform;
 };
 
 [] call KPLIB_fnc_addActionsPlayer;

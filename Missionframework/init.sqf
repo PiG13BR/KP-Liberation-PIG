@@ -125,6 +125,8 @@ if (isServer) then {
         }];
     }];
 
+    waitUntil {sleep 0.1; time > 30};
+
     KPLIB_initServerDone = true;
     publicVariable "KPLIB_initServerDone";
 

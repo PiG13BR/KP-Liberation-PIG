@@ -21,7 +21,7 @@ if (_liberated_sector in KPLIB_sectors_outpost) exitWith {
     ["lib_enemy_pos_destroyed", [mapGridPosition (markerPos _liberated_sector)]] remoteExec ["BIS_fnc_showNotification"];
 
     // 1 hour delay to be able to spawn it again if there's military sector nearby to replenish it
-    [{_this call KPLIB_fnc_replenishOutpost}, _liberated_sector, 30] call CBA_fnc_waitAndExecute;
+    [{_this call KPLIB_fnc_replenishOutpost}, _liberated_sector, 3600] call CBA_fnc_waitAndExecute;
 
     // 50% chance of enemy QRF (nearby military base)
     if (KPLIB_enemyReadiness >= 25 && (random 100 <= 50)) then {

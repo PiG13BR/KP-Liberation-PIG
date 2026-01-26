@@ -49,7 +49,7 @@ _drone doMove ([[[_centerPos, 50]], [], {true}] call BIS_fnc_randomPos);
     waitUntil {sleep 1; !alive _drone || {_drone distance2D _centerPos < 100}};
 
     private _attackCount = 0;
-    while {!alive _drone || _attackCount < MAX_ARTILLERY_ATTACKS} do {
+    while {alive _drone && _attackCount < MAX_ARTILLERY_ATTACKS} do {
         sleep (30 + (random 30));
 
         // Arty fire

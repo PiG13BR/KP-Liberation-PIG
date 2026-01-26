@@ -85,4 +85,7 @@
     _this call KPLIB_fnc_prepareSector;
 }] call CBA_fnc_addEventHandler;
 
-
+// Enemy Reinforcements
+["KPLIB_enemyReinforcements", {
+    _this spawn reinforcements_manager;
+}] call CBA_fnc_addEventHandler;

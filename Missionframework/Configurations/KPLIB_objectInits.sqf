@@ -42,7 +42,7 @@ KPLIB_objectInits = [
         [KPLIB_b_fobBox, KPLIB_b_fobTruck],
         {
             [{
-                time > 2
+                time > 60
             }, {
                 params ["_fobBox"];
 
@@ -57,7 +57,7 @@ KPLIB_objectInits = [
         {
             _this addEventHandler ["HandleDamage", {0}];
             [{
-                time > 5
+                time > 60
             }, {
                 params ["_fob"];
 
@@ -83,7 +83,7 @@ KPLIB_objectInits = [
         [KPLIB_b_smallStorage, KPLIB_b_largeStorage],
         {
             [{
-                time > 2
+                time > 60
             }, {
                 params["_storage"];
 
@@ -251,7 +251,7 @@ KPLIB_objectInits = [
         KPLIB_transport_classes,
         {
             [{
-                time > 2
+                time > 60
             }, {
                 params["_transport"];
 
@@ -272,7 +272,7 @@ KPLIB_objectInits = [
             };
             // Add actions only if not attach to something (like a storage)
             [{
-                time > 2
+                time > 60
             }, {
                 params["_crate"];
 
@@ -287,7 +287,7 @@ KPLIB_objectInits = [
         ["Tank","APC","IFV","Car"],
         {
             [{
-                time > 2
+                time > 60
             }, {
                 params["_veh"];
 
@@ -301,7 +301,7 @@ KPLIB_objectInits = [
         (KPLIB_b_allVeh_classes + KPLIB_o_allVeh_classes + KPLIB_b_deco_classes + KPLIB_storageBuildings + KPLIB_upgradeBuildings + KPLIB_ace_crates),
         {
             [{
-                time > 2
+                time > 60
             }, {
                 params["_object"];
 
@@ -316,7 +316,7 @@ KPLIB_objectInits = [
         {
             if (KPLIB_ace) then {
                 [{
-                    time > 2
+                    time > 60
                 }, {
                     params["_air"];
 
@@ -338,7 +338,7 @@ KPLIB_objectInits = [
         [KPLIB_b_supplyDump],
         {
             [{
-                time > 2
+                time > 60
             }, {
                 params["_dump"];
 
@@ -352,7 +352,7 @@ KPLIB_objectInits = [
         KPLIB_supply_cratesClasses,
         {
             [{
-                time > 2
+                time > 60
             }, {
                 params["_crate"];
 

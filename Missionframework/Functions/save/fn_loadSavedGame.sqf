@@ -451,7 +451,7 @@ if (!isNil "_saveData") then {
             [_object, _fuel] remoteExec ["setFuel"];
             if (_ammo isNotEqualTo []) then {
                 {
-                    params["_class", "_turret", "_count"];
+                    _x params["_class", "_turret", "_count"];
 
                     _object removeMagazinesTurret [_class, _turret];
                     _object addMagazineTurret [_class, _turret, _count];
@@ -583,21 +583,12 @@ if (!isNil "_saveData") then {
             KPLIB_sector_storage set [_sector, _object];
             publicVariable "KPLIB_sector_storage";
 
-            // Add actions to storage
-            [{
-                time > 0
-            }, {
-                params["_storage"];
-
-                ["KPLIB_addActionsStorage", [_storage]] call CBA_fnc_globalEventJIP
-            }, [_object]] call CBA_fnc_waitUntilAndExecute;
-            
+            [_object] call KPLIB_fnc_addObjectInit;
 
             // Fill storage
             [floor (_y # 8), floor (_y # 9), floor (_y # 10), _object] call KPLIB_fnc_fillStorage;
         }
     }forEach KPLIB_production;
-
     ["Saved sector storages placed and filled", "SAVE"] call KPLIB_fnc_log;
 
     // Sector production markers. Transform into a hashmap.

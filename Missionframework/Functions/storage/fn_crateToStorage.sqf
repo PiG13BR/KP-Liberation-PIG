@@ -2,7 +2,7 @@
     File: fn_crateToStorage.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-03-27
-    Last Update: 2026-01-18
+    Last Update: 2026-01-26
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -49,7 +49,7 @@ if (!isNull _storage) then {
 
     // Remove all actions
     [{
-        time > 5
+        time > 61
     }, {
         ["KPLIB_removeAllActionsCrate", _this] call CBA_fnc_globalEventJIP;
     }, _crate] call CBA_fnc_waitUntilAndExecute;

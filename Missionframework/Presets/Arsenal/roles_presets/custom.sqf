@@ -573,7 +573,8 @@ _common_items = [
     "ItemMap",
     "ItemGPS",
     "ItemCompass",
-    "ItemWatch"
+    "ItemWatch",
+    "TPS_sling"
 ];
 
 _radio = [ 

@@ -96,7 +96,8 @@ _sectorUnits append _boatUnits;
 
     // Reinforcements
     if ((_sector in KPLIB_sectors_factory) || (_sector in KPLIB_sectors_city) || (_sector in KPLIB_sectors_capital) || (_sector in KPLIB_sectors_military)) then {
-        [_sector] remoteExec ["reinforcements_remote_call",2];
+        //[_sector] remoteExec ["reinforcements_remote_call",2];
+        ["KPLIB_enemyReinforcements", _sector] call CBA_fnc_serverEvent
     };
 
     if (KPLIB_sectorspawn_debug > 0) then {[format ["Sector %1 (%2) - populating done", (markerText _sector), _sector], "SECTORSPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];};

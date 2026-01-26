@@ -3,7 +3,7 @@
     File: fn_buildItem.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 11/11/2025
-    Last update: 12/11/2025
+    Last update: 26/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -19,13 +19,13 @@
 */
 params[["_buildType", BUILDTYPE_INFANTRY, [0]], ["_itemToBuild", [], [[]]], ["_manned", false, [false]]];
 
-
 private _itemClass = "";
+private _fobPos = [] call KPLIB_fnc_getNearestFob; // Get fob position before server event
 if (_itemToBuild isNotEqualTo []) then {
     _itemClass = _itemToBuild # 0; // Get class
 
     // Substract resources from storages
-    ["KPLIB_subtractResources", [_itemToBuild, _buildType]] call CBA_fnc_serverEvent;
+    ["KPLIB_subtractResources", [_itemToBuild, _buildType, _fobPos]] call CBA_fnc_serverEvent;
 };
 
 localNamespace setVariable ["KPLIB_BUILD_itemToBuild", _itemToBuild]; // Save building array

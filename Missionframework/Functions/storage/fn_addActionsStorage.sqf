@@ -36,7 +36,7 @@ _storage addAction [
         {(attachedObjects _target) findIf {typeOf _x == KPLIB_b_crateSupply} >= 0} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     },
-    11
+    10
 ];
 
 _storage addAction [
@@ -76,7 +76,7 @@ _storage addAction [
         {(attachedObjects _target) findIf {typeOf _x == KPLIB_b_crateFuel} >= 0} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     },
-    11
+    12
 ];
 
 _storage addAction [
@@ -96,7 +96,7 @@ _storage addAction [
         {(attachedObjects _target) isNotEqualTo []} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     },
-    11
+    13
 ];
 
 true

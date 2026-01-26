@@ -180,7 +180,7 @@
 
 // Subtract Resources
 ["KPLIB_subtractResources", {
-    params[["_buildSelected", [], [[]]], ["_buildType", 1, [0]]];
+    params[["_buildSelected", [], [[]]], ["_buildType", 1, [0]], ["_fobPos", [0,0,0], [[]]]];
 
     if (_buildSelected isEqualTo []) exitWith {};
 
@@ -192,7 +192,6 @@
 
     // Update values based on civillian reputation
     private _priceAdd = -(KPLIB_civ_rep/1000);
-
     if (_priceAdd < 0) then {
         if (_supplyPrice > 0) then {_supplyPrice = (_supplyPrice - round(_supplyPrice * abs(_priceAdd))) max 0;};
         if (_ammoPrice > 0) then {_ammoPrice = (_ammoPrice - round(_ammoPrice * abs(_priceAdd))) max 0;};
@@ -204,8 +203,7 @@
     };
 
     // Get storage areas
-    private _nearfob = [] call KPLIB_fnc_getNearestFob;
-    private _storageAreas = (_nearfob nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false]};
+    private _storageAreas = (_fobPos nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false]};
 
     [_supplyPrice, _ammoPrice, _fuelPrice, _classname, _buildType, _storageAreas] call KPLIB_fnc_subtractResources;
 }] call CBA_fnc_addEventHandler;
@@ -231,7 +229,7 @@
 
 // Restore resources (cancel building)
 ["KPLIB_restoreResources", {
-    params["_buildSelected"];
+    params["_buildSelected", "_fobPos"];
 
     if (_buildSelected isEqualTo []) exitWith {};
 
@@ -254,8 +252,7 @@
     };
 
     // Get storage areas
-    private _nearfob = [] call KPLIB_fnc_getNearestFob;
-    private _storage_areas = (_nearfob nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false]};
+    private _storage_areas = (_fobPos nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false]};
     
     _supplyCrates = ceil (_supplyPrice / 100);
     _ammoPriceCrates = ceil (_ammoPrice / 100);
@@ -295,6 +292,8 @@
 
 // Add actions to storage
 ["KPLIB_addActionsStorage", {
+    if (isDedicated) exitWith {};
+    
     _this spawn {
         waitUntil {sleep 1; alive player};
         _this call KPLIB_fnc_addActionsStorage;
@@ -352,7 +351,6 @@
     params["_crate", ["_bool", true]];
     _crate setPhysicsCollisionFlag _bool;
 }] call CBA_fnc_addEventHandler;
-
 
 // Flashbang event handler
 ["ace_grenades_flashbangedAI", {

@@ -44,9 +44,11 @@ if (_targetPos isEqualTo [0, 0, 0]) exitWith {["No or zero pos given"] call BIS_
 // If no artillery is provided, find one in the pool
 if (isNull _artillery) then {
 	_artillery_battery = [] call KPLIB_fnc_getReadyArtillery;
-	if (_artillery_battery isEqualTo []) exitWith {["No artillery available in the pool", "FIRE MISSION FAILED"] call KPLIB_fnc_log; [false, []]};
+	if (_artillery_battery isEqualTo []) exitWith {_artillery};
 	_artillery = selectRandom _artillery_battery;
 };
+
+if (isNull _artillery) exitWith {["No artillery available in the pool", "FIRE MISSION FAILED"] call KPLIB_fnc_log; [false, []]};
 
 // ---------------------------------------------------------- SET ARTILLERY TO BUSY
 _gunnerArty = gunner _artillery;
