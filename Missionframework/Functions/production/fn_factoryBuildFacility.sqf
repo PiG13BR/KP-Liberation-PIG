@@ -71,14 +71,14 @@ if ((_suppliesCount >= _priceS) && (_ammoCount >= _priceA) && (_fuelCount >= _pr
 
     // Iterate stored crates and remove values from them
     {
-        private _crateValue = _x getVariable ["KPLIB_crate_value", 0];
+        private _crateValue = _x getVariable ["KPLIB_crateValue", 0];
 
         switch ((typeOf _x)) do {
             case KPLIB_b_crateSupply: {
                 if (_priceS > 0) then {
                     if (_crateValue > _priceS) then {
                         _crateValue = _crateValue - _priceS;
-                        _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                        _x setVariable ["KPLIB_crateValue", _crateValue, true];
                         _priceS = 0;
                     } else {
                         detach _x;
@@ -91,7 +91,7 @@ if ((_suppliesCount >= _priceS) && (_ammoCount >= _priceA) && (_fuelCount >= _pr
                 if (_priceA > 0) then {
                     if (_crateValue > _priceA) then {
                         _crateValue = _crateValue - _priceA;
-                        _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                        _x setVariable ["KPLIB_crateValue", _crateValue, true];
                         _priceA = 0;
                     } else {
                         detach _x;
@@ -104,7 +104,7 @@ if ((_suppliesCount >= _priceS) && (_ammoCount >= _priceA) && (_fuelCount >= _pr
                 if (_priceF > 0) then {
                     if (_crateValue > _priceF) then {
                         _crateValue = _crateValue - _priceF;
-                        _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                        _x setVariable ["KPLIB_crateValue", _crateValue, true];
                         _priceF = 0;
                     } else {
                         detach _x;

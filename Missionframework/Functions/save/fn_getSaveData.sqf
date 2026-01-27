@@ -122,9 +122,9 @@ private ["_supplyValue", "_ammoValue", "_fuelValue"];
     // Sum all stored resources of current storage
     {
         switch ((typeOf _x)) do {
-            case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crate_value",0]);};
-            case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crate_value",0]);};
-            case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crate_value",0]);};
+            case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crateValue",0]);};
+            case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crateValue",0]);};
+            case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crateValue",0]);};
             default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
         };
     } forEach (attachedObjects _x);
@@ -137,7 +137,7 @@ private ["_supplyValue", "_ammoValue", "_fuelValue"];
 {
     _allCrates append (
         ((nearestObjects [markerPos _x, KPLIB_crates, KPLIB_range_sectorCapture]) select {isNull attachedTo _x}) apply {
-            [typeOf _x, _x getVariable ["KPLIB_crate_value", 0], getPosATL _x]
+            [typeOf _x, _x getVariable ["KPLIB_crateValue", 0], getPosATL _x]
         }
     );
 } forEach (KPLIB_sectors_player select {_x in KPLIB_sectors_factory || _x in KPLIB_sectors_city});

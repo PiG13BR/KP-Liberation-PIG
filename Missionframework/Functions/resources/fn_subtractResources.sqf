@@ -34,14 +34,14 @@ if ((_priceSupplies > 0) || (_priceAmmo > 0) || (_priceFuel > 0)) then {
         reverse _storedCrates;
 
         {
-            _crateValue = _x getVariable ["KPLIB_crate_value",0];
+            _crateValue = _x getVariable ["KPLIB_crateValue",0];
 
             switch ((typeOf _x)) do {
                 case KPLIB_b_crateSupply: {
                     if (_priceSupplies > 0) then {
                         if (_crateValue > _priceSupplies) then {
                             _crateValue = _crateValue - _priceSupplies;
-                            _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                            _x setVariable ["KPLIB_crateValue", _crateValue, true];
                             _priceSupplies = 0;
                         } else {
                             detach _x;
@@ -54,7 +54,7 @@ if ((_priceSupplies > 0) || (_priceAmmo > 0) || (_priceFuel > 0)) then {
                     if (_priceAmmo > 0) then {
                         if (_crateValue > _priceAmmo) then {
                             _crateValue = _crateValue - _priceAmmo;
-                            _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                            _x setVariable ["KPLIB_crateValue", _crateValue, true];
                             _priceAmmo = 0;
                         } else {
                             detach _x;
@@ -67,7 +67,7 @@ if ((_priceSupplies > 0) || (_priceAmmo > 0) || (_priceFuel > 0)) then {
                     if (_priceFuel > 0) then {
                         if (_crateValue > _priceFuel) then {
                             _crateValue = _crateValue - _priceFuel;
-                            _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                            _x setVariable ["KPLIB_crateValue", _crateValue, true];
                             _priceFuel = 0;
                         } else {
                             detach _x;

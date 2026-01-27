@@ -24,7 +24,7 @@ params [
 
 if (isNull _crate) exitWith {["Null object given"] call BIS_fnc_error; false};
 
-[format [localize "STR_ACTION_CRATE_VALUE_HINT", _crate getVariable ["KPLIB_crate_value", 0]], true, 3] call KPLIB_fnc_hint;
+[format [localize "STR_ACTION_CRATE_VALUE_HINT", _crate getVariable ["KPLIB_crateValue", 0]], true, 3] call KPLIB_fnc_hint;
 
 if !(ropeAttachEnabled _crate) then {
     _crate enableRopeAttach true;

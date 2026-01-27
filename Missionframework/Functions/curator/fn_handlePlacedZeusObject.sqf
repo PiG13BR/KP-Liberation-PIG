@@ -60,7 +60,7 @@ if !(_crate) then {
 } else {
     // Otherwise apply all needed values/functionalities
     _obj setMass 500;
-    _obj setVariable ["KPLIB_crate_value", 100, true];
+    _obj setVariable ["KPLIB_crateValue", 100, true];
     [_obj, true] call KPLIB_fnc_clearCargo;
 
     // Log

@@ -32,7 +32,7 @@ if !((toLowerANSI _resource) in KPLIB_crates) exitWith {
 // Create crate
 private _crate = _resource createVehicle _pos;
 _crate setMass 500;
-_crate setVariable ["KPLIB_crate_value", _amount, true];
+_crate setVariable ["KPLIB_crateValue", _amount, true];
 [_crate, true] call KPLIB_fnc_clearCargo;
 _crate lockInventory true;
 

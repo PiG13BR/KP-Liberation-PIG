@@ -129,9 +129,9 @@ while {KPLIB_endgame == 0} do {
                             {
                                 {
                                     switch ((typeOf _x)) do {
-                                        case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crate_value",0]);};
-                                        case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crate_value",0]);};
-                                        case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crate_value",0]);};
+                                        case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crateValue",0]);};
+                                        case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crateValue",0]);};
+                                        case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crateValue",0]);};
                                         default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
                                     };
                                 } forEach (attachedObjects _x);
@@ -208,14 +208,14 @@ while {KPLIB_endgame == 0} do {
                                 reverse _storedCrates;
 
                                 {
-                                    private _crateValue = _x getVariable ["KPLIB_crate_value",0];
+                                    private _crateValue = _x getVariable ["KPLIB_crateValue",0];
 
                                     switch ((typeOf _x)) do {
                                         case KPLIB_b_crateSupply: {
                                             if (_getSupply > 0) then {
                                                 if (_crateValue > _getSupply) then {
                                                     _crateValue = _crateValue - _getSupply;
-                                                    _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                                                    _x setVariable ["KPLIB_crateValue", _crateValue, true];
                                                     _getSupply = 0;
                                                 } else {
                                                     detach _x;
@@ -228,7 +228,7 @@ while {KPLIB_endgame == 0} do {
                                             if (_getAmmo > 0) then {
                                                 if (_crateValue > _getAmmo) then {
                                                     _crateValue = _crateValue - _getAmmo;
-                                                    _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                                                    _x setVariable ["KPLIB_crateValue", _crateValue, true];
                                                     _getAmmo = 0;
                                                 } else {
                                                     detach _x;
@@ -241,7 +241,7 @@ while {KPLIB_endgame == 0} do {
                                             if (_getFuel > 0) then {
                                                 if (_crateValue > _getFuel) then {
                                                     _crateValue = _crateValue - _getFuel;
-                                                    _x setVariable ["KPLIB_crate_value", _crateValue, true];
+                                                    _x setVariable ["KPLIB_crateValue", _crateValue, true];
                                                     _getFuel = 0;
                                                 } else {
                                                     detach _x;

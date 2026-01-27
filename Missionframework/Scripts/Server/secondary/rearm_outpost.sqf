@@ -61,7 +61,7 @@ while {!_ammo_present} do {
     } else {
     
         // Loop through all ammo crates in the zone and add up their values
-        {_total_value = _total_value + (_x getVariable ["KPLIB_crate_value", 0]);} forEach _ammo_in_zone;
+        {_total_value = _total_value + (_x getVariable ["KPLIB_crateValue", 0]);} forEach _ammo_in_zone;
         
         // If the total value is less than the required value, wait for a period of time and check again
         if (_total_value < _required_value) then {
@@ -84,14 +84,14 @@ while {!_ammo_present} do {
             
             _consume_value = _required_value;
             {
-                private _crate_value = _x getVariable ["KPLIB_crate_value",0];
+                private _crate_value = _x getVariable ["KPLIB_crateValue",0];
                 if (_consume_value != 0) then {
                     if (_consume_value >= _crate_value) then {
                         _consume_value = _consume_value - _crate_value;
                         _total_value = _total_value - _crate_value;
                         deleteVehicle _x;
                     } else {
-                        _x setVariable ["KPLIB_crate_value", _crate_value - _consume_value, true];
+                        _x setVariable ["KPLIB_crateValue", _crate_value - _consume_value, true];
                         _consume_value = 0;
                     };
                 } else {

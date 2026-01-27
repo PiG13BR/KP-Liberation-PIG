@@ -76,9 +76,9 @@ if (_updateValues isNotEqualTo []) then {
         // Get resources amount
         {
             switch ((typeOf _x)) do {
-                case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crate_value", 0]);};
-                case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crate_value", 0]);};
-                case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crate_value", 0]);};
+                case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crateValue", 0]);};
+                case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crateValue", 0]);};
+                case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crateValue", 0]);};
                 default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
             };
         } forEach (attachedObjects _storage);

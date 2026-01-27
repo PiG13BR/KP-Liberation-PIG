@@ -68,7 +68,7 @@ if (KPLIB_sectors_fob isEqualTo []) then {
             "FLY"
         ];
         [_crate, true] call KPLIB_fnc_clearCargo;
-        _crate setVariable ["KPLIB_crate_value", 100, true];
+        _crate setVariable ["KPLIB_crateValue", 100, true];
         [_crate, 500] remoteExec ["setMass", _crate];
         [_crate, [0, 0, -1.3]] call _fnc_createParachute;
         _crate lockInventory true;
