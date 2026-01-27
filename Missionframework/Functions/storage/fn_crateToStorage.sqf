@@ -49,7 +49,7 @@ if (!isNull _storage) then {
 
     // Remove all actions
     [{
-        time > 61
+        time > 65
     }, {
         ["KPLIB_removeAllActionsCrate", _this] call CBA_fnc_globalEventJIP;
     }, _crate] call CBA_fnc_waitUntilAndExecute;
@@ -61,14 +61,14 @@ if (!isNull _storage) then {
             [_sector] call KPLIB_fnc_updateProductionValues;
         };
     };
+
+    _crate enableRopeAttach false;
+
+    _crate setVariable ["KPLIB_crateInStorage", true, true];
 } else {
     if (!isDedicated) then {
         [localize "STR_BOX_CANTSTORE", true, 2] call KPLIB_fnc_hint;
     };
 };
-
-_crate enableRopeAttach false;
-
-_crate setVariable ["KPLIB_crateInStorage", true, true];
 
 true

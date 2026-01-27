@@ -1,8 +1,8 @@
 /*
     File: fn_addActionsCrate.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
-    Date: 2017-05-26
-    Last Update: 16/01/2026
+    Date: 26/05/2017
+    Last Update: 26/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -17,7 +17,7 @@
 
 params["_crate"];
 
-_crate addAction [
+private _loadAction = _crate addAction [
     "<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_BOX" + "</t>",
     {
         params["_crate"];
@@ -42,7 +42,7 @@ _crate addAction [
     5
 ];
 
-_crate addAction [
+private _storeAction = _crate addAction [
     "<t color='#FFFF00'>" + localize "STR_ACTION_STORE_CRATE" + "</t>",
     {
         params["_crate"];
@@ -67,7 +67,7 @@ _crate addAction [
     
 ];
 
-_crate addAction [
+private _valueAction = _crate addAction [
     "<t color='#FFFF00'>" + localize "STR_ACTION_CRATE_VALUE" + "</t>",
     {
         [_this # 0] call KPLIB_fnc_checkCrateValue;
@@ -88,7 +88,7 @@ _crate addAction [
     5
 ];
 
-_crate addAction [
+private _carryAction = _crate addAction [
     "<t color='#FFFF00'>" + localize "STR_ACTION_CRATE_CARRY" + "</t>",
     {
         params ["_crate", "_player"];
@@ -147,3 +147,5 @@ _crate addAction [
     },
     5
 ];
+
+_crate setVariable ["KPLIB_crateActions", [_loadAction, _storeAction, _valueAction, _carryAction], true]

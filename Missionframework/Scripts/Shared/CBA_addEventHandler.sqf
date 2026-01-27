@@ -343,7 +343,8 @@
 
 // Remove all actions from crates
 ["KPLIB_removeAllActionsCrate", {
-    removeAllActions _this
+    private _actionIDs = _this getVariable ["KPLIB_crateActions", []];
+    {_this removeAction _x}forEach _actionIDs;
 }] call CBA_fnc_addEventHandler;
 
 // Change collision crate status

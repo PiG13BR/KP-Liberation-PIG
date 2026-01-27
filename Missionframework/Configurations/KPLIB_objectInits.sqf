@@ -363,10 +363,9 @@ KPLIB_objectInits = [
 
     // Radars
     [
-        ["B_SAM_System_03_F","B_AAA_System_01_F"],
+        ["B_SAM_System_03_F","B_AAA_System_01_F", "B_Radar_System_01_F"],
         {
             _this setVehicleRadar 1;
-            (group _this) setBehaviour "AWARE"
         }
     ]
 ];
