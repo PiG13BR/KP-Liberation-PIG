@@ -12,6 +12,8 @@ _support_to_skip = [
     KPLIB_o_ammoContainer,
     KPLIB_b_logiStation,
     KPLIB_b_airControl,
+    KPLIB_b_smallStorage,
+    KPLIB_b_largeStorage,
     "B_Slingload_01_Repair_F",
     "B_Slingload_01_Fuel_F",
     "B_Slingload_01_Ammo_F"
@@ -49,7 +51,8 @@ while { true } do {
     {
         _marker = _vehmarkers select (_markedveh find _x);
         _marker setMarkerPosLocal getpos _x;
-        _marker setMarkerTextLocal  (getText (_cfg >> typeOf _x >> "displayName"));
+        _marker setMarkerTextLocal (getText (_cfg >> typeOf _x >> "displayName"));
+        if (typeOf _x == KPLIB_b_transStorage) then {_marker setMarkerTextLocal localize "STR_TRANS_STORAGE"};
 
     } foreach _markedveh;
 

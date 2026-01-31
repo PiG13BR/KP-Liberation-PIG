@@ -29,44 +29,24 @@ if !(alive KPLIB_potato01) then {
 KPLIB_potato01 setVariable ["ace_medical_isMedicalVehicle", true, true];
 publicVariable "KPLIB_potato01";
 
-KPLIB_fnc_addKilledEH_potato = {
-    params["_potato"];
+KPLIB_potato01 respawnVehicle [KPLIB_potatoRespawnDelay, -1, true, true];
 
-    _potato addEventHandler ["Killed", {
-        params["_vehicle"];
+KPLIB_potato01 addMPEventHandler ["MPRespawn", {  
+    params ["_unit", "_corpse"];
 
-        [_vehicle] spawn {
-            sleep KPLIB_potatoRespawnDelay;
+    _unit spawn {
+        KPLIB_potato01 = _this;
+        _this allowdamage false; 
+        _this setDir (getDir huronspawn); 
+        _this setPosATL (getposATL huronspawn); 
+        _this setDamage 0; 
+        sleep 0.5; 
+        _this enableSimulationGlobal true; 
+        _this setDamage 0; 
+        _this allowdamage true; 
+        [_this] call KPLIB_fnc_addObjectInit; 
+    }
+}];
 
-            params["_vehicle"];
-            // Delete wreck, if near startbase
-            if (_vehicle distance startbase < 500) then {
-                deletevehicle _vehicle;
-            };
+   
 
-            KPLIB_potato01 = KPLIB_b_potato01 createVehicle [(getposATL huronspawn) select 0, (getposATL huronspawn) select 1, ((getposATL huronspawn) select 2) + 0.2];
-            KPLIB_potato01 enableSimulationGlobal false;
-            KPLIB_potato01 allowdamage false;
-            KPLIB_potato01 setDir (getDir huronspawn);
-            KPLIB_potato01 setPosATL (getposATL huronspawn);
-            KPLIB_potato01 setDamage 0;
-            sleep 0.5;
-            KPLIB_potato01 enableSimulationGlobal true;
-            KPLIB_potato01 setDamage 0;
-            KPLIB_potato01 allowdamage true;
-            [KPLIB_potato01] call KPLIB_fnc_addObjectInit;
-
-            [KPLIB_potato01] call KPLIB_fnc_clearCargo;
-            KPLIB_potato01 setVariable ["ace_medical_isMedicalVehicle", true, true];
-            publicVariable "KPLIB_potato01";
-
-            stats_potato_respawns = stats_potato_respawns + 1;
-
-            [KPLIB_potato01] call KPLIB_fnc_addKilledEH_potato;
-        };
-        _vehicle removeEventHandler [_thisEvent, _thisEventHandler];
-    }];
-};
-publicVariable "KPLIB_fnc_addKilledEH_potato";
-
-[KPLIB_potato01] call KPLIB_fnc_addKilledEH_potato;

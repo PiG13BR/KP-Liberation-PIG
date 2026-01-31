@@ -189,6 +189,9 @@ showMap = 1;
 // Enable or disable availability of createVehicleLocal
 unsafeCVL = 1;
 
+// Skip briefing
+briefing = 0;
+
 
 /*
     ----- Task Settings -----

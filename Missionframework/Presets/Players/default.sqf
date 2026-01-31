@@ -44,8 +44,9 @@ KPLIB_b_crewStatic      = "B_Soldier_F";                                // This 
 KPLIB_b_addHeli         = "B_Heli_Light_01_F";                          // These are the additional helicopters which spawn on the Freedom or at Chimera base.
 KPLIB_b_addBoat         = "B_Boat_Transport_01_F";                      // These are the boats which spawn at the stern of the Freedom.
 KPLIB_b_logiTruck       = "B_Truck_01_transport_F";                     // These are the trucks which are used in the logistic convoy system.
-KPLIB_b_smallStorage    = "ContainmentArea_02_sand_F";                  // A small storage area for resources.
-KPLIB_b_largeStorage    = "ContainmentArea_01_sand_F";                  // A large storage area for resources.
+KPLIB_b_smallStorage    = "Land_Cargo20_brick_red_F";                   // A small storage area for resources.
+KPLIB_b_largeStorage    = "Land_Cargo40_brick_red_F";                   // A large storage area for resources.
+KPLIB_b_transStorage    = "Land_Cargo10_brick_red_F";                   // This defines a transportable storage.
 KPLIB_b_logiStation     = "Land_RepairDepot_01_tan_F";                  // The building defined to unlock FOB recycling functionality.
 KPLIB_b_airControl      = "Land_Radar_Small_F";                         // The building defined to unlock FOB air vehicle functionality.
 KPLIB_b_slotHeli        = "Land_HelipadSquare_F";                       // The helipad used to increase the GLOBAL rotary-wing cap.
@@ -352,6 +353,7 @@ KPLIB_b_vehSupport = [
     [KPLIB_b_fobTruck,500,500,75],
     [KPLIB_b_smallStorage,0,0,0],
     [KPLIB_b_largeStorage,0,0,0],
+    [KPLIB_b_transStorage,100,0,0],
     [KPLIB_b_logiStation,250,0,0],
     [KPLIB_b_airControl,1000,0,0],
     [KPLIB_b_slotHeli,500,0,0],

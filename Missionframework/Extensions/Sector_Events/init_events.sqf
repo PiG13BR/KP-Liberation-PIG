@@ -3,7 +3,7 @@ switch KPLIB_param_SectorEvents do {
         sector_events = compile preprocessFileLineNumbers "Extensions\Sector_Events\events\custom.sqf";
     };
     case 2 : {
-        sector_events = compile preprocessFileLineNumbers "Extensions\Sector_Events\events\altis.sqf";
+        sector_events = compile preprocessFileLineNumbers "Extensions\Sector_Events\events\Altis.sqf";
     };
     default {}
 };

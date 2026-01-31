@@ -45,7 +45,7 @@ KPLIB_r_weapons_1 = [
     ["CUP_smg_UZI","CUP_30Rnd_9x19_UZI",6,"",""],
     ["CUP_smg_UZI","CUP_30Rnd_9x19_UZI",6,"",""],
     ["CUP_smg_UZI","CUP_30Rnd_9x19_UZI",6,"",""],
-    ["CUP_launch_M72A6_Special_Loaded",1,"",""],
+    ["CUP_launch_M72A6_Special_Loaded","",1,""],
     ["CUP_srifle_LeeEnfield","CUP_10x_303_M",10,"",""],
     ["CUP_srifle_LeeEnfield","CUP_10x_303_M",10,"",""],
     ["CUP_srifle_LeeEnfield","CUP_10x_303_M",10,"",""],
@@ -69,7 +69,7 @@ KPLIB_r_weapons_2 = [
     ["CUP_arifle_Galil_556_black","CUP_35Rnd_556x45_Galil_Mag",5,"",""],
     ["CUP_lmg_M60","CUP_100Rnd_TE4_LRT4_Green_Tracer_762x51_Belt_M",5,"",""],
     ["CUP_glaunch_M79","CUP_1Rnd_HE_M203",20,"",""],
-    ["CUP_launch_M72A6_Special_Loaded",1,"",""]
+    ["CUP_launch_M72A6_Special_Loaded","",1,""]
 ];
 
 KPLIB_r_weapons_3 = [

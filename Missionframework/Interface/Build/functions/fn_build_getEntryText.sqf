@@ -3,7 +3,7 @@
     File: fn_build_getEntryText.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR, FernandimModelador https://github.com/FernandimModelador
     Date: 10/11/2025
-    Last Update: 19/01/2026
+    Last Update: 28/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -53,6 +53,7 @@ if (_buildType == BUILDTYPE_SUPPORT) then {
         case KPLIB_b_fobTruck: {_entryText = localize "STR_FOBTRUCK";};
         case KPLIB_b_smallStorage: {_entryText = localize "STR_SMALL_STORAGE";};
         case KPLIB_b_largeStorage: {_entryText = localize "STR_LARGE_STORAGE";};
+        case KPLIB_b_transStorage: {_entryText = localize "STR_TRANS_STORAGE";};
         case KPLIB_b_logiStation: {_entryText = localize "STR_RECYCLE_BUILDING";};
         case KPLIB_b_airControl: {_entryText = localize "STR_AIRCONTROL_BUILDING";};             
         case KPLIB_b_slotHeli: {_entryText = localize "STR_HELI_SLOT";};

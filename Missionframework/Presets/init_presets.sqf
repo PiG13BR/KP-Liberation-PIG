@@ -117,6 +117,12 @@ if (typeName KPLIB_b_mobileRespawn == typeName "") then {
     KPLIB_b_mobileRespawns = KPLIB_b_mobileRespawn;
 };
 
+// Add transportable storage to support list if not available
+if ((KPLIB_b_vehSupport findIf {(_x#0 == KPLIB_b_transStorage)}) < 0) then {
+    // No barrack found in support label, add it
+    KPLIB_b_vehSupport pushBack [KPLIB_b_transStorage,100,0,0]
+};
+
 // Fortify check
 if ((KPLIB_b_vehStatic findIf {(_x#0 == KPLIB_b_fortify_small)}) < 0) then {
     KPLIB_b_vehStatic pushBack [KPLIB_b_fortify_small, 50,0,0]
@@ -241,7 +247,7 @@ KPLIB_o_paratroopers    = [KPLIB_o_squadLeader, KPLIB_o_medic, KPLIB_o_medic, KP
 KPLIB_buildList         = [[], KPLIB_b_infantry, KPLIB_b_vehLight, KPLIB_b_vehHeavy, KPLIB_b_vehAir, KPLIB_b_vehStatic, KPLIB_b_objectsDeco, KPLIB_b_vehSupport, KPLIB_b_allSquads];
 KPLIB_crates            = [KPLIB_b_crateSupply, KPLIB_b_crateAmmo, KPLIB_b_crateFuel];
 KPLIB_airSlots          = [KPLIB_b_slotHeli, KPLIB_b_slotPlane];
-KPLIB_storageBuildings  = [KPLIB_b_smallStorage, KPLIB_b_largeStorage];
+KPLIB_storageBuildings  = [KPLIB_b_smallStorage, KPLIB_b_largeStorage, KPLIB_b_transStorage];
 KPLIB_upgradeBuildings  = [KPLIB_b_logiStation, KPLIB_b_airControl, KPLIB_b_slotHeli, KPLIB_b_slotPlane];
 KPLIB_aiResupplySources append KPLIB_b_mobileRespawns;
 KPLIB_aiResupplySources append [KPLIB_b_potato01, KPLIB_b_arsenal];

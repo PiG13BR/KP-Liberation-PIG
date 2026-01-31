@@ -80,7 +80,7 @@ KPLIB_objectInits = [
 
     // Add storage type variable to built storage areas (only for FOB built/loaded ones)
     [
-        [KPLIB_b_smallStorage, KPLIB_b_largeStorage],
+        [KPLIB_b_smallStorage, KPLIB_b_largeStorage, KPLIB_b_transStorage],
         {
             [{
                 time > 60
@@ -88,6 +88,17 @@ KPLIB_objectInits = [
                 params["_storage"];
 
                 _storage setVariable ["KPLIB_fobStorage", true, true];
+                _storage allowDamage false;
+                if (KPLIB_ace) then {
+                    [this, -1] call ace_cargo_fnc_setSize;
+                };
+                if ((typeOf _storage) == KPLIB_b_transStorage) then {
+                    if (local _storage) then {
+                        _storage setMass 700
+                    } else {
+                        [_storage, 700] remoteExec ["setMass"]
+                    }
+                };
                 ["KPLIB_addActionsStorage", [_storage]] call CBA_fnc_globalEventJIP
             }, [_this]] call CBA_fnc_waitUntilAndExecute;
         }

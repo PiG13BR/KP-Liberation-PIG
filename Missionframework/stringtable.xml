@@ -4427,11 +4427,11 @@
             <Japanese>旗（キラーポテト）</Japanese>
         </Key>
         <Key ID="STR_SMALL_STORAGE">
-            <Original>Small storage area</Original>
+            <Original>Small storage</Original>
             <German>Kleiner Lagerbereich</German>
             <Spanish>Almacén pequeño</Spanish>
             <Russian>Маленький склад</Russian>
-            <Italian>Area deposito piccola</Italian>
+            <Italian>Deposito piccola</Italian>
             <Chinesesimp>小型货物仓储区</Chinesesimp>
             <Chinese>小型貨物倉儲區</Chinese>
             <Turkish>Küçük depo</Turkish>
@@ -4441,11 +4441,11 @@
             <Japanese>小型倉庫</Japanese>
         </Key>
         <Key ID="STR_LARGE_STORAGE">
-            <Original>Large storage area</Original>
+            <Original>Large storage</Original>
             <German>Großer Lagerbereich</German>
             <Spanish>Almacén grande</Spanish>
             <Russian>Большой склад</Russian>
-            <Italian>Area deposito grande</Italian>
+            <Italian>Deposito grande</Italian>
             <Chinesesimp>大型货物仓储区</Chinesesimp>
             <Chinese>大型貨物倉儲區</Chinese>
             <Turkish>Büyük depo</Turkish>
@@ -4453,6 +4453,10 @@
             <Korean>대형 저장 창고</Korean>
             <Czech>Velká skladovací plocha</Czech>
             <Japanese>大型倉庫</Japanese>
+        </Key>
+        <Key ID="STR_TRANS_STORAGE">
+            <Original>Transportable storage</Original>
+            <Portuguese>Depósito Transportável</Portuguese>
         </Key>
         <Key ID="STR_RECYCLE_BUILDING">
             <Original>Salvage Depot</Original>
@@ -4583,6 +4587,10 @@
             <Korean>-- 연료(F) 내리기</Korean>
             <Czech>-- VYLOŽIT BEDNU S PALIVEM</Czech>
             <Japanese>-- 燃料を取り出す</Japanese>
+        </Key>
+        <Key ID="STR_ACTION_CHECK_RESOURCES">
+            <Original>-- CHECK STORAGE CONTENT</Original>
+            <Portuguese>-- CHECAR CONTEÚDO DO DEPÓSITO</Portuguese>
         </Key>
         <Key ID="STR_ACTION_CRATE_VALUE">
             <Original>-- CHECK CONTENT</Original>
@@ -4965,6 +4973,14 @@
             <Korean>생산품 선택</Korean>
             <Czech>Vyberte produkci</Czech>
             <Japanese>生産する資源</Japanese>
+        </Key>
+        <Key ID="STR_PRODUCTION_BOOST">
+            <Original>Production Boost (Civilian Reputation >= %1%%)</Original>
+            <Portuguese>Impulso na produção (Reputação civil >= %1%%)</Portuguese>
+        </Key>
+        <Key ID="STR_PRODUCTION_BOOST_ACTIVATED">
+            <Original>Production 2x faster</Original>
+            <Portuguese>Produção 2x mais rápido</Portuguese>
         </Key>
         <Key ID="STR_PRODUCTION_SAVED">
             <Original>Sector setting saved.</Original>
@@ -5782,7 +5798,7 @@
             <Japanese>&lt;br/&gt;&lt;br/&gt;プレイヤーが司令官役割を使用すると、対応するキー（デフォルトではY）を押すことでZeusインターフェースにアクセスできます。このインターフェースにより、3Dまたはマップビューで友好部隊を指揮することができます。&lt;br/&gt; &lt;br/&gt;さらに、司令官は、クルー付きの車両や完全に作成された分隊などの追加の製造オプションを取得できます。&lt;br/&gt; &lt;br/&gt;この役割は今では必須であり、生産セクターの管理とAIロジスティクスへの直接的なアクセスを提供するためです。あなたがFOBに配置されているということを考慮すると、「生産設定」と「物流管理」のオプションが表示されます。&lt;br/&gt; &lt;br/&gt;前者は、どの工場がどの資源を生産するかを決定し、現在の詳細な概要を示す能力を提供します。&lt;br/&gt; &lt;br/&gt;後者は、AIロジスティクス輸送隊を指揮でき、輸送グループを「追加」し、グループごとにトラックの数量を購入し、特定の量の資源を地域全体で移動させることができます。&lt;br/&gt; &lt;br/&gt;</Japanese>
         </Key>
         <Key ID="STR_PARAMS_USEPRESET">
-            <Original>Use preset from config</Original>
+            <Original>Shared Arsenal Config</Original>
             <German>Benutze Preset aus Konfiguration</German>
             <Spanish>Usar pre-definición desde configuracion</Spanish>
             <Russian>Использовать предустановки из конфигурации</Russian>
@@ -8079,7 +8095,7 @@
                 <English>== PRESET CUSTOMIZATION ==</English>
             </Key>
             <Key ID="STR_PARAMS_ARSENALUSEPRESET">
-                <Original>Arsenal mode</Original>
+                <Original>Arsenal Mode</Original>
                 <German>Arsenalmodus</German>
                 <Spanish>Modo Arsenal</Spanish>
                 <Russian>Режим арсенала</Russian>
@@ -8121,8 +8137,8 @@
                 <English>Civilian Preset</English>
             </Key>
             <Key ID="STR_PARAMS_ARSENALPRESET">
-                <English>Arsenal Preset (Arsenal Mode)</English>
-                <Portuguese>Arsenal Preset (Modo do Arsenal)</Portuguese>
+                <English>Arsenal Preset (Shared Arsenal)</English>
+                <Portuguese>Arsenal Preset (Arsenal Compartilhado)</Portuguese>
             </Key>
             <Key ID="STR_PARAMS_ARSENALWHITELIST_PRESET">
                 <English>Arsenal Preset (Role Whitelist)</English>

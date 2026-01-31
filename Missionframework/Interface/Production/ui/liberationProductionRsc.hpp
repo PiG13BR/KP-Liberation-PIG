@@ -16,7 +16,7 @@ class LiberationProductionsRsc {
         "FacilitiesTitle", "FacilitiesSupply", "FacilitiesAmmo", "FacilitiesFuel",
         "StorageTitle", "StorageSupplyLabel", "StorageSupply", "StorageAmmoLabel", "StorageAmmo", "StorageFuelLabel", "StorageFuel",
         "ProduceTitle", "ProduceToolBox", "ButtonSaveSector",
-        "SectorMap", "ButtonClose2"
+        "SectorMap", "ButtonClose2", "ProductionBoost"
     };
 
     objects[] = {};
@@ -302,11 +302,21 @@ class LiberationProductionsRsc {
     };
      class ButtonClose2: StdButton {
         idc = IDC_CLOSE_BUTTON2;
-        x = 0.455 * safezoneW + safezoneX;
-        y = 0.77 * safezoneH + safezoneY;
-        w = 0.09 * safezoneW;
-        h = 0.035 * safezoneH;
+        x = 0.709925 * safezoneW + safezoneX;
+        y = 0.780062 * safezoneH + safezoneY;
+        w = 0.0918423 * safezoneW;
+        h = 0.0280062 * safezoneH;
         text = $STR_CLOSE;
         onButtonClick = "(ctrlParent (_this # 0)) closeDisplay 1";
+    };
+    class ProductionBoost: StdText
+    {
+        idc = IDC_PRODUCTION_BOOST_TEXT;
+        text = "";
+        x = 0.198232 * safezoneW + safezoneX;
+        y = 0.780062 * safezoneH + safezoneY;
+        w = 0.472332 * safezoneW;
+        h = 0.0280062 * safezoneH;
+        sizeEx = 0.026 * safezoneH;
     };
 };

@@ -2,7 +2,7 @@
     File: fn_updateProductionValues.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 14/11/2025
-    Last Update: 17/11/2025
+    Last Update: 28/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -74,14 +74,7 @@ if (_updateValues isNotEqualTo []) then {
         private _fuelValue = 0;
 
         // Get resources amount
-        {
-            switch ((typeOf _x)) do {
-                case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crateValue", 0]);};
-                case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crateValue", 0]);};
-                case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crateValue", 0]);};
-                default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
-            };
-        } forEach (attachedObjects _storage);
+        (_storage getVariable ["KPLIB_storageResources", [0,0,0]]) params ["_supplyValue", "_ammoValue", "_fuelValue"];
 
         private _updatedProduction = [
             _sectorName,

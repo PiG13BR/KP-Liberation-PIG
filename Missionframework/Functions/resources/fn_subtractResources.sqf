@@ -2,7 +2,7 @@
     File: fn_subtractResources.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR (https://github.com/PiG13BR)
     Date: 10/09/2025
-    Last update: 12/11/2025
+    Last update: 28/01/2026
 
     Description:
         Remove resources to storage areas when building
@@ -22,6 +22,10 @@ params ["_priceSupplies", "_priceAmmo", "_priceFuel", "_typeName", "_localType",
 
 if (!isServer) exitWith {};
 
+#define SUPPLY_INDEX 0
+#define AMMO_INDEX 1
+#define FUEL_INDEX 2
+
 if ((_priceSupplies > 0) || (_priceAmmo > 0) || (_priceFuel > 0)) then {
 
     stats_supplies_spent = stats_supplies_spent + _priceSupplies;
@@ -29,79 +33,39 @@ if ((_priceSupplies > 0) || (_priceAmmo > 0) || (_priceFuel > 0)) then {
     stats_fuel_spent = stats_fuel_spent + _priceFuel;
 
     {
-        private _storage_positions = [];
-        private _storedCrates = (attachedObjects _x);
-        reverse _storedCrates;
+        private _resources = [_x] call KPLIB_fnc_getStorageValues;
+        _resources params ["_supply", "_ammo", "_fuel"];
 
-        {
-            _crateValue = _x getVariable ["KPLIB_crateValue",0];
+        if ((_priceSupplies > 0) && (_supply >= _priceSupplies)) then {
+            private _amount = _priceSupplies;
+            _resources set [SUPPLY_INDEX, _supply - _amount];
+            _priceSupplies = _priceSupplies - _amount
+        };
 
-            switch ((typeOf _x)) do {
-                case KPLIB_b_crateSupply: {
-                    if (_priceSupplies > 0) then {
-                        if (_crateValue > _priceSupplies) then {
-                            _crateValue = _crateValue - _priceSupplies;
-                            _x setVariable ["KPLIB_crateValue", _crateValue, true];
-                            _priceSupplies = 0;
-                        } else {
-                            detach _x;
-                            deleteVehicle _x;
-                            _priceSupplies = _priceSupplies - _crateValue;
-                        };
-                    };
-                };
-                case KPLIB_b_crateAmmo: {
-                    if (_priceAmmo > 0) then {
-                        if (_crateValue > _priceAmmo) then {
-                            _crateValue = _crateValue - _priceAmmo;
-                            _x setVariable ["KPLIB_crateValue", _crateValue, true];
-                            _priceAmmo = 0;
-                        } else {
-                            detach _x;
-                            deleteVehicle _x;
-                            _priceAmmo = _priceAmmo - _crateValue;
-                        };
-                    };
-                };
-                case KPLIB_b_crateFuel: {
-                    if (_priceFuel > 0) then {
-                        if (_crateValue > _priceFuel) then {
-                            _crateValue = _crateValue - _priceFuel;
-                            _x setVariable ["KPLIB_crateValue", _crateValue, true];
-                            _priceFuel = 0;
-                        } else {
-                            detach _x;
-                            deleteVehicle _x;
-                            _priceFuel = _priceFuel - _crateValue;
-                        };
-                    };
-                };
-                default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
-            };
-        } forEach _storedCrates;
+        if ((_priceAmmo > 0) && (_ammo >= _priceAmmo)) then {
+            private _amount = _priceAmmo;
+            _resources set [AMMO_INDEX, _ammo - _amount];
+            _priceAmmo = _priceAmmo - _amount
+        };
 
-        ([_x] call KPLIB_fnc_getStoragePositions) params ["_storage_positions"];
+        if ((_priceFuel > 0) && (_fuel >= _priceFuel)) then {
+            private _amount = _priceFuel;
+            _resources set [FUEL_INDEX, _fuel - _amount];
+            _priceFuel = _priceFuel - _amount
+        };
 
-        private _area = _x;
-        _i = 0;
-        {
-            _height = [typeOf _x] call KPLIB_fnc_getCrateHeight;
-            detach _x;
-            _x attachTo [_area, [(_storage_positions select _i) select 0, (_storage_positions select _i) select 1, _height]];
-            _i = _i + 1;
-        } forEach attachedObjects (_x);
+        _x setVariable ["KPLIB_storageResources", _resources, true];
 
         if ((_priceSupplies == 0) && (_priceAmmo == 0) && (_priceFuel == 0)) exitWith {};
-
     } forEach _storageAreas;
 
-    if ( _localType == 8 ) then {
+    if (_localType == 8) then {
         stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 10;
     } else {
-        if ( _typeName isKindOf "CAManBase" ) then {
+        if (_typeName isKindOf "CAManBase") then {
             stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1;
         } else {
-            if ( ! ( _typeName isKindOf "Building" ) ) then {
+            if (!(_typeName isKindOf "Building")) then {
                 stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
             };
         };

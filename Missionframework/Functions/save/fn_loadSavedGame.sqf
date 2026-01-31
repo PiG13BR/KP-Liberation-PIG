@@ -2,7 +2,7 @@
     File: fn_loadSavedGame.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 16/11/2025
-    Last Update: 30/12/2025
+    Last Update: 28/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -487,18 +487,30 @@ if (!isNil "_saveData") then {
 
     // Spawn saved resource storages and their content
     {
-        _x params ["_class", "_pos", "_vecDir", "_vecUp", "_supply", "_ammo", "_fuel"];
+        _x params ["_class", "_pos", "_vecDir", "_vecUp", ["_supply", 0], ["_ammo", 0], ["_fuel", 0]];
+
+        // Compatibility check for the new resource model.
+        switch (toLowerANSI _class) do {
+            case (toLowerANSI "ContainmentArea_02_sand_F") : {
+                _class = "Land_Cargo20_brick_red_F";
+            };
+            case (toLowerANSI "ContainmentArea_01_sand_F") : {
+                _class = "Land_Cargo40_brick_red_F"
+            } 
+        };
 
         // Only spawn, if the classname is still in the presets
         if ((toLowerANSI _class) in KPLIB_classnamesToSave) then {
 
             // Create object without damage handling and simulation
-            _object = createVehicle [_class, _pos, [], 0, "CAN_COLLIDE"];
+            private _posATL = +_pos;
+            _posATL set [2, 1];
+            _object = createVehicle [_class, _posATL, [], 0, "CAN_COLLIDE"];
             _object allowdamage false;
             _object enableSimulation false;
 
             // Reposition spawned object
-            _object setPosWorld _pos;
+            _object setPosATL _posATL;
             _object setVectorDirAndUp [_vecDir, _vecUp];
 
             // Re-enable physics on spawned object

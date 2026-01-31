@@ -2,7 +2,7 @@
     File: fn_recalculateResources.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR (https://github.com/PiG13BR)
     Date: 10/09/2025
-    Last update: 30/11/2025
+    Last update: 28/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -26,9 +26,7 @@ private _local_infantry_cap = 50 * KPLIB_param_resourcesMulti;
 {
     private _fob_buildings = _x nearobjects KPLIB_range_fob;
     private _storage_areas = _fob_buildings select {_x getVariable ["KPLIB_fobStorage", false]};
-    //private _heliSlots = {(typeOf _x) == KPLIB_b_slotHeli;} count _fob_buildings;
-     private _heliSlots = {KPLIB_type_heliPads find (typeOf _x) >= 0} count _fob_buildings;
-    //private _planeSlots = {(typeOf _x) == KPLIB_b_slotPlane;} count _fob_buildings;
+    private _heliSlots = {KPLIB_type_heliPads find (typeOf _x) >= 0} count _fob_buildings;
     private _planeSlots = {KPLIB_type_hangars find (typeOf _x) >= 0} count _fob_buildings;
     private _hasAirBuilding = {(typeOf _x) == KPLIB_b_airControl;} count _fob_buildings;
     if (_hasAirBuilding > 0) then {_hasAirBuilding = true;} else {_hasAirBuilding = false;};
@@ -42,14 +40,11 @@ private _local_infantry_cap = 50 * KPLIB_param_resourcesMulti;
     private _fuelValue = 0;
 
     {
-        {
-            switch ((typeOf _x)) do {
-                case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crateValue",0]);};
-                case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crateValue",0]);};
-                case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crateValue",0]);};
-                default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
-            };
-        } forEach (attachedObjects _x);
+        private _resources = [_x] call KPLIB_fnc_getStorageValues;
+        _resources params ["_supply", "_ammo", "_fuel"];
+        _supplyValue = _supplyValue + _supply;
+        _ammoValue = _ammoValue + _ammo;
+        _fuelValue = _fuelValue + _fuel;
     } forEach _storage_areas;
 
     _local_fob_resources pushBack [_x, _supplyValue, _ammoValue, _fuelValue, _hasAirBuilding, _hasRecBuilding, _hasMedBuilding];

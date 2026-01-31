@@ -2,7 +2,7 @@
     File: fn_factoryBuildFacility.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 14/11/2025
-    Last Update: 20/11/2025
+    Last Update: 28/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -20,6 +20,10 @@ params ["_factory", ["_facility", "SUPPLY", [""]], "_clientOwner"];
 
 if (!isServer) exitWith {false};
 if !(_factory in KPLIB_production) exitWith {["This sector is not in the production list"] call BIS_fnc_error; false};
+
+#define SUPPLY_INDEX 0
+#define AMMO_INDEX 1
+#define FUEL_INDEX 2
 
 // Get production elements
 private _factoryProduction = KPLIB_production getOrDefault [_factory, []];
@@ -65,65 +69,14 @@ if ((_suppliesCount >= _priceS) && (_ammoCount >= _priceA) && (_fuelCount >= _pr
 
     if (isNull _storage) exitWith {};
 
-    //private _storage = (_storages # 0);
-    private _storedCrates = (attachedObjects _storage);
-    reverse _storedCrates;
+    private _resources = _storage getVariable ["KPLIB_storageResources", [0,0,0]];
+    _resources params ["_suppliesAmount", "_ammoAmount", "_fuelAmount"];
 
-    // Iterate stored crates and remove values from them
-    {
-        private _crateValue = _x getVariable ["KPLIB_crateValue", 0];
+    if (_priceS > 0) then {_resources set [SUPPLY_INDEX, _suppliesAmount - _priceS]};
+    if (_priceA > 0) then {_resources set [AMMO_INDEX, _ammoAmount - _priceA]};
+    if (_priceF > 0) then {_resources set [FUEL_INDEX, _fuelAmount - _priceF]};
 
-        switch ((typeOf _x)) do {
-            case KPLIB_b_crateSupply: {
-                if (_priceS > 0) then {
-                    if (_crateValue > _priceS) then {
-                        _crateValue = _crateValue - _priceS;
-                        _x setVariable ["KPLIB_crateValue", _crateValue, true];
-                        _priceS = 0;
-                    } else {
-                        detach _x;
-                        deleteVehicle _x;
-                        _priceS = _priceS - _crateValue;
-                    };
-                };
-            };
-            case KPLIB_b_crateAmmo: {
-                if (_priceA > 0) then {
-                    if (_crateValue > _priceA) then {
-                        _crateValue = _crateValue - _priceA;
-                        _x setVariable ["KPLIB_crateValue", _crateValue, true];
-                        _priceA = 0;
-                    } else {
-                        detach _x;
-                        deleteVehicle _x;
-                        _priceA = _priceA - _crateValue;
-                    };
-                };
-            };
-            case KPLIB_b_crateFuel: {
-                if (_priceF > 0) then {
-                    if (_crateValue > _priceF) then {
-                        _crateValue = _crateValue - _priceF;
-                        _x setVariable ["KPLIB_crateValue", _crateValue, true];
-                        _priceF = 0;
-                    } else {
-                        detach _x;
-                        deleteVehicle _x;
-                        _priceF = _priceF - _crateValue;
-                    };
-                };
-            };
-            default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
-        };
-    } forEach _storedCrates;
-
-    private _i = 0;
-    {
-        private _height = [typeOf _x] call KPLIB_fnc_getCrateHeight;
-        detach _x;
-        _x attachTo [_storage, [(KPLIB_small_storage_positions select _i) select 0, (KPLIB_small_storage_positions select _i) select 1, _height]];
-        _i = _i + 1;
-    } forEach (attachedObjects _storage);
+    _storage setVariable ["KPLIB_storageResources", _resources, true];
 
     [_factory, [[_index, true]]] call KPLIB_fnc_updateProductionValues; // Set the "can produce" index to true if successful
 

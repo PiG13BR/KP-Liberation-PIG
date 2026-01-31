@@ -2,7 +2,7 @@
     File: fn_doRecycle.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 22/11/2025
-    Last Update: 23/11/2025
+    Last Update: 28/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -27,21 +27,22 @@ if (!(isnull _vehToRecycle) && {alive _vehToRecycle}) then {
     };
 
     private _storage_areas = (([] call KPLIB_fnc_getNearestFob) nearobjects (KPLIB_range_fob * 1.2)) select {_x getVariable ["KPLIB_fobStorage", false]};
-    private _crateSum = (ceil (_price_s / 100)) + (ceil (_price_a / 100)) + (ceil (_price_f / 100));
-    private _spaceSum = 0;
+    private _sum = (_price_s + _price_a + _price_f);
 
+    private _storages = [];
     {
-        if (typeOf _x == KPLIB_b_largeStorage) then {
-            _spaceSum = _spaceSum + (count KPLIB_large_storage_positions) - (count (attachedObjects _x));
-        };
-        if (typeOf _x == KPLIB_b_smallStorage) then {
-            _spaceSum = _spaceSum + (count KPLIB_small_storage_positions) - (count (attachedObjects _x));
-        };
+        if ([_x] call KPLIB_fnc_isStorageFull) then {continue}; // Skip iteration
+
+        private _storageLimit = [_x] call KPLIB_fnc_getStorageLimit;
+        if (_sum >= _storageLimit) then {continue}; // Skip iteration
+
+        // Pushback storage with space
+        _storages pushBack _x;
     } forEach _storage_areas;
 
-    if (_spaceSum < _crateSum) then {
+    if (_storages isEqualTo []) then {
         [localize "STR_CANCEL_ERROR", true, 2] call KPLIB_fnc_hint;
     } else {
-        ["KPLIB_recycleResources", [_vehToRecycle, _price_s, _price_a, _price_f, _storage_areas]] call CBA_fnc_serverEvent;
+        ["KPLIB_recycleResources", [_vehToRecycle, _price_s, _price_a, _price_f, _storages]] call CBA_fnc_serverEvent;
     };
 };

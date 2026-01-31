@@ -2,7 +2,7 @@
     File: fn_getSaveData.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2020-03-29
-    Last Update: 2020-08-25
+    Last Update: 2026-01-28
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -106,7 +106,6 @@ private ["_savedPos", "_savedVecDir", "_savedVecUp", "_class", "_hasCrew"];
 } forEach _allObjects;
 
 // Save all storages and resources
-private ["_supplyValue", "_ammoValue", "_fuelValue"];
 {
     // Position data
     _savedPos = getPosWorld _x;
@@ -115,19 +114,7 @@ private ["_supplyValue", "_ammoValue", "_fuelValue"];
     _class = typeOf _x;
 
     // Resource variables
-    _supplyValue = 0;
-    _ammoValue = 0;
-    _fuelValue = 0;
-
-    // Sum all stored resources of current storage
-    {
-        switch ((typeOf _x)) do {
-            case KPLIB_b_crateSupply: {_supplyValue = _supplyValue + (_x getVariable ["KPLIB_crateValue",0]);};
-            case KPLIB_b_crateAmmo: {_ammoValue = _ammoValue + (_x getVariable ["KPLIB_crateValue",0]);};
-            case KPLIB_b_crateFuel: {_fuelValue = _fuelValue + (_x getVariable ["KPLIB_crateValue",0]);};
-            default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
-        };
-    } forEach (attachedObjects _x);
+    (_x getVariable ["KPLIB_storageResources", [0,0,0]]) params ["_supplyValue", "_ammoValue", "_fuelValue"];
 
     // Add to saving with corresponding resource values
     _resourceStorages pushBack [_class, _savedPos, _savedVecDir, _savedVecUp, _supplyValue, _ammoValue, _fuelValue];

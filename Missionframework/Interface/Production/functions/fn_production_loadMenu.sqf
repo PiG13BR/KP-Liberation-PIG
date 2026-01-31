@@ -21,6 +21,7 @@ params[["_display", findDisplay IDD_PRODUCTION_MENU]];
 // Controls
 private _mapControl = _display displayCtrl IDC_MAP;
 private _prodLbControl = _display displayCtrl IDC_PRODUCTION_LISTBOX;
+private _productionBoostCtrl = _display displayCtrl IDC_PRODUCTION_BOOST_TEXT;
 
 lbClear _prodLbControl;
 {
@@ -49,3 +50,5 @@ private _listcolor = [0.6,0.6,0.6,0.8];
 
     _prodLbControl lbSetColor [_forEachIndex, _listcolor];
 } forEach KPLIB_production;
+
+_productionBoostCtrl ctrlSetText (format [localize "STR_PRODUCTION_BOOST", round (30 + (10 * KPLIB_param_difficulty))]);

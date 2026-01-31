@@ -2,7 +2,7 @@
     File: fn_crateToStorage.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2017-03-27
-    Last Update: 2026-01-26
+    Last Update: 2026-01-28
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -23,51 +23,62 @@ params [
     ["_update", false, [false]]
 ];
 
+#define SUPPLY_INDEX 0
+#define AMMO_INDEX 1
+#define FUEL_INDEX 2
+
 // Validate parameters
 if (isNull _crate) exitWith {["Null object given"] call BIS_fnc_error; false};
+if (isNull _storage) exitWith {["Null object given"] call BIS_fnc_error; false};
 
-// Handle return values from nearestObjects of function call in ammobox action manager
-if (!isNull _storage) then {
-    // Get storage and crate specific values
-    ([_storage] call KPLIB_fnc_getStoragePositions) params ["_storage_positions", "_unload_distance"];
-    private _height = [typeOf _crate] call KPLIB_fnc_getCrateHeight;
+// Get storage values
+private _resources = [_storage] call KPLIB_fnc_getStorageValues;
+_resources params ["_supply", "_ammo", "_fuel"];
 
-    // Remove possible cargo from crate
-    [_crate, true] call KPLIB_fnc_clearCargo;
+private _sum = _supply + _ammo + _fuel;
 
-    // Check for enough space in storage
-    private _crates_count = count (attachedObjects _storage);
-    if (_crates_count >= (count _storage_positions)) exitWith {
-        if (!isDedicated) then {
-            [localize "STR_BOX_CANTSTORE", true, 2] call KPLIB_fnc_hint;
-        };
-    };
-
-    // Store crate
-    _crate attachTo [_storage, [(_storage_positions select _crates_count) select 0, (_storage_positions select _crates_count) select 1, _height]];
-    _crate enableRopeAttach true;
-
-    // Remove all actions
-    [{
-        time > 65
-    }, {
-        ["KPLIB_removeAllActionsCrate", _this] call CBA_fnc_globalEventJIP;
-    }, _crate] call CBA_fnc_waitUntilAndExecute;
-    
-    // Update sector resource values, if requested
-    if (_update) then {
-        if (_storage getVariable ["KPLIB_factoryStorage", false]) then {
-            private _sector = _storage getVariable ["KPLIB_storageSector", ""];
-            [_sector] call KPLIB_fnc_updateProductionValues;
-        };
-    };
-
-    _crate enableRopeAttach false;
-
-    _crate setVariable ["KPLIB_crateInStorage", true, true];
-} else {
+// Check for enough space in storage
+private _storageLimit = [_storage] call KPLIB_fnc_getStorageLimit;
+if (_sum >= _storageLimit) exitWith {
     if (!isDedicated) then {
         [localize "STR_BOX_CANTSTORE", true, 2] call KPLIB_fnc_hint;
+    };
+};
+
+// Store value
+private _crateValue = _crate getVariable ["KPLIB_crateValue", 0];
+
+if (_sum + _crateValue > _storageLimit) then {
+    private _amount = (_sum + _crateValue) - _storageLimit;
+    _crateValue = _crateValue - _amount; // Only extract the necessary amount to fill storage
+};
+
+switch (typeOf _crate) do {
+    case KPLIB_b_crateSupply : {
+        _resources set [SUPPLY_INDEX, _supply + _crateValue];
+    };
+    case KPLIB_b_crateAmmo : {
+        _resources set [AMMO_INDEX, _ammo + _crateValue];
+    };
+    case KPLIB_b_crateFuel : {
+        _resources set [FUEL_INDEX, _fuel + _crateValue];
+    };
+    default {}
+};
+
+_crate setVariable ["KPLIB_crateValue", (_crate getVariable ["KPLIB_crateValue", 0]) - _crateValue];
+
+if ((_crate getVariable ["KPLIB_crateValue", 0]) < 1) then {
+    deleteVehicle _crate;
+};
+
+_storage setVariable ["KPLIB_storageResources", _resources, true];
+
+// Update sector resource values, if requested
+if (_update) then {
+    if (_storage getVariable ["KPLIB_factoryStorage", false]) then {
+        private _sector = _storage getVariable ["KPLIB_storageSector", ""];
+        [_sector] call KPLIB_fnc_updateProductionValues;
     };
 };
 

@@ -215,7 +215,10 @@ class KPLIB {
         class crateToStorage            {};
         class fillStorage               {};
         class getCrateHeight            {};
+        class getStorageLimit           {};
         class getStoragePositions       {};
+        class getStorageValues          {};
+        class isStorageFull             {};
         class sortStorage               {};
 
     };

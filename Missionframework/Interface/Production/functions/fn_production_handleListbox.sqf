@@ -56,6 +56,7 @@ KPLIB_production_MenuPFH = [{
     private _supplyAmountCtrl = _display displayCtrl IDC_STORAGE_SUPPLY_LABEL;
     private _ammoAmountCtrl = _display displayCtrl IDC_STORAGE_AMMO_LABEL;
     private _fuelAmountCtrl = _display displayCtrl IDC_STORAGE_FUEL_LABEL;
+    private _productionBoostCtrl = _display displayCtrl IDC_PRODUCTION_BOOST_TEXT;
     
 
     // Get production elements for the selected sector
@@ -98,15 +99,19 @@ KPLIB_production_MenuPFH = [{
     // Check for existing storage
     if ((count _storageArray) > 0) then {
         // Get storage object
-        private _crateCount = count (attachedObjects _storage); // Get how many crates are attached to the storage
+        //private _crateCount = count (attachedObjects _storage); // Get how many crates are attached to the storage
+        (_storage getVariable ["KPLIB_storageResources", [0,0,0]]) params ["_suppliesAmount", "_ammoAmount", "_fuelAmount"];
+        private _reSum = _suppliesAmount + _ammoAmount + _fuelAmount;
 
-        private _crateMax = count (KPLIB_small_storage_positions); // Get maximum of crates that can be attached to the storage
+        private _storageLimit = [_storage] call KPLIB_fnc_getStorageLimit;
+        
+        //private _crateMax = count (KPLIB_small_storage_positions); // Get maximum of crates that can be attached to the storage
 
-        if (_crateCount >= _crateMax) then {
+        if (_reSum >= _storageLimit) then {
             _color_actual = COLOR_NEGATIVE;
         };
-
-        private _storagespace = format ["%1 / %2",_crateCount, _crateMax];
+        
+        private _storagespace = format ["%1 / %2", _reSum, _storageLimit];
         private _productionTime = format [localize "STR_PRODUCTION_MINUTES", _time];
 
         // Type of resource that is the selected sector is producing
@@ -172,43 +177,20 @@ KPLIB_production_MenuPFH = [{
     };
 
     // Get the <<actual>> amount of resources present in the storage. KPLIB_production is only updated each minute.
-    private _suppliesAmount = 0;
-    private _ammoAmount = 0;
-    private _fuelAmount = 0;
+    (_storage getVariable ["KPLIB_storageResources", [0,0,0]]) params ["_suppliesAmount", "_ammoAmount", "_fuelAmount"];
 
-    {
-        switch (typeOf _x) do {
-            case KPLIB_b_crateSupply: {_suppliesAmount = _suppliesAmount + (_x getVariable ["KPLIB_crateValue", 0]);};
-            case KPLIB_b_crateAmmo: {_ammoAmount = _ammoAmount + (_x getVariable ["KPLIB_crateValue", 0]);};
-            case KPLIB_b_crateFuel: {_fuelAmount = _fuelAmount + (_x getVariable ["KPLIB_crateValue", 0]);};
-            default {[format ["Invalid object (%1) at storage area", (typeOf _x)], "ERROR"] call KPLIB_fnc_log;};
-        };
-    } forEach (attachedObjects _storage);
+    _supplyAmountCtrl ctrlSetText (str _suppliesAmount);
+    _ammoAmountCtrl ctrlSetText (str _ammoAmount);
+    _fuelAmountCtrl ctrlSetText (str _fuelAmount);
 
-    private _supplyValue = ceil (_suppliesAmount / 100);
-    private _ammoValue = ceil (_ammoAmount / 100);
-    private _fuelValue = ceil (_fuelAmount / 100);
+    _productionBoostCtrl ctrlSetText (format [localize "STR_PRODUCTION_BOOST", round (30 + (10 * KPLIB_param_difficulty))]);
 
-    if (_supplyValue == 1) then {
-        _supplyValue = format [localize "STR_PRODUCTION_CRATE", _supplyValue];
+    if (KPLIB_civ_rep >= round (30 + (10 * KPLIB_param_difficulty))) then {
+        _productionBoostCtrl ctrlSetTooltip localize "STR_PRODUCTION_BOOST_ACTIVATED";
+        _productionBoostCtrl ctrlSetTextColor COLOR_POSITIVE
     } else {
-        _supplyValue = format [localize "STR_PRODUCTION_CRATES", _supplyValue];
+        _productionBoostCtrl ctrlSetTextColor COLOR_NEGATIVE;
     };
-    _supplyAmountCtrl ctrlSetText (str _suppliesAmount) + " (" + _supplyValue + ")";
-
-    if (_ammoValue == 1) then {
-        _ammoValue = format [localize "STR_PRODUCTION_CRATE", _ammoValue];
-    } else {
-        _ammoValue = format [localize "STR_PRODUCTION_CRATES", _ammoValue];
-    };
-    _ammoAmountCtrl ctrlSetText (str _ammoAmount) + " (" + _ammoValue + ")";
-
-    if (_fuelValue == 1) then {
-        _fuelValue = format [localize "STR_PRODUCTION_CRATE", _fuelValue];
-    } else {
-        _fuelValue = format [localize "STR_PRODUCTION_CRATES", _fuelValue];
-    };
-    _fuelAmountCtrl ctrlSetText (str _fuelAmount) + " (" + _fuelValue + ")";
 
 }, 1, [_display, _lbCurSel, _sector]] call CBA_fnc_addPerFrameHandler;
 

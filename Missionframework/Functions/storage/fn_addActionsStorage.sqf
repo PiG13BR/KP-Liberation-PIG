@@ -2,7 +2,7 @@
     File: fn_addActionsStorage.sqf
     Author: PiG13BR - https://github.com/KillahPotatoes
     Date: 21/11/2025
-    Last Update: 28/11/2025
+    Last Update: 28/01/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -33,7 +33,7 @@ _storage addAction [
         !(_this getVariable ['KPLIB_BUILD_isBuilding', false]) && 
         {[5] call KPLIB_fnc_hasPermission} &&
         {isNull objectParent _this} &&
-        {(attachedObjects _target) findIf {typeOf _x == KPLIB_b_crateSupply} >= 0} &&
+        {(([_target] call KPLIB_fnc_getStorageValues) # 0) > 0} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     },
     10
@@ -53,7 +53,7 @@ _storage addAction [
         !(_this getVariable ['KPLIB_BUILD_isBuilding', false]) && 
         {[5] call KPLIB_fnc_hasPermission} &&
         {isNull objectParent _this} &&
-        {(attachedObjects _target) findIf {typeOf _x == KPLIB_b_crateAmmo} >= 0} &&
+        {(([_target] call KPLIB_fnc_getStorageValues) # 1) > 0} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     },
     11
@@ -73,19 +73,22 @@ _storage addAction [
         !(_this getVariable ['KPLIB_BUILD_isBuilding', false]) && 
         {[5] call KPLIB_fnc_hasPermission} &&
         {isNull objectParent _this} &&
-        {(attachedObjects _target) findIf {typeOf _x == KPLIB_b_crateFuel} >= 0} &&
+        {(([_target] call KPLIB_fnc_getStorageValues) # 2) > 0} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     },
     12
 ];
 
 _storage addAction [
-    "<t color='#FFFF00'>" + localize "STR_ACTION_SORT_STORAGE" + "</t>",
+    "<t color='#FFFF00'>" + localize "STR_ACTION_CHECK_RESOURCES" + "</t>",
     {
-        [(_this # 0)] call KPLIB_fnc_sortStorage;
+        params["_storage", "_player"];
+        ([_storage] call KPLIB_fnc_getStorageValues) params ["_supply", "_ammo", "_fuel"];
+
+        [(parseText (format[["<t size='1.3'>", "SUPPLY", "</t><br/>%1<br/><br/><t size='1.3'>", "AMMO", "</t><br/>%2<br/><br/><t size='1.3'>", "FUEL", "</t><br/>%3"] joinString "", _supply, _ammo, _fuel])), true, 4] call KPLIB_fnc_hint;
     },
     "",
-    -507,
+    -506,
     true,
     true,
     "",
@@ -93,10 +96,9 @@ _storage addAction [
         !(_this getVariable ['KPLIB_BUILD_isBuilding', false]) && 
         {[5] call KPLIB_fnc_hasPermission} &&
         {isNull objectParent _this} &&
-        {(attachedObjects _target) isNotEqualTo []} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     },
-    13
+    12
 ];
 
 true

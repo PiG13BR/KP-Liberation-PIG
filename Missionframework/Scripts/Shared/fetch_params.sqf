@@ -292,7 +292,7 @@ if (!isDedicated && hasInterface) then {
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_OPFORPRESET";
-    switch (KPLIB_presetPlayer) do {
+    switch (KPLIB_presetEnemy) do {
         case 1: {_value = "Apex Tanoa";};
         case 2: {_value = "RHS AFRF (EMR/MSV)";};
         case 3: {_value = "Project OPFOR (Takistan)";};
@@ -319,7 +319,7 @@ if (!isDedicated && hasInterface) then {
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_GUERPRESET";
-    switch (KPLIB_presetPlayer) do {
+    switch (KPLIB_presetResistance) do {
         case 1: {_value = "Apex Tanoa (apex vanilla Syndikat)";};
         case 2: {_value = "RHS GREF";};
         case 3: {_value = "Project OPFOR (Middle Eastern)";};
@@ -334,7 +334,7 @@ if (!isDedicated && hasInterface) then {
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_CIVPRESET";
-    switch (KPLIB_presetPlayer) do {
+    switch (KPLIB_presetCivilians) do {
         case 1: {_value = "Apex Tanoa (apex vanilla)";};
         case 2: {_value = "Project OPFOR (Middle Eastern)";};
         case 3: {_value = "RDS Civilians";};
@@ -347,8 +347,23 @@ if (!isDedicated && hasInterface) then {
     };
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
+    _param = localize "STR_PARAMS_ARSENALUSEPRESET";
+    switch (KPLIB_param_useArsenalPreset) do {
+        case 1: {_value = localize "STR_PARAMS_USEPRESET";};
+        case 2: {_value = localize "STR_PARAMS_ARSENAL_WHITELIST";};
+        default {_value = localize "STR_PARAMS_NORESTRICTIONS";};
+    };
+
     _param = localize "STR_PARAMS_ARSENALPRESET";
-    switch (KPLIB_presetPlayer) do {
+    switch (KPLIB_param_useArsenalPreset) do {
+        case 1: {};
+        case 2: {};
+        default {};
+    };
+    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
+
+    _param = localize "STR_PARAMS_ARSENALPRESET";
+    switch (KPLIB_presetArsenal) do {
         case 1: {_value = "Custom arsenal preset (Presets\Arsenal\custom.sqf)";};
         case 2: {_value = "RHS USAF arsenal preset",;};
         case 3: {_value = "3cbBAF and RHS USAF arsenal preset";};
@@ -592,12 +607,6 @@ if (!isDedicated && hasInterface) then {
     _value = if (KPLIB_param_weaponSway) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
-    _param = localize "STR_PARAMS_ARSENALUSEPRESET";
-    switch (KPLIB_param_useArsenalPreset) do {
-        case 1: {_value = localize "STR_PARAMS_USEPRESET";};
-        case 2: {_value = localize "STR_PARAMS_ARSENAL_WHITELIST";};
-        default {_value = localize "STR_PARAMS_NORESTRICTIONS";};
-    };
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_MAPMARKERS";

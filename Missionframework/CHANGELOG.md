@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.97.0 (19/01/2026)
+## 0.97.0 (30/01/2026)
 - Added Extension: Enemy artillery.
 - Added Extension: Artillery menu for the players as a replacer for the BIS support module.
 - Added Extension: Clear bushes/trees action for the players (from the clear brush Ampersand).
@@ -38,11 +38,13 @@
 - Tweaked: Prisonner and intel scripts.
 - Tweaked: Resource manager.
 - Tweaked: Mission makers can now add a tag (supply, ammo or fuel) to a factory as the first resource that can produce.
+- Tweaked: Resources management. Now the resources are stored virtually in a variable for each storage.
 - Tweaked: Moved KP Player Menu to extensions. Added BIS Dynamic Groups as default.
 - Tweaked: Civilian reputation now gives build menu discount/surcharge (fatrefrigerator's idea).
 - Tweaked: FOB templates with static weapons and garrisons spawns.
 - Tweaked: FOB Hunting with task framework.
 - Tweaked: Civilian reputation can decrease production time above certain value.
+- Tweaked: Briefing Skip (Forced).
 - Removed: Push supply action.
 - Removed: GREUH player menu.
 - Removed: Useless enemy patrols.
@@ -52,10 +54,6 @@
 - Fixed: Collision with carrying supply crates.
 
 ## CHECKING / PRODUCING
-- Check despawn of groups/objects in FOB hunting.
-- Add control to Production Interface showing benefits of higher civilian reputation.
-- Fixing enemy artillery firing at FOB in an infinite loop.
-- Change redeploy cost. No cost for FOB with barracks.
 
 ## STANDING BY
 - Add Task framework to handle secondary objectives.
@@ -74,4 +72,5 @@
 - Use paratroopers battlegroup script to paradrop enemy vehicles. Enemy helicopter slingload vehicles.
 - Commander can change FOB names.
 - Make zeus whitelist.
-- Replace supply storage for container with virtual supply values. Same deal, but without actual objects.
+- TS requirement mission param for mods like ACRE2 and TFAR.
+- FOB Defense UI for static weapons / handle ammo / handle crew.

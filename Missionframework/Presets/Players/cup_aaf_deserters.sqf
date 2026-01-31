@@ -38,8 +38,8 @@ KPLIB_b_crewStatic      = "Flex_CUP_USA_rifleman";                      // This 
 KPLIB_b_addHeli         = "CUP_I_LR_Transport_AAF";                     // These are the additional helicopters which spawn on the Freedom or at Chimera base.
 KPLIB_b_addBoat         = "B_Boat_Transport_01_F";                      // These are the boats which spawn at the stern of the Freedom.
 KPLIB_b_logiTruck       = "Flex_CUP_USA_Truck_transport";               // These are the trucks which are used in the logistic convoy system.
-KPLIB_b_smallStorage    = "ContainmentArea_02_sand_F";                  // A small storage area for resources.
-KPLIB_b_largeStorage    = "ContainmentArea_01_sand_F";                  // A large storage area for resources.
+KPLIB_b_smallStorage    = "Land_Cargo20_brick_red_F";                   // A small storage area for resources.
+KPLIB_b_largeStorage    = "Land_Cargo40_brick_red_F";                   // A large storage area for resources.
 KPLIB_b_logiStation     = "Land_RepairDepot_01_tan_F";                  // The building defined to unlock FOB recycling functionality.
 KPLIB_b_airControl      = "Land_Radar_Small_F";                         // The building defined to unlock FOB air vehicle functionality.
 KPLIB_b_slotHeli        = "Land_HelipadSquare_F";                       // The helipad used to increase the GLOBAL rotary-wing cap.
@@ -134,8 +134,7 @@ KPLIB_b_vehAir = [
     ["CUP_B_CH47F_VIV_GB", 450, 80, 175],                               // CH-47 Chinook (ViV)
     ["Flex_CUP_USA_MH6J",300,0,100],                                    // Littlebird MH6J  
     ["Flex_CUP_USA_AH6M",300,300,100],                                  // Littlebird AH6M       
-    ["CUP_B_C130J_USMC",200,0,250],                                     // C-130J Super Hercules
-    ["CUP_B_C130J_Cargo_USMC",200,0,250],                               // C-130J Super Hercules (Cargo)
+    ["FIR_C130J",300,0,300],                                            // C-130J Super Hercules
     ["Flex_CUP_USA_UAV_MQ9",500,750,200],                               // MQ-9 Reaper
     ["FIR_AV8B_GR9A",800,1000,1000],                                    // Harrier AV-8B (CAS)
     ["FIR_F16C", 2500,2500,1250]                                        // F-16C
@@ -239,6 +238,7 @@ KPLIB_b_vehSupport = [
     [KPLIB_b_fobTruck,500,500,75],
     [KPLIB_b_smallStorage,0,0,0],
     [KPLIB_b_largeStorage,0,0,0],
+    [KPLIB_b_transStorage,100,0,0],
     [KPLIB_b_logiStation,250,0,0],
     [KPLIB_b_airControl,1000,0,0],
     [KPLIB_b_slotHeli,500,0,0],

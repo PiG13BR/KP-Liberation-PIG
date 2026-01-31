@@ -101,12 +101,8 @@
 
     // Delete storage and its resources
     private _object = KPLIB_sector_storage getOrDefault [_this, objNull];
-    if !(isNull _storage) then {
-        {
-            detach _x;
-            deleteVehicle _x;
-        } forEach (attachedObjects _storage);
-        deleteVehicle _storage;
+    if !(isNull _object) then {
+        deleteVehicle _object;
     };
     KPLIB_sector_storage deleteAt _this;
     publicVariable "KPLIB_sector_storage";
@@ -253,27 +249,24 @@
 
     // Get storage areas
     private _storage_areas = (_fobPos nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false]};
-    
-    _supplyCrates = ceil (_supplyPrice / 100);
-    _ammoPriceCrates = ceil (_ammoPrice / 100);
-    _fuelCrates = ceil (_fuelPrice / 100);
-    private _crateSum = _supplyCrates + _ammoPriceCrates + _fuelCrates;
 
-    private _spaceSum = 0;
-
+    private _storages = [];
+    private _totalLimit = 0;
+    private _sum = _supplyPrice + _ammoPrice + _fuelPrice;
     {
-        if (typeOf _x == KPLIB_b_largeStorage) then {
-            _spaceSum = _spaceSum + (count KPLIB_large_storage_positions) - (count (attachedObjects _x));
-        };
-        if (typeOf _x == KPLIB_b_smallStorage) then {
-            _spaceSum = _spaceSum + (count KPLIB_small_storage_positions) - (count (attachedObjects _x));
-        };
+        if ([_x] call KPLIB_fnc_isStorageFull) then {continue}; // Skip iteration
+
+        private _storageLimit = [_x] call KPLIB_fnc_getStorageLimit;
+        _totalLimit = _totalLimit + _storageLimit;
+
+        // Pushback storage with space
+        _storages pushBack _x;
     } forEach _storage_areas;
 
-    if (_spaceSum < _crateSum) then {
+    if ((_storages isEqualTo []) || (_sum >= _totalLimit)) then {
         [localize "STR_CANCEL_ERROR", true, 3] call KPLIB_fnc_hint;
     } else {
-        [_supplyPrice, _ammoPrice, _fuelPrice, _storage_areas] call KPLIB_fnc_restoreResources;
+        [_supplyPrice, _ammoPrice, _fuelPrice, _storages] call KPLIB_fnc_restoreResources;
     };
 }] call CBA_fnc_addEventHandler;
 

@@ -30,6 +30,8 @@ _storage setVariable ["KPLIB_factoryStorage", true, true];
     KPLIB_sector_storage set [_sector, _storage];
     publicVariable "KPLIB_sector_storage";
 
+    _storage enableRopeAttach false; // Disable rope attach
+
     _storage setVariable ["KPLIB_storageSector", _sector, true];
 
     // Insert storage parameters
@@ -41,5 +43,5 @@ _storage setVariable ["KPLIB_factoryStorage", true, true];
 
     [format["Storage builded in %1. Storage Object: %2", markerText _sector, _storage], "BUILD"] call KPLIB_fnc_log;
 
-}, [_storage]] call CBA_fnc_execNextFrame;
+}, [_storage], 1] call CBA_fnc_waitAndExecute;
 

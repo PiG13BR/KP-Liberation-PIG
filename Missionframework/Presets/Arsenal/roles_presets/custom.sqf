@@ -574,7 +574,7 @@ _common_items = [
     "ItemGPS",
     "ItemCompass",
     "ItemWatch",
-    "TPS_sling"
+    "tsp_sling"
 ];
 
 _radio = [ 
@@ -611,7 +611,7 @@ _uav_operator = "B_soldier_UAV_F";
 switch (_classRole) do {
     case _commander : {
     // Put all weapons here
-    KPLIB_arsenalWeapons = (_rifles_basic + _pistols);
+    KPLIB_arsenalWeapons = (_rifles_basic + _pistols + _discard_launchers);
     // Put all Magazines, and throwable items such as grenades
     KPLIB_arsenalMagazines = (_mags + _grenades);
     // Put here uniforms, vests, facemasks, nvgs, binoculares, medical items, tool items, attachments...

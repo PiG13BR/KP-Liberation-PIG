@@ -194,5 +194,5 @@ if (!isDedicated && hasInterface) then {
     };
 };
 
-["INIT DONE", "INIT"] call KPLIB_fnc_log;
 KPLIB_init = true;
+["INIT DONE", "INIT"] call KPLIB_fnc_log;
