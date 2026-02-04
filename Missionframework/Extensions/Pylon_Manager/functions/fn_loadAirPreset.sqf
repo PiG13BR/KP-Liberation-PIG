@@ -3,7 +3,7 @@
 	File: fn_loadAirPreset.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 16/10/2025
+	Last Update: 01/02/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -40,7 +40,7 @@ if (toLowerANSI(_preset) in PIG_PylonManager_cfgPresets) then {
 			_ctrlPylonsListBox lbSetColor [_forEachIndex, [1, 0, 0, 1]]; // RED COLOR
 			PIG_PylonManager_airLoadout set [_forEachIndex, ""];
 			private _realPylon = (_forEachIndex + 1);
-			_vehicleLocal setPylonLoadout [_realPylon, "", true];
+			[_vehicleLocal, [_realPylon, "", true]] remoteExec ["setPylonLoadout", _vehicleLocal];
 		} forEach _pylonPaths;
 	};
 
@@ -51,13 +51,13 @@ if (toLowerANSI(_preset) in PIG_PylonManager_cfgPresets) then {
 			_ctrlPylonsListBox lbSetColor [_forEachIndex, [1, 0, 0, 1]]; // RED COLOR
 			PIG_PylonManager_airLoadout set [_forEachIndex, ""];
 			private _realPylon = (_forEachIndex + 1);
-			_vehicleLocal setPylonLoadout [_realPylon, "", true];
+			[_vehicleLocal, [_realPylon, "", true]] remoteExec ["setPylonLoadout", _vehicleLocal];
 		} else {
 			_ctrlPylonsListBox lbSetText [_forEachIndex, _x];
 			_ctrlPylonsListBox lbSetColor [_forEachIndex, [0, 0.7, 0, 1]]; // GREEN COLOR
 			PIG_PylonManager_airLoadout set [_forEachIndex, _x];
 			private _realPylon = (_forEachIndex + 1);
-			_vehicleLocal setPylonLoadout [_realPylon, _x, true];
+			[_vehicleLocal, [_realPylon, _x, true]] remoteExec ["setPylonLoadout", _vehicleLocal];
 		}
 	}forEach _pylonsCfg;
 };
@@ -74,13 +74,13 @@ if (_preset in _profilePresets) then {
 			_ctrlPylonsListBox lbSetColor [_forEachIndex, [1, 0, 0, 1]]; // RED COLOR
 			PIG_PylonManager_airLoadout set [_forEachIndex, ""];
 			private _realPylon = (_forEachIndex + 1);
-			_vehicleLocal setPylonLoadout [_realPylon, "", true];
+			[_vehicleLocal, [_realPylon, "", true]] remoteExec ["setPylonLoadout", _vehicleLocal];
 		} else {
 			_ctrlPylonsListBox lbSetText [_forEachIndex, _x];
 			_ctrlPylonsListBox lbSetColor [_forEachIndex, [0, 0.7, 0, 1]]; // GREEN COLOR
 			PIG_PylonManager_airLoadout set [_forEachIndex, _x];
 			private _realPylon = (_forEachIndex + 1);
-			_vehicleLocal setPylonLoadout [_realPylon, _x, true];
+			[_vehicleLocal, [_realPylon, _x, true]] remoteExec ["setPylonLoadout", _vehicleLocal];
 		}
 	}forEach _pylonsProfile;
 };

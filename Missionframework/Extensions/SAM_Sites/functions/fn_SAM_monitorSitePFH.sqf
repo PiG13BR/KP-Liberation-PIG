@@ -2,7 +2,7 @@
     File: fn_SAM_monitorSitePFH.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 05/12/2025
-    Last Update: 08/12/2025
+    Last Update: 02/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -29,7 +29,7 @@ params[
 
 [{
     params["_args", "_handle"];
-    _args params["_spawnMarker", "_radar", "_samTurrets", "_samObjects", "_samShorads", "_infPatrols"];
+    _args params["_spawnMarker", "_radar", "_samTurrets", ["_samObjects", []], ["_samShorads", []], ["_staticGroup", []], ["_infGarrison", []], ["_infPatrols", []]];
 
     // Check values
     private _launchersCount = 0;
@@ -70,7 +70,8 @@ params[
 
     if (_siteDown) then {
         // Delete site
+        ["lib_enemy_sam_destroyed", []] remoteExec ["BIS_fnc_showNotification"];
         [_spawnMarker, _radar, _samTurrets, _samObjects, _samShorads, _staticGroup, _infGarrison, _infPatrols] call KPLIB_fnc_SAM_deleteSite;
         [_handle] call CBA_fnc_removePerFrameHandler;
     };
-},  30, [_spawnMarker, _radar, _samTurrets, _samObjects, _samShorads, _staticGroup, _infGarrison, _infPatrols]] call CBA_fnc_addPerFrameHandler;
+},  2, [_spawnMarker, _radar, _samTurrets, _samObjects, _samShorads, _staticGroup, _infGarrison, _infPatrols]] call CBA_fnc_addPerFrameHandler;

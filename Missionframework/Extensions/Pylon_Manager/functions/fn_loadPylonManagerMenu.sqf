@@ -3,7 +3,7 @@
 	File: fn_loadPylonManagerMenu.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 20/10/2025
+	Last Update: 01/02/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -34,6 +34,8 @@ _light lightattachobject [_placeholder, [0, 0, -_intensity * 7]];
 _light setLightDayLight false;
 
 localNamespace setvariable ["PIG_PylonManager_LightSource", _light];
+
+PIG_PylonManager_airLoadout = [];
 
 [_display, _aircraft] call KPLIB_fnc_loadPylonsLb;
 [] call KPLIB_fnc_reloadPresetControls;

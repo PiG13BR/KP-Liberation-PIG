@@ -233,6 +233,7 @@ private _groupStatic = createGroup [KPLIB_side_enemy, true];
 	[{_this doWatch (_this getPos [300, (getDir _this)]);}, _static, 10] call CBA_fnc_waitAndExecute;
 
 	_staticGroup pushBack _groupStatic;
+	_samSiteObjects pushBack _static;
 }forEach _statics;
 
 // Infantry patrol

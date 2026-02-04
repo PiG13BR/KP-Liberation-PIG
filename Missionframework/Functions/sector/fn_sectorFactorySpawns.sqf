@@ -2,7 +2,7 @@
     File: fn_sectorFactorySpawns.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 02/12/2025
-    Last Update: 31/12/2025
+    Last Update: 03/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -16,6 +16,8 @@
         Spawned units [ARRAY]
 */
 params["_sector", ["_localCaptureSize", KPLIB_range_sectorCapture]];
+
+if (!canSuspend) exitWith {_this spawn KPLIB_fnc_sectorFactorySpawns};
 
 private _sectorUnits = [];
 private _sectorPos = markerPos _sector;
@@ -49,6 +51,8 @@ if (KPLIB_param_unitcap >= 1.25) then {_squad3 = ([_infType] call KPLIB_fnc_getS
     };
 
     _sectorUnits = _sectorUnits + (units _grp);
+
+    sleep 1;
 }forEach [_squad1, _squad2, _squad3];
 
 // Select vehicles to spawn
@@ -68,11 +72,15 @@ if ((random 100) > 66) then {_vehToSpawn pushback ([] call KPLIB_fnc_getAdaptive
     
     // Dir
     _vehicle setDir (_sectorPos getDir _vehicle);
+
+    sleep 1;
 }forEach _vehToSpawn;
 
 if (((random 100) <= KPLIB_resistance_sector_chance) && (([] call KPLIB_fnc_crGetMulti) > 0)) then {
     [_sector] spawn sector_guerilla;
 };
+
+sleep 1;
 
 private _garrisonsCount = round ((floor (1 + (round (KPLIB_enemyReadiness / 6 )))) * _popfactor);
 
@@ -83,6 +91,8 @@ _sectorUnits append _garrisonedUnits;
 if (KPLIB_param_civActivity > 0) then {
     _sectorUnits = _sectorUnits + ([_sector] call KPLIB_fnc_spawnCivilians);
 };
+
+sleep 1;
 
 // Check civ reputation to spawn ied
 private _iedcount = 0;
@@ -97,6 +107,8 @@ if (KPLIB_asymmetric_debug > 0) then {
     [format ["Sector %1 (%2) - Range: %3 - Count: %4", (markerText _sector), _sector, _radius, _iedcount], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];
 };
 [_sector, _radius, _iedcount] spawn ied_manager;
+
+sleep 1;
 
 // Boat patrol
 private _boatUnits = [_sector] call KPLIB_fnc_spawnBoatPatrol;
@@ -115,5 +127,16 @@ _sectorUnits append _boatUnits;
 
     [_sector, _localCaptureSize, _sectorUnits] call KPLIB_fnc_manageSectorPFH;
 }, [_sector, _localCaptureSize, _sectorUnits], 10] call CBA_fnc_waitAndExecute;
+
+// IA state machine
+private _stateMachine = [{allGroups select {side _x == KPLIB_side_enemy && ((leader _x) distance2D _sectorPos < _localCaptureSize)}}, true] call CBA_statemachine_fnc_create;
+
+[_stateMachine, "Initial", "Alert", {combatMode _this == "YELLOW"}, {
+    {
+        _x setCombatBehaviour "COMBAT";
+        _x setSkill ["spotDistance", ((_x skill "spotDistance") * 1.5) min 1];
+        _x setSkill ["spotTime",     ((_x skill "spotTime")     * 1.5) min 1];
+    } forEach (units _this);
+}, "InCombat"] call CBA_statemachine_fnc_addTransition;
 
 _sectorUnits

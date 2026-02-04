@@ -2,7 +2,7 @@
     File: fn_build_isItemAffordable.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 10/11/2025
-    Last Update: 08/01/2026
+    Last Update: 01/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -24,6 +24,19 @@ if (_itemToCheck isEqualTo []) exitWith {false};
 private _supplies = _itemToCheck # 1;
 private _ammo = _itemToCheck # 2;
 private _fuel = _itemToCheck # 3;
+
+// Update values based on civillian reputation
+private _priceAdd = -(KPLIB_civ_rep/1000);
+
+if (_priceAdd < 0) then {
+    if (_supplies > 0) then {_supplies = (_supplies - round(_supplies * abs(_priceAdd))) max 0;};
+    if (_ammo > 0) then {_ammo = (_ammo - round(_ammo * abs(_priceAdd))) max 0;};
+    if (_fuel > 0) then {_fuel = (_fuel - round(_fuel * abs(_priceAdd))) max 0;};
+} else {
+    if (_supplies > 0) then {_supplies = _supplies + round(_supplies * _priceAdd);};
+    if (_ammo > 0) then {_ammo = _ammo + round(_ammo * _priceAdd);};
+    if (_fuel > 0) then {_fuel = _fuel + round(_fuel * _priceAdd);};  
+};
 
 // Check fob available supplies
 private _nearfob = [] call KPLIB_fnc_getNearestFob;

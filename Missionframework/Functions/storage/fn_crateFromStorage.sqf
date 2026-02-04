@@ -1,8 +1,8 @@
 /*
     File: fn_crateFromStorage.sqf
-    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 2017-03-27
-    Last Update: 2026-01-28
+    Last Update: 2026-02-01
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -106,5 +106,11 @@ _player addAction [
 
 _storage setVariable ["KPLIB_storageResources", _resources, true];
 
+// Remove mass to a transportable storage
+if (typeOf _storage == KPLIB_b_transStorage) then {
+    private _oldMass = getMass _storage;
+    private _newMass = _oldMass - (_crate getVariable ["KPLIB_crateValue", 0]);
+    _storage setMass _newMass;
+};
 
 true

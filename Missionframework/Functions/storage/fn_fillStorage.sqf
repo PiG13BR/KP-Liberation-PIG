@@ -1,8 +1,8 @@
 /*
     File: fn_fillStorage.sqf
-    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 2019-12-03
-    Last Update: 2026-01-28
+    Last Update: 2026-02-01
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -28,5 +28,10 @@ params [
 if (isNull _storage) exitWith {["Null object given"] call BIS_fnc_error; false};
 
 _storage setVariable ["KPLIB_storageResources", [_supply, _ammo, _fuel], true];
+if (typeOf _storage == KPLIB_b_transStorage) then {
+    private _oldMass = getMass _storage;
+    private _newMass = _oldMass + _supply + _ammo + _fuel;
+    _storage setMass _newMass;
+};
 
 true

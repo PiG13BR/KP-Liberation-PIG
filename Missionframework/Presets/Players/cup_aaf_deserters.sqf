@@ -133,7 +133,7 @@ KPLIB_b_vehAir = [
     ["CUP_B_MH47E_USA",400,80,175],                                     // Chinook MH47E
     ["CUP_B_CH47F_VIV_GB", 450, 80, 175],                               // CH-47 Chinook (ViV)
     ["Flex_CUP_USA_MH6J",300,0,100],                                    // Littlebird MH6J  
-    ["Flex_CUP_USA_AH6M",300,300,100],                                  // Littlebird AH6M       
+    ["CUP_B_AH6M_USA",300,300,100],                                     // Littlebird AH6M       
     ["FIR_C130J",300,0,300],                                            // C-130J Super Hercules
     ["Flex_CUP_USA_UAV_MQ9",500,750,200],                               // MQ-9 Reaper
     ["FIR_AV8B_GR9A",800,1000,1000],                                    // Harrier AV-8B (CAS)

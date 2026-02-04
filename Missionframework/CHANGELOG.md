@@ -74,3 +74,5 @@
 - Make zeus whitelist.
 - TS requirement mission param for mods like ACRE2 and TFAR.
 - FOB Defense UI for static weapons / handle ammo / handle crew.
+- Bomb jammer for important sectors.
+- Towers are jammers.

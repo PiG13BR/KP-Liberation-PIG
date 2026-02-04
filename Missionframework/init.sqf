@@ -106,9 +106,19 @@ if (isServer) then {
             {_entity removePrimaryWeaponItem _x}forEach (primaryWeaponItems _entity);
             {_entity addPrimaryWeaponItem _x} forEach ["CUP_optic_HensoldtZO_RDS", "CUP_acc_LLM_od"];
         };
+
+        if (typeOf _entity == KPLIB_o_atSpecialist) then {
+            
+            _entity removeWeapon (secondaryWeapon _entity);
+            clearAllItemsFromBackpack _entity;
+            _entity addMagazine "CUP_MAAWS_HEAT_M";
+            _entity addWeapon "CUP_launch_MAAWS";
+            _entity addMagazines ["CUP_MAAWS_HEAT_M", 3];
+            _entity addMagazines ["CUP_MAAWS_HEDP_M", 1];
+            _entity addSecondaryWeaponItem "CUP_optic_MAAWS_Scope";
+        };
     }];
 
-    removeAllMissionEventHandlers "GroupCreated";
     addMissionEventHandler ["GroupCreated", {
         params ["_group"];
 
@@ -194,5 +204,5 @@ if (!isDedicated && hasInterface) then {
     };
 };
 
-KPLIB_init = true;
 ["INIT DONE", "INIT"] call KPLIB_fnc_log;
+KPLIB_init = true;

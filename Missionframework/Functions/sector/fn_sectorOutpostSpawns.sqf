@@ -2,7 +2,7 @@
     File: fn_sectorOutpostSpawns.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 17/12/2025
-    Last Update: 31/12/2025
+    Last Update: 03/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -19,6 +19,8 @@
 */
 
 params["_sector", ["_localCaptureSize", KPLIB_range_sectorCapture * 0.5]];
+
+if (!canSuspend) exitWith {_this spawn KPLIB_fnc_sectorOutpostSpawns};
 
 private _sectorUnits = [];
 private _sectorPos = markerPos _sector;
@@ -50,6 +52,8 @@ if (KPLIB_param_unitcap >= 1.25) then {_squad2 = ([_infType] call KPLIB_fnc_getS
     };
 
     _sectorUnits = _sectorUnits + (units _grp);
+
+    sleep 1;
 }forEach [_squad1, _squad2];
 
 // Garrisons
@@ -59,6 +63,8 @@ if (KPLIB_enemyReadiness >= (35 - (5 * KPLIB_param_aggressivity))) then {_garris
 if (KPLIB_enemyReadiness >= (50 - (5 * KPLIB_param_aggressivity))) then {_garrisonsCount = _garrisonsCount + 1};
 if (KPLIB_param_unitcap >= 1 && {KPLIB_enemyReadiness >= (65 - (5 * KPLIB_param_aggressivity))}) then {_garrisonsCount = _garrisonsCount + 1};
 if (KPLIB_param_unitcap >= 1.5 && {KPLIB_enemyReadiness >= (85 - (5 * KPLIB_param_aggressivity))}) then {_garrisonsCount = _garrisonsCount + 1};
+
+sleep 1;
 
 private _garrisonedUnits = [_sector, _garrisonsCount, _localCaptureSize, _infType] call KPLIB_fnc_findSectorGarrisons;
 _sectorUnits append _garrisonedUnits;
@@ -70,5 +76,16 @@ _sectorUnits append _garrisonedUnits;
 
     [_sector, _localCaptureSize, _sectorUnits] call KPLIB_fnc_manageSectorPFH;
 }, [_sector, _localCaptureSize, _sectorUnits], 10] call CBA_fnc_waitAndExecute;
+
+// IA state machine
+private _stateMachine = [{allGroups select {side _x == KPLIB_side_enemy && ((leader _x) distance2D _sectorPos < _localCaptureSize)}}, true] call CBA_statemachine_fnc_create;
+
+[_stateMachine, "Initial", "Alert", {combatMode _this == "YELLOW"}, {
+    {
+        _x setCombatBehaviour "COMBAT";
+        _x setSkill ["spotDistance", ((_x skill "spotDistance") * 1.5) min 1];
+        _x setSkill ["spotTime",     ((_x skill "spotTime")     * 1.5) min 1];
+    } forEach (units _this);
+}, "InCombat"] call CBA_statemachine_fnc_addTransition;
 
 _sectorUnits

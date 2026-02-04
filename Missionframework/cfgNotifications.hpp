@@ -246,3 +246,4 @@ class lib_asymm_guerilla_incoming: lib_reinforcements {
     sound = "taskUpdated";
 };
 #include "Extensions\Arty_Framework\cfgNotifications.hpp"
+#include "Extensions\SAM_Sites\cfgNotifications.hpp"

@@ -8676,6 +8676,14 @@
                 <Original>Disable</Original>
                 <Portuguese>Desativar</Portuguese>
             </Key>
+            <Key ID="STR_TITLE_ENEMYSAM">
+                <Original>Enemy SAM Site</Original>
+                <Portuguese>Bateria anti-aérea inimiga</Portuguese>
+            </Key>
+            <Key ID="STR_NOTIFICATION_ENEMYSAM_DESTROYED">
+                <Original>Hostile SAM position destroyed</Original>
+                <Portuguese>Bateria anti-aérea inimiga destruída</Portuguese>
+            </Key>
         </Container>
 
 

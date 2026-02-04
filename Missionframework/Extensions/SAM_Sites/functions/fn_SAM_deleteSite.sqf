@@ -2,7 +2,7 @@
     File: fn_SAM_deleteSite.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 05/12/2025
-    Last Update: 08/12/2025
+    Last Update: 02/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -28,7 +28,7 @@ params[
 
 // Wait some minutes to start despawn process
 [{
-    params["_radar", "_samVehicles", ["_samObjects", []], ["_shorads", []], ["_infPatrols", []]];
+    params["_radar", "_samTurrets", ["_samObjects", []], ["_samShorads", []], ["_staticGroup", []], ["_infGarrison", []], ["_infPatrols", []]];
     
     private _group = _radar getVariable ["KPLIB_samSiteGroup", grpNull];
 
@@ -39,9 +39,9 @@ params[
 
     {
         [_x] call KPLIB_fnc_despawnObject;
-    } forEach (_samObjects + _samVehicles + [_radar] + _shorads);
+    } forEach (_samObjects + _samTurrets + [_radar] + _samShorads);
 
-}, [_radar, _samVehicles, _samObjects, _shorads, _infPatrols], 30] call CBA_fnc_waitAndExecute;
+}, [_radar, _samTurrets, _samObjects, _samShorads, _staticGroup, _infGarrison, _infPatrols], 30] call CBA_fnc_waitAndExecute;
 
 KPLIB_SAM_sitePositions deleteAt (KPLIB_SAM_sitePositions find _spawnMarker);
 publicVariable "KPLIB_SAM_sitePositions";

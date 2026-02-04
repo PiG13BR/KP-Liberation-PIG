@@ -1,5 +1,3 @@
-[player] call KPLIB_fnc_createDiaryMissionParams;
-
 [] call compile preprocessFileLineNumbers "Scripts\Client\misc\init_markers.sqf";
 
 [player] call KPLIB_fnc_initArsenal;

@@ -1,8 +1,8 @@
 /*
     File: fn_crateToStorage.sqf
-    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 2017-03-27
-    Last Update: 2026-01-28
+    Last Update: 2026-02-01
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -66,11 +66,9 @@ switch (typeOf _crate) do {
     default {}
 };
 
-_crate setVariable ["KPLIB_crateValue", (_crate getVariable ["KPLIB_crateValue", 0]) - _crateValue];
-
-if ((_crate getVariable ["KPLIB_crateValue", 0]) < 1) then {
-    deleteVehicle _crate;
-};
+private _oldValue = (_crate getVariable ["KPLIB_crateValue", 0]);
+private _newValue = _oldValue - _crateValue;
+_crate setVariable ["KPLIB_crateValue", _newValue];
 
 _storage setVariable ["KPLIB_storageResources", _resources, true];
 
@@ -80,6 +78,17 @@ if (_update) then {
         private _sector = _storage getVariable ["KPLIB_storageSector", ""];
         [_sector] call KPLIB_fnc_updateProductionValues;
     };
+};
+
+// Add mass to a transportable storage
+if (typeOf _storage == KPLIB_b_transStorage) then {
+    private _oldMass = getMass _storage;
+    private _newMass = _oldMass + _crateValue;
+    _storage setMass _newMass;
+};
+
+if (_newValue < 1) then {
+    deleteVehicle _crate;
 };
 
 true

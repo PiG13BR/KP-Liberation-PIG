@@ -3,7 +3,7 @@
 	File: fn_unloadPylonManagerMenu.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 20/10/2025
+	Last Update: 01/02/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -28,3 +28,18 @@ localNameSpace setVariable ["PIG_PylonManager_pylonName", nil];
 
 // Unload camera
 [] call KPLIB_fnc_unloadCameraHandle;
+
+// Remove remnant weapons from the setPylonLoadout command
+private _aircraft = localNamespace getVariable ["PIG_PylonManager_aircraft", objNull];
+private _turret = _aircraft unitTurret player;
+private _weapons = _aircraft weaponsTurret _turret;
+{
+
+    private _weaponState = weaponState [_aircraft, _turret, _x];
+    if ((_weaponState # 3 == "") && (_x find "mastersafe" < 0)) then {
+        _aircraft removeWeaponTurret [_x, _turret];
+    };
+
+}forEach _weapons;
+
+localNamespace getVariable ["PIG_PylonManager_aircraft", nil];

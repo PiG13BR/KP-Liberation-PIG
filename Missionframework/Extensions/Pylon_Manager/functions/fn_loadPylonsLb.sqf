@@ -3,7 +3,7 @@
 	File: fn_loadPylonsLb.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 20/10/2025
+	Last Update: 01/02/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -57,13 +57,13 @@ private _pylonsInfo = getAllPylonsInfo _aircraft;
         _ctrlPylonsListBox lbSetColor [_forEachIndex, [1, 0, 0, 1]]; // RED COLOR
         //PIG_PylonManager_airLoadout set [_forEachIndex, ""];
         private _realPylon = (_forEachIndex + 1);
-        _aircraftl setPylonLoadout [_realPylon, "", true];
+        [_aircraft, [_realPylon, "", true]] remoteExec ["setPylonLoadout", _aircraft];
     } else {
         _ctrlPylonsListBox lbSetText [_forEachIndex, _magazine];
         _ctrlPylonsListBox lbSetColor [_forEachIndex, [0, 0.7, 0, 1]]; // GREEN COLOR
         //PIG_PylonManager_airLoadout set [_forEachIndex, _x];
         private _realPylon = (_forEachIndex + 1);
-        _aircraft setPylonLoadout [_realPylon, _magazine, true];
+        [_aircraft, [_realPylon, _magazine, true]] remoteExec ["setPylonLoadout", _aircraft];
     }
 }forEach _pylonsInfo;
 

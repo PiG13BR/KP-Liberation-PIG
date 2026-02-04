@@ -3,7 +3,7 @@
 	File: fn_handleAirMagazinesLb.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 16/10/2025
+	Last Update: 01/02/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -33,11 +33,12 @@ if (_lbCurSel == 0) then {
     _ctrlPylonsListBox lbSetColor [_pylonIndex, [1, 0, 0, 1]]; // RED COLOR
     PIG_PylonManager_airLoadout set [_pylonIndex, ""];
     private _realPylon = (_pylonIndex + 1);
-    _aircraft setPylonLoadout [_realPylon, "", true];
+    [_aircraft, [_realPylon, "", true]] remoteExec ["setPylonLoadout", _aircraft];
 } else {
     _ctrlPylonsListBox lbSetText [_pylonIndex, _selectedAmmo];
     _ctrlPylonsListBox lbSetColor [_pylonIndex, [0, 0.7, 0, 1]]; // GREEN COLOR
     PIG_PylonManager_airLoadout set [_pylonIndex, _selectedAmmo];
     private _realPylon = (_pylonIndex + 1);
-    _aircraft setPylonLoadout [_realPylon, _selectedAmmo, true];
+    //_aircraft setPylonLoadout [_realPylon, _selectedAmmo, true];
+    [_aircraft, [_realPylon, _selectedAmmo, true]] remoteExec ["setPylonLoadout", _aircraft];
 };

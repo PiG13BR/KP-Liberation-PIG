@@ -30,7 +30,12 @@ if (KPLIB_enemyReadiness > 15) then {
                 reinforcements_set = true;
                 ["lib_reinforcements",[markertext _targetsector]] remoteExec ["bis_fnc_shownotification"];
                 if ((random KPLIB_enemyReadiness) > (20 + (30 / KPLIB_param_aggressivity))) then {
-                    ["", markerPos _targetsector, "", false] call KPLIB_fnc_battlegroupParatroopers;
+                    private _amount = 1;
+                    if (KPLIB_param_difficulty > 1) then {_amount = round((KPLIB_enemyReadiness/10)/4)};
+                    for "_i" from 0 to _amount do {
+                        ["", markerPos _targetsector, "", false] call KPLIB_fnc_battlegroupTransportHeli;
+                        sleep 1;
+                    };
                 };
                 stats_reinforcements_called = stats_reinforcements_called + 1;
             };

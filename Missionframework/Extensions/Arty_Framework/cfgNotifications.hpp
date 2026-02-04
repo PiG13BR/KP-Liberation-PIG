@@ -16,6 +16,6 @@ class lib_artillery_destroyed: lib_default_notification {
     title = $STR_TITLE_ENEMYARTILLERY;
     description = $STR_NOTIFICATION_ENEMYARTILLERY_DESTROYED;
     iconPicture = "a3\ui_f\data\gui\cfg\communicationmenu\artillery_ca.paa";
-    color[] = { 1, 0, 0, 1 };
-    sound = "taskFailed";
+    color[] = { 0, 1, 0, 1 };
+    sound = "taskSucceeded";
 };
