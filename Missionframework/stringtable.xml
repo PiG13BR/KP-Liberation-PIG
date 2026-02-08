@@ -8620,7 +8620,20 @@
                 <Portuguese>Gerenciador de Aparencia de Veículos</Portuguese>
             </Key>
         </Container>
-
+        <Container name="Team Speak">
+            <Key ID="STR_TS_TITLE">
+                <Original>Enable Team Speak Verification</Original>
+                <Portuguese>Ativar Verificaçao Team Speak</Portuguese>
+            </Key>
+            <Key ID="STR_TS_SERVER">
+                <Original>Team Speak Server Name</Original>
+                <Portuguese>Nome do servidor Team Speak</Portuguese>
+            </Key>
+            <Key ID="STR_TS_DISCORD">
+                <Original>Discord Invite</Original>
+                <Portuguese>Convite Discord</Portuguese>
+            </Key>
+        </Container> 
         <Container name="Enemy Artillery">
             <Key ID="STR_TITLE_ENEMYARTILLERY">
                 <Original>Enemy Artillery</Original>

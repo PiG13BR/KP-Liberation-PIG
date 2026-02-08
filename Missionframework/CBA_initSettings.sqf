@@ -114,3 +114,30 @@ if (KPLIB_ace) then {
         true // Global
     ] call CBA_fnc_addSetting;
 };
+
+[
+    "TS_Verification",
+    "CHECKBOX",
+    localize "STR_TS_TITLE",
+    ["KP Liberation", "Team Speak"],
+    false,
+    1
+] call CBA_fnc_addSetting;
+
+[
+    "TS_ServerName",
+    "EDITBOX",
+    localize "STR_TS_SERVER",
+    ["KP Liberation", "Team Speak"],
+    "ts3.example.com",
+    1
+] call CBA_fnc_addSetting;
+
+[
+    "TS_DiscordInvite",
+    "EDITBOX",
+    localize "STR_TS_DISCORD",
+    ["KP Liberation", "Team Speak"],
+    "discord.gg/link",
+    1
+] call CBA_fnc_addSetting;
