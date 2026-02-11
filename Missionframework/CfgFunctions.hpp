@@ -17,26 +17,26 @@ class KPLIB {
     class Battlegroup {
         file = "Functions\battlegroup";
 
-        class battlegroupAttack {};
-        class battlegroupAttackHeli {};
-        class battlegroupIncoming {};
-        class battlegroupInfantry {};
-        class battlegroupJet {};
-        class battlegroupLandVehicle {};
-        class battlegroupParatroopers {};
-        class battlegroupTransportHeli {};
-        class handleLandTransport {};
-        class spawnBattlegroup {};
-        class spawnInfCargo {};
+        class battlegroupAttack         {};
+        class battlegroupAttackHeli     {};
+        class battlegroupIncoming       {};
+        class battlegroupInfantry       {};
+        class battlegroupJet            {};
+        class battlegroupLandVehicle    {};
+        class battlegroupParatroopers   {};
+        class battlegroupTransportHeli  {};
+        class handleLandTransport       {};
+        class spawnBattlegroup          {};
+        class spawnInfCargo             {};
     };
     class Cargo {
         file = "Functions\cargo";
 
-        class addParadropAction {};
-        class doLoadCrate {};
-        class doParadropCrate {};
-        class doUnloadCrate {};
-        class setCargoVehConfig {};
+        class addParadropAction         {};
+        class doLoadCrate               {};
+        class doParadropCrate           {};
+        class doUnloadCrate             {};
+        class setCargoVehConfig         {};
     };
     class Curator {
         file = "Functions\curator";
@@ -76,6 +76,8 @@ class KPLIB {
         class cleanOpforVehicle         {};
         class clearCargo                {};
         class clearGarbage              {};
+        class createClearance           {};
+        class createClearanceConfirm    {};
         class despawnGroup              {};
         class despawnObject             {};
         class fullHeal                  {};
@@ -118,15 +120,18 @@ class KPLIB {
     class Production {
         file = "Functions\production";
 
-        class addFactoryProduction {};
-        class changeFactoryProduction {};
-        class factoryBuildFacility {};
-        class factoryProduceResource {};
-        class factoryProductionInit {};
-        class factoryProductionPFH {};
-        class registerStorageSector {};
-        class setFactoryFacility {};
-        class updateProductionValues {};
+        class addFactoryProduction      {};
+        class changeFactoryProduction   {};
+        class factoriesBlock            {};
+        class factoryBlockedPFH         {};
+        class factoryBuildFacility      {};
+        class factoryProduceResource    {};
+        class factoryProductionInit     {};
+        class factoryProductionPFH      {};
+        class registerStorageSector     {};
+        class selectFactoryToBlock      {};
+        class setFactoryFacility        {};
+        class updateProductionValues    {};
     };
     class Civilian_Reputation {
         file = "Functions\reputation";
@@ -138,14 +143,14 @@ class KPLIB {
     class Resources {
         file = "Functions\resources";
 
-        class addActionsCrate {};
-        class doRecycle {};
-        class recalculateResources {};
-        class recalculateResourcesInit {};
-        class recalculateResourcesPFH {};
-        class recycleResources {};
-        class restoreResources {};
-        class subtractResources {};
+        class addActionsCrate           {};
+        class doRecycle                 {};
+        class recalculateResources      {};
+        class recalculateResourcesInit  {};
+        class recalculateResourcesPFH   {};
+        class recycleResources          {};
+        class restoreResources          {};
+        class subtractResources         {};
     };
     class Save {
         file = "Functions\Save";
@@ -188,8 +193,6 @@ class KPLIB {
     class Spawn {
         file = "Functions\spawn";
 
-        class createClearance           {};
-        class createClearanceConfirm    {};
         class createCrate               {};
         class createCrew                {};
         class createManagedUnit         {};
@@ -201,6 +204,7 @@ class KPLIB {
         class spawnCivilians            {};
         class spawnGarrisonUnit         {};
         class spawnGuerillaGroup        {};
+        class spawnGuerInFactory        {};
         class spawnMilitiaCrew          {};
         class spawnRegularSquad         {};
         class spawnVehicle              {};
@@ -216,7 +220,6 @@ class KPLIB {
         class fillStorage               {};
         class getCrateHeight            {};
         class getStorageLimit           {};
-        class getStoragePositions       {};
         class getStorageValues          {};
         class isStorageFull             {};
         class sortStorage               {};
@@ -252,6 +255,7 @@ class KPLIB {
     #include "Extensions\Arty_Framework\cfgFunctions.hpp"
     #include "Extensions\Arty_Menu\cfgFunctions.hpp"
     #include "Extensions\Clear_Brushes\cfgFunctions.hpp"
+    #include "Extensions\Enemy_Fighters\cfgFunctions.hpp"
     #include "Extensions\Lock_Arsenal\cfgFunctions.hpp"
     #include "Extensions\Player_Menu\KPPLM\KPPLM_functions.hpp"
     #include "Extensions\Pylon_Manager\cfgFunctions.hpp"
