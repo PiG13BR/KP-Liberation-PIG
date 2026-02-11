@@ -122,14 +122,11 @@ class KPLIB {
 
         class addFactoryProduction      {};
         class changeFactoryProduction   {};
-        class factoriesBlock            {};
-        class factoryBlockedPFH         {};
         class factoryBuildFacility      {};
         class factoryProduceResource    {};
         class factoryProductionInit     {};
         class factoryProductionPFH      {};
         class registerStorageSector     {};
-        class selectFactoryToBlock      {};
         class setFactoryFacility        {};
         class updateProductionValues    {};
     };
@@ -204,7 +201,6 @@ class KPLIB {
         class spawnCivilians            {};
         class spawnGarrisonUnit         {};
         class spawnGuerillaGroup        {};
-        class spawnGuerInFactory        {};
         class spawnMilitiaCrew          {};
         class spawnRegularSquad         {};
         class spawnVehicle              {};
