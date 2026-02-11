@@ -186,7 +186,7 @@
     private _ammoPrice = _buildSelected # 2;
     private _fuelPrice = _buildSelected # 3;
 
-    // Update values based on civillian reputation
+    // Update values based on civilian reputation
     private _priceAdd = -(KPLIB_civ_rep/1000);
     if (_priceAdd < 0) then {
         if (_supplyPrice > 0) then {_supplyPrice = (_supplyPrice - round(_supplyPrice * abs(_priceAdd))) max 0;};
@@ -234,7 +234,7 @@
     private _ammoPrice = _buildSelected # 2;
     private _fuelPrice = _buildSelected # 3;
 
-    // Update values based on civillian reputation
+    // Update values based on civilian reputation
     private _priceAdd = -(KPLIB_civ_rep/1000);
 
     if (_priceAdd < 0) then {
@@ -299,6 +299,13 @@
 
     _this spawn {
         waitUntil {sleep 1; alive player};
+        private _actionDist = 5;
+        switch (true) do {
+            case (_this isKindOf "Plane") : {_actionDist = 15};
+            case (_this isKindOf "Helicopter") : {_actionDist = 10};
+            default {}  
+        };
+
         _this addAction [
             "<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_BOX" + "</t>",
             {
@@ -320,7 +327,7 @@
                 {(speed _target < 2) ||
                 {_target isKindOf "Air" && {!(isEngineOn _target)} && {isTouchingGround _target}}}
             },
-            5
+            _actionDist
         ];
     }
 }] call CBA_fnc_addEventHandler;

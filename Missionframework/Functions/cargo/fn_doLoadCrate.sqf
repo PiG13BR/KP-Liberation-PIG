@@ -2,7 +2,7 @@
 	File: fn_doLoadCrate.sqf
 	Author: PiG13BR (https://github.com/PiG13BR)
 	Date: 21/10/2025
-	Last update: 16/101/2026
+	Last update: 11/02/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -29,7 +29,7 @@ if (isNull _transport) then {
 if (isNil "_transport") exitWith {false}; // Transport is nil
 
 private _offsets = _transport getVariable ["KPLIB_CARGO_offSets", []];
-if (count(_transport getVariable ["KPLIB_CARGO_loadedCargo", []]) isEqualTo (count(_offsets))) exitWith {[localize "STR_BOX_CANTLOAD", true, 3] call KPLIB_fnc_hint; false}; // It's full
+if (count(_transport getVariable ["KPLIB_CARGO_loadedCargo", []]) isEqualTo (count(_offsets))) exitWith {[localize "STR_CRATE_CANTLOAD", true, 3] call KPLIB_fnc_hint; false}; // It's full
 
 // Get off-sets
 private _lastOffset = _offsets # (_transport getVariable ["KPLIB_CARGO_nextOffSet", 0]);
@@ -44,5 +44,14 @@ _cargo enableRopeAttach false;
 removeAllActions _cargo; // Remove all actions (add them back on unload)
 
 [localize "STR_CRATE_LOADED", false, 2] call KPLIB_fnc_hint;
+
+// Add mass
+private _crateValue = _crate getVariable ["KPLIB_crateValue", 0];
+private _oldMass = getMass _transport;
+private _newMass = _oldMass + _crateValue;
+_transport setMass _newMass;
+
+// Disable ViV
+_transport enableVehicleCargo false;
 
 true
