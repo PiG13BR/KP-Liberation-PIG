@@ -18,7 +18,6 @@
 params ["_aircraft"];
 
 if !(isClass ((configOf _aircraft) >> "Components" >> "TransportPylonsComponent")) exitWith {};
-if (hasPilotCamera _aircraft) then {
 	if (!alive _aircraft) exitWith {};
 
 	if (KPLIB_ace) then {
@@ -36,4 +35,3 @@ if (hasPilotCamera _aircraft) then {
 
 		[_aircraft, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 	};
-};
