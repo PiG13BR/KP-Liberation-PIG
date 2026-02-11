@@ -255,7 +255,6 @@ class KPLIB {
     #include "Extensions\Arty_Framework\cfgFunctions.hpp"
     #include "Extensions\Arty_Menu\cfgFunctions.hpp"
     #include "Extensions\Clear_Brushes\cfgFunctions.hpp"
-    #include "Extensions\Enemy_Fighters\cfgFunctions.hpp"
     #include "Extensions\Lock_Arsenal\cfgFunctions.hpp"
     #include "Extensions\Player_Menu\KPPLM\KPPLM_functions.hpp"
     #include "Extensions\Pylon_Manager\cfgFunctions.hpp"
