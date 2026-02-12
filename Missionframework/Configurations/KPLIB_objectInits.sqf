@@ -334,34 +334,6 @@ KPLIB_objectInits = [
                     ["KPLIB_addActionPylonManager", _air] call CBA_fnc_globalEventJIP;
                 }, [_this]] call CBA_fnc_waitUntilAndExecute;
             };
-
-            if (KPLIB_param_enemyFighters) then {
-                _this addEventHandler ["GetIn", {
-                    params ["_vehicle", "_role", "_unit", "_turret"];
-                    
-                    if ((_role == "driver") && {side _unit == KPLIB_side_player}) then {
-                        if (isNil "KPLIB_playerAircrafts") then {
-                            KPLIB_playerAircrafts = [];
-                            publicVariable "KPLIB_playerAircrafts";
-                        };
-
-                        KPLIB_playerAircrafts pushBack _vehicle;
-                        [_vehicle] call KPLIB_fnc_enemyAirScheduler;
-                    };
-                }];
-
-                _this addEventHandler ["GetOut", {
-                    params ["_vehicle", "_role", "_unit", "_turret", "_isEject"];
-                    _vehicle setVariable ["KPLIB_playerInAircraft", false];
-                    KPLIB_playerAircrafts deleteAt (KPLIB_playerAircrafts find _vehicle);
-                }];
-
-                _this addEventHandler ["Killed", {
-                    params ["_unit", "_killer", "_instigator", "_useEffects"];
-                    _unit setVariable ["KPLIB_playerInAircraft", nil];
-                    KPLIB_playerAircrafts deleteAt (KPLIB_playerAircrafts find _unit);
-                }]; 
-            }
         }
     ],
 
