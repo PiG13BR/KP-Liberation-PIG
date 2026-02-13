@@ -218,7 +218,6 @@ class KPLIB {
         class getStorageLimit           {};
         class getStorageValues          {};
         class isStorageFull             {};
-        class sortStorage               {};
 
     };
     class System {
