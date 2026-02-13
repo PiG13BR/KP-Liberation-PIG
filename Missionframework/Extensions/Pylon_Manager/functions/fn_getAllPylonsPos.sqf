@@ -2,7 +2,7 @@
 	File: fn_getAllPylonsPos.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 16/10/2025
+	Last Update: 13/02/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -37,8 +37,9 @@ _allPylonsPos = [];
 
 {
     if (_x # 3 == "") then {continue};
-    _index = _allPylonsPos pushBack [(_x # 1)];
-    (_allPylonsPos # _index) pushBack ((_x # 6) # 0)
+    _index = _allPylonsPos pushBack [(_x # 1), [((_x # 6) # 0), (_x # 2)]];
+    //(_allPylonsPos # _index) pushBack ((_x # 6) # 0);
+	//(_allPylonsPos # _index) pushBack (_x # 2); // Turret information
 }forEach _allInfo;
 
 {
