@@ -9,4 +9,6 @@ class Rally_Point_System
     class getTeamRP {};
     class spawnSquadRP {};
     class spawnTeamRP {};
+    class squadCreateMarker {};
+    class squadDeleteMarker {};
 };
