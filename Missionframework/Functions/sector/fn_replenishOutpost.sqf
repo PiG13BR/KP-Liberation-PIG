@@ -18,7 +18,7 @@
 
 params["_outpost"];
 
-if ((KPLIB_sectors_fob findIf ((markerPos _outpost) distance2D _x < 500)) >= 0) exitWith {}; // Exit if there is a FOB nearby
+if (KPLIB_sectors_fob findIf {((markerPos _outpost) distance2D _x) < 500} >= 0) exitWith {}; // Exit if there is a FOB nearby
 
 private _base = [markerPos _outpost, KPLIB_side_enemy, KPLIB_range_replenishRadius] call KPLIB_fnc_getNearestBase;
 
