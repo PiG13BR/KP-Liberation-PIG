@@ -83,6 +83,6 @@ private _newMass = _oldMass - _crateValue;
 _transport setMass _newMass;
 
 // Enable ViV again if the var is empty
-if (_transport setVariable ["KPLIB_CARGO_loadedCargo", []] isEqualTo []) then {_transport enableVehicleCargo true;};
+if (_transport getVariable ["KPLIB_CARGO_loadedCargo", []] isEqualTo []) then {_transport enableVehicleCargo true;};
 
 true
