@@ -129,6 +129,15 @@ if (KPLIB_ace) then {
     "EDITBOX",
     localize "STR_TS_SERVER",
     ["KP Liberation", "Team Speak"],
+    "Liberation OAB - TS3 Server",
+    1
+] call CBA_fnc_addSetting;
+
+[
+    "TS_ServerIP",
+    "EDITBOX",
+    localize "STR_TS_SERVER_IP",
+    ["KP Liberation", "Team Speak"],
     "ts3.example.com",
     1
 ] call CBA_fnc_addSetting;
