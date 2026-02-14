@@ -18,11 +18,9 @@
 
 private _display = (findDisplay IDD_PYLONMANAGER_MENU);
 
-private _ctrlAircraftCombo = _display displayCtrl IDC_AIRCRAFT_COMBO;
 private _ctrlRenameEdit = _display displayCtrl IDC_RENAME_EDIT;
 private _ctlrPresetsListBox = _display displayCtrl IDC_PRESETS_LISTBOX;
 
-if (lbCurSel _ctrlAircraftCombo == -1) exitWith {["No aircraft selected", true, 5, 2] call ace_common_fnc_displayText};
 if ((ctrlText _ctrlRenameEdit) isEqualTo "") exitWith {["Enter a name for you preset", true, 5, 2] call ace_common_fnc_displayText};
 
 // Get new key name

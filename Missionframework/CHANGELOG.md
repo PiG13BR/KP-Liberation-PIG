@@ -54,24 +54,22 @@
 - Fixed: Collision with carrying supply crates.
 
 ## CHECKING / PRODUCING
+- Add enemy jet fighter spawns cycle on player flying an aircraft.
+- Guerrilla can attack factory sectors at negative reputation level. Stop production.
 
 ## STANDING BY
-- Add Task framework to handle secondary objectives.
+- Make zeus whitelist.
 - Prisoners can reveal outposts, artillery position, SAM sites before delivering him to a FOB, in exchange to intel points.
-- Barracks for FOBs. Required to redeploy and build IA/squads. Spawn addition supplies on first fob deployed.
-- Add enemy jet fighter spawns cycle on player flying an airplane. 
 - Add enemy plane CAS support.
+- Add Task framework to handle secondary objectives.
 - Create drone framework to detect players between sectors + QRF (OT simil) / Create useful patrols between sectors + QRF.
 - FOB with triggers?
 - Possible a replacer for convoy objective: kill commander on route to a military base.
 - Make guerrilla fight every side as a mission parameter.
 - Airport sector.
 - Convert some variables in `KPLIB_config.sqf` into CBA setting or mission parameter
-- Guerrilla can attack factory sectors. Stop production.
-- Add building to able arsenal.
 - Use paratroopers battlegroup script to paradrop enemy vehicles. Enemy helicopter slingload vehicles.
 - Commander can change FOB names.
-- Make zeus whitelist.
 - TS requirement mission param for mods like ACRE2 and TFAR.
 - FOB Defense UI for static weapons / handle ammo / handle crew.
 - Bomb jammer for important sectors.
