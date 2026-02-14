@@ -87,4 +87,10 @@ private _crate = _cargoLoaded deleteAt (count _cargoLoaded - 1);
 _transport setVariable ["KPLIB_CARGO_nextOffSet", ((_transport getVariable ["KPLIB_CARGO_nextOffSet", 0]) - 1) max 0, true];
 _transport setVariable ["KPLIB_CARGO_loadedCargo", _cargoLoaded, true];
 
+// Remove mass
+private _crateValue = _crate getVariable ["KPLIB_crateValue", 0];
+private _oldMass = getMass _transport;
+private _newMass = _oldMass - _crateValue;
+_transport setMass _newMass;
+
 _crate

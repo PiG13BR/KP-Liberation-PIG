@@ -17,7 +17,7 @@
 */
 params["_sector", ["_localCaptureSize", KPLIB_range_sectorCapture]];
 
-if (!canSuspend) exitWith {_this spawn KPLIB_fnc_sectorTowerpawns};
+if (!canSuspend) exitWith {_this spawn KPLIB_fnc_sectorTowerSpawns};
 
 private _sectorUnits = [];
 private _sectorPos = markerPos _sector;
@@ -76,5 +76,3 @@ private _stateMachine = [{allGroups select {side _x == KPLIB_side_enemy && ((lea
         _x setSkill ["spotTime",     ((_x skill "spotTime")     * 1.5) min 1];
     } forEach (units _this);
 }, "InCombat"] call CBA_statemachine_fnc_addTransition;
-
-_sectorUnits

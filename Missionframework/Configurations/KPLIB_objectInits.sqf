@@ -97,7 +97,7 @@ KPLIB_objectInits = [
                         _storage setMass 700
                     } else {
                         [_storage, 700] remoteExec ["setMass"]
-                    }
+                    };
                 };
                 ["KPLIB_addActionsStorage", [_storage]] call CBA_fnc_globalEventJIP
             }, [_this]] call CBA_fnc_waitUntilAndExecute;
@@ -241,7 +241,7 @@ KPLIB_objectInits = [
     [
         ["CUP_B_MH47E_USA"],
         {
-            [_this,nil,["Hide_Probe",0]] call BIS_fnc_initVehicle;
+            [_this,nil,["Hide_Probe",1]] call BIS_fnc_initVehicle;
         }
     ],
 
@@ -317,13 +317,13 @@ KPLIB_objectInits = [
                 params["_object"];
 
                 ["KPLIB_addRecycleAction", _object] call CBA_fnc_globalEventJIP;
-            }, [_this]] call CBA_fnc_waitUntilAndExecute;       
+            }, [_this]] call CBA_fnc_waitUntilAndExecute;      
         }
     ],
 
     // Pylon Manager
     [
-        KPLIB_b_air_classes,
+        KPLIB_b_air_classes + [KPLIB_b_potato01],
         {
             if (KPLIB_ace) then {
                 [{
@@ -333,7 +333,7 @@ KPLIB_objectInits = [
 
                     ["KPLIB_addActionPylonManager", _air] call CBA_fnc_globalEventJIP;
                 }, [_this]] call CBA_fnc_waitUntilAndExecute;
-            }
+            };
         }
     ],
 

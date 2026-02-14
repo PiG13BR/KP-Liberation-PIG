@@ -3,7 +3,7 @@
     Author: Karel Moricky, modified by Alganthe.
     Adaptation made by PiG13BR for Air Spawner Menu
     Date: 14/10/2025
-    Update Date: 14/10/2025
+    Update Date: 13/02/2026
     
     Description:
         Updates the camera pos each frame (called from a draw3D MEH)
@@ -35,18 +35,75 @@ private _selectedPylon = localNameSpace getVariable ["PIG_PylonManager_pylonName
 private _pylonRelPos = PIG_PylonManager_pylonsPosHash get _selectedPylon;
 if (isNil "_pylonRelPos") exitWith {}; // Avoid error on changing aircraft
 
+private _role = _pylonRelPos # 1;
+_pylonRelPos = _pylonRelPos # 0;
+
 drawIcon3D
 [
     "z\ace\addons\interact_menu\ui\selector1.paa",
     [1,1,1,1],
     _aircraft modelToWorld _pylonRelPos,
-    1,
-    1,
+    1.5,
+    1.5,
     0,
     _selectedPylon,
-    0,
+    2,
     0.04,
     "RobotoCondensed",
     "right",
     true
 ];
+
+switch (true) do {
+    case (_role isEqualTo [0]) : {
+        drawIcon3D
+        [
+            "a3\ui_f\data\igui\rscingameui\rscunitinfo\role_gunner_ca.paa",
+            [1,1,1,1],
+            _aircraft modelToWorld _pylonRelPos,
+            1.2,
+            1.2,
+            0,
+            "",
+            2,
+            0.04,
+            "RobotoCondensed",
+            "right",
+            true
+        ];
+    };
+    case (_role isEqualTo [-1]) : {
+        drawIcon3D
+        [
+            "a3\ui_f\data\igui\rscingameui\rscunitinfo\role_driver_ca.paa",
+            [1,1,1,1],
+            _aircraft modelToWorld _pylonRelPos,
+            1.2,
+            1.2,
+            0,
+            "",
+            2,
+            0.04,
+            "RobotoCondensed",
+            "right",
+            true
+        ];
+    };
+    default {        
+        drawIcon3D
+        [
+            "a3\ui_f\data\igui\rscingameui\rscunitinfo\role_driver_ca.paa",
+            [1,1,1,1],
+            _aircraft modelToWorld _pylonRelPos,
+            1,
+            1,
+            0,
+            "",
+            2,
+            0.04,
+            "RobotoCondensed",
+            "right",
+            true
+        ];
+    };
+};

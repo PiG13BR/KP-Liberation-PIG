@@ -61,18 +61,6 @@ class PIG_PylonManager_RscMainMenu
 	};
 	class controls
 	{
-		/*
-		class PylonManager_aircrafts_combo : PylonManager_Combo_Base
-		{
-			idc = IDC_AIRCRAFT_COMBO;
-
-			onLBSelChanged = "[_this # 0, _this # 1] call KPLIB_fnc_handleAirCombo";
-			x = 0.395037 * safezoneW + safezoneX;
-			y = 0.107913 * safezoneH + safezoneY;
-			w = 0.196805 * safezoneW;
-			h = 0.0280062 * safezoneH;
-		};
-		*/
 		class PylonManager_Pylons_Lb : PylonManager_Listbox_Base
 		{
 			idc = IDC_PYLONS_LISTBOX;
