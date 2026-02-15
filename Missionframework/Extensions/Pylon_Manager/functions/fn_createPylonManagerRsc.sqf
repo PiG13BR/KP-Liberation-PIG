@@ -3,7 +3,7 @@
 	File: fn_createPylonManagerRsc.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 03/11/2025
+	Last Update: 15/02/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -21,6 +21,7 @@ params[["_aircraft", objNull, [objNull]]];
 if (isNull _aircraft) exitWith {};
 
 localNamespace setVariable ["PIG_PylonManager_aircraft", _aircraft];
+_aircraft setVariable ["PIG_pylonManager_isBusy", true];
 
 private _displayToUse = findDisplay IDD_MISSION;
 
