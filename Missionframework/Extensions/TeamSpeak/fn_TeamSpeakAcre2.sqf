@@ -6,7 +6,7 @@ if (hasInterface && {["TS_Verification"] call cba_settings_fnc_get}) then {
         private _discordLink = ["TS_DiscordInvite"] call cba_settings_fnc_get;
         private _msgTemplate = localize "STR_TS3_MESSAGE";
         private _lastCheckFailed = false;
-
+        copyToClipboard _discordLink;
         while {
             isNil "KPLIB_initServerDone" || 
             isNil "KPLIB_init" || 
@@ -25,7 +25,6 @@ if (hasInterface && {["TS_Verification"] call cba_settings_fnc_get}) then {
             ];
 
             if (_isWrongTS && !_lastCheckFailed) then {
-                copyToClipboard _discordLink;
                 _lastCheckFailed = true;
             };
 
