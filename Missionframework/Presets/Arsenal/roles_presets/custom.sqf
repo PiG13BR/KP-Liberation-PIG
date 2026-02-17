@@ -524,6 +524,8 @@ _ace_common_tools = [
     "ACE_Tripod",
     "ACE_MapTools",
     "ACE_RangeCard",
+    "itemcTabMisc", // cTab 1erGTD
+    "ItemAndroidMisc", // cTab 1erGTD
     "ACE_microDAGR"
 ];
 
