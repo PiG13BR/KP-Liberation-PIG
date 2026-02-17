@@ -575,6 +575,7 @@ _ace_misc = [
 // Items & Communication
 _common_items = [
     "ItemMap",
+    "ItemcTabHcam", // cTab 1erGTD
     "ItemGPS",
     "ItemCompass",
     "ItemWatch",
