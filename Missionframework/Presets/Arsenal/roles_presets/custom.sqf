@@ -621,7 +621,7 @@ _uav_operator = "B_soldier_UAV_F";
 switch (_classRole) do {
     case _commander : {
     // Put all weapons here
-    KPLIB_arsenalWeapons = (_rifles_basic + _pistols + _discard_launchers);
+    KPLIB_arsenalWeapons = (_rifles_basic + _shotguns + _pistols + _discard_launchers);
     // Put all Magazines, and throwable items such as grenades
     KPLIB_arsenalMagazines = (_mags + _grenades);
     // Put here uniforms, vests, facemasks, nvgs, binoculares, medical items, tool items, attachments...
@@ -631,7 +631,7 @@ switch (_classRole) do {
     };
     case _sqleader : {
     // Put all weapons here
-    KPLIB_arsenalWeapons = (_rifles_basic + _pistols + _discard_launchers);
+    KPLIB_arsenalWeapons = (_rifles_basic + _shotguns + _pistols + _discard_launchers);
     // Put all Magazines, and throwable items such as grenades
     KPLIB_arsenalMagazines = (_mags + _grenades);
     // Put here uniforms, vests, facemasks, nvgs, binoculares, medical items, tool items, attachments...
@@ -651,7 +651,7 @@ switch (_classRole) do {
     };
     case _rifleman : {
     // Put all weapons here
-    KPLIB_arsenalWeapons = (_rifles_basic + _pistols + _discard_launchers);
+    KPLIB_arsenalWeapons = (_rifles_basic + _shotguns + _pistols + _discard_launchers);
     // Put all Magazines, and throwable items such as grenades
     KPLIB_arsenalMagazines = (_mags + _grenades);
     // Put here uniforms, vests, facemasks, nvgs, binoculares, medical items, tool items, attachments...
@@ -661,7 +661,7 @@ switch (_classRole) do {
     };
     case _medic : {
     // Put all weapons here
-    KPLIB_arsenalWeapons = (_rifles_basic + _pistols);
+    KPLIB_arsenalWeapons = (_rifles_basic + _shotguns + _pistols);
     // Put all Magazines, and throwable items such as grenades
     KPLIB_arsenalMagazines = (_mags + _grenades);
     // Put here uniforms, vests, facemasks, nvgs, binoculares, medical items, tool items, attachments...
@@ -671,7 +671,7 @@ switch (_classRole) do {
     };
     case _engineer : {
     // Put all weapons here
-    KPLIB_arsenalWeapons = (_rifles_basic + _pistols);
+    KPLIB_arsenalWeapons = (_rifles_basic + _shotguns + _pistols);
     // Put all Magazines, and throwable items such as grenades
     KPLIB_arsenalMagazines = (_mags + _grenades + _explosives);
     // Put here uniforms, vests, facemasks, nvgs, binoculares, medical items, tool items, attachments...
@@ -741,7 +741,7 @@ switch (_classRole) do {
     };
     case _uav_operator : {
     // Put all weapons here
-    KPLIB_arsenalWeapons = (_rifles_basic + _pistols);
+    KPLIB_arsenalWeapons = (_rifles_basic + _shotguns + _pistols);
     // Put all Magazines, and throwable items such as grenades
     KPLIB_arsenalMagazines = (_mags + _grenades);
     // Put here uniforms, vests, facemasks, nvgs, binoculares, medical items, tool items, attachments...
