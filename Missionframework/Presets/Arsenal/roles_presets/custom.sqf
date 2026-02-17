@@ -520,6 +520,9 @@ _ace_common_tools = [
     "ACE_EntrenchingTool",
     "ACE_Clacker",
     "ACE_Flashlight_XL50",
+    "ACE_Tripod",
+    "ACE_MapTools",
+    "ACE_RangeCard",
     "ACE_microDAGR"
 ];
 
