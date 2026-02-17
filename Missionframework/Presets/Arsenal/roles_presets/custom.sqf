@@ -183,6 +183,7 @@ _mags = [
 
     // SMG
     "30Rnd_9x21_Mag_SMG_02",
+    "CUP_30Rnd_9x19_MP5",
     "CUP_32Rnd_9x19_UZI_M",
 
     // LMG
@@ -299,6 +300,7 @@ _rail_attach = [
     "ACE_DBAL_A3_Red",
     "ACE_SPIR",
     "CUP_acc_ANPEQ_15_Black",
+    "CUP_acc_Flashlight",
     "CUP_acc_ANPEQ_15_OD",
     "CUP_acc_ANPEQ_15_Black_Top",
     "CUP_acc_ANPEQ_15_OD_Top",
@@ -328,6 +330,7 @@ _rifles_grip = [
 
 _rifles_bipod = [
     "CUP_bipod_G3",
+    "CUP_bipod_G3SG1",
     "CUP_bipod_Harris_1A2_L_BLK"
 ];
 
@@ -416,6 +419,7 @@ _backpacks = [
     "B_AssaultPack_dgtl",
     "CUP_B_AlicePack_OD",
     "CUP_T10_Parachute_backpack",
+    "B_Kitbag_rgr",
     "B_Parachute"
 ];
 
@@ -460,7 +464,11 @@ _facewears = [
     "CUP_G_RUS_Ratnik_Balaclava_Green_3",
     "CUP_G_RUS_Ratnik_Balaclava_Green_4",
     "CUP_G_RUS_Ratnik_Balaclava_Olive_1",
-    "CUP_G_RUS_Ratnik_Balaclava_Olive_2"
+    "CUP_G_RUS_Ratnik_Balaclava_Olive_2",
+    "CUP_G_Grn_Scarf_Shades_GPS_Beard",
+    "CUP_G_Grn_Scarf_Shades_GPS_Beard_Blonde",
+    "CUP_G_Tan_Scarf_Shades_GPS_Beard",
+    "CUP_G_Tan_Scarf_Shades_GPS_Beard_Blonde"
 ];
 
 // Nightvision
