@@ -504,7 +504,8 @@ _laser_binos = [
 ];
 
 _range_binos = [
-    "Rangefinder"
+    "Rangefinder",
+    "ACE_Vector"
 ];
 
 _drones = [
