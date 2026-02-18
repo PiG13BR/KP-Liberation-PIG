@@ -92,3 +92,14 @@ if (KPLIB_param_enemyArtillery) then {
 if (KPLIB_param_SAMSite > 0) then {
     [] call KPLIB_fnc_SAM_init;
 };
+
+if (count KPLIB_whitelist_Zeus > 0) then {
+    // Whitelist detected, deleting all existing modules
+    ["Zeus whitelist detected", "ZEUS WHITELIST"] call KPLIB_fnc_log;
+    {
+        [format["Deleting curator %1", _x], "ZEUS WHITELIST"] call KPLIB_fnc_log;
+        deleteVehicle _x
+    }forEach allCurators;
+};
+
+

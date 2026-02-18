@@ -2,13 +2,6 @@ params[["_player", player, [objNull]]];
 
 if (count KPLIB_whitelist_Zeus < 1) exitWith {};
 
-// Whitelist detected, deleting all existing modules
-["Zeus whitelist detected", "ZEUS WHITELIST"] call KPLIB_fnc_log;
-{
-    [format["Deleting curator %1", _x], "ZEUS WHITELIST"] call KPLIB_fnc_log;
-    deleteVehicle _x
-}forEach allCurators;
-
 if (isNull _player) exitWith {};
 private _uid = getPlayerUID _player;
 
@@ -26,6 +19,7 @@ missionNamespace setVariable [format["KPLIB_zeus_%1", _uid], _zeus];
 
 // All addons available
 //_zeus setVariable ["Addons", 3, true];
+//diag_log format["ZEUS DEBUG: Addons: %1", (_zeus getVariable ["Addons", 0])];
 _addons = [];
 _cfgPatches = configfile >> "cfgpatches";
 for "_i" from 0 to (count _cfgPatches - 1) do {
@@ -41,10 +35,9 @@ _zeus setVariable ["BIS_fnc_initModules_disableAutoActivation", false];
 
 _zeus setCuratorCoef ["Place", 0];
 _zeus setCuratorCoef ["Delete", 0];
-//diag_log format["ZEUS DEBUG: Addons: %1", (_zeus getVariable ["Addons", 0])];
 
-private _limited = false;
-_zeus setVariable ["KPLIB_limited", _limited];
+private _ownerVar = _player call BIS_fnc_objectVar;
+_zeus setvariable ["owner", _ownerVar];
 
 // Assign player
 _player assignCurator _zeus;
