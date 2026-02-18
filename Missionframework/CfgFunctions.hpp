@@ -237,7 +237,7 @@ class KPLIB {
     class Extensions {
         file = "Extensions\TeamSpeak"
 
-        class TeamSpeakAcre2            {};
+        class TeamSpeakCheck            {};
     }
     #include "Functions\do_build\cfgFunctions.hpp"
 
