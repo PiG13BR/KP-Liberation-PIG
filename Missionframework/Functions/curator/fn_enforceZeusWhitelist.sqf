@@ -40,7 +40,7 @@ private _ownerVar = _player call BIS_fnc_objectVar;
 _zeus setvariable ["owner", _ownerVar];
 
 // Assign player
-_player assignCurator _zeus;
+[_player, _zeus] remoteExec ["assignCurator", 2];
 
 [format["Setting up player %1 with UID %2 as zeus (%3)", name _player, _uid, _zeus], "ZEUS WHITELIST"] call KPLIB_fnc_log;
 
