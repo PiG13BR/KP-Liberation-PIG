@@ -17,19 +17,21 @@ private _zeus = _group createUnit ["ModuleCurator_F", [-7580, -7580, 0], [], 0, 
 
 missionNamespace setVariable [format["KPLIB_zeus_%1", _uid], _zeus];
 
-// All addons available
-//_zeus setVariable ["Addons", 3, true];
-//diag_log format["ZEUS DEBUG: Addons: %1", (_zeus getVariable ["Addons", 0])];
-_addons = [];
-_cfgPatches = configfile >> "cfgpatches";
-for "_i" from 0 to (count _cfgPatches - 1) do {
-    _class = _cfgPatches select _i;
-    if (isclass _class) then {_addons set [count _addons,configname _class];};
-};
+/*
+    // All addons
+    _zeus setVariable ["Addons", 3, true];
+    diag_log format["ZEUS DEBUG: Addons: %1", (_zeus getVariable ["Addons", 0])];
+    private _addons = [];
 
-activateAddons _addons;
+    _cfgPatches = configfile >> "cfgpatches";
+    for "_i" from 0 to (count _cfgPatches - 1) do {
+        _class = _cfgPatches select _i;
+        if (isclass _class) then {_addons set [count _addons,configname _class];};
+    };
+*/
+
 removeallcuratoraddons _zeus;
-_zeus addcuratoraddons _addons;
+_zeus addcuratoraddons (activatedAddons);
 
 _zeus setVariable ["BIS_fnc_initModules_disableAutoActivation", false];
 

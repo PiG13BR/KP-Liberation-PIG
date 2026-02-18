@@ -94,6 +94,28 @@ if (KPLIB_param_SAMSite > 0) then {
 };
 
 if (count KPLIB_whitelist_Zeus > 0) then {
+    /*
+        // All addons
+        private _addons = [];
+        private _cfgPatches = configfile >> "cfgpatches";
+        for "_i" from 0 to (count _cfgPatches - 1) do {
+            private _class = _cfgPatches select _i;
+            if (isclass _class) then {_addons set [count _addons, configname _class];};
+        };
+
+        activateAddons _addons; // Only works on init
+    */
+    
+    // Active addons related to presets
+    private _classes = KPLIB_b_inf_classes + KPLIB_b_allVeh_classes + KPLIB_b_support_classes + KPLIB_b_deco_classes + KPLIB_o_allVeh_classes + KPLIB_o_allStatics_classes + KPLIB_o_allSAM_classes + KPLIB_o_inf_classes + KPLIB_r_units + KPLIB_r_vehicles + KPLIB_c_units + KPLIB_c_vehicles;
+    private _addons = [];
+    {
+        _addons append (unitAddons _x)
+    }forEach _classes;
+
+    _addons = _addons arrayIntersect _addons;
+    activateAddons _addons;
+
     // Whitelist detected, deleting all existing modules
     ["Zeus whitelist detected", "ZEUS WHITELIST"] call KPLIB_fnc_log;
     {
@@ -101,5 +123,3 @@ if (count KPLIB_whitelist_Zeus > 0) then {
         deleteVehicle _x
     }forEach allCurators;
 };
-
-
