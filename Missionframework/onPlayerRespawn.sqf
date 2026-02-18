@@ -64,3 +64,10 @@ if ([
 
 // Opens redeploy menu
 [] call KPLIB_fnc_deploy_createMenuRsc;
+
+// Check if there's already a managed zeus module for this player, if so we can just reassign
+private _uid = getPlayerUID _newUnit;
+private _oldManagedZeus = missionNamespace getVariable [format["KPLIB_zeus_%1", _uid], objNull];
+if (!isNull _oldManagedZeus) exitWith {
+    [_newUnit, _oldManagedZeus] remoteExec ["assignCurator", 2];
+};
