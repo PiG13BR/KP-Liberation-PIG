@@ -6,10 +6,7 @@ if (isNull _player) exitWith {};
 private _uid = getPlayerUID _player;
 
 // Exit if the player is not in the list
-if (!(serverCommandAvailable "#kick") && !(_uid in KPLIB_whitelist_Zeus)) exitWith {
-    sleep 1;
-    endMission "END1";
-};
+if !(_uid in KPLIB_whitelist_Zeus) exitWith {};
 
 // Creating a new zeus module
 private _group = createGroup [sideLogic, true];
