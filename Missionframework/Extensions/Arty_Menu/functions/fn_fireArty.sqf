@@ -2,7 +2,7 @@
 	File: fn_fireArty.sqf
 	Author: PiG13BR (https://github.com/PiG13BR)
 	Date: 02-07-2024
-	Last Update: 23-11-2025
+	Last Update: 18-02-2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -65,35 +65,12 @@ _markerIcon setMarkerColor "colorRED";
 _markerIcon setMarkerShape "ICON";
 _markerIcon setMarkerText format[localize "STR_ARTY_MARKER_FIRE", str _nameArty, _eta];
 
-_arty setVariable ["KPLIB_artyETA", [_markerIcon, _markerBorder, _nameArty, _eta]];
-
-_weaponTurret = (_arty weaponsTurret [0]) select 0;
+private _weaponTurret = (_arty weaponsTurret [0]) select 0;
 private _reloadTime = getNumber(ConfigFile >> "CfgWeapons" >> _weaponTurret >> "magazineReloadTime");
 if (_reloadTime < 1) then {_reloadTime = 1};
 
-_arty addEventHandler ["Fired", {
-	params["_unit"];
-
-	(_unit getVariable ["KPLIB_artyETA", [_markerIcon, _markerBorder, _nameArty, _eta]]) params ["_markerIcon", "_markerBorder", "_nameArty", "_eta"];
-	
-	// ETA management
-	[_markerIcon, _markerBorder, _nameArty, _eta] spawn {
-		
-		while {_eta > 1} do {
-			// Update marker ETA
-			sleep 1;
-			_markerIcon setMarkerText format[localize "STR_ARTY_MARKER_FIRE", str _nameArty, _eta];
-			_eta = _eta - 1;
-		};
-
-		deleteMarker _markerIcon;
-		deleteMarker _markerBorder;
-	};
-	_unit removeEventHandler [_thisEvent, _thisEventHandler];
-}];
-
-[_arty, _targetPos, _magazine, _rounds, _reloadTime] spawn {
-	params["_arty", "_targetPos", "_magazine", "_rounds", "_reloadTime"];
+[_arty, _nameArty, _targetPos, _magazine, _rounds, _reloadTime, _eta, _markerIcon, _markerBorder] spawn {
+	params["_arty", "_nameArty", "_targetPos", "_magazine", "_rounds", "_reloadTime", "_eta", "_markerIcon", "_markerBorder"];
 	sleep 1 + (random 4);
 
 	// Actually fire the artillery
@@ -107,5 +84,14 @@ _arty addEventHandler ["Fired", {
 	};
 
 	(gunner _arty) setVariable ["KPLIB_ARTY_isGunnerBusy", false, true];
+
+	while {_eta > 1} do {
+		sleep 1;
+		_eta = _eta - 1;
+		_markerIcon setMarkerText format[localize "STR_ARTY_MARKER_FIRE", str _nameArty, _eta];
+	};
+
+	deleteMarker _markerIcon;
+	deleteMarker _markerBorder;
 };
 
