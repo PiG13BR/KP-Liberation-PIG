@@ -42,6 +42,7 @@ class KPLIB {
         file = "Functions\curator";
 
         class handlePlacedZeusObject    {};
+        class enforceZeusWhitelist      {};
     };
     class Fob {
         file = "Functions\fob";

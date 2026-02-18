@@ -36,5 +36,8 @@ KPLIB_whitelist_supportModule = [
 
 // ToDo: Whitelist for Zeus access. 
 KPLIB_whitelist_Zeus = [
-
+    "76561198995165833",
+    "111105",
+    "76561198873359067",
+    "76561197998693037"
 ];

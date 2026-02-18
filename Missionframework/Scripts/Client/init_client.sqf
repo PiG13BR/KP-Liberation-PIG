@@ -11,6 +11,7 @@ kp_vehicle_permissions = compile preprocessFileLineNumbers "Scripts\Client\misc\
 
 //execVM "Scripts\Client\actions\intel_manager.sqf";
 execVM "Scripts\Client\commander\enforce_whitelist.sqf";
+[] call KPLIB_fnc_enforceZeusWhitelist;
 if (KPLIB_param_mapMarkers) then {execVM "Scripts\Client\markers\empty_vehicles_marker.sqf";};
 execVM "Scripts\Client\markers\fob_markers.sqf";
 if (!KPLIB_param_highCommand && KPLIB_param_mapMarkers) then {execVM "Scripts\Client\markers\group_icons.sqf";};
