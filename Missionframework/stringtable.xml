@@ -8620,7 +8620,28 @@
                 <Portuguese>Gerenciador de Aparencia de Veículos</Portuguese>
             </Key>
         </Container>
-
+        <Container name="Team Speak">
+            <Key ID="STR_TS_TITLE">
+                <Original>Enable Team Speak Verification</Original>
+                <Portuguese>Ativar Verificaçao Team Speak</Portuguese>
+            </Key>
+            <Key ID="STR_TS_SERVER">
+                <Original>Team Speak Server Name</Original>
+                <Portuguese>Nome do servidor Team Speak</Portuguese>
+            </Key>
+            <Key ID="STR_TS_SERVER_IP">
+                <Original>Team Speak Server IP</Original>
+                <Portuguese>IP do servidor Team Speak</Portuguese>
+            </Key>
+            <Key ID="STR_TS3_MESSAGE">
+                <Original>&lt;t size='4' color='#ff0000'&gt;TS CONNECTION REQUIRED&lt;/t&gt;&lt;br/&gt;&lt;t size='2.2'&gt;Current: %1&lt;/t&gt;&lt;br/&gt;&lt;t size='2.2'&gt;Required: %2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t size='2' color='#5865F2'&gt;%3&lt;/t&gt;&lt;br/&gt;&lt;t size='2'&gt;Type the invite!&lt;/t&gt;</Original>
+                <Portuguese>&lt;t size='4' color='#ff0000'&gt;CONEXÃO TS NECESSÁRIA&lt;/t&gt;&lt;br/&gt;&lt;t size='2.2'&gt;Atual: %1&lt;/t&gt;&lt;br/&gt;&lt;t size='2.2'&gt;Obrigatório: %2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t size='2' color='#5865F2'&gt;%3&lt;/t&gt;&lt;br/&gt;&lt;t size='2'&gt;Digite o Convite!&lt;/t&gt;</Portuguese>
+            </Key>
+            <Key ID="STR_TS_DISCORD">
+                <Original>Discord Invite</Original>
+                <Portuguese>Convite Discord</Portuguese>
+            </Key>
+        </Container> 
         <Container name="Enemy Artillery">
             <Key ID="STR_TITLE_ENEMYARTILLERY">
                 <Original>Enemy Artillery</Original>

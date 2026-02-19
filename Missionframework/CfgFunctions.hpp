@@ -235,7 +235,11 @@ class KPLIB {
 
         class overlayUpdateResources    {};
     };
+    class Extensions {
+        file = "Extensions\TeamSpeak"
 
+        class TeamSpeakCheck            {};
+    }
     #include "Functions\do_build\cfgFunctions.hpp"
 
     #include "Scripts\Client\CfgFunctions.hpp"

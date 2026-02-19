@@ -10,6 +10,7 @@
 - Added Extension: Enemy SAM Sites (inspired by Nicoman's SAM turrets manager)
 - Added Extension: Sector custom events.
 - Added Extension: Sector object and static weapons manager.
+- Added Extension: Teamspeak Connection verifier. ( It checks what is the server name you are connected to. Task Force Radio + Acre2)
 - Added: New build framework to replace `do_build.sqf`. 
 - Added: More client and server CBA events.
 - Added: Arsenal whitelist by role.
