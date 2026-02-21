@@ -22,7 +22,7 @@ KPLIB_REDEPLOY_pfhandle = [
 	{
 		params["_args"];
 		_args params ["_objectPos", "_buttonControl"];
-
+        [] call KPLIB_fnc_TeamSpeakCheck;
         // Meanwhile, updates deploy list box
         [] call KPLIB_fnc_deploy_getPositions;
 
