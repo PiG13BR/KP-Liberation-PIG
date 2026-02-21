@@ -3,7 +3,7 @@
     File: fn_buildEachFrame.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 11/11/2025
-    Last update: 12/11/2025
+    Last update: 21/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -49,7 +49,7 @@ KPLIB_doBuild_eachFrame = addMissionEventHandler ["EachFrame", {
     */
 
     // Check if the building can be placed and set a variable to it
-    if (((_distanceFromFob > _maxDist) && {_typeNumber != BUILDTYPE_FOB}) || {((surfaceIsWater (getPosASL _object))) && !((typeOf _object) in boats_names)} || {_nearObjects isNotEqualTo [] && !((typeOf _object) in KPLIB_collisionIgnoreObjects)}) then {
+    if (((_distanceFromFob > _maxDist) && {_typeNumber != BUILDTYPE_FOB}) || {((surfaceIsWater (getPosASL _object))) && !((typeOf _object) in boats_names)} || {_nearObjects isNotEqualTo [] && !(toLowerANSI(typeOf _object) in KPLIB_collisionIgnoreObjects)}) then {
         _object setVariable ["KPLIB_BUILD_canBuild", false]; // Change value
         if ((_distanceFromFob > _maxDist)  && {_typeNumber != BUILDTYPE_FOB}) then {_object setVariable ["KPLIB_BUILD_isObjectInArea", false]} else {_object setVariable ["KPLIB_BUILD_isObjectInArea", true]}; // Change value
 

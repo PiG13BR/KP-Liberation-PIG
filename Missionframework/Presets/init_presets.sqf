@@ -351,6 +351,12 @@ KPLIB_typeAirClasses   = +KPLIB_b_air_classes;
     };
 } forEach (KPLIB_b_support_classes + [toLowerANSI KPLIB_b_potato01]);
 
+// Classnames of objects which should be ignored when building
+KPLIB_collisionIgnoreObjects = [];
+{
+    KPLIB_collisionIgnoreObjects pushBack _x;
+}forEach (KPLIB_b_deco_classes + KPLIB_b_static_classes + (KPLIB_b_support_classes select {!(_x isKindOf "allVehicles")}));
+
 // Military alphabet used for FOBs and convoys
 KPLIB_militaryAlphabet = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu"];
 
