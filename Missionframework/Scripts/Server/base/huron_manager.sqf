@@ -31,8 +31,10 @@ publicVariable "KPLIB_potato01";
 
 KPLIB_potato01 respawnVehicle [KPLIB_potatoRespawnDelay, -1, true, true];
 
-KPLIB_potato01 addMPEventHandler ["MPRespawn", {  
-    params ["_unit", "_corpse"];
+KPLIB_potato01 addEventHandler ["Respawn", {
+	params ["_unit", "_corpse"];
+
+    ["Potato 01 respawned at Operation Base", "POTATO"] call KPLIB_fnc_log;
 
     _unit spawn {
         KPLIB_potato01 = _this;
@@ -47,6 +49,3 @@ KPLIB_potato01 addMPEventHandler ["MPRespawn", {
         [_this] call KPLIB_fnc_addObjectInit; 
     }
 }];
-
-   
-
