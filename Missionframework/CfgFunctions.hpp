@@ -235,10 +235,16 @@ class KPLIB {
 
         class overlayUpdateResources    {};
     };
-    class Extensions {
+    class TeamSpeak {
         file = "Extensions\TeamSpeak"
 
         class TeamSpeakCheck            {};
+    };
+
+    class Discord_Report {
+        file = "Extensions\Factory_Log_Discord"
+
+        class FactoryToDiscord          {};
     }
     #include "Functions\do_build\cfgFunctions.hpp"
 

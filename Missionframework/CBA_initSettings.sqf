@@ -150,3 +150,18 @@ if (KPLIB_ace) then {
     "discord.gg/link",
     1
 ] call CBA_fnc_addSetting;
+
+[
+    "KPLIB_factory_logging_enabled",
+    "CHECKBOX",
+    [localize "STR_FDC_TITLE", localize "STR_FDC_DESC"],
+    ["KP Liberation", "Factory Logging"],
+    false,
+    1,
+    {
+        params ["_value"];
+        if (_value && isServer) then {
+            [] spawn KPLIB_fnc_factoryLogLoop;
+        };
+    }
+] call CBA_fnc_addSetting;
