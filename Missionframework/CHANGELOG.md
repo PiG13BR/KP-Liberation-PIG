@@ -11,6 +11,7 @@
 - Added Extension: Sector custom events.
 - Added Extension: Sector object and static weapons manager.
 - Added Extension: Teamspeak Connection verifier. ( It checks what is the server name you are connected to. Task Force Radio + Acre2)
+- Added Extension: Discord log, print info from all your captured factories into the server log, and a parser sends the info to discord (needs manual config, example.py provided).
 - Added Extension: Enemy Jet fighter spawns cycle on player flying an aircraft.
 - Added: New build framework to replace `do_build.sqf`. 
 - Added: More client and server CBA events.
@@ -25,6 +26,7 @@
 - Added: Presets in mission parameters (https://github.com/KillahPotatoes/KP-Liberation/pull/973).
 - Added: Enemies have a chance to surrender when flashbanged indoor. 
 - Added: Ace fortify, buyable crates with Fortify token inside, players with fortify tool + token can build in a 50 meters radius of said crate.
+- Added: Buyable UAV, ar-2 Darter, Al-6 Pelican (Medical) (DLC), AL-6 Demining (DLC). 
 - Added: UAV Crate, buyable crate with 3x Medical drones (DLC), 3x AR2-dart, 2x Demining drones IDAP (DLC).
 - Added: Zeus Whitelist as an option to give players access to the game master module.
 - Added: Guerrilla can seize factory sectors at negative reputation level and stop resource production.
