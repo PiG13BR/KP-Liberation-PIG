@@ -26,7 +26,8 @@ _vehicle setVariable ["KPLIB_playerInAircraft", true];
         if (!(isNil "_tower") && ({alive _x} count (crew _air) > 0) && {((getPosATL _air) # 2) >= 150}) then {    
             [
                 {
-                    [getPosASL _this] call KPLIB_fnc_callEnemyFighter
+                    //[getPosASL _this] call KPLIB_fnc_callEnemyFighter
+                    ["KPLIB_callEnemyFighter", getPosASL _this] call CBA_fnc_serverEvent;
                 }, _air, (30 + random 30)
             ] call CBA_fnc_waitAndExecute;
             
