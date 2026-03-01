@@ -9,8 +9,8 @@ write_credit_line = compile preprocessFileLineNumbers "Scripts\Client\ui\write_c
 kp_fuel_consumption = compile preprocessFileLineNumbers "Scripts\Client\misc\kp_fuel_consumption.sqf";
 kp_vehicle_permissions = compile preprocessFileLineNumbers "Scripts\Client\misc\vehicle_permissions.sqf";
 
-//execVM "Scripts\Client\actions\intel_manager.sqf";
-execVM "Scripts\Client\commander\enforce_whitelist.sqf";
+[player] call KPLIB_fnc_enforceCmdrWhitelist;
+[player] call KPLIB_fnc_enforceZeusWhitelist;
 [] call KPLIB_fnc_enforceZeusWhitelist;
 if (KPLIB_param_mapMarkers) then {execVM "Scripts\Client\markers\empty_vehicles_marker.sqf";};
 execVM "Scripts\Client\markers\fob_markers.sqf";
