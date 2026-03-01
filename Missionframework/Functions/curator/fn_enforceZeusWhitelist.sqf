@@ -1,12 +1,28 @@
+/*
+    File: fn_handlePlacedZeusObject.sqf
+    Author: PiG13BR - https://github.com/PiG13BR
+    Date: 18/02/2026
+    Last Update: 19/02/2026
+    License: MIT License - http://www.opensource.org/licenses/MIT
+
+    Description:
+        Creates zeus modules for each player in the zeus whitelist
+
+    Parameter(s):
+        _player - player to assign zeus module [OBJECT, defaults to player]
+
+    Returns:
+        Function reached the end [BOOL]
+*/
 params[["_player", player, [objNull]]];
 
-if (count KPLIB_whitelist_Zeus < 1) exitWith {};
+if (count KPLIB_whitelist_Zeus < 1) exitWith {false};
 
 if (isNull _player) exitWith {};
 private _uid = getPlayerUID _player;
 
 // Exit if the player is not in the list
-if !(_uid in KPLIB_whitelist_Zeus) exitWith {};
+if !(_uid in KPLIB_whitelist_Zeus) exitWith {false};
 
 // Creating a new zeus module
 private _group = createGroup [sideLogic, true];
@@ -52,3 +68,5 @@ addMissionEventHandler ["HandleDisconnect", {
         missionNamespace setVariable [format["KPLIB_zeus_%1", _uid], nil];
     };
 }];
+
+true

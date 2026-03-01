@@ -123,11 +123,14 @@ class KPLIB {
 
         class addFactoryProduction      {};
         class changeFactoryProduction   {};
+        class factoriesBlock            {};
+        class factoryBlockedPFH         {};
         class factoryBuildFacility      {};
         class factoryProduceResource    {};
         class factoryProductionInit     {};
         class factoryProductionPFH      {};
         class registerStorageSector     {};
+        class selectFactoryToBlock      {};
         class setFactoryFacility        {};
         class updateProductionValues    {};
     };
@@ -202,6 +205,7 @@ class KPLIB {
         class spawnCivilians            {};
         class spawnGarrisonUnit         {};
         class spawnGuerillaGroup        {};
+        class spawnGuerInFactory        {};
         class spawnMilitiaCrew          {};
         class spawnRegularSquad         {};
         class spawnVehicle              {};
@@ -257,6 +261,7 @@ class KPLIB {
     #include "Extensions\Arty_Framework\cfgFunctions.hpp"
     #include "Extensions\Arty_Menu\cfgFunctions.hpp"
     #include "Extensions\Clear_Brushes\cfgFunctions.hpp"
+    #include "Extensions\Enemy_Fighters\cfgFunctions.hpp"
     #include "Extensions\Lock_Arsenal\cfgFunctions.hpp"
     #include "Extensions\Player_Menu\KPPLM\KPPLM_functions.hpp"
     #include "Extensions\Pylon_Manager\cfgFunctions.hpp"

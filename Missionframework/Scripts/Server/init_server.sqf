@@ -55,6 +55,7 @@ if (KPLIB_param_logistic) then {execVM "Scripts\Server\resources\manage_logistic
 execVM "Scripts\Server\resources\unit_cap.sqf";
 execVM "Scripts\Server\sector\lose_sectors.sqf";
 [] call KPLIB_fnc_FactoryToDiscord;
+[{[] call KPLIB_fnc_factoriesBlock}, 3600] call CBA_fnc_waitAndExecute;
 
 KPLIB_fsm_sectorMonitor = [] call KPLIB_fnc_sectorMonitor;
 if (KPLIB_param_highCommand) then {KPLIB_fsm_highcommand = [] call KPLIB_fnc_highcommand;};

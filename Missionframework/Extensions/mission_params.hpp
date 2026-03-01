@@ -28,6 +28,12 @@ class ClearBrushes {
     texts[] = {$STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED};
     default = 1;
 };
+class EnemyFighters {
+    title = $STR_ENEMY_FIGHTER_TITLE;
+    values[] = {1, 0};
+    texts[] = {$STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED};
+    default = 1;
+};
 class LockArsenal {
     title = $STR_LOCK_ARSENAL_TITLE;
     values[] = {0, 1};

@@ -84,6 +84,31 @@
             },
             5
         ];
+
+        // Add Delete Action for dead structures 
+        _this addAction [
+            "<t color='#FFFF00'>" + localize "STR_BUILD_ACTION_DELETE" + "</t> <img size='2' image='Functions\do_build\icons\cross.paa'/>", 
+            {
+                deleteVehicle (_this # 0);
+            }, 
+            "", 
+            -1000, 
+            true, 
+            true, 
+            "", 
+            toString{
+                !alive _target &&
+                {!(_originalTarget getVariable ['KPLIB_BUILD_isBuilding', false])} &&
+                {isNull objectParent _this} &&
+                {[4] call KPLIB_fnc_hasPermission} &&
+                {KPLIB_sectors_fob isNotEqualTo [] && {(_target distance2d ([] call KPLIB_fnc_getNearestFob)) < KPLIB_range_fob}} &&
+                {(({alive _x} count (crew _target)) == 0) || {unitIsUAV _target}} &&
+                //{locked _target == -1 || {locked _target == 0} || {locked _target == 1}} &&
+                {(((toLowerANSI (typeOf _target)) in KPLIB_storageBuildings) && (_target getVariable ["KPLIB_fobStorage", false])) || {!((toLowerANSI (typeOf _target)) in KPLIB_storageBuildings)}} &&
+                {(((attachedObjects _target) select {!isNull _target}) isEqualTo []) || {(typeOf _target) == "rhsusf_mkvsoc"}} // ignore null objects left by Advanced Towing (https://github.com/sethduda/AdvancedTowing/pull/46)
+            },
+            5
+        ];
     }
 }] call CBA_fnc_addEventHandler;
 
@@ -199,7 +224,7 @@
     };
 
     // Get storage areas
-    private _storageAreas = (_fobPos nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false]};
+    private _storageAreas = (_fobPos nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false] && {((getPosATL _x) # 2) < 1}};
 
     [_supplyPrice, _ammoPrice, _fuelPrice, _classname, _buildType, _storageAreas] call KPLIB_fnc_subtractResources;
 }] call CBA_fnc_addEventHandler;
@@ -236,7 +261,6 @@
 
     // Update values based on civilian reputation
     private _priceAdd = -(KPLIB_civ_rep/1000);
-
     if (_priceAdd < 0) then {
         if (_supplyPrice > 0) then {_supplyPrice = (_supplyPrice - round(_supplyPrice * abs(_priceAdd))) max 0;};
         if (_ammoPrice > 0) then {_ammoPrice = (_ammoPrice - round(_ammoPrice * abs(_priceAdd))) max 0;};
@@ -248,7 +272,7 @@
     };
 
     // Get storage areas
-    private _storage_areas = (_fobPos nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false]};
+    private _storage_areas = (_fobPos nearobjects (KPLIB_range_fob * 2)) select {_x getVariable ["KPLIB_fobStorage", false] && {((getPosATL _x) # 2) < 1}};
 
     private _storages = [];
     private _totalLimit = 0;
@@ -360,7 +384,7 @@
     // Check for indoor
     if !(lineIntersects [_grenadePosASL, _grenadePosASL vectorAdd [0, 0, 6]]) exitWith {};
 
-	if ((random 100 <= 50) && (_unit distance2D _grenadePosASL < 10) && (_strength >= 0.6) && (side (group _unit) == KPLIB_side_enemy)) then {
+	if ((random 100 <= 35) && (_unit distance2D _grenadePosASL < 10) && (_strength >= 0.6) && (side (group _unit) == KPLIB_side_enemy)) then {
 
         [{
             if (captive _this) then {

@@ -101,6 +101,7 @@ if(isServer) then {
     GET_PARAM_BOOL(KPLIB_param_enemyArtillery, "EnemyArtillery", 1);
     GET_PARAM_BOOL(KPLIB_param_ArtyMenu, "ArtyMenu", 1);
     GET_PARAM_BOOL(KPLIB_param_clearBrush, "ClearBrushes", 1);
+    GET_PARAM_BOOL(KPLIB_param_enemyFighters, "EnemyFighters", 1);
     GET_PARAM(KPLIB_param_lockArsenal, "LockArsenal", 0);
     GET_PARAM_BOOL(KPLIB_param_pylonManager, "PylonManager", 1);
     GET_PARAM_BOOL(KPLIB_param_rallyPoint, "RallyPoint", 1);
@@ -141,7 +142,6 @@ if(isServer) then {
     GET_PARAM(KPLIB_param_vehicleCleanup, "CleanupVehicles", 2);
     GET_PARAM_BOOL(KPLIB_param_introCinematic, "Introduction", 1);
     GET_PARAM_BOOL(KPLIB_param_deployCinematic, "DeploymentCinematic", 1);
-    GET_PARAM_BOOL(KPLIB_param_cmdrWhitelist, "Whitelist", 0);
     GET_PARAM(KPLIB_param_restart, "ServerRestart", 0);
 
     GREUH_allow_mapmarkers = KPLIB_param_mapMarkers; publicVariable "GREUH_allow_mapmarkers";
@@ -486,7 +486,7 @@ if (!isDedicated && hasInterface) then {
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_PLAYERMENU_KP";
-    _value = if (KPLIB_param_playerMenu) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
+    _value = if (KPLIB_param_playerMenu) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_KPPLM_DISABLED";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_PARAMS_VICTORYCONDITION";
@@ -511,6 +511,10 @@ if (!isDedicated && hasInterface) then {
     _value = if (KPLIB_param_clearBrush) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
     
+    _param = localize "STR_ENEMY_FIGHTER_TITLE";
+    _value = if (KPLIB_param_enemyFighters) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
+    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
+
     _param = localize "STR_LOCK_ARSENAL_TITLE";
     switch (KPLIB_param_lockArsenal) do {
         case 1: {_value = localize "STR_LOCK_ARSENAL_DEFAULT"};
@@ -724,10 +728,6 @@ if (!isDedicated && hasInterface) then {
 
     _param = localize "STR_PARAMS_DEPLOYMENTCAMERA";
     _value = if (KPLIB_param_deployCinematic) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
-    _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
-
-    _param = localize "STR_WHITELIST_PARAM";
-    _value = if (KPLIB_param_cmdrWhitelist) then {localize "STR_WHITELIST_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_RESTART_PARAM";

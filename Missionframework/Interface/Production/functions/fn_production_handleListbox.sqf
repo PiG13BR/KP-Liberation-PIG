@@ -3,7 +3,7 @@
     File: fn_production_handleListBox.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 15/11/2025
-    Last Update: 24/11/2025
+    Last Update: 07/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -94,18 +94,13 @@ KPLIB_production_MenuPFH = [{
 
     private _storage = KPLIB_sector_storage getOrDefault [_sector, objNull];
 
-    //if (isNull _storage) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
-
     // Check for existing storage
-    if ((count _storageArray) > 0) then {
+    if !(isNull _storage) then {
         // Get storage object
-        //private _crateCount = count (attachedObjects _storage); // Get how many crates are attached to the storage
         (_storage getVariable ["KPLIB_storageResources", [0,0,0]]) params ["_suppliesAmount", "_ammoAmount", "_fuelAmount"];
         private _reSum = _suppliesAmount + _ammoAmount + _fuelAmount;
 
         private _storageLimit = [_storage] call KPLIB_fnc_getStorageLimit;
-        
-        //private _crateMax = count (KPLIB_small_storage_positions); // Get maximum of crates that can be attached to the storage
 
         if (_reSum >= _storageLimit) then {
             _color_actual = COLOR_NEGATIVE;
@@ -185,12 +180,17 @@ KPLIB_production_MenuPFH = [{
 
     _productionBoostCtrl ctrlSetText (format [localize "STR_PRODUCTION_BOOST", round (30 + (10 * KPLIB_param_difficulty))]);
 
-    if (KPLIB_civ_rep >= round (30 + (10 * KPLIB_param_difficulty))) then {
-        _productionBoostCtrl ctrlSetTooltip localize "STR_PRODUCTION_BOOST_ACTIVATED";
-        _productionBoostCtrl ctrlSetTextColor COLOR_POSITIVE
-    } else {
+    if (_sector in KPLIB_blockedFactories) then {
+        // If factory was seized, replace production boost control text with the seized text
+        _productionBoostCtrl ctrlSetText (localize "STR_FACTORY_SEIZED_TEXT");
         _productionBoostCtrl ctrlSetTextColor COLOR_NEGATIVE;
+    } else {
+        if (KPLIB_civ_rep >= round (30 + (10 * KPLIB_param_difficulty))) then {
+            _productionBoostCtrl ctrlSetTooltip localize "STR_PRODUCTION_BOOST_ACTIVATED";
+            _productionBoostCtrl ctrlSetTextColor COLOR_POSITIVE
+        } else {
+            _productionBoostCtrl ctrlSetTextColor COLOR_NEGATIVE;
+        };
     };
-
 }, 1, [_display, _lbCurSel, _sector]] call CBA_fnc_addPerFrameHandler;
 

@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.97.0 (30/01/2026)
+## 0.97.0 (01/03/2026)
 - Added Extension: Enemy artillery.
 - Added Extension: Artillery menu for the players as a replacer for the BIS support module.
 - Added Extension: Clear bushes/trees action for the players (from the clear brush Ampersand).
@@ -12,6 +12,7 @@
 - Added Extension: Sector object and static weapons manager.
 - Added Extension: Teamspeak Connection verifier. ( It checks what is the server name you are connected to. Task Force Radio + Acre2)
 - Added Extension: Discord log, print info from all your captured factories into the server log, and a parser sends the info to discord (needs manual config, example.py provided).
+- Added Extension: Enemy Jet fighter spawns cycle on player flying an aircraft.
 - Added: New build framework to replace `do_build.sqf`. 
 - Added: More client and server CBA events.
 - Added: Arsenal whitelist by role.
@@ -26,6 +27,9 @@
 - Added: Enemies have a chance to surrender when flashbanged indoor. 
 - Added: Ace fortify, buyable crates with Fortify token inside, players with fortify tool + token can build in a 50 meters radius of said crate.
 - Added: Buyable UAV, ar-2 Darter, Al-6 Pelican (Medical) (DLC), AL-6 Demining (DLC). 
+- Added: UAV Crate, buyable crate with 3x Medical drones (DLC), 3x AR2-dart, 2x Demining drones IDAP (DLC).
+- Added: Zeus Whitelist as an option to give players access to the game master module.
+- Added: Guerrilla can seize factory sectors at negative reputation level and stop resource production.
 - Tweaked: AI Prices, before almost all of them didn't use ammo, now it has a little of an ammo cost.
 - Tweaked: Folder and files reorganization.
 - Tweaked: Battlegroup framework.
@@ -53,14 +57,12 @@
 - Removed: Useless civilians patrols between sectors.
 - Removed: Infantry only battlegroup.
 - Removed: Zeus mission parameters, init and request.
+- Removed: Commander whitelist mission parameter. Directly whitelist detection by checking the array.
 - Fixed: Collision with carrying supply crates.
 
 ## CHECKING / PRODUCING
-- Add enemy jet fighter spawns cycle on player flying an aircraft.
-- Guerrilla can attack factory sectors at negative reputation level. Stop production.
 
 ## STANDING BY
-- Make zeus whitelist.
 - Prisoners can reveal outposts, artillery position, SAM sites before delivering him to a FOB, in exchange to intel points.
 - Add enemy plane CAS support.
 - Add Task framework to handle secondary objectives.
@@ -76,3 +78,6 @@
 - FOB Defense UI for static weapons / handle ammo / handle crew.
 - Bomb jammer for important sectors.
 - Towers are jammers.
+- Refactor enemy reinforcements based on points + enemy readiness. Closest military base + nearby sectors (i.e: factories) = more points.
+- Rearming friendly vehicles will cost ammo supplies.
+- Civilians in bodybags 1% reputation.
