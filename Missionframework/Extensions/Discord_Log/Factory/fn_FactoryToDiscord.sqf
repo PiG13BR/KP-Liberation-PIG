@@ -10,10 +10,11 @@ KPLIB_factoryLogLoop_handle = [
             [_handle] call CBA_fnc_removePerFrameHandler;
             KPLIB_factoryLogLoop_handle = nil;
         };
+        private _playerCount = [] call KPLIB_fnc_getPlayerCount;
 
-        if (count KPLIB_production > 0) then {
+        if (count KPLIB_production > 0 && _playerCount > 0) then {
             private _productionTypes = ["Supply", "Ammo", "Fuel"];
-            
+
             diag_log "--- FACTORY_DATA_START ---";
 
             {
@@ -42,7 +43,6 @@ KPLIB_factoryLogLoop_handle = [
                     _fuelValue,
                     _time
                 ];
-                
                 diag_log _factoryJson;
             } forEach KPLIB_production;
 
