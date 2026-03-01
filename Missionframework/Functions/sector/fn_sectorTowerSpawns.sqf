@@ -2,7 +2,7 @@
     File: fn_sectorTowerSpawns.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 02/12/2025
-    Last Update: 03/02/2026
+    Last Update: 11/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:

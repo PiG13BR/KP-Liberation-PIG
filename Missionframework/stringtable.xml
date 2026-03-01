@@ -4996,6 +4996,22 @@
             <Czech>Nastavení sektoru uloženo</Czech>
             <Japanese>セクター設定を保存</Japanese>
         </Key>
+        <Key ID="STR_FACTORY_SEIZED_TITLE">
+            <Original>Factory Seized</Original>
+            <Portuguese>Fábrica Capturada</Portuguese>
+        </Key>
+        <Key ID="STR_FACTORY_SEIZED">
+            <Original>%1 was seized by resistance fighters. Storage removed.</Original>
+            <Portuguese>%1 foi capturado pela resistência. O depósito foi removido.</Portuguese>
+        </Key>
+        <Key ID="STR_FACTORY_SEIZED_TEXT">
+            <Original>This factory was seized by resistance fighters</Original>
+            <Portuguese>Essa fábrica foi capturada pela resistência local</Portuguese>
+        </Key>
+        <Key ID="STR_FACTORY_LIBERATED">
+            <Original>%1 is not under resistance control anymore.</Original>
+            <Portuguese>%1 não está mais sob controle da resistência local.</Portuguese>
+        </Key>
         <Key ID="STR_SECSTORAGEBUILD_ACTION">
             <Original>-- Build storage --</Original>
             <German>-- Lagerfläche bauen --</German>
@@ -8679,6 +8695,27 @@
                 <Portuguese>Aumente ou diminua o coeficiente de tempo para derrubar arbustos e árvores</Portuguese>
             </Key>
         </Container>
+
+
+        <Container name="Enemy Fighter">
+            <Key ID="STR_TITLE_ENEMYFIGHTER">
+                <Original>Enemy Fighter</Original>
+                <Portuguese>Caça Inimigo</Portuguese>
+            </Key>
+            <Key ID="STR_NOTIFICATION_ENEMYFIGHTER">
+                <Original>Enemy fighter inbound!</Original>
+                <Portuguese>Caça inimigo a caminho!</Portuguese>
+            </Key>
+            <Key ID="STR_NOTIFICATION_ENEMYFIGHTER_DESTROYED">
+                <Original>Enemy fighter destroyed</Original>
+                <Portuguese>Caça inimigo destruído</Portuguese>
+            </Key>
+            <Key ID="STR_ENEMY_FIGHTER_TITLE">
+                <Original>Enemy Fighters</Original>
+                <Portuguese>Caças Inimigos</Portuguese>
+            </Key>
+        </Container>
+
 
         <Container name="SAM Sites">
             <Key ID="STR_SAM_TITLE">

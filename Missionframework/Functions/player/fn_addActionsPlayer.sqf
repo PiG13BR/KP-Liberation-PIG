@@ -2,7 +2,7 @@
     File: fn_addActionsPlayer.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2020-04-13
-    Last Update: 2026-01-11
+    Last Update: 2026-02-07
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -187,8 +187,9 @@ _player addAction [
             || {[3] call KPLIB_fnc_hasPermission}
         }
         && {((_originalTarget getVariable ['KPLIB_nearProd', []]) # 2) isEqualTo []}
-        && {!(_originalTarget getVariable ['KPLIB_BUILD_isBuilding', false])} &&
-        {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
+        && {!(_originalTarget getVariable ['KPLIB_BUILD_isBuilding', false])}
+        && {!(([KPLIB_range_sectorCapture, getPosATL _originalTarget] call KPLIB_fnc_getNearestSector) in KPLIB_blockedFactories)}
+        && {isNull (_this getVariable ["KPLIB_carriedObject", objNull])}
     }
 ];
 
@@ -438,7 +439,7 @@ _player addAction [
 // Clear gargabe
 if (player == ([] call KPLIB_fnc_getCommander)) then {
 _player addAction [
-    ["<t color='#FF0000'>", localize "STR_CLEARGARBAGE_ACTION", "</t><img size='2' image='Images\ui_trashcan.paa'/>"] joinString "",
+    ["<t color='#FF0000'>", localize "STR_CLEARGARBAGE_ACTION", "</t><img size='2' image='a3\3den\data\displays\display3den\panelleft\entitylist_delete_ca.paa'/>"] joinString "",
     {[] spawn KPLIB_fnc_clearGarbage;},
     nil,
     -860,

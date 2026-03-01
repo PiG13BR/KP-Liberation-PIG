@@ -25,7 +25,7 @@ private _local_infantry_cap = 50 * KPLIB_param_resourcesMulti;
 
 {
     private _fob_buildings = _x nearobjects KPLIB_range_fob;
-    private _storage_areas = _fob_buildings select {_x getVariable ["KPLIB_fobStorage", false]};
+    private _storage_areas = _fob_buildings select {_x getVariable ["KPLIB_fobStorage", false] && {((getPosATL _x) # 2) < 1}};
     private _heliSlots = {KPLIB_type_heliPads find (typeOf _x) >= 0} count _fob_buildings;
     private _planeSlots = {KPLIB_type_hangars find (typeOf _x) >= 0} count _fob_buildings;
     private _hasAirBuilding = {(typeOf _x) == KPLIB_b_airControl;} count _fob_buildings;

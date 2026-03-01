@@ -205,5 +205,6 @@ private _weights = [
     KPLIB_sectorTowers,
     KPLIB_sectorLiberated,
     KPLIB_sector_arsenalLink,
-    OAB_isOPFORFriendly
+    OAB_isOPFORFriendly,
+    KPLIB_blockedFactories
 ] // return

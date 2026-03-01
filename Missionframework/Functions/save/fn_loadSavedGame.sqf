@@ -2,7 +2,7 @@
     File: fn_loadSavedGame.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 16/11/2025
-    Last Update: 28/01/2026
+    Last Update: 21/02/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -41,16 +41,6 @@ if (hasInterface) then {
                 [] call KPLIB_fnc_doSave;
             }];
     }, [], 0, {}] call CBA_fnc_waitUntilAndExecute;
-    /*
-    0 spawn {
-        waitUntil {!isNull findDisplay 46};
-        (findDisplay 46) displayAddEventHandler ["Unload", {
-            if (!isServer) exitWith {};
-            ["Player server exit. Saving mission data.", "SAVE"] call KPLIB_fnc_log;
-            [] call KPLIB_fnc_doSave;
-        }];
-    };
-    */
 } else {
     addMissionEventHandler ["HandleDisconnect", {
         if !(allPlayers isEqualTo []) exitWith {false};
@@ -136,6 +126,8 @@ resources_intel = 0;
 KPLIB_saveLoaded = false;
 // OAB Start
 OAB_isOPFORFriendly = true;
+// Blocked factory by resistance
+KPLIB_blockedFactories = [];
 
 // Add all buildings for saving and kill manager ignore
 _noKillHandler append KPLIB_b_deco_classes;
@@ -235,7 +227,8 @@ if (!isNil "_saveData") then {
         KPLIB_sectorTowers                          = _saveData param [21, []];
         KPLIB_sectorLiberated                       = _saveData param [22, []];
         KPLIB_sector_arsenalLink                    = _saveData param [23, []];
-        OAB_isOPFORFriendly                         = _saveData select 24;          
+        OAB_isOPFORFriendly                         = _saveData select 24;
+        KPLIB_blockedFactories                      = _saveData param [25, []];
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;
@@ -354,6 +347,55 @@ if (!isNil "_saveData") then {
         [_x select 0, _x select 1] call KPLIB_fnc_createClearance;
     } forEach KPLIB_clearances;
 
+    // Zeus whitelist and addons
+    if (count KPLIB_whitelist_Zeus > 0) then {
+        /*
+            // All addons
+            private _addons = [];
+            private _cfgPatches = configfile >> "cfgpatches";
+            for "_i" from 0 to (count _cfgPatches - 1) do {
+                private _class = _cfgPatches select _i;
+                if (isclass _class) then {_addons set [count _addons, configname _class];};
+            };
+
+            activateAddons _addons;
+        */
+
+        // Take out from Sa-Matra's note in activateAddons biki page
+        _fnc_prepareClassAddons = {
+            private _class = toLowerANSI _this;
+
+            // To avoid double checks
+            if(isNil"KPLIB_addonCheckedClasses") then {KPLIB_addonCheckedClasses = createHashMap;};
+            if(_class in KPLIB_addonCheckedClasses) exitWith {};
+
+            // Finding missing addons
+            private _needed = (unitAddons _class) apply {toLowerANSI _x};
+            private _active = activatedAddons;
+            private _missing = _needed - (_needed arrayIntersect _active);
+            if(count _missing > 0) then {
+                // Adding everything again, engine will figure it out itself
+                _active append _missing;
+                activateAddons _active;
+            };
+
+            KPLIB_addonCheckedClasses set [_class, _needed];
+        };
+        
+        private _classes = KPLIB_b_inf_classes + KPLIB_b_allVeh_classes + KPLIB_b_support_classes + KPLIB_b_deco_classes + KPLIB_o_allVeh_classes + KPLIB_o_allStatics_classes + KPLIB_o_allSAM_classes + KPLIB_o_inf_classes + KPLIB_r_units + KPLIB_r_vehicles + KPLIB_c_units + KPLIB_c_vehicles;
+        //private _addons = [];
+        {
+            _x call _fnc_prepareClassAddons;
+        }forEach _classes;
+
+        // Whitelist detected, deleting all existing modules
+        ["Zeus whitelist detected", "ZEUS WHITELIST"] call KPLIB_fnc_log;
+        {
+            [format["Deleting curator %1", _x], "ZEUS WHITELIST"] call KPLIB_fnc_log;
+            deleteVehicle _x
+        }forEach allCurators;
+    };
+
     // Collection array for all objects which are loaded
     private _spawnedObjects = [];
 
@@ -455,6 +497,7 @@ if (!isNil "_saveData") then {
 
                     _object removeMagazinesTurret [_class, _turret];
                     _object addMagazineTurret [_class, _turret, _count];
+                    [_object, [_class, _count, _turret]] remoteExec ["setMagazineTurretAmmo", _object turretOwner _turret];
                 }forEach _ammo;
             };
         };
@@ -603,6 +646,23 @@ if (!isNil "_saveData") then {
     }forEach KPLIB_production;
     ["Saved sector storages placed and filled", "SAVE"] call KPLIB_fnc_log;
 
+    if (count KPLIB_blockedFactories > 0) then {
+        {
+            // Spawns guerilla in factory
+            private _guerUnits = [_x] call KPLIB_fnc_spawnGuerInFactory;
+
+            // Create a marker on the top of the sector
+            private _mk = createMarker [format["%1_blocked", _x], markerPos _x];
+            _mk setMarkerType "mil_destroy";
+            _mk setMarkerSize [1.2, 1.2];
+            _mk setMarkerDir 45;
+            _mk setMarkerColor "ColorRED";
+
+            // Manage blocked factory
+            [_x, _guerUnits] call KPLIB_fnc_factoryBlockedPFH;
+        }forEach KPLIB_blockedFactories;
+    };
+
     // Sector production markers. Transform into a hashmap.
     private _productionMarkersHashmap = createHashMapFromArray [];
 
@@ -695,6 +755,7 @@ publicVariable "KPLIB_logistics";
 publicVariable "KPLIB_production";
 publicVariable "KPLIB_production_markers";
 publicVariable "KPLIB_sector_storage";
+publicVariable "KPLIB_blockedFactories";
 
 if (isNil "OAB_isOPFORFriendly") then {
     OAB_isOPFORFriendly = true
@@ -778,10 +839,12 @@ if (KPLIB_param_lockArsenal > 0 && !isNil "KPLIB_b_lockedArsenal") then {
         private _nextArsenal = "";
         private _nextSector = "";
 
+        /*
         private _assignedArsenal = KPLIB_sector_arsenalLink apply {
             _assignedArsenal pushBack (_x select 0);
             (_x select 1);
         };
+        */
 
         // Add new entries, when there are elite vehicles and military sectors are not yet assigned 
         {

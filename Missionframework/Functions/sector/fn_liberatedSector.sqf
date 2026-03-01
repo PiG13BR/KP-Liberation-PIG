@@ -24,7 +24,7 @@ if (_liberated_sector in KPLIB_sectors_outpost) exitWith {
     [{_this call KPLIB_fnc_replenishOutpost}, _liberated_sector, 3600] call CBA_fnc_waitAndExecute;
 
     // 50% chance of enemy QRF (nearby military base)
-    if (KPLIB_enemyReadiness >= 25 && (random 100 <= 50)) then {
+    if ((random 100 <= KPLIB_enemyReadiness)) then {
         [{
             params["_liberated_sector"];
 
