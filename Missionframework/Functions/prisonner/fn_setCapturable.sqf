@@ -2,7 +2,7 @@
     File: fn_setCapturable.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 24/11/2025
-    Last Update: 24/11/2025
+    Last Update: 01/03/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -55,24 +55,27 @@ if ((side group _unit == KPLIB_side_enemy) && (_unit isKindOf "CAManBase") && (a
             ["KPLIB_addActionCapture", _unit] call CBA_fnc_globalEventJIP;
         };
 
-        _unit setVariable ["KPLIB_prisonner_surrendered", true, true];
-
         // From now on this unit is a POW, even if it escapes from the player, there will be punishment for killing an unarmed soldier
-        _unit addEventHandler ["Killed", {
-            params["_unit", "_killer"];
+        [{
+            _this setVariable ["KPLIB_prisonner_surrendered", true, true];
 
-            if (side _killer == KPLIB_side_player) then {
-                
-                [format[localize "STR_POW_KILLED", name _killer]] remoteExec ["systemChat"];
+            _this addEventHandler ["Killed", {
+                params["_unit", "_killer"];
 
-                // Increase combat readiness
-                private _readiness_increase = 25 + (floor (random 10)) * KPLIB_param_difficulty;
-                KPLIB_enemyReadiness = KPLIB_enemyReadiness + _readiness_increase;
-                stats_readiness_earned = stats_readiness_earned + _readiness_increase;
-                if (KPLIB_enemyReadiness > 100.0 && KPLIB_param_difficulty < 2) then {KPLIB_enemyReadiness = 100.0};
-            };
-        }];
+                if (side (group _killer) == KPLIB_side_player) then {
+                    
+                    [format[localize "STR_POW_KILLED", name _killer]] remoteExec ["systemChat"];
 
-        [_unit] call KPLIB_fnc_prisonnerCheckPFH;
+                    // Increase combat readiness
+                    private _readiness_increase = 25 + (floor (random 10)) * KPLIB_param_difficulty;
+                    KPLIB_enemyReadiness = KPLIB_enemyReadiness + _readiness_increase;
+                    stats_readiness_earned = stats_readiness_earned + _readiness_increase;
+                    if (KPLIB_enemyReadiness > 100.0 && KPLIB_param_difficulty < 2) then {KPLIB_enemyReadiness = 100.0};
+                };
+            }];
+        
+        [_this] call KPLIB_fnc_prisonnerCheckPFH;
+
+        }, _unit, 5] call CBA_fnc_waitAndExecute;
     };
 };
