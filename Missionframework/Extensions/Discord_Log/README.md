@@ -1,3 +1,9 @@
+Code bellow is an example of a discord bot
+that will parse through the logs to send info
+from the factories to a discord channel
+with an embeded message.
+
+```py
 import discord
 from discord.ext
 import json
@@ -156,3 +162,4 @@ async def on_ready():
 
 if __name__ == "__main__":
     bot.run(TOKEN)
+```
