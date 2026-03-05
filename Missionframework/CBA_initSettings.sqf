@@ -139,7 +139,10 @@ if (KPLIB_param_SAMSite > 0) then {
             "EDITBOX",  
             ["STR_SAMSITE_SETTING_MAXRANGE_DESCRIPTION", "STR_SAMSITE_SETTING_MAXRANGE_TOOLTIP"], 
             ["KP Liberation", localize "STR_SAM_TITLE"], 
-            "10000"
+            "10000",
+            true,
+            {},
+            true
         ] call CBA_fnc_addSetting;
 
         [
@@ -147,7 +150,10 @@ if (KPLIB_param_SAMSite > 0) then {
             "EDITBOX",  
             ["STR_SAMSITE_SETTING_MINALT_DESCRIPTION", "STR_SAMSITE_SETTING_MINALT_TOOLTIP"], 
             ["KP Liberation", localize "STR_SAM_TITLE"], 
-            "200"
+            "200",
+            true,
+            {},
+            true
         ] call CBA_fnc_addSetting;
     };
 };
