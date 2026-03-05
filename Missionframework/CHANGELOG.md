@@ -74,7 +74,6 @@
 - Convert some variables in `KPLIB_config.sqf` into CBA setting or mission parameter
 - Use paratroopers battlegroup script to paradrop enemy vehicles. Enemy helicopter slingload vehicles.
 - Commander can change FOB names.
-- TS requirement mission param for mods like ACRE2 and TFAR.
 - FOB Defense UI for static weapons / handle ammo / handle crew.
 - Bomb jammer for important sectors.
 - Towers are jammers.

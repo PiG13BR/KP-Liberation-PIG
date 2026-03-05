@@ -37,7 +37,7 @@ if (KPLIB_killedTurretsSAM > 0) then {
     _maxSAMnumber = _maxSAMnumber + (KPLIB_enemyReadiness / 50);
     _maxSAMnumber = _maxSAMnumber * _difficulty;
     _maxSAMnumber = round _maxSAMnumber;
-    if (_maxSAMnumber > KPLIB_SAM_maximumSites) then {_maxSAMnumber = KPLIB_SAM_maximumSites};
+    if (_maxSAMnumber > PIG_SAMSite_Setting_MaxSites) then {_maxSAMnumber = PIG_SAMSite_Setting_MaxSites};
 
     // maximum amount of SAM turrets should not exceed number of opfor sectors
     if (_maxSAMnumber > (count KPLIB_sectors_all - count KPLIB_sectors_player)) then {_maxSAMnumber = count KPLIB_sectors_all - count KPLIB_sectors_player};

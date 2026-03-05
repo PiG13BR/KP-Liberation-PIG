@@ -2,7 +2,7 @@
     File: fn_SAM_shoradTargetMissile.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 10/12/2025
-    Last Update: 10/12/2025
+    Last Update: 05/03/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -47,7 +47,7 @@ _shorad disableAI "FSM";
 
     private _chance = 5;
     // Increase chance of missile interception if custom configuration is enabled, because players can still target radars with HARM, far away.
-    if (KPLIB_param_SAMSite == 2 && {_firedDistance > KPLIB_SAM_minimumRange}) then {_chance = _chance * 2}; 
+    if (KPLIB_param_SAMSite == 2 && {_firedDistance > PIG_SAMSite_Setting_maxRange}) then {_chance = _chance * 2}; 
 
     (_validHit && {random 100 < _chance})|| {!alive _missile}
 }, {
@@ -59,39 +59,6 @@ _shorad disableAI "FSM";
     triggerAmmo _missile;
     
 }, [_missile, _firedDistance]] call CBA_fnc_waitUntilAndExecute;
-
-/*
-private _firedEH = _shorad addEventHandler ["Fired", {
-    params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
-    _unit setvehicleAmmo 1;
-    private _missile = _unit getVariable ["KPLIB_missileFired", objNull];
-
-    // 25% chance of tracking the fired projectile (add chance and avoid creating a lot of WUAE)
-    private _chance = 25;
-    // Increase chance of missile interception if custom configuration is enabled, because players can still target radars with HARM, far away.
-    if (KPLIB_param_SAMSite == 2 && {(_missile getVariable ["KPLIB_missileDistanceFired", 0]) > KPLIB_SAM_minimumRange}) then {_chance = 45}; 
-    if (random 100 <= _chance) then {	
-
-        [{
-            params["_projectile", "_missile"];
-        
-            (_projectile distance _missile < 18) || {!alive _projectile} || {!alive _missile}
-        }, {
-            params["_projectile", "_missile"];
-            
-            if (!alive _projectile || {!alive _missile}) exitWith {};
-            // Create effect
-            private _source = "#particlesource" createVehicle (getPosATL _missile);
-            _source setParticleClass "Missile0";
-            [{deleteVehicle _this}, _source, 1] call CBA_fnc_waitAndExecute;
-
-            // Delete missile
-            deleteVehicle _missile;
-            
-        }, [_projectile, _missile]] call CBA_fnc_waitUntilAndExecute;
-    };
-}];
-*/
 
 // Track missile on each frame
 addMissionEventHandler ["EachFrame", {

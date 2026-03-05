@@ -430,7 +430,7 @@ KPLIB_objectInits = [
 
     // Fortify
     [
-        [KPLIB_b_fortify_small]
+        [KPLIB_b_fortify_small],
         {
             [KPLIB_side_player, 0, [["Land_BagFence_Long_F", 5], ["Land_SandbagBarricade_01_half_F", 5], ["Land_Razorwire_F", 5], ["Land_Rampart_F", 5]]] call ace_fortify_fnc_registerObjects;
             _this addItemCargoGlobal ["ACE_FortifyToken", 50]; // 250$
@@ -439,7 +439,7 @@ KPLIB_objectInits = [
         }
     ],
     [
-        [KPLIB_b_fortify_medium]
+        [KPLIB_b_fortify_medium],
         {
             [KPLIB_side_player, 0, [["Land_BagFence_Long_F", 5], ["Land_SandbagBarricade_01_half_F", 5], ["Land_Razorwire_F", 5], ["Land_Rampart_F", 5], ["Land_SandbagBarricade_01_hole_F", 50], ["Land_BagBunker_Small_F", 50], ["Land_bagBunker_Large_F", 50], ["Land_DragonsTeeth_01_4x2_new_F", 50]]] call ace_fortify_fnc_registerObjects;
             _this addItemCargoGlobal ["ACE_FortifyToken", 60]; // 300$

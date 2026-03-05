@@ -8752,6 +8752,30 @@
                 <Original>Hostile SAM position destroyed</Original>
                 <Portuguese>Bateria anti-aérea inimiga destruída</Portuguese>
             </Key>
+            <Key ID="STR_SAMSITE_SETTING_MAXSITES_DESCRIPTION">
+                <Original>Maximum SAM Sites</Original>
+                <Portuguese>Quantidade Máxima de Posições SAM</Portuguese>
+            </Key>
+            <Key ID="STR_SAMSITE_SETTING_MAXSITES_TOOLTIP">
+                <Original>Maximum number of SAM sites that can coexist in the game session</Original>
+                <Portuguese>Quantidade máxima de posições de SAM que podem coexistir na sessão</Portuguese>
+            </Key>
+            <Key ID="STR_SAMSITE_SETTING_MAXRANGE_DESCRIPTION">
+                <Original>Radar Target Range</Original>
+                <Portuguese>Alcance do Radar</Portuguese>
+            </Key>
+            <Key ID="STR_SAMSITE_SETTING_MAXRANGE_TOOLTIP">
+                <Original>Maximum SAM radar target range in meters</Original>
+                <Portuguese>Alcance máximo do radar para detectar aeronaves, em metros</Portuguese>
+            </Key>
+            <Key ID="STR_SAMSITE_SETTING_MINALT_DESCRIPTION">
+                <Original>Altitude Radar Targeting</Original>
+                <Portuguese>Altitude Requerida para Detecção</Portuguese>
+            </Key>
+            <Key ID="STR_SAMSITE_SETTING_MINALT_TOOLTIP">
+                <Original>Required minimum plane altitude to be targeted in meters</Original>
+                <Portuguese>Altitude mínima requerida das aeronaves para serem detectadas por radares</Portuguese>
+            </Key>
         </Container>
 
 

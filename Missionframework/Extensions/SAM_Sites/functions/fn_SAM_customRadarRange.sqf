@@ -2,7 +2,7 @@
     File: fn_SAM_customRadarRange.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 05/12/2025
-    Last Update: 03/01/2026
+    Last Update: 05/03/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -32,14 +32,14 @@ if (isNull _radar) exitWith {["Object is null"] call BIS_fnc_error};
     private _validTargets = _sensorTargets select {
         _x params ["_target", "_type", "_relationShip"];
         
-        (_type == "air") && {_relationShip != "friendly"} && {_target distance2D _radar <= KPLIB_SAM_minimumRange} && {(getPos _target # 2 > KPLIB_SAM_mininumAltitude)}
+        (_type == "air") && {_relationShip != "friendly"} && {_target distance2D _radar <= PIG_SAMSite_Setting_maxRange} && {(getPos _target # 2 > PIG_SAMSite_Setting_minAlt)}
     };
 
     // Find targets to ignore
     private _ignoreTargets = _sensorTargets select {
         _x params ["_target", "_type", "_relationShip"];
         
-        (_type == "air") && {_relationShip != "friendly"} && {_target distance2D _radar > KPLIB_SAM_minimumRange} || {(getPos _target # 2 <= KPLIB_SAM_mininumAltitude)}
+        (_type == "air") && {_relationShip != "friendly"} && {_target distance2D _radar > PIG_SAMSite_Setting_maxRange} || {(getPos _target # 2 <= PIG_SAMSite_Setting_minAlt)}
     };
 
     // Valid target 

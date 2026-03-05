@@ -115,6 +115,43 @@ if (KPLIB_ace) then {
     ] call CBA_fnc_addSetting;
 };
 
+if (KPLIB_param_SAMSite > 0) then {
+    // Maximum SAM Sites
+    [
+        "PIG_SAMSite_Setting_MaxSites", 
+        "LIST",     
+        [localize "STR_SAMSITE_SETTING_MAXSITES_DESCRIPTION", localize "STR_SAMSITE_SETTING_MAXSITES_TOOLTIP"], 
+        ["KP Liberation", localize "STR_SAM_TITLE"], 
+        [
+            [2, 3, 4, 5, 6, 7, 8, 9, 10], 
+            [2, 3, 4, 5, 6, 7, 8, 9, 10], 
+            5
+        ],
+        true, // Global
+        {},
+        true
+    ] call CBA_fnc_addSetting;
+
+    if (KPLIB_param_SAMSite == 2) then {
+        // Custom radar configuration
+        [
+            "PIG_SAMSite_Setting_maxRange", 
+            "EDITBOX",  
+            ["STR_SAMSITE_SETTING_MAXRANGE_DESCRIPTION", "STR_SAMSITE_SETTING_MAXRANGE_TOOLTIP"], 
+            ["KP Liberation", localize "STR_SAM_TITLE"], 
+            "10000"
+        ] call CBA_fnc_addSetting;
+
+        [
+            "PIG_SAMSite_Setting_minAlt", 
+            "EDITBOX",  
+            ["STR_SAMSITE_SETTING_MINALT_DESCRIPTION", "STR_SAMSITE_SETTING_MINALT_TOOLTIP"], 
+            ["KP Liberation", localize "STR_SAM_TITLE"], 
+            "200"
+        ] call CBA_fnc_addSetting;
+    };
+};
+
 [
     "TS_Verification",
     "CHECKBOX",
