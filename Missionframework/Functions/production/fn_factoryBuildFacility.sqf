@@ -2,7 +2,7 @@
     File: fn_factoryBuildFacility.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 14/11/2025
-    Last Update: 28/01/2026
+    Last Update: 05/03/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -25,25 +25,13 @@ if !(_factory in KPLIB_production) exitWith {["This sector is not in the product
 #define AMMO_INDEX 1
 #define FUEL_INDEX 2
 
-// Get production elements
-private _factoryProduction = KPLIB_production getOrDefault [_factory, []];
+// Get storage object
+private _storage = KPLIB_sector_storage getOrDefault [_factory, objNull];
 
-if (_factoryProduction isEqualTo []) exitWith {};
+if (isNull _storage) exitWith {};
 
-// Fetch production params
-_factoryProduction params [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "_suppliesCount",
-    "_ammoCount",
-    "_fuelCount"
-];
+private _resources = _storage getVariable ["KPLIB_storageResources", [0,0,0]];
+_resources params ["_suppliesAmount", "_ammoAmount", "_fuelAmount"];
 
 // Default prices
 private _priceS = 100;
@@ -58,19 +46,11 @@ switch (_facility) do {
 };
 
 // Check for available resources
-if ((_suppliesCount >= _priceS) && (_ammoCount >= _priceA) && (_fuelCount >= _priceF)) then {
+if ((_suppliesAmount >= _priceS) && (_ammoAmount >= _priceA) && (_fuelAmount >= _priceF)) then {
     // Resoures available to build a facility
     stats_supplies_spent = stats_supplies_spent + _priceS;
     stats_ammo_spent = stats_ammo_spent + _priceA;
     stats_fuel_spent = stats_fuel_spent + _priceF;
-
-    // Get storage object
-    private _storage = KPLIB_sector_storage getOrDefault [_factory, objNull];
-
-    if (isNull _storage) exitWith {};
-
-    private _resources = _storage getVariable ["KPLIB_storageResources", [0,0,0]];
-    _resources params ["_suppliesAmount", "_ammoAmount", "_fuelAmount"];
 
     if (_priceS > 0) then {_resources set [SUPPLY_INDEX, _suppliesAmount - _priceS]};
     if (_priceA > 0) then {_resources set [AMMO_INDEX, _ammoAmount - _priceA]};
