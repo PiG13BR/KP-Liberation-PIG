@@ -1,7 +1,6 @@
-Code bellow is an example of a discord bot
-that will parse through the logs to send info
-from the factories to a discord channel
-with an embeded message.
+## DISCORD LOG
+
+Code bellow is an example of a discord bot that will parse through the logs to send info from the factories to a discord channel with an embeded message.
 
 ```py
 import discord
@@ -131,7 +130,7 @@ async def update_factory_status():
             )
             
             embed.add_field(name="🏭 Factory", value=factory_val, inline=True)
-            embed.add_field(name="📦 Production", value=prod_val, inline=True)
+            embed.add_field(name="📦 Producing", value=prod_val, inline=True)
             embed.add_field(name="📊 Total Storage", value=res_val, inline=True)
             
             embed.set_image(url="image_url")
