@@ -239,11 +239,13 @@ class KPLIB {
 
         class overlayUpdateResources    {};
     };
-    class Extensions {
+    class TeamSpeak {
         file = "Extensions\TeamSpeak"
 
         class TeamSpeakCheck            {};
-    }
+    };
+
+
     #include "Functions\do_build\cfgFunctions.hpp"
 
     #include "Scripts\Client\CfgFunctions.hpp"
@@ -268,4 +270,5 @@ class KPLIB {
     #include "Extensions\Sector_Objects\cfgFunctions.hpp"
     #include "Extensions\Sector_Events\cfgFunctions.hpp"
     #include "Extensions\Supply_Menu\cfgFunctions.hpp"
+    #include "Extensions\Discord_Log\cfgFunctions.hpp"
 };
