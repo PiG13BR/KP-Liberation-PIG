@@ -413,10 +413,6 @@ KPLIB_objectInits = [
         ["Land_Pod_Heli_Transport_04_ammo_F", "Land_Pod_Heli_Transport_04_fuel_F", "Land_Pod_Heli_Transport_04_repair_F", "B_Slingload_01_Repair_F", "B_Slingload_01_Fuel_F", "B_Slingload_01_Ammo_F"],
         {
             _this setMass 1500
-
-            if (KPLIB_ace) then {
-                
-            }
         }
     ],
 
