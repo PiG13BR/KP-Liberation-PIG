@@ -3,7 +3,7 @@
     File: fn_spawnBuildedObject.sqf
     Author: PiG13BR (https://github.com/PiG13BR), FernandimModelador https://github.com/FernandimModelador
     Date: 28/08/2025
-    Last update: 19/01/2026
+    Last update: 04/03/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -34,6 +34,7 @@ if (_objectClass isEqualTo "") exitWith {objNull};
 private _objectSpawned = createVehicle [_objectClass, _objPos];
 _objectSpawned setPosATL _objPos;
 _objectSpawned setDir _objDir;
+_objectSpawned awake true;
 
 if (_vector) then {
     _objectSpawned setVectorUp [0,0,1];
@@ -97,23 +98,6 @@ if(_buildType == BUILDTYPE_FOB) then {
 // Factory storage builded
 if(_buildType == BUILDTYPE_FACTORY_STORAGE) then {
     ["KPLIB_factoryStorageBuilded", _objectSpawned] call CBA_fnc_serverEvent;
-};
-
-// another limitaion is that if a person buys 1 crate of each type, only the last will be registred.
-switch _objectClass do {
-    case KPLIB_b_fortify_small: {
-        [west, 0, [["Land_BagFence_Long_F", 5], ["Land_SandbagBarricade_01_half_F", 5], ["Land_Razorwire_F", 5], ["Land_Rampart_F", 5]]] call ace_fortify_fnc_registerObjects;
-        _objectSpawned addItemCargoGlobal ["ACE_FortifyToken", 50]; // 250$
-        [west, 0, false] call ace_fortify_fnc_updateBudget;
-        ace_fortify_locations pushBack [_objectSpawned, 50, 50, 0, false];
-    };
-    case KPLIB_b_fortify_medium: {
-        [west, 0, [["Land_BagFence_Long_F", 5], ["Land_SandbagBarricade_01_half_F", 5], ["Land_Razorwire_F", 5], ["Land_Rampart_F", 5], ["Land_SandbagBarricade_01_hole_F", 50], ["Land_BagBunker_Small_F", 50], ["Land_bagBunker_Large_F", 50], ["Land_DragonsTeeth_01_4x2_new_F", 50]]] call ace_fortify_fnc_registerObjects;
-        _objectSpawned addItemCargoGlobal ["ACE_FortifyToken", 60]; // 300$
-        [west, 0, false] call ace_fortify_fnc_updateBudget;
-        ace_fortify_locations pushBack [_objectSpawned, 50, 50, 0, false];
-    };
-    default {}
 };
 
 _objectSpawned

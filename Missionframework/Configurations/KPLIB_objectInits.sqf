@@ -413,12 +413,38 @@ KPLIB_objectInits = [
         ["Land_Pod_Heli_Transport_04_ammo_F", "Land_Pod_Heli_Transport_04_fuel_F", "Land_Pod_Heli_Transport_04_repair_F", "B_Slingload_01_Repair_F", "B_Slingload_01_Fuel_F", "B_Slingload_01_Ammo_F"],
         {
             _this setMass 1500
+
+            if (KPLIB_ace) then {
+                
+            }
         }
     ],
+
+    // Turn on receive remote targets for air units
     [
         ["Air"],
         {
             _this setVehicleReceiveRemoteTargets true
+        }
+    ],
+
+    // Fortify
+    [
+        [KPLIB_b_fortify_small]
+        {
+            [KPLIB_side_player, 0, [["Land_BagFence_Long_F", 5], ["Land_SandbagBarricade_01_half_F", 5], ["Land_Razorwire_F", 5], ["Land_Rampart_F", 5]]] call ace_fortify_fnc_registerObjects;
+            _this addItemCargoGlobal ["ACE_FortifyToken", 50]; // 250$
+            [KPLIB_side_player, 0, false] call ace_fortify_fnc_updateBudget;
+            ace_fortify_locations pushBack [_this, 50, 50, 0, false];
+        }
+    ],
+    [
+        [KPLIB_b_fortify_medium]
+        {
+            [KPLIB_side_player, 0, [["Land_BagFence_Long_F", 5], ["Land_SandbagBarricade_01_half_F", 5], ["Land_Razorwire_F", 5], ["Land_Rampart_F", 5], ["Land_SandbagBarricade_01_hole_F", 50], ["Land_BagBunker_Small_F", 50], ["Land_bagBunker_Large_F", 50], ["Land_DragonsTeeth_01_4x2_new_F", 50]]] call ace_fortify_fnc_registerObjects;
+            _this addItemCargoGlobal ["ACE_FortifyToken", 60]; // 300$
+            [KPLIB_side_player, 0, false] call ace_fortify_fnc_updateBudget;
+            ace_fortify_locations pushBack [_this, 50, 50, 0, false];
         }
     ]
 ];
