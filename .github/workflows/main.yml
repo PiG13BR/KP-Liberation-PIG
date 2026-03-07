@@ -22,8 +22,8 @@ jobs:
         with:
           files: Missionframework/**/*.sqf
 
-      - name: Validate with SQFLint
+      - name: Validate entire framework if files changed
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: arma-actions/sqflint@v1.0
+        uses: arma-actions/sqflint@main # or v1.0
         with:
-          args: --exit w ${{ steps.changed-files.outputs.all_changed_files }}
+          args: --exit w --directory Missionframework
