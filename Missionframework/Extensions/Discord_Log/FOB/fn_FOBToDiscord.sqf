@@ -62,4 +62,4 @@ KPLIB_fobLogLoop_handle = [
     }, 
     600, 
     []
-] call CBA_fnc_addPerFrameHandler;
+] call CBA_fnc_addPerFrameHandler
