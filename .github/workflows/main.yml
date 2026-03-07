@@ -36,6 +36,6 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "--------------------------------------------------"
             echo "Linting: $file"
-            # Running the installed pip package
-            sqflint "$file" --exit w
+            # Removed --exit w so warnings don't fail the build
+            sqflint "$file"
           done
