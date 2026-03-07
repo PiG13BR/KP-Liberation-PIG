@@ -204,11 +204,14 @@ if (KPLIB_param_SAMSite > 0) then {
     [localize "STR_FDC_TITLE", localize "STR_FDC_DESC"],
     ["KP Liberation", "Factory Logging"],
     false,
-    1,
-    {
-        params ["_value"];
-        if (_value && isServer) then {
-            [] spawn KPLIB_fnc_factoryLogLoop;
-        };
-    }
+    1
+] call CBA_fnc_addSetting;
+
+[
+    "KPLIB_fob_logging_enabled",
+    "CHECKBOX",
+    [localize "STR_FOBDC_TITLE", localize "STR_FOBDC_DESC"],
+    ["KP Liberation", "FOB Logging"],
+    false,
+    1
 ] call CBA_fnc_addSetting;

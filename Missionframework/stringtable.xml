@@ -8658,14 +8658,22 @@
                 <Portuguese>Convite Discord</Portuguese>
             </Key>
         </Container> 
-        <Container name="Factory Logging Discord">
+        <Container name="Logging Discord">
             <Key ID="STR_FDC_TITLE">
                 <Original>Logs to discord</Original>
                 <Portuguese>Logs para o Discord</Portuguese>
             </Key>
             <Key ID="STR_FDC_DESC">
-                <Original>Export captured factory data to RPT for Python parsing</Original>
-                <Portuguese>Exporta info de fabricas para RPT para Python parsing</Portuguese>
+                <Original>Export FOB data to RPT for Python parsing</Original>
+                <Portuguese>Exporta info de FOB para RPT para Python parsing</Portuguese>
+            </Key>
+            <Key ID="STR_FOBDC_TITLE">
+                <Original>Logs to discord</Original>
+                <Portuguese>Logs para o Discord</Portuguese>
+            </Key>
+            <Key ID="STR_FOBDC_DESC">
+                <Original>Export FOB data to RPT for Python parsing</Original>
+                <Portuguese>Exporta info de FOBs para RPT para Python parsing</Portuguese>
             </Key>
         </Container> 
         <Container name="Enemy Artillery">
