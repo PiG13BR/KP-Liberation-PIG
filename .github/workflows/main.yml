@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test-sqflint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed SQF files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: Missionframework/**/*.sqf
+
+      - name: Validate with SQFLint
+        if: steps.changed-files.outputs.any_changed == 'true'
+        uses: arma-actions/sqflint@v1.0
+        with:
+          args: --exit w ${{ steps.changed-files.outputs.all_changed_files }}
