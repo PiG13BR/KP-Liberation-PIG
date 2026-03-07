@@ -33,24 +33,25 @@ jobs:
       - name: Validate ONLY changed files
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
-          # Create a flag to track success
-          success=true
+          # Use a temporary file to store results
+          log_file="lint_results.txt"
+          failed=false
+          
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "--------------------------------------------------"
             echo "Linting: $file"
+            # Capture output to a variable
+            output=$(sqflint "$file" 2>&1)
+            echo "$output"
             
-            # Run sqflint and capture the exit code
-            sqflint "$file"
-            status=$?
-            
-            # If the command failed (non-zero status), mark as failed
-            if [ $status -ne 0 ]; then
-              echo "Linting failed for $file with exit code $status"
-              success=false
+            # Look for the word 'error:' in the output
+            if echo "$output" | grep -q ":error:"; then
+              echo "!!! ERROR FOUND in $file !!!"
+              failed=true
             fi
           done
           
-          # Force the job to fail if any file failed
-          if [ "$success" = false ]; then
+          # Force exit if any error was found
+          if [ "$failed" = true ]; then
+            echo "Linting failed due to errors."
             exit 1
           fi
