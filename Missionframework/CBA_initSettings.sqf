@@ -4,7 +4,8 @@ if (KPLIB_param_ArtyMenu && KPLIB_ace) then {
         "EDITBOX",  
         [localize "STR_ARTYMENU_SETTING_ITEMS_DESCRIPTION", localize "STR_ARTYMENU_SETTING_ITEMS_TOOLTIP"], 
         ["KP Liberation", localize "STR_ARTY_MENU_TITLE"], 
-        "[]"
+        "[]",
+        true
     ] call CBA_fnc_addSetting;
 };
 
@@ -127,7 +128,7 @@ if (KPLIB_param_SAMSite > 0) then {
             [2, 3, 4, 5, 6, 7, 8, 9, 10], 
             5
         ],
-        true, // Global
+        false, // Global
         {},
         true
     ] call CBA_fnc_addSetting;
@@ -140,8 +141,8 @@ if (KPLIB_param_SAMSite > 0) then {
             ["STR_SAMSITE_SETTING_MAXRANGE_DESCRIPTION", "STR_SAMSITE_SETTING_MAXRANGE_TOOLTIP"], 
             ["KP Liberation", localize "STR_SAM_TITLE"], 
             "10000",
-            true,
-            {},
+            false,
+            {PIG_SAMSite_Setting_maxRange = parseNumber PIG_SAMSite_Setting_maxRange},
             true
         ] call CBA_fnc_addSetting;
 
@@ -151,11 +152,14 @@ if (KPLIB_param_SAMSite > 0) then {
             ["STR_SAMSITE_SETTING_MINALT_DESCRIPTION", "STR_SAMSITE_SETTING_MINALT_TOOLTIP"], 
             ["KP Liberation", localize "STR_SAM_TITLE"], 
             "200",
-            true,
-            {},
+            false,
+            {PIG_SAMSite_Setting_minAlt = parseNumber PIG_SAMSite_Setting_minAlt},
             true
         ] call CBA_fnc_addSetting;
     };
+
+    if (PIG_SAMSite_Setting_maxRange isEqualType "") then {PIG_SAMSite_Setting_maxRange = parseNumber PIG_SAMSite_Setting_maxRange};
+    if (PIG_SAMSite_Setting_minAlt isEqualType "") then {PIG_SAMSite_Setting_minAlt = parseNumber PIG_SAMSite_Setting_minAlt};
 };
 
 [
