@@ -17,7 +17,7 @@
 
 if (!isServer) exitWith {};
 
-if (!isNil "KPLIB_fobLogLoop_handle" exitWith {};
+if (!isNil "KPLIB_fobLogLoop_handle") exitWith {};
 
 KPLIB_fobLogLoop_handle = [
     {
@@ -62,4 +62,4 @@ KPLIB_fobLogLoop_handle = [
     }, 
     600, 
     []
-] call CBA_fnc_addPerFrameHandler.
+] call CBA_fnc_addPerFrameHandler;
