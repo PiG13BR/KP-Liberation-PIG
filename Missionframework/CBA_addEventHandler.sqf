@@ -31,7 +31,7 @@ if (KPLIB_param_sectorEvents > 0) then {
     #include "Extensions\Sector_Events\CBA_addEventHandler.sqf";
 };
 
-if (KPLIB_param_enemyFighter) then {
+if (KPLIB_param_enemyFighters) then {
     #include "Extensions\Enemy_Fighters\CBA_addEventHandler.sqf";
 };
 
