@@ -111,6 +111,7 @@ KPLIB_medical_facilities = [
     "uns_mash_main",
     "uns_mash",
     "US_Tent_2",
+    "Land_MedicalTent_01_digital_closed_F",
     "US_Tent_MASH"
 ];
 
