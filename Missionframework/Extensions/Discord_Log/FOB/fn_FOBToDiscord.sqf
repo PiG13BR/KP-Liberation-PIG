@@ -1,3 +1,20 @@
+/*
+    File: fn_FOBToDiscord.sqf
+    Author: FernandimModelador (https://github.com/FernandimModelador)
+    Date: 07/03/2026
+    Last Update: 07/03/2026
+    License: MIT License - http://www.opensource.org/licenses/MIT
+    
+    Description:
+        Exports information about the FOBs in a json format for python parsing
+    
+    Parameter(s):
+        -
+    
+    Returns:
+        -
+*/
+
 if (!isServer) exitWith {};
 
 if (!isNil "KPLIB_fobLogLoop_handle") exitWith {};
