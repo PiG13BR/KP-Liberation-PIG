@@ -22,8 +22,12 @@ jobs:
         with:
           files: Missionframework/**/*.sqf
 
-      - name: Validate entire framework if files changed
+      - name: Validate ONLY changed files
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: arma-actions/sqflint@v1.0
-        with:
-          args: --exit w --directory Missionframework
+        run: |
+          # Loop through each file reported as changed
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "Linting: $file"
+            # We run the linter directly via Docker to avoid the 'multiple arguments' bug
+            docker run --rm -v $(pwd):/data -w /data lordmarmit/sqflint:latest "$file" --exit w
+          done
