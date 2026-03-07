@@ -6,7 +6,7 @@
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
-        Exports information about the FOBs in a json format for python parsing.
+        Exports information about the FOBs in a json format for python parsing
     
     Parameter(s):
         -
