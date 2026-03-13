@@ -127,6 +127,7 @@ KPLIB_b_vehAir = [
     ["CUP_I_Wildcat_Unarmed_Digital_AAF",225,0,150],                    // AW159 Wildcat
     ["CUP_I_Ka60_GL_Digi_AAF",275,200,175],                             // Ka-60 Kasatka (Rockets)
     ["CUP_I_412_Military_Armed_AAF",200,500,125],                       // CH-146 Griffon (Armed)
+    ["CUP_B_MH60L_DAP_4x_US", 375, 200, 175],                           // MH-60L DAP (4x)
     ["CUP_I_Mi24_D_Dynamic_AAF",600,500,300],                           // Mi-24D
     ["CUP_I_AH1Z_Dynamic_AAF",750,750,250],                             // AH-1Z
     ["CUP_B_Merlin_HC3_VIV_GB",275,0,175],                              // Merlin HC3 (Cargo)
@@ -389,6 +390,7 @@ KPLIB_b_vehToUnlock = [
     ["B_Boat_Armed_01_minigun_F", "military_19"],
     ["Flex_CUP_USA_AH6M", "military_7"],
     ["CUP_B_MH47E_USA", "factory_ammo"],
-    ["CUP_B_CH47F_VIV_GB","factory_1"],                                         
+    ["CUP_B_CH47F_VIV_GB","factory_1"],  
+    ["CUP_B_MH60L_DAP_4x_US", "military_13"],                                     
     ["CUP_B_LCU1600_USMC", "factory_fuel_7"]   
 ];
