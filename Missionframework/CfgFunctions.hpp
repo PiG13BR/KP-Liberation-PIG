@@ -207,6 +207,7 @@ class KPLIB {
         class spawnGarrisonUnit         {};
         class spawnGuerillaGroup        {};
         class spawnGuerInFactory        {};
+        class spawnHuronAtStart         {};
         class spawnMilitiaCrew          {};
         class spawnRegularSquad         {};
         class spawnVehicle              {};

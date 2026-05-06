@@ -83,3 +83,31 @@
 ["KPLIB_enemyReinforcements", {
     _this spawn reinforcements_manager;
 }] call CBA_fnc_addEventHandler;
+
+// Respawn Huron
+["KPLIB_respawnHuron", {
+    
+    0 spawn {
+        // Spawn the huron
+        KPLIB_potato01 = KPLIB_b_potato01 createVehicle [(getposATL huronspawn) select 0, (getposATL huronspawn) select 1, ((getposATL huronspawn) select 2) + 0.2];
+        KPLIB_potato01 enableSimulationGlobal false;
+        KPLIB_potato01 allowdamage false; 
+        KPLIB_potato01 setDir (getDir huronspawn); 
+        KPLIB_potato01 setPosATL (getposATL huronspawn); 
+        KPLIB_potato01 setDamage 0; 
+        sleep 0.5; 
+        KPLIB_potato01 enableSimulationGlobal true; 
+        KPLIB_potato01 setDamage 0; 
+        KPLIB_potato01 allowdamage true; 
+        [KPLIB_potato01] call KPLIB_fnc_addObjectInit;
+
+        [KPLIB_potato01] call KPLIB_fnc_clearCargo;
+        KPLIB_potato01 setVariable ["ace_medical_isMedicalVehicle", true, true];
+        publicVariable "KPLIB_potato01";
+
+        KPLIB_potato01 addEventHandler ["Killed", {
+            params["_huron"];
+            [{deleteVehicle _this; ["KPLIB_respawnHuron", nil] call CBA_fnc_serverEvent;}, _huron, KPLIB_potatoRespawnDelay] call CBA_fnc_waitAndExecute;
+        }];
+    };
+}] call CBA_fnc_addEventHandler;
