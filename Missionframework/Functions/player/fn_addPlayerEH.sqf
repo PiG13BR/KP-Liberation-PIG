@@ -2,7 +2,7 @@
     File: fn_addPlayerEH.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 13/11/2025
-    Last Update: 19/01/2026
+    Last Update: 20/04/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -22,6 +22,9 @@ if (isDedicated) exitWith {};
 // Remove/unassign item if not present in the player's allowed arsenal
 private _slotItemHandle = _player addEventHandler ["SlotItemChanged", {
 	params ["_unit", "_name", "_slot", "_assigned", "_weapon"];
+
+    // Ace DBAL compat
+    if ((toLowerANSI _name) find "ace_dbal_a3" >= 0) then {_name = "ace_dbal_a3"};
 
     if (_assigned && {(KPLIB_arsenalAllowed find (toLowerANSI _name)) < 0 && {(_name find "TFAR") < 0}}) then { 
         if (_weapon isNotEqualTo "") then {

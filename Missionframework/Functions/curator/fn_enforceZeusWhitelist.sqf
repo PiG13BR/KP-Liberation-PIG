@@ -1,8 +1,8 @@
 /*
-    File: fn_handlePlacedZeusObject.sqf
+    File: fn_enforceZeusWhitelist.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 18/02/2026
-    Last Update: 22/03/2026
+    Last Update: 06/05/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:

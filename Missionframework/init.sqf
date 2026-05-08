@@ -56,6 +56,11 @@ if (KPLIB_param_sectorEvents > 0) then {
 // Set up CBA settings
 [] call compile preprocessFileLineNumbers 'CBA_initSettings.sqf';
 
+if (KPLIB_param_playerMenu) then {
+    // KP player menu
+    [] call KPPLM_fnc_postInit;
+};
+
 // Load saved game and initiate server scripts
 if (isServer) then {
     [] call KPLIB_fnc_loadSavedGame; 

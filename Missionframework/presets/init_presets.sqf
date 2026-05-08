@@ -141,6 +141,10 @@ if ((KPLIB_b_vehStatic findIf {(_x#0 == KPLIB_b_fortify_medium)}) < 0) then {
 // Compatibility check and fix for vehicles to unlock
 KPLIB_b_vehToUnlock = KPLIB_b_vehToUnlock apply {if (_x isEqualType "") then {[_x, ""]} else {_x}};
 
+// Force storages to be containers
+KPLIB_b_smallStorage    = "Land_Cargo20_brick_red_F";
+KPLIB_b_largeStorage    = "Land_Cargo40_brick_red_F"; 
+
 // Prices for the blufor infantry squads (supplies, ammo, fuel)
 KPLIB_b_allSquads = [
     [KPLIB_b_squadLight,50,0,0],

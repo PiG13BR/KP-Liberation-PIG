@@ -273,3 +273,8 @@ class KPLIB {
     #include "Extensions\Supply_Menu\cfgFunctions.hpp"
     #include "Extensions\Discord_Log\cfgFunctions.hpp"
 };
+
+class KPPLM {
+    // Extensions
+    #include "Extensions\Player_Menu\KPPLM\KPPLM_functions.hpp"
+};
