@@ -2,35 +2,35 @@
     File: fn_restoreResources.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR (https://github.com/PiG13BR)
     Date: 10/09/2025
-    Last update: 31/07/2026
+    Last update: 04/08/2026
 
     Description:
-        Return resources to storage areas when building is cancelled
+        Restore resources to storage areas
 
     Parameter(s):
-        _supplyPrice - Supplies value to return [NUMBER, defaults 0]
-        _ammoPrice - Ammo value to return [NUMBER, defaults 0]
-        _fuelPrice - Fuel value to return [NUMBER, defaults 0]
+        _supplyValue - Supplies value to restore [NUMBER, defaults 0]
+        _ammoValue - Ammo value to restore [NUMBER, defaults 0]
+        _fuelValue - Fuel value to restore [NUMBER, defaults 0]
         _storages - Base storages [ARRAY, defaults []]
     
     Returns:
-        -
+        Function reached the end [BOOL]
 */
 params [
-    ["_priceSupplies", 0, [0]], 
-    ["_priceAmmo", 0, [0]], 
-    ["_priceFuel", 0, [0]], 
+    ["_supplyValue", 0, [0]], 
+    ["_ammoValue", 0, [0]], 
+    ["_fuelValue", 0, [0]], 
     ["_storages", [], [[]]]
 ];
 
-if (!isServer) exitWith {};
-if (_storageAreas isEqualTo []) exitWith {};
+if (!isServer) exitWith {false};
+if (_storages isEqualTo []) exitWith {false};
 
 #define SUPPLY_INDEX 0
 #define AMMO_INDEX 1
 #define FUEL_INDEX 2
 
-if ((_supplyPrice > 0) || (_ammoPrice > 0) || (_fuelPrice > 0)) then {
+if ((_supplyValue > 0) || (_ammoValue > 0) || (_fuelValue > 0)) then {
     {
         private _resources = [_x] call KPLIB_fnc_getStorageValues;
         _resources params ["_supply", "_ammo", "_fuel"];
@@ -39,8 +39,8 @@ if ((_supplyPrice > 0) || (_ammoPrice > 0) || (_fuelPrice > 0)) then {
 
         private _storageLimit = [_x] call KPLIB_fnc_getStorageLimit;
 
-        if (_supplyPrice > 0) then {
-            private _amount = _supplyPrice;
+        if (_supplyValue > 0) then {
+            private _amount = _supplyValue;
             _amountSum = _amountSum + _amount;
             
             if (_amountSum > _storageLimit) then {
@@ -52,11 +52,11 @@ if ((_supplyPrice > 0) || (_ammoPrice > 0) || (_fuelPrice > 0)) then {
             
             _resources set [SUPPLY_INDEX, _supply + _amount];
 
-            _supplyPrice = _supplyPrice - _amount
+            _supplyValue = _supplyValue - _amount
         };
 
-        if (_ammoPrice > 0) then {
-            private _amount = _ammoPrice;
+        if (_ammoValue > 0) then {
+            private _amount = _ammoValue;
             _amountSum = _amountSum + _amount;
             
             if (_amountSum > _storageLimit) then {
@@ -66,11 +66,11 @@ if ((_supplyPrice > 0) || (_ammoPrice > 0) || (_fuelPrice > 0)) then {
             };
             _resources set [AMMO_INDEX, _ammo + _amount];
 
-            _ammoPrice = _ammoPrice - _amount
+            _ammoValue = _ammoValue - _amount
         };
 
-        if (_fuelPrice > 0) then {
-            private _amount = _fuelPrice;
+        if (_fuelValue > 0) then {
+            private _amount = _fuelValue;
             _amountSum = _amountSum + _amount;
             
             if (_amountSum > _storageLimit) then {
@@ -81,7 +81,7 @@ if ((_supplyPrice > 0) || (_ammoPrice > 0) || (_fuelPrice > 0)) then {
 
             _resources set [FUEL_INDEX, _fuel + _amount];
 
-            _fuelPrice = _fuelPrice - _amount
+            _fuelValue = _fuelValue - _amount
         };
 
         _x setVariable ["KPLIB_storageResources", _resources, true];
@@ -91,23 +91,25 @@ if ((_supplyPrice > 0) || (_ammoPrice > 0) || (_fuelPrice > 0)) then {
 
     // Spawn crates if there are resources left to restore
     private _storage = _storages # ((count _storages) - 1);
-    while {(_supplyPrice > 0) || (_ammoPrice > 0) || (_fuelPrice > 0)} do {
-        if (_supplyPrice > 0) then {
-            private _price = _supplyPrice min 100;
+    while {(_supplyValue > 0) || (_ammoValue > 0) || (_fuelValue > 0)} do {
+        if (_supplyValue > 0) then {
+            private _price = _supplyValue min 100;
             [KPLIB_b_crateSupply, _price, getPosATL _storage] call KPLIB_fnc_createCrate;
-            _supplyPrice = _supplyPrice - _price;
+            _supplyValue = _supplyValue - _price;
         };
 
-        if (_ammoPrice > 0) then {
-            private _price = _ammoPrice min 100;
+        if (_ammoValue > 0) then {
+            private _price = _ammoValue min 100;
             [KPLIB_b_crateAmmo, _price, getPosATL _storage] call KPLIB_fnc_createCrate;
-            _ammoPrice = _ammoPrice - _price;
+            _ammoValue = _ammoValue - _price;
         };
 
-        if (_fuelPrice > 0) then {
-            private _price = _fuelPrice min 100;
+        if (_fuelValue > 0) then {
+            private _price = _fuelValue min 100;
             [KPLIB_b_crateFuel, _price, getPosATL _storage] call KPLIB_fnc_createCrate;
-            _fuelPrice = _fuelPrice - _price;
+            _fuelValue = _fuelValue - _price;
         };
     };
 };
+
+true

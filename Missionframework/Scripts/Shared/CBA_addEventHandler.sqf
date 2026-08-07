@@ -292,6 +292,10 @@
     private _storages = [_buildPos] call KPLIB_fnc_getAllStorages;
 
     [_supplyPrice, _ammoPrice, _fuelPrice, _storages] call KPLIB_fnc_subtractResources;
+
+    stats_supplies_spent = stats_supplies_spent + _supplyValue;
+    stats_ammo_spent = stats_ammo_spent + _ammoValue;
+    stats_fuel_spent = stats_fuel_spent + _fuelValue;
 }] call CBA_fnc_addEventHandler;
 
 // Subtract Resources in FOB deployment
@@ -352,17 +356,15 @@
     {
         if ([_x] call KPLIB_fnc_isStorageFull) then {continue}; // Skip iteration
 
-        private _storageLimit = [_x] call KPLIB_fnc_getStorageLimit;
-
         // Pushback storage with space
         _storages pushBack _x;
     } forEach _storageAreas;
 
     if (count _storages > 0) then {
-        // Storages found and they are not full
+        // Storages not full
         [_supplyPrice, _ammoPrice, _fuelPrice, _storages] call KPLIB_fnc_restoreResources;
     } else {
-        // All storages full or no storages found. Spawn crates instead.
+        // All storages are full or no storages were found. Spawn crates instead.
         while {(_supplyPrice > 0) || (_ammoPrice > 0) || (_fuelPrice > 0)} do {
             if (_supplyPrice > 0) then {
                 private _price = _supplyPrice min 100;
