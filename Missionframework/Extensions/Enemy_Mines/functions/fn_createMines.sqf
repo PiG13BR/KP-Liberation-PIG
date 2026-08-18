@@ -2,7 +2,7 @@
     File: fn_createMines.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 02/06/2026
-    Last Update: 30/07/2026
+    Last Update: 16/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -24,7 +24,7 @@ private _ATMinesObj = [];
 private _APMinesPos = (KPLIB_sectorMinesPositionsHash getOrDefault [_sector, []]) # 0;
 if (count _APMinesPos > 0) then {
 	// Signs class
-	private _mineSignClass = "Land_Sign_MinesTall_F"; // Vanilla
+	private _mineSignClass = "Land_Sign_MinesDanger_English_F"; // Vanilla
 	if (isClass(configFile >> "CfgPatches" >> "CUP_CAMisc_ACR_Sign_Mines")) then {
 		_mineSignClass = "Sign_DangerMines_ACR"; // CUP
 	};

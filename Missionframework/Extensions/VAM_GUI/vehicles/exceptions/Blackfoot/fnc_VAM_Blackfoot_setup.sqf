@@ -62,21 +62,21 @@ VAM_comp_check_complete = true;
 VAM_check_fnc_delay = false;
 
 if !(camo_class_names isEqualTo []) then {
-    [] spawn fnc_VAM_Blackfoot_camo_check;
+    spawn fnc_VAM_Blackfoot_camo_check;
     VAM_camo_check_complete = false;
 };
 if !(comp_class_names isEqualTo []) then {
-    [] spawn fnc_VAM_common_comp_check;
+    spawn fnc_VAM_common_comp_check;
     VAM_comp_check_complete = false;
 };
 waitUntil {uisleep 0.1; VAM_camo_check_complete && VAM_comp_check_complete};
 
 //Add UIEH
 if !(camo_class_names isEqualTo []) then {
-    _list_camo ctrlAddEventHandler ["LBSelChanged", {[] spawn fnc_VAM_Blackfoot_camo;}];
+    _list_camo ctrlAddEventHandler ["LBSelChanged", {spawn fnc_VAM_Blackfoot_camo;}];
 };
 if !(comp_class_names isEqualTo []) then {
-    _list_comp ctrlAddEventHandler ["LBSelChanged", {[] spawn fnc_VAM_common_comp;}];
+    _list_comp ctrlAddEventHandler ["LBSelChanged", {spawn fnc_VAM_common_comp;}];
 };
-_reset ctrlAddEventHandler ["ButtonClick", {VAM_check_fnc_delay = true; [] spawn fnc_VAM_Blackfoot_camo_check; [] spawn fnc_VAM_common_comp_check;}];
-_confirm ctrlAddEventHandler ["ButtonClick", {[] spawn fnc_VAM_variable_cleaner;}];
+_reset ctrlAddEventHandler ["ButtonClick", {VAM_check_fnc_delay = true; spawn fnc_VAM_Blackfoot_camo_check; spawn fnc_VAM_common_comp_check;}];
+_confirm ctrlAddEventHandler ["ButtonClick", {spawn fnc_VAM_variable_cleaner;}];

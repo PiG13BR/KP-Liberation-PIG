@@ -60,10 +60,7 @@
                 !(_this getVariable ['KPLIB_BUILD_isBuilding', false]) &&
                 {[5] call KPLIB_fnc_hasPermission} &&
                 {isNull objectParent _this} &&
-                {(count crew _target) == 0} &&
-                {(locked _target == 0 || locked _target == 1)} &&
-                {speed _target < 2} &&
-                {(vectorUp _target) vectorCos (surfaceNormal getPos _target) < 0.5}
+                {(_target getEntityInfo 6 || {surfaceNormal getPosWorld _target vectorCos vectorUp _target < 0.5}) && {alive _target && simulationEnabled _target && (count crew _target == 0 || isAutonomous _target) && locked _target < 2}}
             }
         ];
     }
@@ -629,31 +626,30 @@
 }] call CBA_fnc_addEventHandler;
 
 ["KPLIB_addExplosionEH", {
-    // From wiki: It really needs to be added on every PC and JIP and will fire only where the explosion is originated.
-    // Expand with "AmmoExplodedNear" in 2.22
-    _this addEventHandler ["Explosion", { 
-        params ["_vehicle", "_damage", "_explosionSource"];
-        if !(isNull _explosionSource) then {
-            if (getNumber(configOf _explosionSource >> "artilleryLock") > 0) then {
-                // Valid hit
-                if (_explosionSource distance2D _vehicle < 20) then {
-                    // Check for storages
-                    if (_vehicle getVariable ["KPLIB_fobStorage", false]) then {
-                        private _resources = _vehicle getVariable ["KPLIB_storageResources", [0,0,0]];
-                        _resources params ["_supply", "_ammo", "_fuel"];
-                        private _amount = _supply + _ammo + _fuel;
-                        // Cause secondary explosion only if resources count in the storage are more than 500 in total
-                        if (_amount >= 500) then {
-                            private _ammo = createVehicle ["Bo_GBU12_LGB_MI10", _vehicle, [], 0, "CAN_COLLIDE"];
-                            triggerAmmo _ammo;
-                        };
-                    } else {
-                        private _ammo = createVehicle ["Bo_GBU12_LGB_MI10", _vehicle, [], 0, "CAN_COLLIDE"];
+    // From wiki: This EH triggers where the ammo is 'real', similar to HitPart.
+    _this addEventHandler ["AmmoExplodedNear", { 
+        params ["_object", "_shot", "_position"];
+        if (getNumber(configOf _shot >> "artilleryLock") > 0) then {
+            // Valid hit
+            if (_position distance2D _object < 20) then {
+                // Check for storages
+                if (_object getVariable ["KPLIB_fobStorage", false]) then {
+                    private _resources = _object getVariable ["KPLIB_storageResources", [0,0,0]];
+                    _resources params ["_supply", "_ammo", "_fuel"];
+                    private _amount = _supply + _ammo + _fuel;
+                    // Cause secondary explosion only if resources count in the storage are more than 400 in total
+                    if (_amount >= 400) then {
+                        private _ammo = createVehicle ["Bo_GBU12_LGB_MI10", _object, [], 0, "CAN_COLLIDE"];
                         triggerAmmo _ammo;
                     };
-                    deleteVehicle _vehicle;
-                }        
-            }
+                } else {
+                    if ((toLowerANSI (typeOf _object)) in ["land_bomb_trolley_01_f", "land_missle_trolley_02_f"]) then {
+                        private _ammo = createVehicle ["Bo_GBU12_LGB_MI10", _object, [], 0, "CAN_COLLIDE"];
+                        triggerAmmo _ammo;
+                    };
+                };
+                deleteVehicle _object;
+            }        
         }
     }]
 }] call CBA_fnc_addEventHandler;

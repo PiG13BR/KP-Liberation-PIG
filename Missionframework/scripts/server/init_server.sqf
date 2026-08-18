@@ -29,7 +29,7 @@ ied_manager = compile preprocessFileLineNumbers "Scripts\Server\sector\ied_manag
 KPLIB_sectors_active = []; publicVariable "KPLIB_sectors_active";
 
 execVM "Scripts\Server\base\startgame.sqf";
-[] spawn KPLIB_fnc_huronManager;
+spawn KPLIB_fnc_huronManager;
 execVM "Scripts\Server\base\startvehicle_spawn.sqf";
 [] call KPLIB_fnc_createSuppModules;
 execVM "Scripts\Server\battlegroup\counter_battlegroup.sqf";

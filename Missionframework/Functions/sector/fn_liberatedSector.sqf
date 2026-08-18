@@ -80,7 +80,7 @@ if ((random 100) <= KPLIB_cr_wounded_chance || (count KPLIB_sectors_player) == 1
 asymm_blocked_sectors pushBack [_liberated_sector, time];
 publicVariable "asymm_blocked_sectors";
 
-[] spawn check_victory_conditions;
+spawn check_victory_conditions;
 
 ["KPLIB_sectorLiberated", _liberated_sector] call CBA_fnc_serverEvent;
 

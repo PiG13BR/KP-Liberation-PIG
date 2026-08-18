@@ -33,7 +33,7 @@ if (_create) then {
     [_fobBuilding] call KPLIB_fnc_addObjectInit;
 };
 
-[] spawn KPLIB_fnc_doSave;
+spawn KPLIB_fnc_doSave;
 
 [{
     // Find empty arrays in KPLIB_player_fobs

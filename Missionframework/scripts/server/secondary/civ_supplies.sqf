@@ -126,7 +126,7 @@ KPLIB_secondary_in_progress = -1; publicVariable "KPLIB_secondary_in_progress";
 
 // execute a save
 uiSleep 1;
-[] spawn KPLIB_fnc_doSave;
+spawn KPLIB_fnc_doSave;
 
 //create note in log
 [format ["Humanitarian Aid secondary objective complete at %1. Increasing civ rep by %2",_objective_town, KPLIB_secondary_objective_civ_supplies_impact], "NOTIFICATION"] call KPLIB_fnc_log;

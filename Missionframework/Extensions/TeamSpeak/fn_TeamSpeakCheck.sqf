@@ -1,5 +1,5 @@
 if (hasInterface && {["TS_Verification"] call cba_settings_fnc_get}) then {
-    [] spawn {
+    spawn {
         waitUntil { !isNull (findDisplay 46) };
 
         private _expectedTS = ["TS_ServerName"] call cba_settings_fnc_get;

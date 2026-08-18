@@ -765,6 +765,9 @@ KPLIB_type_heliPads = [
 
 // All barracks buildings that can unlock infantry/squad build and ignore redeploy costs if enabled.
 KPLIB_type_barracks = [
+    "Land_Cargo_House_V1_F",
+    "Land_Cargo_House_V2_F",
+    "Land_Cargo_House_V3_F",
     "Land_Barracks_03_F",
     "Land_Barracks_04_F",
     "Land_Budova4",

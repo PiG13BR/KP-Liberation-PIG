@@ -95,7 +95,7 @@ class LiberationDeployRsc {
         h = (0.05 * safezoneH);
         sizeEx = 0.05 * safezoneH;
         text = $STR_DEPLOY_BUTTON;
-        onButtonClick = "[_this] call KPLIB_fnc_deploy_handleButton"; // deploy = 1
+        onButtonClick = "[_this] call KPLIB_fnc_deploy_teleportPlayer"; // deploy = 1
     };
     class MapButton: StdButton {
         idc = DEPLOY_MAP_BUTTON;

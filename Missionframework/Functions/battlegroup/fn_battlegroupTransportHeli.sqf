@@ -2,7 +2,7 @@
     File: fn_battlegroupTransportHeli.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 16/10/2025
-    Last Update: 01/07/2026
+    Last Update: 11/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -92,13 +92,13 @@ _newHeli landAt [_heliPad, "GetOut", 30];
 [_spawnPoint, _targetPos, _newHeli, _landArea, _infGrp, _heliPad] spawn {
     params["_spawnPoint", "_targetPos", "_heli", "_landArea", "_infGrp", "_heliPad"];
 
-    KPLIB_fnc_heliRTB = {
+    private _fnc_heliRTB = {
         params["_heli", "_returnMarker", "_heliPad"];
 
         _heli landAt [_heliPad, "None", 0]; // Cancel landAt command
         deleteVehicle _heliPad;
 
-        _waypoint = (group (driver _heli)) addWaypoint [getMarkerPos _returnMarker, 0];
+        private _waypoint = (group (driver _heli)) addWaypoint [getMarkerPos _returnMarker, 0];
         _waypoint setWaypointType "MOVE";
         _waypoint setWaypointSpeed "FULL";
         _waypoint setWaypointBehaviour "CARELESS";
@@ -131,7 +131,11 @@ _newHeli landAt [_heliPad, "GetOut", 30];
     private _bluforEntities = [_landArea, 250, KPLIB_side_player] call KPLIB_fnc_getNearbyEntities;
 
     {
-        _turretGrp reveal [_x, 4];
+        if (local _turretGrp) then {
+            _turretGrp reveal [_x, 4];
+        } else {
+            [_turretGrp, [_x, 4]] remoteExec ["reveal"]
+        }
     }forEach _bluforEntities;
 
     if ((!alive _heli) || (({alive _x || [_x] call KPLIB_fnc_ace_isAwake} count (crew _heli)) < 1)) exitWith {deleteVehicle _heliPad;};
@@ -179,7 +183,7 @@ _newHeli landAt [_heliPad, "GetOut", 30];
 
     if !(alive _heli) exitWith {deleteVehicle _heliPad;};
 
-    [_heli, _spawnPoint, _heliPad] spawn KPLIB_fnc_heliRTB; // Heli RTB
+    [_heli, _spawnPoint, _heliPad] spawn _fnc_heliRTB; // Heli RTB
     [_infGrp, _targetPos] call KPLIB_fnc_infantryAttack; // Commit inf to attack
     _infGrp setVariable ["KPLIB_isBattleGroup", true];
 };

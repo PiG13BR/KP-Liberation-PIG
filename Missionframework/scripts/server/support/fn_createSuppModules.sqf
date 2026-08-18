@@ -34,7 +34,7 @@ publicVariable "KPLIB_param_supportModule_req";
 publicVariable "KPLIB_param_supportModule_arty";
 
 // Delay provider init until save is loaded, to catch synchronized units from loaded save
-[] spawn {
+spawn {
     waitUntil {!isNil "KPLIB_saveLoaded" && {KPLIB_saveLoaded}};
     ["Init provider on server", "SUPPORTMODULES"] call KPLIB_fnc_log;
     [KPLIB_param_supportModule_req] call BIS_fnc_moduleSupportsInitRequester;

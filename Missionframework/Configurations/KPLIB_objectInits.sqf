@@ -456,8 +456,18 @@ KPLIB_objectInits = [
             if (KPLIB_ace) then {
                 private _canister = createVehicle ["Land_CanisterFuel_F", getPosATL _this, [], 10, "NONE"];
                 [_canister, 0] call ace_cargo_fnc_setSize;
-                [_canister, _this, true] call ace_cargo_fnc_loadItem;
-                
+                private _loaded = [_canister, _this, true] call ace_cargo_fnc_loadItem;
+                if !(_loaded) then {
+                    // Try again. For some reason, it doesn't work right away with enemy vehicles.
+                    [_this, _canister] spawn {
+                        params["_veh", "_canister"];
+                        sleep 5;
+                        private _loaded = [_canister, _veh, true] call ace_cargo_fnc_loadItem;
+                        if !(_loaded) then {
+                            deleteVehicle _canister
+                        };
+                    }
+                };
             };
         },
         true

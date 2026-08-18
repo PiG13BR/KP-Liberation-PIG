@@ -126,5 +126,5 @@ for "_i" from 1 to _amount do {
 stats_secondary_objectives = stats_secondary_objectives + 1;
 KPLIB_secondary_in_progress = -1; publicVariable "KPLIB_secondary_in_progress";
 uiSleep 1;
-[] spawn KPLIB_fnc_doSave;
+spawn KPLIB_fnc_doSave;
 [format ["Bingo Fuel secondary objective complete at %1.",_objective_factory], "NOTIFICATION"] call KPLIB_fnc_log;

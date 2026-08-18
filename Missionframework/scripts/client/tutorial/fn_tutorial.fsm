@@ -251,7 +251,7 @@ class FSM
                          "] remoteExecCall [""KPLIB_fnc_log"", 2];" \n
                          "" \n
                          "// Show dialog to offer the tutorial" \n
-                         "[] spawn {" \n
+                         "spawn {" \n
                          "    KPLIB_playTutorial = [" \n
                          "        localize ""STR_TUTORIAL_DIALOG_TEXT_START""," \n
                          "        localize ""STR_TUTORIAL_DIALOG_TITLE""," \n
@@ -588,7 +588,7 @@ class FSM
                          "] remoteExecCall [""KPLIB_fnc_log"", 2];" \n
                          "" \n
                          "if ([""KPLIB_Tasks_Tutorial_Main""] call BIS_fnc_taskExists) then {" \n
-                         "    [] spawn {" \n
+                         "    spawn {" \n
                          "        sleep 5;" \n
                          "        [" \n
                          "            localize ""STR_TUTORIAL_DIALOG_TEXT_END""," \n

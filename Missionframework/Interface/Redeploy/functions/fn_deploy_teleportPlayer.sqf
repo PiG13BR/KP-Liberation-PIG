@@ -1,9 +1,9 @@
 #include "..\defines.hpp"
 /*
-    File: fn_deploy_handleButton.sqf
+    File: fn_deploy_teleportPlayer.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 04/11/2025
-    Last Update: 25/06/2026
+    Last Update: 16/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -44,8 +44,13 @@ if (count (KPLIB_respawnPositionsList select _lbCurSel) == 3) then {
 } else {
     // Fob/outpost or base
     _destPos = ((KPLIB_respawnPositionsList select _lbCurSel) select 1);
-    _player setposATL [((_destPos select 0) + 15) + (random 10),((_destPos select 1) + 15) + (random 10),(_destPos select 2)];
+    if (_destPos distance2D startbase < 500) then {
+        _player setposATL [((_destPos select 0) + 5) + (random 10),((_destPos select 1) + 5) + (random 10),(_destPos select 2)];
+    } else {
+        _player setposATL [((_destPos select 0) + 5) + (random 10),((_destPos select 1) + 5) + (random 10),(_destPos select 2)];
+    };
     _player setDir (random 360);
+
 };
 
 if (_destPos isEqualTo [0,0,0]) exitWith {};

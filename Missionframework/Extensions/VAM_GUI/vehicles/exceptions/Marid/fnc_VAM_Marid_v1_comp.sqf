@@ -18,4 +18,4 @@ private _comp_array_total = [];
 } forEach comp_class_names;
 [VAM_targetvehicle,nil,_comp_array_total,nil] call BIS_fnc_initVehicle;
 
-[] spawn fnc_VAM_Marid_v1_comp_check;
+spawn fnc_VAM_Marid_v1_comp_check;

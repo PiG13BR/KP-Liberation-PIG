@@ -1,20 +1,25 @@
 # PLANS AND IDEAS
+- This is a list of future plans and ideas for the PiG's KP Liberation.
 
-- Prisoners can reveal outposts, artillery position, SAM sites before delivering him to a FOB, in exchange to intel points.
+## ACTUAL PLANS
+- Refactor enemy battlegroups/reinforcements/attacks (v0.97.2 main goal).
+- Enable Dynamic Simulation for spawned enemy units (sectors and enemy positions only).
+- Mission parameter for auto-registering of terrain objects in the sector's area to spawn static weapons.
+- Use intel points to reveal artillery and SAM sites positions.
 - Add enemy plane CAS support.
 - Add Task framework to handle secondary objectives.
-- Create drone framework to detect players between sectors + QRF (OT simil) / Create useful patrols between sectors + QRF.
-- FOB with triggers?
-- Possible a replacer for convoy objective: kill commander on route to a military base.
-- Make guerrilla fight every side as a mission parameter.
-- Airport sector.
-- Convert some variables in `KPLIB_config.sqf` into CBA setting or mission parameter
-- Use paratroopers battlegroup script to paradrop enemy vehicles. Enemy helicopter slingload vehicles.
-- Commander can change FOB names.
+- Remove convoy secondary objective. Possible a replacer for it: kill commander on route to a military base to reduce enemy readiness. If he's not killed before reaching the military base, the enemy will send an attack to the nearest sector.
+- Add guerrilla camp sites that can be destroyed or ignored by the players.
+- Adapt AI spawn on airport sectors related to its area size.
 - FOB Defense UI for static weapons / handle ammo / handle crew.
+- Towers are GPS jammers and can cause radio interference (random towers, not all of them).
+
+## IDEAS 
+- Players have to stabilize cities after capturing them.
+- Rearming friendly vehicles will cost ammo supplies (by using Jeroen's logistic system: https://github.com/Jeroen-Notenbomer/Limited-Arsenal).
 - Bomb jammer for important sectors.
-- Towers are jammers.
-- Refactor enemy reinforcements based on points + enemy readiness. Closest military base + nearby sectors (i.e: factories) = more points.
-- Rearming friendly vehicles will cost ammo supplies
-- Fortify system for liberation. Like a FOB, but smaller and just to build defenses. Use transportable storage for center. Names: Outpost? Checkpoint?
-- Mission parameter for auto-registering of terrain objects to spawn static weapons.
+
+## HALLUCINATIONS
+- Limit arsenal by using Jeroen's framework https://github.com/Jeroen-Notenbomer/Limited-Arsenal
+- Make guerrilla fight every side as a mission parameter (maybe they will own sectors?).
+- Convert some variables in `KPLIB_config.sqf` into CBA setting or mission parameter.

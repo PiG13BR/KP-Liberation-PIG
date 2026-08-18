@@ -21,5 +21,5 @@ private _display = findDisplay DEPLOY_IDD;
 private _deployButtonCtrl = _display displayCtrl DEPLOY_BUTTON;
 
 if (ctrlEnabled _deployButtonCtrl) then {
-    [] call KPLIB_fnc_deploy_handleButton;
+    [] call KPLIB_fnc_deploy_teleportPlayer;
 };

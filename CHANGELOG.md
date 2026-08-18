@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.97.1 (21/07/2026)
+## 0.97.1 (18/08/2026)
 * Added Extension: Enemy QRF from military bases based on tower detection. 
 * Added Extension: Commander can edit FOB/Outpost names.
 * Added Extension: Discord log for FOB resources (Added by Fernandim).
@@ -50,6 +50,8 @@
 * Tweaked: Auto-save loop starts after 3 minutes on mission launch to avoid issues with error presets.
 * Tweaked: Enemy SAM launchers on SAM sites will no longer fire multiple missiles at same time.
 * Tweaked: Artillery support calls from enemy infantry groups.
+* Tweaked: `KPLIB_o_helicopters` and `KPLIB_o_troopTransports` variables are automatically created in `init_presets.sqf`.
+* Tweaked: File `init_presets.sqf` now checks for missing classnames in some of the important lists found in `KPLIB_classnameLists.sqf`.
 * Removed: Enemy fighter notifications.
 * Removed: ACE Fortify compatibility.
 * Removed: Some KP Liberation script files no longer required for the current version.

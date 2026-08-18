@@ -11,7 +11,7 @@ if (isServer && alive _informant) then {
         private _hc = [] call KPLIB_fnc_getLessLoadedHC;
 
         if (isNull _hc) then {
-            [] spawn civinfo_task;
+            spawn civinfo_task;
         } else {
             [] remoteExec ["civinfo_task", _hc];
         };

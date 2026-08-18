@@ -163,4 +163,4 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 [5] remoteExec ["remote_call_intel"];
 KPLIB_secondary_in_progress = -1; publicVariable "KPLIB_secondary_in_progress";
 sleep 1;
-[] spawn KPLIB_fnc_doSave;
+spawn KPLIB_fnc_doSave;

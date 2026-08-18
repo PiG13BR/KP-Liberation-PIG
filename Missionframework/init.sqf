@@ -109,7 +109,7 @@ if (isServer) then {
     KPLIB_initServerDone = true;
     publicVariable "KPLIB_initServerDone";
 
-    0 spawn {
+    spawn {
         while {KPLIB_endgame == 0} do {
             sleep 1;
             [

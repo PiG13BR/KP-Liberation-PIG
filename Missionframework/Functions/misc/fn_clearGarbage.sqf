@@ -15,7 +15,7 @@
 		-
 */
 
-if (!canSuspend) then {[] spawn KPLIB_fnc_clearGarbage};
+if (!canSuspend) then {spawn KPLIB_fnc_clearGarbage};
 
 // Get only enemy side vehicles, with no crew in it
 private _deadVehicles = vehicles select {

@@ -5,8 +5,8 @@
 class VAM_GUI
 {
 	idd = 4900;
-	OnLoad = "[] spawn fnc_VAM_GUI_check;";
-	OnUnload = "[] spawn fnc_VAM_variable_cleaner;";
+	OnLoad = "spawn fnc_VAM_GUI_check;";
+	OnUnload = "spawn fnc_VAM_variable_cleaner;";
 	movingEnable = false;
 	controls[] = {"VAM_BG", "VAM_Title", "VAM_Text_Camo" ,"VAM_Text_Comp", "VAM_Confirm", "VAM_Reset", "VAM_List_Camo", "VAM_List_Comp", "VAM_Current_Vehicle_1", "VAM_Current_Vehicle_2"};
 	objects[] = {};
@@ -80,7 +80,7 @@ class VAM_GUI
 	{
 		idc = 4940;
 		text = $STR_VAM_RESET_VEHICLE;
-		OnButtonClick = "[] spawn fnc_VAM_reset;";
+		OnButtonClick = "spawn fnc_VAM_reset;";
 		x = 0.559062 * safezoneW + safezoneX;
 		y = 0.332 * safezoneH + safezoneY;
 		w = 0.0459375 * safezoneW;

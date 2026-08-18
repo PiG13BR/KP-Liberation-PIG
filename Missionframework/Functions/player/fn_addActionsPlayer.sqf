@@ -499,7 +499,7 @@ if (player == ([] call KPLIB_fnc_getCommander)) then {
     // Clear gargabe
     _player addAction [
         ["<t color='#FF0000'>", localize "STR_CLEARGARBAGE_ACTION", "</t><img size='2' image='a3\3den\data\displays\display3den\panelleft\entitylist_delete_ca.paa'/>"] joinString "",
-        {[] spawn KPLIB_fnc_clearGarbage;},
+        {spawn KPLIB_fnc_clearGarbage;},
         nil,
         -860,
         false,

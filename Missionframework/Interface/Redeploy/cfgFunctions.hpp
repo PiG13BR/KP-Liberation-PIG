@@ -5,7 +5,7 @@ class Redeploy_UI
     class deploy_barracksNearby {};
     class deploy_getArsenalLoadout {};
     class deploy_getPositions {};
-    class deploy_handleButton {};
+    class deploy_teleportPlayer {};
     class deploy_handleLb {};
     class deploy_isEnemyNear {};
     class deploy_loadMenu {};

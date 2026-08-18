@@ -141,8 +141,6 @@ KPLIB_o_antiAirVehicles         = KPLIB_o_antiAirVehicles           select {[_x]
 KPLIB_o_tankVehicles            = KPLIB_o_tankVehicles              select {[_x] call KPLIB_fnc_checkClass};
 KPLIB_o_battleGrpVehicles       = KPLIB_o_battleGrpVehicles         select {[_x] call KPLIB_fnc_checkClass};
 KPLIB_o_battleGrpVehiclesLight  = KPLIB_o_battleGrpVehiclesLight    select {[_x] call KPLIB_fnc_checkClass};
-KPLIB_o_troopTransports         = KPLIB_o_troopTransports           select {[_x] call KPLIB_fnc_checkClass};
-KPLIB_o_helicopters             = KPLIB_o_helicopters               select {[_x] call KPLIB_fnc_checkClass};
 KPLIB_o_slingHelicopters        = KPLIB_o_slingHelicopters          select {[_x] call KPLIB_fnc_checkClass};
 KPLIB_o_slingVehicles           = KPLIB_o_slingVehicles             select {[_x] call KPLIB_fnc_checkClass};
 KPLIB_o_attackHelicopters       = KPLIB_o_attackHelicopters         select {[_x] call KPLIB_fnc_checkClass};
@@ -224,30 +222,6 @@ KPLIB_aiResupplySources = KPLIB_aiResupplySources   apply {toLowerANSI _x};
 /*
     Classname collections
 */
-// All land vehicle classnames
-KPLIB_allLandVeh_classes = [[], [KPLIB_b_potato01]] select (KPLIB_b_potato01 isKindOf "Air");;
-{
-    KPLIB_allLandVeh_classes append _x;
-} forEach [
-    KPLIB_o_militiaVehicles apply {toLowerANSI _x},
-    KPLIB_o_armyVehicles apply {toLowerANSI _x},
-    KPLIB_o_armyVehiclesLight apply {toLowerANSI _x},
-    KPLIB_o_antiAirVehicles apply {toLowerANSI _x},
-    KPLIB_o_tankVehicles apply {toLowerANSI _x},
-    KPLIB_o_battleGrpVehicles apply {toLowerANSI _x},
-    KPLIB_o_battleGrpVehiclesLight apply {toLowerANSI _x},
-    KPLIB_o_troopTransports apply {toLowerANSI _x},
-    KPLIB_b_light_classes,
-    KPLIB_b_heavy_classes,
-    KPLIB_b_support_classes select {_x isKindOf "Car" || _x isKindOf "Tank"}
-];
-KPLIB_allLandVeh_classes = KPLIB_allLandVeh_classes arrayIntersect KPLIB_allLandVeh_classes;
-
-// All air vehicle classnames
-KPLIB_allAirVeh_classes = [[], [KPLIB_b_potato01]] select (KPLIB_b_potato01 isKindOf "Air");
-{
-    KPLIB_allAirVeh_classes append _x;
-} forEach [KPLIB_o_helicopters apply {toLowerANSI _x}, KPLIB_o_slingHelicopters apply {toLowerANSI _x}, KPLIB_o_attackHelicopters apply {toLowerANSI _x}, KPLIB_o_paradropPlanes apply {toLowerANSI _x},KPLIB_o_planes apply {toLowerANSI _x}, KPLIB_b_air_classes, KPLIB_b_support_classes select {_x isKindOf "Air"}];
 
 // All blufor vehicle (land and air) classnames
 KPLIB_b_allVeh_classes = [];
@@ -256,7 +230,20 @@ KPLIB_b_allVeh_classes = [];
 } forEach [KPLIB_b_light_classes, KPLIB_b_heavy_classes, KPLIB_b_air_classes, KPLIB_b_static_classes, KPLIB_b_support_classes];
 
 // Check for memory points to slingload
-KPLIB_o_slingVehicles = KPLIB_o_slingVehicles select {count (getArray(configFile >> "CfgVehicles" >> _x >> "slingLoadCargoMemoryPoints")) > 0};
+KPLIB_o_slingHelicopters = KPLIB_o_slingHelicopters select {
+    if (getText(configFile >> "CfgVehicles" >> _x >> "slingLoadMemoryPoint") != "") then {true} else {
+        [format["Vehicle class %1 doesn't have cargo slingload memory point!", _x], "WARNING"] call KPLIB_fnc_log;
+        false
+    };
+};
+if (KPLIB_o_slingHelicopters isEqualTo []) then {["No helicopters to slingload vehicles", "WARNING"] call KPLIB_fnc_log};
+KPLIB_o_slingVehicles = KPLIB_o_slingVehicles select {
+    if (count (getArray(configFile >> "CfgVehicles" >> _x >> "slingLoadCargoMemoryPoints")) > 0) then {true} else {
+        [format["Vehicle class %1 doesn't have cargo slingload memory points!", _x], "WARNING"] call KPLIB_fnc_log;
+        false
+    };
+};
+if (KPLIB_o_slingVehicles isEqualTo []) then {["No vehicles to slingload", "WARNING"] call KPLIB_fnc_log};
 
 // All opfor vehicle (land and air) classnames
 KPLIB_o_allVeh_classes  = [];
@@ -270,8 +257,6 @@ KPLIB_o_allVeh_classes  = [];
     KPLIB_o_tankVehicles,
     KPLIB_o_battleGrpVehicles,
     KPLIB_o_battleGrpVehiclesLight,
-    KPLIB_o_troopTransports,
-    KPLIB_o_helicopters,
     KPLIB_o_slingHelicopters,
     KPLIB_o_slingVehicles,
     KPLIB_o_paradropPlanes,
@@ -284,6 +269,18 @@ KPLIB_o_allVeh_classes  = [];
 ];
 KPLIB_o_allVeh_classes = KPLIB_o_allVeh_classes apply {toLowerANSI _x};
 KPLIB_o_allVeh_classes = KPLIB_o_allVeh_classes arrayIntersect KPLIB_o_allVeh_classes;
+
+// Enemy rotary-wings that will need to spawn in flight.
+KPLIB_o_helicopters = KPLIB_o_allVeh_classes select {_x isKindOf "Helicopter"};
+
+// All vehicles that spawn within battlegroups (see the above 2 arrays) and also hold soldiers as passengers.
+KPLIB_o_troopTransports = KPLIB_o_allVeh_classes select {
+	((_x isKindOf "LandVehicle") || (_x isKindOf "Air"))
+	&& ((getNumber(configFile >> "CfgVehicles" >> _x >> "transportSoldier") > 4) || {(_x == "o_heli_transport_04_bench_f")})
+	&& !(_x in (KPLIB_o_attackHelicopters apply {toLowerANSI _x}))
+	&& !(_x in (KPLIB_o_tankVehicles apply {toLowerANSI _x}))
+	&& !(_x in (KPLIB_o_antiAirVehicles apply {toLowerANSI _x}))
+};
 
 // All opfor statics
 KPLIB_o_allStatics_classes = [];
@@ -304,6 +301,51 @@ KPLIB_o_allSAM_classes = KPLIB_o_allSAM_classes arrayIntersect KPLIB_o_allSAM_cl
 // All regular opfor soldier classnames
 KPLIB_o_inf_classes = [KPLIB_o_sentry, KPLIB_o_rifleman, KPLIB_o_grenadier, KPLIB_o_squadLeader, KPLIB_o_teamLeader, KPLIB_o_marksman, KPLIB_o_machinegunner, KPLIB_o_heavyGunner, KPLIB_o_medic, KPLIB_o_riflemanLAT, KPLIB_o_atSpecialist, KPLIB_o_aaSpecialist, KPLIB_o_officer, KPLIB_o_sharpshooter, KPLIB_o_sniper,KPLIB_o_engineer];
 KPLIB_o_inf_classes = KPLIB_o_inf_classes apply {toLowerANSI _x};
+
+// All land vehicle classnames
+KPLIB_allLandVeh_classes = [[], [KPLIB_b_potato01]] select (KPLIB_b_potato01 isKindOf "Air");;
+{
+    KPLIB_allLandVeh_classes append _x;
+} forEach [
+    KPLIB_o_militiaVehicles apply {toLowerANSI _x},
+    KPLIB_o_armyVehicles apply {toLowerANSI _x},
+    KPLIB_o_armyVehiclesLight apply {toLowerANSI _x},
+    KPLIB_o_antiAirVehicles apply {toLowerANSI _x},
+    KPLIB_o_tankVehicles apply {toLowerANSI _x},
+    KPLIB_o_battleGrpVehicles apply {toLowerANSI _x},
+    KPLIB_o_battleGrpVehiclesLight apply {toLowerANSI _x},
+    KPLIB_b_light_classes,
+    KPLIB_b_heavy_classes,
+    KPLIB_b_support_classes select {_x isKindOf "Car" || _x isKindOf "Tank"}
+];
+KPLIB_allLandVeh_classes = KPLIB_allLandVeh_classes arrayIntersect KPLIB_allLandVeh_classes;
+
+// All air vehicle classnames
+KPLIB_allAirVeh_classes = [[], [KPLIB_b_potato01]] select (KPLIB_b_potato01 isKindOf "Air");
+{
+    KPLIB_allAirVeh_classes append _x;
+} forEach [KPLIB_o_helicopters apply {toLowerANSI _x}, KPLIB_o_slingHelicopters apply {toLowerANSI _x}, KPLIB_o_attackHelicopters apply {toLowerANSI _x}, KPLIB_o_paradropPlanes apply {toLowerANSI _x},KPLIB_o_planes apply {toLowerANSI _x}, KPLIB_b_air_classes, KPLIB_b_support_classes select {_x isKindOf "Air"}];
+
+// Check for missing classnames on KPLIB_classnameLists.sqf
+private _index = KPLIB_type_barracks find KPLIB_b_barrack;
+if (_index < 0) then {
+    KPLIB_type_barracks pushBack KPLIB_b_barrack;
+};
+
+private _index = KPLIB_medical_facilities find KPLIB_b_medicalFacility;
+if (_index < 0) then {
+    KPLIB_medical_facilities pushBack KPLIB_b_medicalFacility;
+};
+
+private _index = KPLIB_b_slotPlane findIf {_x in KPLIB_type_hangars};
+if (_index < 0) then {
+    KPLIB_type_hangars append KPLIB_b_slotPlane;
+};
+
+private _index = KPLIB_b_slotHeli findIf {_x in KPLIB_type_heliPads};
+if (_index < 0) then {
+    KPLIB_type_heliPads append KPLIB_b_slotHeli;
+};
 
 /*
     Vehicle type permission arrays

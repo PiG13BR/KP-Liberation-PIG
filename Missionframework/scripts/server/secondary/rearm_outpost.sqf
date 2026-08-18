@@ -108,5 +108,5 @@ KPLIB_enemyReadiness = round (KPLIB_enemyReadiness - 8);
 stats_secondary_objectives = stats_secondary_objectives + 1;
 KPLIB_secondary_in_progress = -1; publicVariable "KPLIB_secondary_in_progress";
 uiSleep 1;
-[] spawn KPLIB_fnc_doSave;
+spawn KPLIB_fnc_doSave;
 [format ["Rearm Outpost secondary objective complete at %1. reduced enemy readiness to %2",_objective_outpost, KPLIB_enemyReadiness], "NOTIFICATION"] call KPLIB_fnc_log;

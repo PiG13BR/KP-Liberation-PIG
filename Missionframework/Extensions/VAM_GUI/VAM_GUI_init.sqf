@@ -65,7 +65,7 @@ fnc_VAM_Orca_camo_check = compileFinal preprocessFileLineNumbers "Extensions\VAM
 
 fnc_VAM_UGV_rcws_setup = compileFinal preprocessFileLineNumbers "Extensions\VAM_GUI\vehicles\exceptions\UGV_rcws\fnc_VAM_UGV_rcws_setup.sqf";
 
-if !(count VAM_condition_check_options isEqualTo 0) then {[] spawn fnc_VAM_condition_check;};
-[] spawn fnc_VAM_action;
+if !(count VAM_condition_check_options isEqualTo 0) then {spawn fnc_VAM_condition_check;};
+spawn fnc_VAM_action;
 
 ["----- Vehicle Appearance Manager ready -----", "VAM"] call KPLIB_fnc_log;

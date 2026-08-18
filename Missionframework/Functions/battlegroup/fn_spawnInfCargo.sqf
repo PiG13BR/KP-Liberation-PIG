@@ -2,7 +2,7 @@
     File: fn_spawnInfCargo.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 29/10/2025 
-    Last Update: 29/07/2026
+    Last Update: 11/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -30,7 +30,7 @@ private _emptySeats = ((_vehicle emptyPositions "CargoNoFFV") min 8); // Count e
 
 // If Air unit, fill more seats
 if (_vehicle isKindOf "Air") then {
-    _emptySeats = (_vehicle emptyPositions "CargoNoFFV") min 14;
+    _emptySeats = (_vehicle emptyPositions "Cargo") min 14;
     // Fix for Mi-290 Taru
     if (typeOf _vehicle == "O_Heli_Transport_04_bench_F") then {
         _emptySeats = (_vehicle emptyPositions "Cargo") min 8;
@@ -44,18 +44,16 @@ if ((typeOf _vehicle) in KPLIB_o_paradropPlanes) then {
     private _paraSquad = ["paratroopers"] call KPLIB_fnc_getSquadComp;
     if (count _paraSquad > _emptySeats) then {_squad resize _emptySeats;};
     {
-        //if (_forEachIndex > _emptySeats) exitWith {};
         private _unit = [_x, markerPos "ghost_spot", _group, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
-        _unit moveInAny _vehicle;
+        _unit moveInAny [_vehicle, ["CARGO", "TURRET"]]
     } foreach _paraSquad;
 } else {
     private _squad = [] call KPLIB_fnc_getSquadComp;
     if (count _squad > _emptySeats) then {_squad resize _emptySeats;};
     
     {
-        //if (_forEachIndex > _emptySeats) exitWith {};
         private _unit = [_x, _vehicle getPos [5 + random 10, random 360], _group, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
-        _unit moveInAny _vehicle;
+        _unit moveInAny [_vehicle, ["CARGO", "TURRET"]]
     } foreach _squad;
 };
 

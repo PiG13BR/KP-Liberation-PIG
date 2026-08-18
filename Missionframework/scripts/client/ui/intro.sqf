@@ -4,7 +4,7 @@ if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false 
 sleep 0.5;
 waitUntil { time > 0 };
 
-[] spawn cinematic_camera;
+spawn cinematic_camera;
 
 if ( KPLIB_param_introCinematic ) then {
 

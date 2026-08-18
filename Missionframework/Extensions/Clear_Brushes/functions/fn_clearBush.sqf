@@ -62,10 +62,14 @@ if (isNull _intersectObj && {isNull _parentObject}) then {
         "Cortando...",
         {
             (_this # 0) params ["", "_unit"]; 
-            private _sound = localNamespace getVariable ["KPLIB_grassSoundCut", -1];
+            private _sound = playSound3D [getMissionPath "Extensions\Clear_Brushes\sounds\clippers_cut.ogg", _unit, false, getPosASL _unit, 2, 1, 20];
+
+            if !(localNamespace isNil "KPLIB_grassSoundCut") then {
+                _sound = localNamespace getVariable "KPLIB_grassSoundCut";
+            };
             if (soundParams _sound isEqualTo []) then {
-                _id = playSound3D [getMissionPath "Extensions\Clear_Brushes\sounds\clippers_cut.ogg", _unit, false, getPosASL _unit, 2, 1, 20];
-                localNamespace setVariable ["KPLIB_grassSoundCut", _id];
+                _sound = playSound3D [getMissionPath "Extensions\Clear_Brushes\sounds\clippers_cut.ogg", _unit, false, getPosASL _unit, 2, 1, 20];
+                localNamespace setVariable ["KPLIB_grassSoundCut", _sound];
             };
             
             !isNull _unit && {alive _unit} && {[_unit] call ace_common_fnc_isAwake}
@@ -94,10 +98,14 @@ if (isNull _intersectObj && {isNull _parentObject}) then {
             "Derrubando...",
             {
                 (_this # 0) params ["_intersectObj", "_unit"]; 
-                private _sound = localNamespace getVariable ["KPLIB_bushSoundCut", -1];
+                private _sound = playSound3D [getMissionPath "Extensions\Clear_Brushes\sounds\chop_wood_axe.ogg", _intersectObj, false, getPosASL _intersectObj, 2, 1, 25];
+
+                if !(localNamespace isNil "KPLIB_bushSoundCut") then {
+                    _sound = localNamespace getVariable "KPLIB_bushSoundCut";
+                };
                 if (soundParams _sound isEqualTo []) then {
-                    _id = playSound3D [getMissionPath "Extensions\Clear_Brushes\sounds\chop_wood_axe.ogg", _intersectObj, false, getPosASL _intersectObj, 2, 1, 25];
-                    localNamespace setVariable ["KPLIB_bushSoundCut", _id];
+                    _sound = playSound3D [getMissionPath "Extensions\Clear_Brushes\sounds\chop_wood_axe.ogg", _intersectObj, false, getPosASL _intersectObj, 2, 1, 25];
+                    localNamespace setVariable ["KPLIB_bushSoundCut", _sound];
                 };
                 
                 !isNull _unit && {alive _unit} && {[_unit] call ace_common_fnc_isAwake}

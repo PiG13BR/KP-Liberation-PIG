@@ -77,7 +77,7 @@ private _playtime_hours = floor ((_stats_playtime % 86400) / 3600);
 private _playtime_minutes = floor ((_stats_playtime % 3600) / 60);
 private _playtime_seconds = _stats_playtime % 60;
 
-[] spawn cinematic_camera;
+spawn cinematic_camera;
 
 private _dialog = createDialog "liberation_endscreen";
 waitUntil {dialog};

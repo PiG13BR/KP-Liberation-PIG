@@ -2,7 +2,7 @@
     File: fn_spawnVehicle.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2019-12-03
-    Last Update: 2026-27-05
+    Last Update: 2026-16-08
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -55,7 +55,7 @@ if (_spawnPos isEqualTo []) exitWith {
 };
 
 // If it's a chopper, spawn it flying
-if (_classname in KPLIB_o_helicopters) then {
+if ((toLowerANSI _classname) in KPLIB_o_helicopters) then {
     _newvehicle = createVehicle [_classname, _pos, [], 0, 'FLY'];
     _newvehicle flyInHeight (100 + (random 120));
     _newvehicle allowDamage false;
@@ -75,6 +75,8 @@ if (_classname in KPLIB_o_helicopters) then {
         _this setVectorUp surfaceNormal position _this;
     }, _newvehicle, 3] call CBA_fnc_waitAndExecute;
 };
+
+if (isNull _newvehicle) exitWith {_newVehicle};
 
 _newVehicle lock true;
 // Clear cargo, if enabled

@@ -26,6 +26,7 @@ private _allNvgs = [];
 	{
 		if (_x isEqualTo "") then {continue};
         if (_x isKindOf ["Binocular", configFile >> "cfgWeapons"]) then {continue}; // Ignore binoculars only
+		private _weapon = _x call BIS_fnc_baseWeapon;
 		_allWeapons pushBackUnique _x
 	}forEach (weapons _role);
 

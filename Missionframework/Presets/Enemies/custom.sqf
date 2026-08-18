@@ -2,7 +2,7 @@
     File: custom.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 10/04/2026
-    Last Update: 09/07/2026
+    Last Update: 16/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -155,35 +155,15 @@ KPLIB_o_battleGrpVehiclesLight = [
     "O_Heli_Transport_04_bench_F"                                       // Mi-290 Taru (Bench)
 ];
 
-/* All vehicles that spawn within battlegroups (see the above 2 arrays) and also hold 8 soldiers as passengers.
-If something in this array can't hold all 8 soldiers then buggy behaviours may occur. */
-KPLIB_o_troopTransports = [
-    "O_Truck_03_transport_F",                                           // Tempest Transport
-    "O_Truck_03_covered_F",                                             // Tempest Transport (Covered)
-    "O_APC_Wheeled_02_rcws_F",                                          // MSE-3 Marid
-    "O_Heli_Transport_04_bench_F",                                      // Mi-290 Taru (Bench)
-    "O_Heli_Light_02_dynamicLoadout_F",                                 // Po-30 Orca (Armed)
-    "O_T_VTOL_02_infantry_dynamicLoadout_F"                             // Y-32 Xi'an (Ifantry Transport)
-];
-
-// Enemy rotary-wings that will need to spawn in flight.
-KPLIB_o_helicopters = [
-    "O_Heli_Transport_04_bench_F",                                      // Mi-290 Taru (Bench)
-    "O_Heli_Light_02_dynamicLoadout_F",                                 // Po-30 Orca (Armed)
-    "O_Heli_Transport_04_box_F"                                         // Mi-290 Taru (Cargo)
-];
-
-// Enemy rotary-wings that will slingload vehicles.
+// Enemy rotary-wings that will slingload vehicles. Require slingLoadMemoryPoint config!
 KPLIB_o_slingHelicopters = [
-    "O_Heli_Transport_04_box_F"                                         // Mi-290 Taru (Cargo)
+    "O_Heli_Transport_04_F"                                             // Mi-290 Taru
 ];
 
-// Enemy vehicles to slingload to the battlefield
+// Enemy vehicles to slingload to the battlefield. Require slingLoadCargoMemoryPoints config!
 KPLIB_o_slingVehicles = [
-    "O_APC_Wheeled_02_rcws_F",                                          // MSE-3 Marid,
-    "O_APC_Wheeled_02_rcws_F",                                          // MSE-3 Marid
-    "O_APC_Tracked_02_cannon_F",                                        // BTR-K Kamysh
-    "O_APC_Tracked_02_AA_F"                                             // ZSU-39 Tigris
+    "O_MRAP_02_hmg_F",                                                  // Ifrit (HMG)
+    "O_MRAP_02_gmg_F"                                                   // Ifrit (GMG)
 ];
 
 // Enemy attack rotary-wings

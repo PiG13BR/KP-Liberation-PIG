@@ -26,7 +26,7 @@ if ( _status == 2 ) then {
         {
             if (_x inArea _sector) then {
                 [_x] call KPLIB_fnc_destroyFob;
-                [] spawn KPLIB_fnc_doSave;
+                spawn KPLIB_fnc_doSave;
                 stats_fobs_lost = stats_fobs_lost + 1;
             };
         }forEach KPLIB_player_fobs;
@@ -34,7 +34,7 @@ if ( _status == 2 ) then {
         {
             if (_x inArea _sector) then {
                 [_x] call KPLIB_fnc_destroyOutpost;
-                [] spawn KPLIB_fnc_doSave;
+                spawn KPLIB_fnc_doSave;
             };
         }forEach KPLIB_player_outposts;
     }

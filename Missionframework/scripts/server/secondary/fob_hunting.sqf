@@ -235,7 +235,7 @@ waitUntil {
 KPLIB_enemyReadiness = round (KPLIB_enemyReadiness * (1 - KPLIB_secondary_objective_impact));
 stats_secondary_objectives = stats_secondary_objectives + 1;
 sleep 1;
-[] spawn KPLIB_fnc_doSave;
+spawn KPLIB_fnc_doSave;
 sleep 3;
 
 [3] remoteExec ["remote_call_intel"];

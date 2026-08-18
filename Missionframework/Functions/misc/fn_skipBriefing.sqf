@@ -4,7 +4,7 @@
 if (hasInterface) then {
     if (!isNumber (missionConfigFile >> "briefing")) exitWith {};
     if (getNumber (missionConfigFile >> "briefing") == 1) exitWith {};
-    [] spawn {
+    spawn {
         waitUntil {
             if (getClientState == "BRIEFING READ") exitWith {true};
             if (!isNull findDisplay 53) exitWith {

@@ -2,7 +2,7 @@
     File: fn_battlegroupParatroopers.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 29/10/2025
-    Last Update: 04/07/2026
+    Last Update: 16/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -157,7 +157,7 @@ _infGrp setSpeedMode "FULL";
     _fnc_checkLanding = {
         params ["_infGrp", "_paradropArea", "_targetPos"];
 
-        if (({alive _x && [_x] call KPLIB_fnc_ace_isAwake} count (units _infGrp)) < 1) exitWith {};
+        if (({alive _x && [_x] call KPLIB_fnc_ace_isAwake} count (units _infGrp)) < 1) exitWith {true};
 
         // Detect units that landed on water or uncounsionus, delete them
         private _unableUnits = (units _infGrp) select {(isTouchingGround _x || ((getPosATL _x # 2) < 2)) && {surfaceIsWater (getPosATL _x) || !([_x] call KPLIB_fnc_ace_isAwake)} };
@@ -171,6 +171,8 @@ _infGrp setSpeedMode "FULL";
 
     // Check landing
     waitUntil {sleep 1; [_infGrp, _paradropArea, _targetPos] call _fnc_checkLanding};
+
+    if (({alive _x && [_x] call KPLIB_fnc_ace_isAwake} count (units _infGrp)) < 1) exitWith {};
 
     // Spawns an orange smoke in the paradrop assembling area
     private _moduleGroup = createGroup [sideLogic, true];

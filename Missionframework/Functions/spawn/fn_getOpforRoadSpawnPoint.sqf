@@ -2,7 +2,7 @@
     File: fn_getOpforRoadSpawnPoint.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 07/11/2025
-    Last Update: 12/04/2026
+    Last Update: 16/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -35,10 +35,12 @@ private _possibleSpawns = [];
 
 // Only check for opfor spawn points which aren't used already in the current session
 private _spawnsToCheck = [];
-if (KPLIB_road_spawn isEqualTo []) then {
-    _spawnsToCheck = KPLIB_sectors_spawn
-} else {
-    _spawnsToCheck = KPLIB_road_spawn;
+private _roadSpawn = [];
+if !(_pos isEqualTo [0, 0, 0]) then {
+    _roadSpawn = KPLIB_road_spawn select {(((markerPos _x) distance2D _pos) < _max) && (((markerPos _x) distance2D _pos) > _min)};
+};
+if (_roadSpawn isEqualTo []) exitWith {
+    _this call KPLIB_fnc_getOpforSpawnPoint;
 };
 
 if (!isNil "KPLIB_usedOpforSpawnPoints") then {

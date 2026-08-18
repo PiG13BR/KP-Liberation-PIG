@@ -31,9 +31,9 @@ VAM_action = compileFinal "
     ];
 ";
 
-[] spawn VAM_action;
+spawn VAM_action;
 
-player addEventHandler ["Respawn", {[] spawn VAM_action;}];
+player addEventHandler ["Respawn", {spawn VAM_action;}];
 
 while {true} do {
     if (player isEqualTo vehicle player && cursorObject isKindOf "AllVehicles" && player distance cursorObject < 10 && ((crew cursorObject isEqualTo []) || (unitIsUAV cursorObject && !(isUAVConnected cursorObject)))) then {
