@@ -20,7 +20,7 @@
 params["_shorad", "_target", "_missile"];
 
 // Chance to destroy the missile if a projectile fired by the AA passes by
-#define CHANCE_TO_DESTROY 100
+#define CHANCE_TO_DESTROY 10
 // Define the proximity of the projectile fired by the anti-air to count as a valid hit
 #define PROJECTILE_PROXIMITY 13
 // Minimum distance between the missile and its target to enable the shorad to fire at
