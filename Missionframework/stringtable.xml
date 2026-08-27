@@ -6076,6 +6076,10 @@
             <Original>-- DROP</Original>
             <Portuguese>-- SOLTAR</Portuguese>
         </Key>
+        <Key ID="STR_ACTION_CRATE_CONVERT_FUEL">
+            <Original>-- CONVERT TO FLEXBILE FUEL TANK</Original>
+            <Portuguese>-- CONVERTER PARA TANQUE FLEXÍVEL</Portuguese>
+        </Key>
         <!-- Added or changed in v0.96 -->
         <Key ID="STR_PARAMS_SUPPMOD">
             <Original>BI Support Module System access</Original>

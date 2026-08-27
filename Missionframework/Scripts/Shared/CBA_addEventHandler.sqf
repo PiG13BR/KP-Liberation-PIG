@@ -653,3 +653,35 @@
         }
     }]
 }] call CBA_fnc_addEventHandler;
+
+["KPLIB_convertFuelCrate", {   
+    [
+        _this,
+        "<t color='#8f04ec'>" + localize "STR_ACTION_CRATE_CONVERT_FUEL" + "</t>",
+        "a3\ui_f_oldman\data\igui\cfg\holdactions\refuel_ca.paa", "a3\ui_f_oldman\data\igui\cfg\holdactions\refuel_ca.paa",
+        toString{
+            !(_this getVariable ['KPLIB_BUILD_isBuilding', false]) && 
+            {isNull objectParent _this} &&
+            {[4] call KPLIB_fnc_hasPermission} &&
+            {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
+            {!(_target getVariable ["KPLIB_beignCarried", false])}
+        }, toString{
+            !(_caller getVariable ['KPLIB_BUILD_isBuilding', false]) && 
+            {isNull objectParent _caller} &&
+            {[4] call KPLIB_fnc_hasPermission} &&
+            {isNull (_caller getVariable ["KPLIB_carriedObject", objNull])} &&
+            {!(_target getVariable ["KPLIB_beignCarried", false])}
+        },
+        {},
+        {},
+        {   
+            params["_crate"];
+
+            private _pos = getPosATL _crate;
+            deleteVehicle _crate;
+            createVehicle ["FlexibleTank_01_forest_F", _pos, [], 0, "CAN_COLLIDE"];
+        },
+        {},
+        [], 4, -505, true, false, false, 2
+    ] call BIS_fnc_holdActionAdd;
+}] call CBA_fnc_addEventHandler;

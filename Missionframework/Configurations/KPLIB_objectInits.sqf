@@ -676,5 +676,19 @@ KPLIB_objectInits = [
         {
             ["KPLIB_addExplosionEH", _this] call CBA_fnc_globalEventJIP
         }
+    ],
+
+    // Add action to convert fuel crates to flexible fuel tank
+    [
+        [KPLIB_b_crateFuel],
+        {
+            [{
+                time > 60
+            }, {
+                params["_object"];
+
+                ["KPLIB_convertFuelCrate", _object] call CBA_fnc_globalEventJIP;
+            }, [_this]] call CBA_fnc_waitUntilAndExecute;
+        }
     ]
 ];
