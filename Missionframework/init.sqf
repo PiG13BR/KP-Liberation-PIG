@@ -31,6 +31,11 @@ if (!isServer) then {waitUntil {!isNil "KPLIB_initServerDone"};};
 // Read presets
 [] call compile preprocessFileLineNumbers 'Presets\init_presets.sqf';
 
+// Pylon Armament Selector custom preset
+if (KPLIB_param_PAS && KPLIB_ace) then {
+    [] call compile preprocessFileLineNumbers "Extensions\Pylon_Armament_Selector\init_presets.sqf";
+};
+
 // Read objects inits
 [] call compile preprocessFileLineNumbers 'Configurations\KPLIB_objectInits.sqf';
 
@@ -55,11 +60,6 @@ if (KPLIB_param_sectorEvents > 0) then {
 
 // Set up CBA settings
 [] call compile preprocessFileLineNumbers 'CBA_initSettings.sqf';
-
-// Pylon Armament Selector custom preset
-if (KPLIB_param_PAS && KPLIB_ace) then {
-    [] call compile preprocessFileLineNumbers "Extensions\Pylon_Armament_Selector\init_presets.sqf";
-};
 
 if (KPLIB_param_playerMenu) then {
     // KP player menu

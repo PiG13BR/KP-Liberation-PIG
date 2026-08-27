@@ -52,7 +52,7 @@
 * Tweaked: Artillery support calls from enemy infantry groups.
 * Tweaked: `KPLIB_o_helicopters` and `KPLIB_o_troopTransports` variables are automatically created in `init_presets.sqf`.
 * Tweaked: File `init_presets.sqf` now checks for missing classnames in some of the important lists found in `KPLIB_classnameLists.sqf`.
-* Tweaked: Enemies on activated blufor sectors won't fire the vulnerable timer to avoid players not beign able to recapture sector.
+* Tweaked: Enemies on activated blufor sectors won't fire the vulnerable timer to avoid players not being able to recapture sector.
 * Removed: Enemy fighter notifications.
 * Removed: ACE Fortify compatibility.
 * Removed: Some KP Liberation script files no longer required for the current version.

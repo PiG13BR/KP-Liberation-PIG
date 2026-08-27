@@ -614,17 +614,19 @@ KPLIB_objectInits = [
     [
         KPLIB_b_air_classes + [KPLIB_b_potato01],
         {
-            if (count PIG_PAS_customPreset > 0) then {
-                private _checkPreset = PIG_PAS_customPreset apply {toLowerANSI _x};
-                {
-                    private _pylonIndex = _x # 0;
-                    private _turret = _x # 2;
-                    private _magazine = _x # 3;
+            if (KPLIB_ace) then {
+                if (count PIG_PAS_customPreset > 0) then {
+                    private _checkPreset = PIG_PAS_customPreset apply {toLowerANSI _x};
+                    {
+                        private _pylonIndex = _x # 0;
+                        private _turret = _x # 2;
+                        private _magazine = _x # 3;
 
-                    if !((toLowerANSI _magazine) in _checkPreset) then {
-                        ["PAS_setPylonArmament", [_this, _pylonIndex, "", _turret]] call CBA_fnc_globalEvent;
-                    };
-                }forEach (getAllPylonsInfo _this);
+                        if !((toLowerANSI _magazine) in _checkPreset) then {
+                            ["PAS_setPylonArmament", [_this, _pylonIndex, "", _turret]] call CBA_fnc_globalEvent;
+                        };
+                    }forEach (getAllPylonsInfo _this);
+                }
             }
         }
     ],

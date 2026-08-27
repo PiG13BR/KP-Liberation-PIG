@@ -2,7 +2,7 @@
     File: fn_addActionsCrate.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 26/05/2017
-    Last Update: 17/07/2026
+    Last Update: 27/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -36,8 +36,7 @@ private _loadAction = _crate addAction [
         {isNull objectParent _this} &&
         {[4] call KPLIB_fnc_hasPermission} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
-        {!(_target getVariable ["KPLIB_beignCarried", false])} &&
-        {!(_target getVariable ["KPLIB_crateInStorage", false])}
+        {!(_target getVariable ["KPLIB_beignCarried", false])}
     },
     5
 ];
@@ -60,8 +59,7 @@ private _storeAction = _crate addAction [
         {(nearestObjects [_target, KPLIB_storageBuildings, 20] select {!(_x getVariable ["KPLIB_ropeAttached", false])}) isNotEqualTo []} &&
         {[4] call KPLIB_fnc_hasPermission} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
-        {!(_target getVariable ["KPLIB_beignCarried", false])} &&
-        {!(_target getVariable ["KPLIB_crateInStorage", false])}
+        {!(_target getVariable ["KPLIB_beignCarried", false])}
     },
     5
 ];
@@ -81,8 +79,7 @@ private _valueAction = _crate addAction [
         {isNull objectParent _this} &&
         {[4] call KPLIB_fnc_hasPermission} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
-        {!(_target getVariable ["KPLIB_beignCarried", false])} &&
-        {!(_target getVariable ["KPLIB_crateInStorage", false])}
+        {!(_target getVariable ["KPLIB_beignCarried", false])}
     },
     5
 ];
@@ -141,8 +138,7 @@ private _carryAction = _crate addAction [
         {isNull objectParent _this} &&
         {[4] call KPLIB_fnc_hasPermission} &&
         {isNull (_this getVariable ["KPLIB_carriedObject", objNull])} &&
-        {!(_target getVariable ["KPLIB_beignCarried", false])} &&
-        {!(_target getVariable ["KPLIB_crateInStorage", false])}
+        {!(_target getVariable ["KPLIB_beignCarried", false])}
     },
     5
 ];
