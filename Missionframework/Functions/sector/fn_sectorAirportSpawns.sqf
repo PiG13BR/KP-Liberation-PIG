@@ -59,7 +59,7 @@ if (KPLIB_param_unitcap >= 1.5) then {
     if (KPLIB_LAMBS) then {
         [_grp, _sectorPos, 200, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {
-        [_grp, _sectorPos] spawn add_defense_waypoints;
+        [_grp, _sectorPos] spawn KPLIB_fnc_addDefenseWaypoints;
     };
 
     _sectorUnits = _sectorUnits + (units _grp);
@@ -96,7 +96,7 @@ if (KPLIB_enemyReadiness > 25) then {
 
     if (_vehSpawnPos isEqualTo [0,0]) then {[format["Couldn't find a position to spawn vehicle in sector: %1", markerText _sector], "SECTOR"] call KPLIB_fnc_log; continue};
     private _vehicle = [_vehSpawnPos, _x] call KPLIB_fnc_spawnVehicle;
-    //[group ((crew _vehicle) select 0),_sectorPos] spawn add_defense_waypoints;
+    //[group ((crew _vehicle) select 0),_sectorPos] spawn KPLIB_fnc_addDefenseWaypoints;
     _sectorUnits pushback _vehicle;
     {_sectorUnits pushback _x;} foreach (crew _vehicle);
 

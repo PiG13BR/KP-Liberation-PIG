@@ -15,7 +15,8 @@
 - Towers are GPS jammers and can cause radio interference (random towers, not all of them).
 
 ## IDEAS 
-- Players have to stabilize cities after capturing them.
+- Players have to stabilize town/cities after capturing them.
+- Factories need workers. Workers can come from captured and stabilized nearby town/cities to work on the factories.
 - Rearming friendly vehicles will cost ammo supplies (by using Jeroen's logistic system: https://github.com/Jeroen-Notenbomer/Limited-Arsenal).
 - Bomb jammer for important sectors.
 

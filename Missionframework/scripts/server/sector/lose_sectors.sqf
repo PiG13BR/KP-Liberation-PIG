@@ -10,6 +10,9 @@ private _ownership = KPLIB_side_player;
 
 while {KPLIB_endgame == 0} do {
     {
+        // Ignore activated sectors
+        if (_x in KPLIB_sectors_active) then {continue};
+
         private _sectorRange = KPLIB_range_sectorCapture * 0.8;
         if (_x in KPLIB_sectors_airport) then {
             _sectorRange = getMarkerSize _x;

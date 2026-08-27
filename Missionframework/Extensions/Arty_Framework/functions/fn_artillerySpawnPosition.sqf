@@ -160,7 +160,7 @@ if !(_spawn_marker isEqualTo "") then {
 	// Patrols
 	// AA Infantry Patrol
 	private _grppatrol1 = [_spawn_marker, KPLIB_o_squadAir] call KPLIB_fnc_spawnRegularSquad;
-	[_grppatrol1, markerpos _spawn_marker] spawn add_defense_waypoints;
+	[_grppatrol1, markerpos _spawn_marker] spawn KPLIB_fnc_addDefenseWaypoints;
 
 	KPLIB_artilleryPosition_groups pushBack _grppatrol1;
 
@@ -168,7 +168,7 @@ if !(_spawn_marker isEqualTo "") then {
 	if (KPLIB_enemyReadiness >= (50 - (5 * KPLIB_param_difficulty))) then {
 		_patrol2 = ([] call KPLIB_fnc_getSquadComp);
 		private _grppatrol2 = [_spawn_marker, _patrol2] call KPLIB_fnc_spawnRegularSquad;
-		[_grppatrol2, markerpos _spawn_marker] spawn add_defense_waypoints;
+		[_grppatrol2, markerpos _spawn_marker] spawn KPLIB_fnc_addDefenseWaypoints;
 
 		KPLIB_artilleryPosition_groups pushBack _grppatrol2;
 	};

@@ -739,7 +739,7 @@ KPLIB_intelBuildingClasses = [
 
 // Array of radio tower classnames to place at radio tower sectors. If more than one is added, it'll be selected random for each sector on campaign start.
 KPLIB_radioTowerClassnames = [
-    "Land_Telek1"
+    "Land_Communication_F"
 ];
 
 // Hangars and helipads types to add as a plane/heli slot if they're already in the map and close to a fob

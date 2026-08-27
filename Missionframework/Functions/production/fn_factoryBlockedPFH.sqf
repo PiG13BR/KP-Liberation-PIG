@@ -1,3 +1,20 @@
+/*
+    File: fn_factoryBlockedPFH.sqf
+    Author: PiG13BR - https://github.com/PiG13BR
+    Date: 07/02/2026
+    Last Update: 29/07/2026
+    License: MIT License - http://www.opensource.org/licenses/MIT
+
+    Description:
+        Manages blocked factory
+
+    Parameter(s):
+        _factory - factory sector to manage [STRING]
+        _units - guerrilla units spawned on factory [ARRAY]
+
+    Returns:
+        -
+*/
 params["_factory", "_units"];
 
 [{

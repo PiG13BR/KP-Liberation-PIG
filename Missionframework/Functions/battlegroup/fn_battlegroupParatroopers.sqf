@@ -2,7 +2,7 @@
     File: fn_battlegroupParatroopers.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 29/10/2025
-    Last Update: 16/08/2026
+    Last Update: 26/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -28,10 +28,10 @@ params [
 
 if (!isServer) exitWith {[]};
 
-// Get heli class if not provided
+// Get plane class if not provided
 if (_planeClass isEqualTo "") then {
     _planeClass = selectRandom KPLIB_o_paradropPlanes;
-    while {!(_planeClass in KPLIB_o_troopTransports)} do {
+    while {!((toLowerANSI _planeClass) in KPLIB_o_troopTransports)} do {
         _planeClass = selectRandom KPLIB_o_paradropPlanes;
     };
 };

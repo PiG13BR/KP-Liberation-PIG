@@ -9,6 +9,10 @@
 		KPLIB_savedMinesPosHash = createHashMap;
 	};
 
+	// Avoid spawning mines again
+	private _mines = KPLIB_sectorMinesHash getOrDefault [_this, []];
+	if (_mines isNotEqualTo []) exitWith {};
+
 	// Check for spawned mines positions in this sector
 	if !(_this in KPLIB_savedMinesPosHash) then {
 		// Create new minefield

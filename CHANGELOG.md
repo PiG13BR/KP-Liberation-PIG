@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.97.1 (18/08/2026)
+## 0.97.1 (26/08/2026)
 * Added Extension: Enemy QRF from military bases based on tower detection. 
 * Added Extension: Commander can edit FOB/Outpost names.
 * Added Extension: Discord log for FOB resources (Added by Fernandim).
@@ -52,6 +52,7 @@
 * Tweaked: Artillery support calls from enemy infantry groups.
 * Tweaked: `KPLIB_o_helicopters` and `KPLIB_o_troopTransports` variables are automatically created in `init_presets.sqf`.
 * Tweaked: File `init_presets.sqf` now checks for missing classnames in some of the important lists found in `KPLIB_classnameLists.sqf`.
+* Tweaked: Enemies on activated blufor sectors won't fire the vulnerable timer to avoid players not beign able to recapture sector.
 * Removed: Enemy fighter notifications.
 * Removed: ACE Fortify compatibility.
 * Removed: Some KP Liberation script files no longer required for the current version.
@@ -69,6 +70,7 @@
 * Fixed: MLRS enemy artillery was not firing all its rounds at once.
 * Fixed: Shorad in enemy SAM sites not firing at incoming missiles.
 * Fixed: Presets with spill spud for storages not converting to containers.
+* Fixed: Guerrilla IEDs not spawning and not exploding it.
 
 ## 0.97.0 (07/03/2026)
 * Added Extension: Enemy artillery.

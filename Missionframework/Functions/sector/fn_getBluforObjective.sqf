@@ -2,26 +2,26 @@
     File: fn_getBluforObjective.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 05/11/2025
-    Last Update: 12/07/2026
+    Last Update: 26/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
         Gets a random blufor objective position.
 
     Parameter(s):
-        _pos - Position if the nearest blufor objective to this should be selected [POSITION, defaults to [0, 0, 0]]
+        _pos - Position if the nearest blufor objective to this should be selected [POSITION, defaults to [0,0,0]]
 
     Returns:
         Blufor objetive position [POSITION]
 */
 
 params [
-    ["_pos", [0, 0, 0], [[]], [2, 3]]
+    ["_pos", [0,0,0], [[]], [2, 3]]
 ];
 
 private _possibleBluforObjectives = [];
 
-private _objectivesToCheck = ((KPLIB_player_fobs select {_x isNotEqualTo [0,0,0]}) + (KPLIB_player_outposts select {_x isNotEqualTo [0,0,0]})) + ((KPLIB_sectors_player - KPLIB_fillers_all) apply {markerPos _x});
+private _objectivesToCheck = ((KPLIB_player_fobs select {_x isNotEqualTo [0,0,0]}) + (KPLIB_player_outposts select {_x isNotEqualTo [0,0,0]})) + ((KPLIB_sectors_player - KPLIB_fillers_all - KPLIB_blockedFactories) apply {markerPos _x});
 
 {
     private _valid = true;
@@ -40,7 +40,7 @@ private _objectivesToCheck = ((KPLIB_player_fobs select {_x isNotEqualTo [0,0,0]
 }forEach _objectivesToCheck;
 
 // Return empty string, if no possible spawn point was found
-if (_possibleBluforObjectives isEqualTo []) exitWith {["No objective to attack found", "WARNING"] call KPLIB_fnc_log; [0, 0, 0]};
+if (_possibleBluforObjectives isEqualTo []) exitWith {["No objective to attack found", "WARNING"] call KPLIB_fnc_log; [0,0,0]};
 
 // Return nearest blufor objective to given position, if provided
 if (_pos isNotEqualTo [0, 0, 0]) exitWith {

@@ -2,7 +2,7 @@
     File: fn_addPlayerEH.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 13/11/2025
-    Last Update: 25/07/2026
+    Last Update: 26/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -157,6 +157,7 @@ addMissionEventHandler ["MapSingleClick", {
         if ((_mapSign # 1) find "factory" == 0) then {
             private _sector = [300, _mousePos] call KPLIB_fnc_getNearestSector;
             if ((_sector in KPLIB_sectors_factory) && (_sector in KPLIB_sectors_player)) then {
+                if (_sector in KPLIB_blockedFactories) exitWith {};
                 [_sector] call KPLIB_fnc_hintResourcesFactory;
             };
         };

@@ -1,7 +1,20 @@
 /*
+    File: fn_spawnGuerInFactory.sqf
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
+    Date: 07/02/2026
+    Last Update: 26/08/2026
+    License: MIT License - http://www.opensource.org/licenses/MIT
+
     Description:
         Spawns guerilla groups in factory
+
+    Parameter(s):
+        _factory - factory sector to spawn guerrilla [STRING]
+
+    Returns:
+        -
 */
+
 params["_factory"];
 
 private _sectorPos = markerPos _factory;
@@ -14,7 +27,7 @@ for "_i" from 0 to 2 do {
     if (KPLIB_LAMBS) then {
         [_guerGroup, _sectorPos, KPLIB_range_sectorCapture * 0.5, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {
-        [_guerGroup, _sectorPos] spawn add_defense_waypoints;
+        [_guerGroup, _sectorPos] spawn KPLIB_fnc_addDefenseWaypoints;
     };
 
     _allUnits append (units _guerGroup);
@@ -42,13 +55,13 @@ for "_i" from 1 to 2 do {
     // Get all building positions
     private _buildingPositions = [_buildingToGarrison] call CBA_fnc_buildingPositions;
 
-    if (_buildingPositions isEqualTo []) exitWith {grpNull};
-
     // Sort indoor positions
     _buildingPositions = _buildingPositions select {
         private _pos = AGLToASL _x;
         lineIntersects [_pos, _pos vectorAdd [0, 0, 6]]
     };
+
+    if (_buildingPositions isEqualTo []) exitWith {grpNull};
 
     private _guerGroup = [_sectorPos, count _buildingPositions] call KPLIB_fnc_spawnGuerillaGroup;
     _allUnits append (units _guerGroup);

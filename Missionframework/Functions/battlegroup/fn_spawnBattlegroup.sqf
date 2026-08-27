@@ -2,7 +2,7 @@
     File: fn_spawnBattlegroup.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 29/10/2025
-    Last Update: 08/06/2026
+    Last Update: 26/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -26,6 +26,8 @@ if (!isServer) exitWith {false};
 if (KPLIB_endgame == 1) exitWith {false};
 
 private _objPos = [_objPos] call KPLIB_fnc_getBluforObjective;
+
+if (_objPos isEqualTo [0,0,0]) exitWith {};
 
 KPLIB_last_battlegroup_time = diag_tickTime;
 

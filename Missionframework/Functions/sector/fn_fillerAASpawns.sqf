@@ -48,7 +48,7 @@ if (KPLIB_param_unitcap >= 1.25) then {_squad2 = KPLIB_o_squadAir;};
     if (KPLIB_LAMBS) then {
         [_grp, _sectorPos, _localCaptureSize, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {
-        [_grp, _sectorPos] spawn add_defense_waypoints;
+        [_grp, _sectorPos] spawn KPLIB_fnc_addDefenseWaypoints;
     };
 
     _sectorUnits = _sectorUnits + (units _grp);

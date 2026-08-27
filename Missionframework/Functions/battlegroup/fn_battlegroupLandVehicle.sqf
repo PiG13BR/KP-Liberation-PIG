@@ -2,7 +2,7 @@
     File: fn_battlegroupLandVehicle.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 30/10/2025
-    Last Update: 01/07/2026
+    Last Update: 26/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -56,7 +56,7 @@ if (_roadPos isNotEqualTo [0,0]) then {_vehicle setVehiclePosition [_roadPos, []
 _vehicle limitSpeed 50;
 
 // Transport vehicle
-if (_vehClass in KPLIB_o_troopTransports) then {
+if ((tolowerANSI _vehClass) in KPLIB_o_troopTransports) then {
     // Check cap
     if ([] call KPLIB_fnc_getOpforCap < KPLIB_cap_battlegroup) then { 
         [_vehicle, _spawnPoint, _targetPos] spawn KPLIB_fnc_handleLandTransport;

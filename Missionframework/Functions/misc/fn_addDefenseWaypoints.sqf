@@ -1,8 +1,23 @@
-scriptName "add_defense_waypoints";
+/*
+    File: fn_addDefenseWaypoints.sqf
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
+    Date: -
+    Last Update: 26/08/2026
+    License: MIT License - http://www.opensource.org/licenses/MIT
 
-private _grp = _this select 0;
-private _flagpos = _this select 1;
-private _basepos = getpos (leader _grp);
+    Description:
+        Add defense waypoints for a group in a sector position
+
+    Parameter(s):
+        _grp - group to add defense waypoints [GROUP]
+        _sectorPos - sector position [POSITION]
+
+    Returns:
+        -
+*/
+params["_grp", "_sectorPos"];
+
+private _basepos = getPosATL (leader _grp);
 private _is_infantry = false;
 private _wpPositions = [];
 private _waypoint = [];
@@ -19,11 +34,11 @@ sleep 1;
 
 if (_is_infantry) then {
     _wpPositions = [
-        _flagpos getPos [random [50, 100, 150], random [0, 36, 72]],
-        _flagpos getPos [random [50, 100, 150], random [72, 108, 144]],
-        _flagpos getPos [random [50, 100, 150], random [144, 180, 216]],
-        _flagpos getPos [random [50, 100, 150], random [216, 252, 288]],
-        _flagpos getPos [random [50, 100, 150], random [288, 324, 360]]
+        _sectorPos getPos [random [50, 100, 150], random [0, 36, 72]],
+        _sectorPos getPos [random [50, 100, 150], random [72, 108, 144]],
+        _sectorPos getPos [random [50, 100, 150], random [144, 180, 216]],
+        _sectorPos getPos [random [50, 100, 150], random [216, 252, 288]],
+        _sectorPos getPos [random [50, 100, 150], random [288, 324, 360]]
     ];
     _waypoint = _grp addWaypoint [_wpPositions select 0, 10];
     _waypoint setWaypointType "MOVE";

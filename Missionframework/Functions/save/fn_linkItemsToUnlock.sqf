@@ -2,7 +2,7 @@
     File: fn_linkItemsToUnlock.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 29/07/2026
-    Last Update: 29/07/2026
+    Last Update: 26/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -18,7 +18,8 @@
 // Arsenal lock Crosscheck
 KPLIB_sector_arsenalLink = KPLIB_sector_arsenalLink select {
     _x params ["_marker", "_items"];
-    ((KPLIB_b_lockedArsenal apply {_x#1}) find _items >= 0) && {_marker in KPLIB_sectors_all}
+    ((KPLIB_b_lockedArsenal apply {_x#0}) find _marker >= 0)
+    && {_marker in KPLIB_sectors_all}
 };
 
 private _lockedArsenalCount = count KPLIB_sector_arsenalLink;

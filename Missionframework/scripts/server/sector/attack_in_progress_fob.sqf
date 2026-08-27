@@ -61,7 +61,7 @@ if ( KPLIB_endgame == 0 ) then {
             };
         };
         
-        spawn KPLIB_fnc_doSave;
+        [] call KPLIB_fnc_doSave;
 
     } else {
         [_thispos, 3] remoteExec ["remote_call_fob"];

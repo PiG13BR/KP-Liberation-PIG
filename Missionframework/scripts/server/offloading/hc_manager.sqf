@@ -1,5 +1,4 @@
 add_civ_waypoints = compile preprocessFileLineNumbers "Scripts\Server\ai\add_civ_waypoints.sqf";
-add_defense_waypoints = compile preprocessFileLineNumbers "Scripts\Server\ai\add_defense_waypoints.sqf";
 building_defence_ai = compile preprocessFileLineNumbers "Scripts\Server\ai\building_defence_ai.sqf";
 patrol_ai = compile preprocessFileLineNumbers "Scripts\Server\ai\patrol_ai.sqf";
 prisonner_ai = compile preprocessFileLineNumbers "Scripts\Server\ai\prisonner_ai.sqf";

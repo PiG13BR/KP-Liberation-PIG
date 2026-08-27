@@ -81,6 +81,7 @@ class KPLIB {
 
         class ace_isAwake               {};
         class addActionsFullHeal        {};
+        class addDefenseWaypoints       {};
         class addObjectInit             {};
         class addRopeAttachEh           {};
         class AHDNC_init                {postInit=1;};

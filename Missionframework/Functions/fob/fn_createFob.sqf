@@ -2,7 +2,7 @@
     File: fn_createFob.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 13/04/2026
-    Last Update: 23/04/2026
+    Last Update: 26/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -33,7 +33,7 @@ if (_create) then {
     [_fobBuilding] call KPLIB_fnc_addObjectInit;
 };
 
-spawn KPLIB_fnc_doSave;
+[] call KPLIB_fnc_doSave;
 
 [{
     // Find empty arrays in KPLIB_player_fobs

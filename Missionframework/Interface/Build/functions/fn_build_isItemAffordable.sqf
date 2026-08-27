@@ -80,14 +80,13 @@ if (((_supplies == 0 ) || (_supplies <= _fobSupplies)) && ((_ammo == 0 ) || (_am
         } else {
             if !(_itemClass in KPLIB_b_air_classes) then {
                 // To build vehicles outside support label
-                if (_buildType != BUILDTYPE_SUPPORT && ((_itemClass isKindOf "LandVehicle") || (_itemClass isKindOf "Ship"))) then {
+                if (_buildType != BUILDTYPE_SUPPORT && (((_itemClass isKindOf "LandVehicle") && !(_itemClass isKindOf "StaticWeapon")) || (_itemClass isKindOf "Ship"))) then {
                     if (_hasRecycling) then {
                         _affordable = true;
                     };
                 } else {
                     _affordable = true;
                 };
-
             } else {
                 if ((_itemClass in KPLIB_b_air_classes) && _hasAir) then {
                     _affordable = true;

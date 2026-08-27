@@ -274,5 +274,20 @@ class lib_asymm_guerilla_incoming: lib_reinforcements {
     color[] = {0, 0.5, 0, 1};
     sound = "taskUpdated";
 };
+class lib_factory_seized: lib_default_notification {
+    title = $STR_FACTORY_SEIZED_TITLE;
+    description = $STR_FACTORY_SEIZED;
+    iconPicture = "Images\notif\ui_notif_sec_los.paa";
+    color[] = {1, 0, 0, 1};
+    sound = "taskFailed";
+};
+class lib_factory_liberated: lib_default_notification {
+    title = $STR_FACTORY_SEIZED_TITLE;
+    description = $STR_FACTORY_LIBERATED;
+    iconPicture = "Images\notif\ui_notif_sec_saf.paa";
+    color[] = { 0, 0.35, 1, 1 };
+    sound = "taskUpdated";
+    priority = 3;
+};
 #include "Extensions\Arty_Framework\cfgNotifications.hpp"
 #include "Extensions\SAM_Sites\cfgNotifications.hpp"

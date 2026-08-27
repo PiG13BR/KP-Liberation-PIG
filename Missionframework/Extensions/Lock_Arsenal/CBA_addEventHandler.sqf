@@ -3,7 +3,7 @@
     params["_sector"];
     if (isDedicated) exitWith {};
     
-    private _items = KPLIB_sector_arsenalLink get _sector;
+    private _items = KPLIB_sector_arsenalLink getOrDefault [_sector, []];
 
     [_items] call KPLIB_fnc_addArsenalItems;
 
@@ -26,7 +26,7 @@
     params["_sector"];
     if (isDedicated) exitWith {};
 
-    private _items = KPLIB_sector_arsenalLink get _sector;
+    private _items = KPLIB_sector_arsenalLink getOrDefault [_sector, []];
 
     [_items] call KPLIB_fnc_removeArsenalItems;
     
