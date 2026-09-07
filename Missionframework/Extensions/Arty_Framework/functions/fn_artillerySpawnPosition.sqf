@@ -1,8 +1,8 @@
 /*
     File: fn_artillerySpawnPositon.sqf
     Author: PiG13BR - https://github.com/PiG13BR
-    Date: 2024-08-26
-    Last Update: 2024-12-13
+    Date: 26/08/2026
+    Last Update: 07/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -198,7 +198,7 @@ if !(_spawn_marker isEqualTo "") then {
 			private _vehtospawn = selectRandom _vehicle_pool;
 			*/
 			_vehToSpawn = selectRandom KPLIB_o_antiAirVehicles;
-			private _aaVeh = [(getMarkerpos _spawn_marker) getPos [30 + (random 30), random 360], _vehToSpawn, true] call KPLIB_fnc_spawnVehicle;
+			private _aaVeh = [(getMarkerpos _spawn_marker) getPos [30 + (random 30), random 360], _vehToSpawn, 0, true] call KPLIB_fnc_spawnVehicle;
 			KPLIB_artilleryPosition_objects pushBack _aaVeh;
 			KPLIB_artilleryPosition_groups pushBack (group _aaVeh);
 		};

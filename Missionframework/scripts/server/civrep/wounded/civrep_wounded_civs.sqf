@@ -11,7 +11,7 @@ private _markers = [];
 private _chemlight = objNull;
 private _chemlights = [];
 private _chemClass = "Chemlight_blue";
-if (KPLIB_ace) then {_chemClass = "ACE_Chemlight_HiBlue";};
+if (KPLIB_ace) then {_chemClass = "ACE_G_Chemlight_HiBlue";};
 
 for "_i" from 1 to _count do {
     private _pos = (markerPos _sector) getPos [(50 + (random 150)), (random 360)];
@@ -21,7 +21,7 @@ for "_i" from 1 to _count do {
     private _civ = [selectRandom KPLIB_c_units, _pos, _grp] call KPLIB_fnc_createManagedUnit;
     _civ setDamage 0.75;
     _civs pushBack _civ;
-    _chemlight = _chemClass createVehicle (getPos _civ);
+    _chemlight = _chemClass createVehicle (getPosATL _civ);
     _chemlights pushBack _chemlight;
     private _marker = createMarker [format ["wounded_marker_%1_%2", round time, _i], [((_pos select 0) - 20 + (random 40)),((_pos select 1) - 20 + (random 40))]];
     _marker setMarkerShape "ELLIPSE";
