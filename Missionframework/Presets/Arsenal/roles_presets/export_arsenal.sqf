@@ -13,6 +13,8 @@ private _allBinos = [];
 private _allMagazines = [];
 private _allThrowables = [];
 private _allBackpacks = [];
+private _allExplosives = [];
+private _allMines = [];
 private _allItems = [];
 private _allUniforms = [];
 private _allVests = [];
@@ -27,7 +29,7 @@ private _allNvgs = [];
 		if (_x isEqualTo "") then {continue};
         if (_x isKindOf ["Binocular", configFile >> "cfgWeapons"]) then {continue}; // Ignore binoculars only
 		private _weapon = _x call BIS_fnc_baseWeapon;
-		_allWeapons pushBackUnique _x
+		_allWeapons pushBackUnique _weapon
 	}forEach (weapons _role);
 
 	{
@@ -67,6 +69,20 @@ private _allNvgs = [];
 		if (_x isEqualTo "") then {continue};
 		if ((hmd _role) isEqualTo _x) then {continue}; // Ignore nvgs
 		if (_x in _allMagazines || {_x in _allThrowables} || {_x in _allBinos} || {_x in _allWeaponsAcc}) then {continue};
+		
+		private _ammo = getText(configFile >> "CfgMagazines" >> _x >> "ammo");
+
+		// Explosives 
+		if (_ammo isKindOf "PipeBombBase") then {
+			_allExplosives pushBackUnique _x;
+			continue
+		};
+
+		// Mines
+		if (_ammo isKindOf "MineBase") then {
+			_allMines pushBackUnique _x;
+			continue
+		};
 		_allItems pushBackUnique _x;
 	}forEach (assignedItems _role) + (backpackitems _role) + (uniformItems _role) + (vestItems _role);
 
@@ -128,6 +144,16 @@ diag_log "--- BACKPACKS ----";
 {
 	diag_log format ["%1", _x]
 }forEach _allBackpacks;
+
+diag_log "--- EXPLOSIVES ----";
+{
+	diag_log format ["%1", _x]
+}forEach _allExplosives;
+
+diag_log "--- MINES ----";
+{
+	diag_log format ["%1", _x]
+}forEach _allMines;
 
 diag_log "--- ITEMS ----";
 {
