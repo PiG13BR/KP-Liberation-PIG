@@ -273,7 +273,7 @@ KPLIB_o_allVeh_classes = KPLIB_o_allVeh_classes arrayIntersect KPLIB_o_allVeh_cl
 // Enemy rotary-wings that will need to spawn in flight.
 KPLIB_o_helicopters = KPLIB_o_allVeh_classes select {_x isKindOf "Helicopter"};
 
-// All vehicles that spawn within battlegroups (see the above 2 arrays) and also hold soldiers as passengers.
+// All vehicles that spawn within battlegroups and also hold soldiers as passengers.
 KPLIB_o_troopTransports = KPLIB_o_allVeh_classes select {
 	((_x isKindOf "LandVehicle") || (_x isKindOf "Air"))
 	&& ((getNumber(configFile >> "CfgVehicles" >> _x >> "transportSoldier") > 4) || {(_x == "o_heli_transport_04_bench_f")})
