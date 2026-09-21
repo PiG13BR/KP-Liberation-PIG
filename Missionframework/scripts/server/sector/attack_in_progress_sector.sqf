@@ -82,7 +82,7 @@ if ( KPLIB_endgame == 0 ) then {
         KPLIB_sectors_player deleteAt (KPLIB_sectors_player find _sector);
         publicVariable "KPLIB_sectors_player";
         [_sector, 2] remoteExec ["remote_call_sector"];
-        ["KPLIB_ResetBattleGroups", []] call CBA_fnc_serverEvent;
+        ["KPLIB_ResetBattleGroups", []] call CBA_fnc_localEvent;
         [] call KPLIB_fnc_doSave;
         stats_sectors_lost = stats_sectors_lost + 1;
 

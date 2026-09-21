@@ -2,7 +2,7 @@
     File: fn_battlegroupInfantry.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 30/10/2025
-    Last Update: 01/07/2026
+    Last Update: 20/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -16,13 +16,13 @@
         Group spawned [GROUP]
 */
 
+// INFANTRY ONLY SPAWNS WILL RETURN IN .2
+
 params[
     ["_targetPos", [0 ,0 ,0], [[]]],
     ["_spawnPoint", "", [""]],
     ["_notify", true, [false]]
 ];
-
-if (!isServer) exitWith {[]};
 
 // Get target position if not provided
 if (_targetPos isEqualTo [0 ,0 ,0]) then {

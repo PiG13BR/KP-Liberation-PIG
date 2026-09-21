@@ -113,7 +113,7 @@ while {!_supplies_present} do {
 hintSilent "";
 
 // Add civilian rep for a completed mission based on value in KPLIB_config
-[KPLIB_secondary_objective_civ_supplies_impact] spawn F_cr_changeCR;
+[KPLIB_secondary_objective_civ_supplies_impact] spawn KPLIB_fnc_cr_changeCR;
 
 // Display end notification
 [10] remoteExec ["remote_call_intel"];

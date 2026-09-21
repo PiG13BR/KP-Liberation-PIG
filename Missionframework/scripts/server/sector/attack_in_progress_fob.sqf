@@ -51,7 +51,7 @@ if ( KPLIB_endgame == 0 ) then {
 
         sleep 3;
 
-        ["KPLIB_ResetBattleGroups", []] call CBA_fnc_serverEvent;
+        ["KPLIB_ResetBattleGroups", []] call CBA_fnc_localEvent;
         
         switch (true) do {
             case (_thispos in KPLIB_player_outposts) : {[_thispos] call KPLIB_fnc_destroyOutpost;};

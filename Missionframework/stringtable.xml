@@ -9087,12 +9087,8 @@
                 <Portuguese>Eventos de Setores Costumizados</Portuguese>
             </Key>
             <Key ID="STR_SECTOR_EVENTS_CUSTOM">
-                <Original>Custom (Configuration Required)</Original>
-                <Portuguese>Custom (Requer Configuração)</Portuguese>
-            </Key>
-            <Key ID="STR_SECTOR_EVENTS_ALTIS">
-                <Original>Altis Custom Events</Original>
-                <Portuguese>Altis Custom Events</Portuguese>
+                <Original>Enabled (Extesions\Sector_Events\events\custom.sqf)</Original>
+                <Portuguese>Ativado (Extesions\Sector_Events\events\custom.sqf)</Portuguese>
             </Key>
         </Container>
 

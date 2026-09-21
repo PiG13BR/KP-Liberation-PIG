@@ -68,7 +68,7 @@ if (KPLIB_enemyReadiness > 15) then {
 
             // Guerrilla
             if (((random 100) <= KPLIB_resistance_sector_chance) && (([] call KPLIB_fnc_crGetMulti) > 0)) then {
-                [_targetsector] spawn sector_guerilla;
+                [_targetsector] spawn KPLIB_fnc_sectorGuerrilla;
             };
         };
     };

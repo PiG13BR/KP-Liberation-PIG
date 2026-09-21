@@ -1,6 +1,6 @@
 params ["_sector"];
 
-if (KPLIB_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf for %1 spawned on: %2 - Time: %3", markerText _sector, KPLIB_debugSource, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_asymmetric_debug > 0) then {[format ["For %1 spawned on: %2 - Time: %3", markerText _sector, KPLIB_debugSource, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
 waitUntil {sleep 1; _sector in KPLIB_asymmetric_sectors};
 
@@ -10,7 +10,7 @@ private _positions = [];
     _positions = _positions + ([_x] call CBA_fnc_buildingPositions);
 } forEach _buildings;
 
-if (KPLIB_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf -> Found %1 suitable buildings in %2 - Time: %3", count _buildings, markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_asymmetric_debug > 0) then {[format ["Found %1 suitable buildings in %2 - Time: %3", count _buildings, markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
 private _position_indexes = [];
 private _position_count = count _positions;
@@ -32,7 +32,7 @@ private _idxposit = 0;
     _idxposit = _idxposit + 1;
 } forEach (units _grp);
 
-if (KPLIB_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf -> Units spawned in %1 - Time: %2", markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_asymmetric_debug > 0) then {[format ["Units spawned in %1 - Time: %2", markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
 private _attack = false;
 
@@ -59,7 +59,7 @@ while {(_sector in KPLIB_asymmetric_sectors) && (!isNull _grp)} do {
     sleep 1;
 };
 
-if (KPLIB_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf -> Exit Loop in %1 - Time: %2", markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_asymmetric_debug > 0) then {[format ["Exit Loop in %1 - Time: %2", markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
 sleep 60;
 
@@ -71,4 +71,4 @@ if (!isNull _grp) then {
     } forEach (units _grp);
 };
 
-if (KPLIB_asymmetric_debug > 0) then {[format ["asym_sector_ambush.sqf -> Ambush dropped in %1 - Time: %2", markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_asymmetric_debug > 0) then {[format ["Ambush dropped in %1 - Time: %2", markerText _sector, diag_tickTime], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};

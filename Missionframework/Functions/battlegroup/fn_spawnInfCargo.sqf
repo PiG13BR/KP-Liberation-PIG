@@ -2,7 +2,7 @@
     File: fn_spawnInfCargo.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 29/10/2025 
-    Last Update: 11/08/2026
+    Last Update: 20/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -18,7 +18,6 @@
 
 params[["_vehicle", objNull, [objNull]], ["_group", grpNull, [grpNull]]];
 
-if (!isServer) exitWith {};
 if (isNull _vehicle) exitWith {grpNull};
 
 if (isNull _group) then {

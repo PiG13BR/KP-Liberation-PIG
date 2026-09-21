@@ -109,7 +109,7 @@ if(isServer) then {
     GET_PARAM_BOOL(KPLIB_param_PAS, "PylonSelectArmament", 1);
     GET_PARAM_BOOL(KPLIB_param_rallyPoint, "RallyPoint", 1);
     GET_PARAM(KPLIB_param_SAMSite, "SAMSites", 1);
-    GET_PARAM(KPLIB_param_SectorEvents, "SectorEvents", 0);
+    GET_PARAM_BOOL(KPLIB_param_SectorEvents, "SectorEvents", 0);
     GET_PARAM(KPLIB_param_respawnCost, "RespawnCost", 0);
     GET_PARAM_BOOL(KPLIB_param_VAMGUI, "VAMGUI", 1);
 
@@ -654,11 +654,7 @@ if (!isDedicated && hasInterface) then {
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
     _param = localize "STR_SECTOR_EVENTS_TITLE";
-        switch (KPLIB_param_SectorEvents) do {
-        case 1: {_value = localize "STR_SECTOR_EVENTS_CUSTOM"};
-        case 2: {_value = localize "STR_SECTOR_EVENTS_ALTIS"};
-        default {_value = localize "STR_PARAMS_DISABLED"};
-    };
+    _value = if (KPLIB_param_SectorEvents) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
     
     _param = localize "STR_PARAMS_RESPAWNCOST";

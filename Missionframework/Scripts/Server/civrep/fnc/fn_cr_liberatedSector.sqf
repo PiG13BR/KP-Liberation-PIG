@@ -4,7 +4,7 @@ if (_sector in KPLIB_sectors_capital || _sector in KPLIB_sectors_city) then {
     private _penalty = 0;
 
     {
-        if (_sector == (_x select 0)) exitWith {_penalty = (_x select 1) - ([_sector] call F_cr_getBuildings)};
+        if (_sector == (_x select 0)) exitWith {_penalty = (_x select 1) - ([_sector] call KPLIB_fnc_cr_getBuildings)};
     } forEach KPLIB_cr_sectorbuildings;
 
     stats_civilian_buildings_destroyed = stats_civilian_buildings_destroyed + _penalty;
@@ -18,9 +18,9 @@ if (_sector in KPLIB_sectors_capital || _sector in KPLIB_sectors_city) then {
     };
 
     if (_sector in KPLIB_sectors_capital) then {
-        [(2 * KPLIB_cr_sector_gain - _penalty), false] spawn F_cr_changeCR;
+        [(2 * KPLIB_cr_sector_gain - _penalty), false] spawn KPLIB_fnc_cr_changeCR;
     } else {
-        [(KPLIB_cr_sector_gain - _penalty), false] spawn F_cr_changeCR;
+        [(KPLIB_cr_sector_gain - _penalty), false] spawn KPLIB_fnc_cr_changeCR;
     };
 
     [format ["Civilian sector %1 (%2) captured. Penalty: %3", markerText _sector, _sector, _penalty], "CIVREP"] call KPLIB_fnc_log;

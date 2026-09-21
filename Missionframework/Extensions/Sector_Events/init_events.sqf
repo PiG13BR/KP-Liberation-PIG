@@ -1,11 +1,5 @@
-switch KPLIB_param_SectorEvents do {
-    case 1 : {
-        sector_events = compile preprocessFileLineNumbers "Extensions\Sector_Events\events\custom.sqf";
-    };
-    case 2 : {
-        sector_events = compile preprocessFileLineNumbers "Extensions\Sector_Events\events\Altis.sqf";
-    };
-    default {}
+if (KPLIB_param_SectorEvents) then {
+    sector_events = compile preprocessFileLineNumbers "Extensions\Sector_Events\events\custom.sqf";
 };
 
 // Exit on event not found

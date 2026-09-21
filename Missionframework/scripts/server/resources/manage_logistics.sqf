@@ -315,7 +315,7 @@ while {KPLIB_endgame == 0} do {
                             if (_dice <= _chance) then {
                                 private _convoy = +_x;
                                 sleep 0.1;
-                                [_convoy] spawn logistic_convoy_ambush;
+                                [_convoy] spawn KPLIB_fnc_logisticConvoyAmbush;
                                 waitUntil {sleep 0.1; KPLIB_convoy_ambush_check != 0};
                                 if (KPLIB_convoy_ambush_check == 2) then {
                                     _x set [1,0];

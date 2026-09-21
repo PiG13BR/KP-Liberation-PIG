@@ -685,3 +685,7 @@
         [], 4, -505, true, false, false, 2
     ] call BIS_fnc_holdActionAdd;
 }] call CBA_fnc_addEventHandler;
+
+["KPLIB_liberatedSector", {
+    _this call KPLIB_fnc_liberatedSector;
+}] call CBA_fnc_addEventHandler;

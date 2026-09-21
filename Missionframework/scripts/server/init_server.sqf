@@ -66,11 +66,14 @@ if (KPLIB_param_highCommand) then {KPLIB_fsm_highcommand = [] call KPLIB_fnc_hig
 // Select FOB templates
 [] call compile preprocessFileLineNumbers "Presets\Secondary\Fob_Hunting\init_templates.sqf";
 
-// Civil Reputation
-execVM "Scripts\Server\civrep\init_module.sqf";
+// Count initial buildings on each city and bigtown
+execVM "Scripts\Server\civrep\init_buildings.sqf";
+
+// Start asymmetric module loop
+execVM "Scripts\Server\asymmetric\asymmetric_loop.sqf";
 
 // Civil Informant
-execVM "Scripts\Server\civinformant\init_module.sqf";
+execVM "Scripts\Server\civinformant\civinfo_loop.sqf";
 
 // Asymmetric Threats
 execVM "Scripts\Server\asymmetric\init_module.sqf";

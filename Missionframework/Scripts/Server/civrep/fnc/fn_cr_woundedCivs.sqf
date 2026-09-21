@@ -2,7 +2,7 @@ params ["_sector"];
 
 if (!(_sector in KPLIB_sectors_capital) && !(_sector in KPLIB_sectors_city) && !(_sector in KPLIB_sectors_factory)) exitWith {};
 
-if (KPLIB_civrep_debug > 0) then {[format ["civrep_wounded_civs.sqf -> Spawned for %1 on: %2", markerText _sector, KPLIB_debugSource], "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_civrep_debug > 0) then {[format ["Spawned for %1 on: %2", markerText _sector, KPLIB_debugSource], "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
 private _count = 2 + (ceil (random 2));
 private _grp = creategroup [KPLIB_side_civilian, true];
@@ -33,7 +33,7 @@ for "_i" from 1 to _count do {
 _grp setVariable ["acex_headless_blacklist", true, true];
 
 waitUntil {count _civs isEqualTo _count};
-if (KPLIB_civrep_debug > 0) then {[format ["civrep_wounded_civs.sqf -> Spawned %1 wounded civilians at %2", _count, markerText _sector], "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_civrep_debug > 0) then {[format ["Spawned %1 wounded civilians at %2", _count, markerText _sector], "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2];};
 [6, [_count, markertext _sector]] remoteExec ["KPLIB_fnc_crGlobalMsg"];
 
 private _waypoint = _grp addWaypoint [markerpos _sector, 0];
@@ -45,7 +45,7 @@ _waypoint setWaypointType "HOLD";
     [_civx, true] remoteExecCall ["stop"];
     [_civx, "ALL"] remoteExecCall ["disableAI"];
     _civx setDir (random 360);
-    _civx call F_cr_woundedAnim;
+    _civx call KPLIB_fnc_cr_woundedAnim;
     if (KPLIB_ace_med) then {[_civx] remoteExec ["KPLIB_fnc_crAddAceAction"];};
 } forEach _civs;
 
@@ -56,7 +56,7 @@ private _healed_civs = [];
 while {true} do {
     _units_near = [markerPos _sector, _range, KPLIB_side_player] call KPLIB_fnc_getUnitsCount;
     if (_units_near isEqualTo 0) exitWith {
-        if (KPLIB_civrep_debug > 0) then {["civrep_wounded_civs.sqf -> no near blufor units. exit heal wait loop", "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2]};
+        if (KPLIB_civrep_debug > 0) then {["No near blufor units. exit heal wait loop", "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2]};
         sleep 30;
     };
     {
@@ -87,14 +87,14 @@ while {true} do {
                     _civx stop false;
                     _civx enableAI "ALL";
                     [4, [(name _civx), (name _nearestPlayer)]] remoteExec ["KPLIB_fnc_crGlobalMsg"];
-                    [KPLIB_cr_wounded_gain] call F_cr_changeCR;
+                    [KPLIB_cr_wounded_gain] call KPLIB_fnc_cr_changeCR;
                     stats_civilians_healed = stats_civilians_healed +1;
                 };
             };
         };
     } forEach _civs;
     if ((count _healed_civs) isEqualTo (count _civs)) exitWith {
-        if (KPLIB_civrep_debug > 0) then {["civrep_wounded_civs.sqf -> all wounded units healed or died. exit heal wait loop", "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2]};
+        if (KPLIB_civrep_debug > 0) then {["All wounded units healed or died. exit heal wait loop", "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2]};
         sleep 60;
     };
     sleep 1;
@@ -104,4 +104,4 @@ while {true} do {
 {deleteVehicle _x} forEach _chemlights;
 {deleteMarker _x} forEach _markers;
 
-if (KPLIB_civrep_debug > 0) then {[format ["civrep_wounded_civs.sqf -> dropped at %1", markerText _sector], "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2]};
+if (KPLIB_civrep_debug > 0) then {[format ["Dropped at %1", markerText _sector], "CIVREP"] remoteExecCall ["KPLIB_fnc_log", 2]};

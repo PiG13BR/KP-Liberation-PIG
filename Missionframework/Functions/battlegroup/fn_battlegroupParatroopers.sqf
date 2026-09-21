@@ -2,7 +2,7 @@
     File: fn_battlegroupParatroopers.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 29/10/2025
-    Last Update: 26/08/2026
+    Last Update: 20/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -26,7 +26,10 @@ params [
     ["_notify", true, [false]]
 ];
 
-if (!isServer) exitWith {[]};
+private _hc = [] call KPLIB_fnc_getLessLoadedHC;
+if (!isNull _hc) exitWith {
+    _this remoteExecCall ["KPLIB_fnc_battlegroupParatroopers", _hc]
+};
 
 // Get plane class if not provided
 if (_planeClass isEqualTo "") then {

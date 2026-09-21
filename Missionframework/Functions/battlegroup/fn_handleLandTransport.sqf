@@ -2,7 +2,7 @@
     File: fn_handleLandTransport.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 30/10/2025
-    Last Update: 12/07/2026
+    Last Update: 20/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -17,8 +17,6 @@
         Group spawned [GROUP]
 */
 params[["_vehicle", objNull, [objNull]], ["_spawnPoint", "", [""]], ["_targetPos", [], [[]]]];
-
-if (!isServer) exitWith {};
 
 if (!canSuspend) exitWith {_this spawn KPLIB_fnc_handleLandTransport};
 

@@ -22,13 +22,6 @@
 ["KPLIB_battlegroupSpawn", {
     params["_group", "_spawnPoint"];
 
-    if (local _group) then {
-        _headless_client = [] call KPLIB_fnc_getLessLoadedHC;
-        if (!isNull _headless_client) then {
-            _group setGroupOwner (owner _headless_client);
-        };
-    };
-
     KPLIB_enemyReadiness = (KPLIB_enemyReadiness - (round (1 + (random 1)))) max 0;
     stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
 

@@ -1,6 +1,6 @@
 params ["_sector"];
 
-if (KPLIB_asymmetric_debug > 0) then {[format ["Sector %1 (%2) - sector_guerilla spawned on: %3", (markerText _sector), _sector, KPLIB_debugSource], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_asymmetric_debug > 0) then {[format ["Sector %1 (%2) - guerrilla spawned on: %3", (markerText _sector), _sector, KPLIB_debugSource], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
 
 private _startpos = (markerPos _sector) getPos [(1200 + (round (random 400))), (random 360)];
 
@@ -106,4 +106,4 @@ if (!isServer && _strengthChanged) then {
     publicVariableServer "KPLIB_guerilla_strength";
 };
 
-if (KPLIB_asymmetric_debug > 0) then {[format ["Sector %1 (%2) - sector_guerilla dropped on: %3", (markerText _sector), _sector, KPLIB_debugSource], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};
+if (KPLIB_asymmetric_debug > 0) then {[format ["Sector %1 (%2) - guerrilla dropped on: %3", (markerText _sector), _sector, KPLIB_debugSource], "ASYMMETRIC"] remoteExecCall ["KPLIB_fnc_log", 2];};

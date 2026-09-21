@@ -27,10 +27,10 @@ private _sectorUnits = [];
 private _sectorPos = markerPos _sector;
 
 // Create objects
-["KPLIB_createSectorObjects", [_sector]] call CBA_fnc_serverEvent;
+["KPLIB_createSectorObjects", [_sector]] call CBA_fnc_localEvent;
 
 // Create mines
-["KPLIB_createSectorMines", _sector] call CBA_fnc_serverEvent;
+["KPLIB_createSectorMines", _sector] call CBA_fnc_localEvent;
 
 // Get unit cap
 private _popfactor = 1;
@@ -318,7 +318,7 @@ if (_samRadarPos isNotEqualTo [0,0]) then {
     params["_sector", "_localCaptureSize", "_sectorUnits"];
 
     // Reinforcements
-    ["KPLIB_sectorReinforcements", _sector] call CBA_fnc_serverEvent;
+    ["KPLIB_sectorReinforcements", _sector] call CBA_fnc_localEvent;
 
     if (KPLIB_sectorspawn_debug > 0) then {[format ["Sector %1 (%2) - populating done", (markerText _sector), _sector], "SECTORSPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];};
 

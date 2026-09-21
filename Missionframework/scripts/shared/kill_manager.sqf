@@ -93,7 +93,7 @@ params ["_unit", "_killer"];
                     if (KPLIB_asymmetric_debug > 0) then {[format ["Guerilla unit killed by: %1", name _killer], "ASYMMETRIC"] call KPLIB_fnc_log;};
                     [3, [(name _unit), (name _killer)]] remoteExec ["KPLIB_fnc_crGlobalMsg"];
                     stats_resistance_teamkills = stats_resistance_teamkills + 1;
-                    [KPLIB_cr_resistance_penalty, true] spawn F_cr_changeCR;
+                    [KPLIB_cr_resistance_penalty, true] spawn KPLIB_fnc_cr_changeCR;
                 };
 
                 // Killed by a player
@@ -111,7 +111,7 @@ params ["_unit", "_killer"];
             if (side (group _killer) == KPLIB_side_player) then {
                 if (KPLIB_civrep_debug > 0) then {[format ["Civilian killed by: %1", name _killer], "CIVREP"] call KPLIB_fnc_log;};
                 [2, [(name _unit), (name _killer)]] remoteExec ["KPLIB_fnc_crGlobalMsg"];
-                [KPLIB_cr_kill_penalty, true] spawn F_cr_changeCR;
+                [KPLIB_cr_kill_penalty, true] spawn KPLIB_fnc_cr_changeCR;
             };
 
             // Killed by a player

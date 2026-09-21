@@ -51,7 +51,7 @@ if (KPLIB_param_lockArsenal > 0) then {
 };
 
 // Sector events
-if (KPLIB_param_sectorEvents > 0) then {
+if (KPLIB_param_sectorEvents) then {
     [] call compile preprocessFileLineNumbers 'Extensions\Sector_Events\init_events.sqf';
 };
 

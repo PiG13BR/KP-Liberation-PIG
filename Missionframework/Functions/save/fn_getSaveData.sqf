@@ -2,7 +2,7 @@
     File: fn_getSaveData.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PIG13BR - https://github.com/PiG13BR 
     Date: 29/03/2020
-    Last Update: 24/07/2026
+    Last Update: 21/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -110,6 +110,19 @@ private ["_basePos", "_baseObjects", "_grpUnits", "_baseMines"];
         _aiGroups pushBack [getPosATL (leader _x), (_grpUnits apply {typeOf _x})];
     } forEach (_allBlueGroups select {(leader _x) inArea _airport});
 }forEach (KPLIB_sectors_airport);
+
+// Save Blufor AI units on player's sector (not airport)
+{
+    private _range = KPLIB_range_sectorCapture * 1.2;
+    private _sectorPos = (markerPos _x);
+    {
+        if (_x getVariable ["KPLIB_defenderGroup", false]) then {continue}; // Ignore blufor defenders
+        // Get only living AI units of the group by excluding possible POWs currently in the player group
+        _grpUnits = (units _x) select {!(isPlayer _x) && (alive _x) && !((typeOf _x) in KPLIB_o_inf_classes) && !((typeOf _x) in KPLIB_o_militiaInfantry)};
+        // Add to save array
+        _aiGroups pushBack [getPosATL (leader _x), (_grpUnits apply {typeOf _x})];
+    } forEach (_allBlueGroups select {(_sectorPos distance2D (leader _x)) < _range});
+}forEach (KPLIB_sectors_player - KPLIB_sectors_airport);
 
 // Save all fetched objects
 private ["_savedPos", "_savedVecDir", "_savedVecUp", "_class", "_hasCrew"];

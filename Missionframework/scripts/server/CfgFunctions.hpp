@@ -17,3 +17,28 @@ class server_support {
 
     class createSuppModules             {};
 };
+
+class server_civ_rep {
+    file = "Scripts\Server\civrep\fnc";
+
+    class cr_changeCR {};
+    class cr_getBuildings {};
+    class cr_liberatedSector {};
+    class cr_woundedCivs {};
+    class cr_woundedAnim {};
+};
+
+class server_civ_informant {
+    file = "Scripts\Server\civinformant\tasks";
+
+    class civinfo_task {};
+};
+
+class server_asymmetric {
+    file = "Scripts\Server\asymmetric\functions";
+
+    class asymSectorAmbush {};
+    class logisticConvoyAmbush {};
+    class manageAsymIED {};
+    class sectorGuerrilla {};
+};

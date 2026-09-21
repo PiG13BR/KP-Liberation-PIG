@@ -2,7 +2,7 @@
     File: fn_battlegroupJet.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 30/10/2025
-    Last Update: 04/11/2025
+    Last Update: 20/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -18,8 +18,6 @@
 // ToDo: turn jet spawn as cas support for the enemies and fighters to counter players with jet on the air
 
 params ["_targetPos"];
-
-if (!isServer) exitWith {};
 
 if (KPLIB_o_planes isEqualTo []) exitWith {false};
 

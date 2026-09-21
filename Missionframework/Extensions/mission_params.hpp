@@ -78,8 +78,8 @@ class SAMSites {
 };
 class SectorEvents {
     title = $STR_SECTOR_EVENTS_TITLE;
-    values[] = {0, 1, 2};
-    texts[] = {$STR_PARAMS_DISABLED, $STR_SECTOR_EVENTS_CUSTOM, $STR_SECTOR_EVENTS_ALTIS};
+    values[] = {0, 1};
+    texts[] = {$STR_PARAMS_DISABLED, $STR_SECTOR_EVENTS_CUSTOM};
     default = 0;
 };
 class RespawnCost {

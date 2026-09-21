@@ -23,10 +23,10 @@ private _sectorUnits = [];
 private _sectorPos = markerPos _sector;
 
 // Create objects
-["KPLIB_createSectorObjects", [_sector]] call CBA_fnc_serverEvent;
+["KPLIB_createSectorObjects", [_sector]] call CBA_fnc_localEvent;
 
 // Create mines
-["KPLIB_createSectorMines", _sector] call CBA_fnc_serverEvent;
+["KPLIB_createSectorMines", _sector] call CBA_fnc_localEvent;
 
 // Select infantry squad compositions
 private _infType = "army";

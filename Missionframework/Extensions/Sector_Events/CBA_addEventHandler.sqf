@@ -1,5 +1,5 @@
 /*
-    When a sector is captured, KPLIB_sectorLiberated event is raised (server side)
+    When a sector is captured, KPLIB_sectorLiberated event is raised
     Use this to execute an unique event to a liberated sector
 */
 

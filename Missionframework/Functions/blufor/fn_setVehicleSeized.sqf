@@ -31,7 +31,7 @@ if !(_veh getVariable ["KPLIB_seized", false]) then {
     _veh setVariable ["KPLIB_seized", true, true];
     _seizedUser = name _unit;
     [0, [_seizedUser]] remoteExec ["KPLIB_fnc_crGlobalMsg"];
-    [KPLIB_cr_vehicle_penalty, true] remoteExec ["F_cr_changeCR", 2];
+    [KPLIB_cr_vehicle_penalty, true] remoteExec ["KPLIB_fnc_cr_changeCR", 2];
     stats_civilian_vehicles_seized = stats_civilian_vehicles_seized + 1;
     publicVariable "stats_civilian_vehicles_seized";
 

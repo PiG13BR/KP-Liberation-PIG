@@ -2,7 +2,7 @@
     File: fn_battlegroupAttackHeli.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 30/10/2025 
-    Last Update: 01/07/2026
+    Last Update: 20/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -25,7 +25,10 @@ params [
     ["_notify", true, [false]]
 ];
 
-if (!isServer) exitWith {grpNull};
+private _hc = [] call KPLIB_fnc_getLessLoadedHC;
+if (!isNull _hc) exitWith {
+    _this remoteExecCall ["KPLIB_fnc_battlegroupAttackHeli", _hc]
+};
 
 if (_heliClass isEqualTo "") then {
     _heliClass = selectRandom KPLIB_o_attackHelicopters;

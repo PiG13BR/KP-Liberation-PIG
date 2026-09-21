@@ -23,7 +23,7 @@ if (KPLIB_param_ArtyMenu && KPLIB_ace) then {
     #include "Extensions\Arty_Menu\CBA_addEventHandler.sqf";
 };
 
-if (KPLIB_param_sectorEvents > 0) then {
+if (KPLIB_param_sectorEvents) then {
     #include "Extensions\Sector_Events\CBA_addEventHandler.sqf";
 };
 
