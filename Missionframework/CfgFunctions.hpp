@@ -266,10 +266,11 @@ class KPLIB {
     class System {
         file = "Functions\system";
         
+        class getLessLoadedHC           {};
+        class groupToHC                 {};
         class log                       {};
         class secondsToTimer            {};
         class setDiscordState           {};
-        class getLessLoadedHC           {};
         class taskCreation              {};
     }; 
     class functions_ui {

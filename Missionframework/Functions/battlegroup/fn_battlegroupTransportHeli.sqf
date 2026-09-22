@@ -2,7 +2,7 @@
     File: fn_battlegroupTransportHeli.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 16/10/2025
-    Last Update: 20/09/2026
+    Last Update: 22/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -24,11 +24,6 @@ params [
     ["_spawnPoint", "", [""]],
     ["_notify", true, [false]]
 ];
-
-private _hc = [] call KPLIB_fnc_getLessLoadedHC;
-if (!isNull _hc) exitWith {
-    _this remoteExecCall ["KPLIB_fnc_battlegroupTransportHeli", _hc]
-};
 
 // Get heli class if not provided
 if (_heliClass isEqualTo "") then {
@@ -59,22 +54,9 @@ if (isNil "KPLIB_usedOpforSpawnPoints") then {
 };
 KPLIB_usedOpforSpawnPoints pushBack _spawnPoint;
 
-//private _newHeli = createVehicle [_heliClass, markerpos _spawnPoint, [], 0, "FLY"];
 private _newHeli = [markerpos _spawnPoint, _heliClass] call KPLIB_fnc_spawnVehicle;
 if (isNull _newHeli) exitWith {[format["No helicopter spawned %1", _targetPos], "HELICOPTER TRANSPORT"] call KPLIB_fnc_log; []};
-//private _pilot_group = [_newHeli, KPLIB_side_enemy] call KPLIB_fnc_createCrew;
 private _pilot_group = (group (driver _newHeli));
-
-_newHeli addMPEventHandler ["MPKilled", {
-    params ["_unit", "_killer"];
-    ["KPLIB_manageKills", [_unit,_killer]] call CBA_fnc_localEvent;
-}];
-{
-    _x addMPEventHandler ["MPKilled", {
-        params ["_unit", "_killer"];
-        ["KPLIB_manageKills", [_unit, _killer]] call CBA_fnc_localEvent;
-    }];
-} forEach (crew _newHeli);
 
 { deleteWaypoint _x } forEachReversed waypoints _pilot_group;
 

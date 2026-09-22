@@ -2,7 +2,7 @@
     File: fn_spawnBattlegroup.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 29/10/2025
-    Last Update: 20/09/2026
+    Last Update: 22/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -20,11 +20,6 @@ params [
     ["_objPos", [0, 0, 0], [[]]],
     ["_vehType", "", [""]]
 ];
-
-private _hc = [] call KPLIB_fnc_getLessLoadedHC;
-if (!isNull _hc) exitWith {
-    _this remoteExecCall ["KPLIB_fnc_spawnBattlegroup", _hc]
-};
 
 if (KPLIB_endgame == 1) exitWith {false};
 

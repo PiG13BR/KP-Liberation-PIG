@@ -2,7 +2,7 @@
 	File: fn_createCrew.sqf
 	Author: PiG13BR - https://github.com/PiG13BR/
 	Date: 26/08/2024 
-	Last Update: 23/07/2026
+	Last Update: 22/09/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -143,6 +143,9 @@ if (isNull _grp) then {
 		};
 	}
 }forEach _seats;
+
+// HC
+["KPLIB_sendGroupToHC", _grp] call CBA_fnc_serverEvent;
 
 // Return group
 _grp

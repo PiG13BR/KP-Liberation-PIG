@@ -2,7 +2,7 @@
     File: fn_spawnInfCargo.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 29/10/2025 
-    Last Update: 20/09/2026
+    Last Update: 22/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -66,5 +66,8 @@ _group addEventHandler ["UnitKilled", {
     params ["_group", "_unit", "_killer"];
     ["KPLIB_onUnitKilled", [_group, _unit, _killer]] call CBA_fnc_localEvent;
 }];
+
+// HC
+["KPLIB_sendGroupToHC", _group] call CBA_fnc_serverEvent;
 
 _group

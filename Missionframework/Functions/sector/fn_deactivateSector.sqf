@@ -2,7 +2,7 @@
     File: fn_deactivateSector.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 02/12/2025
-    Last Update: 11/07/2026
+    Last Update: 22/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -27,9 +27,9 @@ publicVariable "KPLIB_sectors_active";
 [{
     params["_sector", "_sectorUnits", "_forced"];
     // Handle sector objects despawn
-    ["KPLIB_deleteSectorObjects", [_sector, _forced]] call CBA_fnc_serverEvent;
+    ["KPLIB_deleteSectorObjects", [_sector, _forced]] call CBA_fnc_localEvent;
 
-    ["KPLIB_deleteSectorMines", [_sector, _forced]] call CBA_fnc_serverEvent;
+    ["KPLIB_deleteSectorMines", [_sector, _forced]] call CBA_fnc_localEvent;
 
     // Handle units despawn
     {

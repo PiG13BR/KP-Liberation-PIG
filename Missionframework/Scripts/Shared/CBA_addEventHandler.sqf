@@ -689,3 +689,7 @@
 ["KPLIB_liberatedSector", {
     _this call KPLIB_fnc_liberatedSector;
 }] call CBA_fnc_addEventHandler;
+
+["KPLIB_sendGroupToHC", {
+    _this call KPLIB_fnc_groupToHC;
+}] call CBA_fnc_addEventHandler;

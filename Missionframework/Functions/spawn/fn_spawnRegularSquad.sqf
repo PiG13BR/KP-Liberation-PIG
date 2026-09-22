@@ -1,8 +1,8 @@
 /*
     File: fn_spawnRegularSquad.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
-    Date: 2019-12-03
-    Last Update: 2026-07-29
+    Date: 03/12/2019
+    Last Update: 29/07/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -57,5 +57,8 @@ _grp addEventHandler ["UnitKilled", {
     params ["_group", "_unit", "_killer"];
     ["KPLIB_onUnitKilled", [_group, _unit, _killer]] call CBA_fnc_localEvent;
 }];
+
+// HC
+["KPLIB_sendGroupToHC", _grp] call CBA_fnc_serverEvent;
 
 _grp
