@@ -25,7 +25,7 @@ if (KPLIB_endgame == 1) exitWith {false};
 
 private _objPos = [_objPos] call KPLIB_fnc_getBluforObjective;
 
-if (_objPos isEqualTo [0,0,0]) exitWith {};
+if (_objPos isEqualTo [0,0,0]) exitWith {false};
 
 KPLIB_last_battlegroup_time = diag_tickTime;
 
@@ -48,7 +48,7 @@ while {count _selectedVehiclePool < _target_size} do {
     _selectedVehiclePool pushback (selectRandom _vehiclePool);
 };
 
-if (_selectedVehiclePool isEqualTo []) exitWith {}; // Exit on empty
+if (_selectedVehiclePool isEqualTo []) exitWith {false}; // Exit on empty
 
 private _heliAspawnedOnce = false; // Spawns only once attack helicopter
 private _paraTrooperSpawnedOnce = false; // Spawns only once paratroopers

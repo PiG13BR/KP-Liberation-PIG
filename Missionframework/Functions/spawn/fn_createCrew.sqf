@@ -144,8 +144,5 @@ if (isNull _grp) then {
 	}
 }forEach _seats;
 
-// HC
-["KPLIB_sendGroupToHC", _grp] call CBA_fnc_serverEvent;
-
 // Return group
 _grp

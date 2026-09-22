@@ -67,7 +67,4 @@ _group addEventHandler ["UnitKilled", {
     ["KPLIB_onUnitKilled", [_group, _unit, _killer]] call CBA_fnc_localEvent;
 }];
 
-// HC
-["KPLIB_sendGroupToHC", _group] call CBA_fnc_serverEvent;
-
 _group
