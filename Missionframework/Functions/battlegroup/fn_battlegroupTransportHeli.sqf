@@ -179,4 +179,6 @@ if (_notify) then {
 
 ["KPLIB_battlegroupSpawn", [_infGrp, _spawnPoint]] call CBA_fnc_serverEvent;
 
+[format ["Helicopter battlegroup spawned, group: %1 - owned by: %2 - running on: %3", _pilot_group, groupOwner _pilot_group, KPLIB_debugSource], "HELICOPTER SPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];
+
 [_pilot_group, _infGrp]

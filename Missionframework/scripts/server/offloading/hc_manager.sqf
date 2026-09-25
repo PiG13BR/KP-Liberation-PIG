@@ -10,3 +10,6 @@ reinforcements_manager = compile preprocessFileLineNumbers "Scripts\Server\patro
 execVM "Scripts\Client\misc\synchronise_vars.sqf";
 execVM "Scripts\Client\misc\synchronise_eco.sqf";
 execVM "Scripts\Server\offloading\show_fps.sqf";
+
+// Count initial buildings on each city and bigtown
+execVM "Scripts\Server\civrep\init_buildings.sqf";

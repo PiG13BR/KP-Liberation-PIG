@@ -42,13 +42,17 @@ while {KPLIB_endgame == 0} do {
 
                 if ((random 100) <= KPLIB_resistance_ambush_chance) then {
                     private _hc = [] call KPLIB_fnc_getLessLoadedHC;
+                    private _range = KPLIB_range_sectorCapture;
+                    if (_sector in KPLIB_sectors_capital) then {
+                        _range = _range * 1.4;
+                    };
                     private _ieds = round (([] call KPLIB_fnc_crGetMulti) * KPLIB_param_difficulty);
 
                     if (isNull _hc) then {
-                        [_sector, _ieds] spawn KPLIB_fnc_manageAsymIED;
+                        [_sector, _range, _ieds] spawn KPLIB_fnc_manageAsymIED;
                         [_sector] spawn KPLIB_fnc_asymSectorAmbush;
                     } else {
-                        [_sector, _ieds] remoteExec ["KPLIB_fnc_manageAsymIED", _hc];
+                        [_sector, _range, _ieds] remoteExec ["KPLIB_fnc_manageAsymIED", _hc];
                         [_sector] remoteExec ["KPLIB_fnc_asymSectorAmbush",_hc];
                     };
                 };
