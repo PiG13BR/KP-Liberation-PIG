@@ -12,15 +12,8 @@
         - None
 
     Optional Mods:
-        - BWMod
-        - CUP Vehicles
-        - CUP Weapons
-        - F-15C
-        - F/A-18
-        - RHSUSAF
-        - USAF Fighters Pack
-        - USAF Main Pack
-        - USAF Utility Pack
+        - Gruppe Adler Trenches
+        - ACE
 */
 
 /*
@@ -45,7 +38,6 @@ KPLIB_b_heliPilotUnit   = "B_Helipilot_F";                              // This 
 KPLIB_b_crewStatic      = "B_Soldier_F";                                // This defines the crew for static weapons.
 KPLIB_b_addHeli         = "B_Heli_Light_01_F";                          // These are the additional helicopters which spawn on the Freedom or at Chimera base.
 KPLIB_b_addBoat         = "B_Boat_Transport_01_F";                      // These are the boats which spawn at the stern of the Freedom.
-KPLIB_b_logiTruck       = "B_Truck_01_transport_F";                     // These are the trucks which are used in the logistic convoy system.
 KPLIB_b_smallStorage    = "Land_Cargo20_brick_red_F";                   // A small storage area for resources.
 KPLIB_b_largeStorage    = "Land_Cargo40_brick_red_F";                   // A large storage area for resources.
 KPLIB_b_transStorage    = "Land_Cargo10_brick_red_F";                   // This defines a transportable storage.
@@ -56,7 +48,7 @@ KPLIB_b_crateAmmo       = "B_CargoNet_01_ammo_F";                       // This 
 KPLIB_b_crateFuel       = "CargoNet_01_barrels_F";                      // This defines the fuel crates.
 KPLIB_b_supplyDump      = "Land_Cargo20_military_green_F";              // This defines supply dump for the supply menu
 KPLIB_b_barrack         = "Land_Cargo_House_V1_F";                      // The building defined to unlock FOB redeploy and IA/squads buying
-KPLIB_b_medicalFacility = "Land_Medevac_house_V1_F";                    // This is the medical facility building
+KPLIB_b_medicalFacility = "Land_Medevac_house_V1_F";                    // This is the medical facility building              
 
 // The helipad used to increase the GLOBAL rotary-wing cap. Make sure the selected classnames are in KPLIB_type_heliPads.
 KPLIB_b_slotHeli        = ["Land_HelipadSquare_F", "Land_HelipadCircle_F", "Land_HelipadRescue_F"];
@@ -71,6 +63,18 @@ KPLIB_b_basic_uniform = "U_B_CombatUniform_mcam";
 KPLIB_b_flashlightAcc = "acc_flashlight";                               // Flashlight (enabled by mission parameters)
 KPLIB_b_nightVision = "NVGoggles";                                      // Night vision (enabled by mission parameters)
 KPLIB_b_laserAcc = "acc_pointer_IR";                                    // Laser accessory (enabled by mission parameters)
+
+/*
+    --- Friendly classnames ---
+    Each array below represents one of the 7 pages within the build menu.
+    Format: ["vehicle_classname",supplies,ammunition,fuel],
+    Example: ["B_APC_Tracked_01_AA_F",300,150,150],
+    The above example is the NATO IFV-6a Cheetah, it costs 300 supplies, 150 ammunition and 150 fuel to build.
+    IMPORTANT: The last element inside each array must have no comma at the end!
+*/
+
+// Logistic convoy system truck and its cost (This is the truck which is used in the logistic convoy system.)
+KPLIB_b_logiTruck = ["B_Truck_01_transport_F",100,0,100];
 
 /*
     Classnames of crates (parent of ReammoBox_F) that can be used as supply carriers and its prices
@@ -88,14 +92,6 @@ KPLIB_supply_crates = [
     ["ACE_medicalSupplyCrate_advanced",10,0,0]
 ];
 
-/*
-    --- Friendly classnames ---
-    Each array below represents one of the 7 pages within the build menu.
-    Format: ["vehicle_classname",supplies,ammunition,fuel],
-    Example: ["B_APC_Tracked_01_AA_F",300,150,150],
-    The above example is the NATO IFV-6a Cheetah, it costs 300 supplies, 150 ammunition and 150 fuel to build.
-    IMPORTANT: The last element inside each array must have no comma at the end!
-*/
 KPLIB_b_infantry = [
     ["B_Soldier_lite_F",15,10,0],                                        // Rifleman (Light)
     ["B_Soldier_F",20,10,0],                                             // Rifleman

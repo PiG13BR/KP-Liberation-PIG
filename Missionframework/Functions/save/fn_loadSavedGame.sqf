@@ -2,7 +2,7 @@
     File: fn_loadSavedGame.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 16/11/2025
-    Last Update: 29/07/2026
+    Last Update: 03/08/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -600,6 +600,54 @@ if (KPLIB_param_enemyMines) then {
         [_x] call KPLIB_fnc_registerMinePositions
     }forEach KPLIB_sectors_all;
 };
+
+// Update logistic array into hashmap
+private _logisticHashMap = createHashMapFromArray [];
+if (count KPLIB_logistics > 0) then {
+    {
+        private _key = _x # 0;
+        private _value = _x # 1;
+        if (_value isEqualType []) then {
+            // Loaded version
+            _logisticHashMap set [
+                _key,
+                    [ 
+                        _value # 0,
+                        _value # 1,
+                        _value # 2,
+                        _value # 3,
+                        _value # 4,
+                        _value # 5,
+                        _value # 6,
+                        _value # 7,
+                        _value # 8,
+                        _value param [9, [0,0,0]], // If [0,0,0], the logistic will be deleted
+                        -1
+                    ]
+                ]
+        } else {
+            // Old version
+            _logisticHashMap set [
+                _key,
+                [ 
+                    _x # 1,
+                    _x # 2,
+                    _x # 3,
+                    _x # 4,
+                    _x # 5,
+                    _x # 6,
+                    _x # 7,
+                    _x # 8,
+                    _x # 9
+                ]
+            ]
+            
+        }
+    }forEach KPLIB_logistics;
+};
+
+// It's now a hashmap
+KPLIB_logistics = _logisticHashMap;
 
 publicVariable "stats_civilian_vehicles_seized";
 publicVariable "stats_ieds_detonated";

@@ -46,7 +46,9 @@ execVM "Scripts\Server\game\zeus_synchro.sqf";
 execVM "Scripts\Server\offloading\show_fps.sqf";
 execVM "Scripts\Server\patrols\civilian_patrols.sqf";
 execVM "Scripts\Server\patrols\reinforcements_resetter.sqf";
-if (KPLIB_param_logistic) then {execVM "Scripts\Server\resources\manage_logistics.sqf";};
+if (KPLIB_param_logistic) then {
+    [] call KPLIB_fnc_logistic_init;
+};
 [] call KPLIB_fnc_factoryProductionInit;
 [] call KPLIB_fnc_recalculateResourcesInit;
 [] call KPLIB_fnc_recalculateResourcesPFH;
@@ -59,6 +61,7 @@ if (KPLIB_param_enemyFighters) then {[] call KPLIB_fnc_enemyFighterPFH;};
 [] call KPLIB_fnc_towerMonitoringPFH;
 [] call KPLIB_fnc_setSectorLinks;
 [] call KPLIB_fnc_setSectorColors;
+
 
 KPLIB_fsm_sectorMonitor = [] call KPLIB_fnc_sectorMonitor;
 if (KPLIB_param_highCommand) then {KPLIB_fsm_highcommand = [] call KPLIB_fnc_highcommand;};

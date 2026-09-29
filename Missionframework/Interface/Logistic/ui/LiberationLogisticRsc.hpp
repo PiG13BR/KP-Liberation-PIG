@@ -1,7 +1,11 @@
-class liberation_logistic {
-    idd = 75802;
+#include "..\defines.hpp"
+
+class LiberationLogisticRsc {
+    idd = IDD_LOGISTIC_MENU;
     movingEnable = false;
     controlsBackground[] = {};
+    onLoad = "[_this # 0] call KPLIB_fnc_logistic_loadMenu";
+    onUnload = "[_this # 0] call KPLIB_fnc_logistic_unloadMenu";
 
     controls[] = {
         "OuterBG1", "OuterBG_F1", "InnerBG1", "InnerBG_F1", "InnerBG2", "InnerBG_F2", "InnerBG3", "InnerBG_F3",
@@ -65,286 +69,317 @@ class liberation_logistic {
         text = $STR_LOGISTIC_HEADER;
     };
     class ButtonClose: StdButton {
-        idc = 75801;
+        idc = IDC_CLOSE_BUTTON;
         x = 0.785 * safezoneW + safezoneX;
         y = 0.145 * safezoneH + safezoneY;
         w = 0.015 * safezoneW;
         h = 0.02 * safezoneH;
         text = "X";
-        action = "closeDialog 0";
+        onButtonClick = "(ctrlParent (_this # 0)) closeDisplay 1";
     };
     class LogisticList: StdListBox {
-        idc = 75802;
+        idc = IDC_LOGISTIC_LISTBOX;
+        sizeEx = 0.025 * safezoneH;
         x = (0.2 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.2 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.12 * safezoneW) + BORDERSIZE;
         h = (0.50 * safezoneH) + (1.5 * BORDERSIZE);
         shadow = 2;
-        onLBSelChanged="";
+        onLBSelChanged="_this call KPLIB_fnc_logistic_handleListBox";
     };
     class ButtonCreateLogisticGroup: StdButton {
-         idc = 75803;
+        idc = IDC_CREATE_GROUP_BUTTON;
         sizeEx = 0.026 * safezoneH;
         x = (0.2 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.7128 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.055 * safezoneW) + BORDERSIZE;
         h = (0.045 * safezoneH);
         text = $STR_ADD;
-        action = "addLogiGroup = 1";
+        onButtonClick = "_this call KPLIB_fnc_logistic_addGroup";
+        //action = "addLogiGroup = 1";
     };
     class ButtonDeleteLogisticGroup: StdButton {
-         idc = 75804;
+        idc = IDC_DELETE_GROUP_BUTTON;
         sizeEx = 0.026 * safezoneH;
         x = (0.265 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.7128 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.055 * safezoneW) + BORDERSIZE;
         h = (0.045 * safezoneH);
         text = $STR_DEL;
-        action = "deleteLogiGroup = 1";
+        onButtonClick = "_this call KPLIB_fnc_logistic_deleteGroup";
+        //action = "deleteLogiGroup = 1";
     };
     class LogisticName: StdText {
-        idc = 75805;
+        idc = IDC_LOGISTIC_NAME_TEXT;
         style = ST_CENTER;
         colorBackground[] = COLOR_BLACK_ALPHA;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.2 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.153 * safezoneW) + BORDERSIZE;
-        h = (0.02 * safezoneH);
+        h = (0.023 * safezoneH);
         text = "";
+        sizeEx = 0.025 * safezoneH;
     };
     class StatusLabel: StdText {
-        idc = 75806;
+        idc = IDC_LOGISTIC_STATUS_TEXT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.23 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.07 * safezoneW);
         h = (0.02 * safezoneH);
         text = $STR_LOGISTIC_STATUS;
+        sizeEx = 0.021 * safezoneH;
     };
     class Status: StatusLabel {
-        idc = 75807;
+        idc = IDC_LOGISTIC_STATUS;
         style = ST_RIGHT;
         x = (0.4145 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         w = (0.08 * safezoneW);
         text = "";
     };
     class TimeLabel: StdText {
-        idc = 75808;
+        idc = IDC_TIME_LABEL_TEXT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.26 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.07 * safezoneW);
         h = (0.02 * safezoneH);
         text = $STR_PRODUCTION_TIMER;
+        sizeEx = 0.021 * safezoneH;
     };
     class Time: TimeLabel {
-        idc = 75809;
+        idc = IDC_TIME_LABEL;
         style = ST_RIGHT;
         x = (0.4145 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         w = (0.08 * safezoneW);
         text = "";
     };
     class DestinationLabel: StdText {
-        idc = 758010;
+        idc = IDC_DESTINATION_TEXT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.29 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.07 * safezoneW);
         h = (0.02 * safezoneH);
         text = $STR_LOGISTIC_DESTINATION;
+        sizeEx = 0.021 * safezoneH;
     };
     class Destination: DestinationLabel {
-        idc = 758011;
+        idc = IDC_DESTINATION;
         style = ST_RIGHT;
         x = (0.4145 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         w = (0.08 * safezoneW);
+        sizeEx = 0.020 * safezoneH;
         text = "";
     };
     class LoadedTitle: StdText {
-        idc = 758012;
+        idc = IDC_LOADED_TITLE;
         style = ST_CENTER;
         colorBackground[] = COLOR_BLACK_ALPHA;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.34 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.153 * safezoneW) + BORDERSIZE;
-        h = (0.02 * safezoneH);
+        h = (0.023 * safezoneH);
         text = $STR_LOGISTIC_LOADEDDETAIL;
+        sizeEx = 0.025 * safezoneH;
     };
     class TruckCountLabel: StdText {
-        idc = 758013;
+        idc = IDC_TRUCK_COUNT_TEXT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.37 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.07 * safezoneW);
         h = (0.02 * safezoneH);
         text = $STR_LOGISTIC_TRUCKCOUNT;
+        sizeEx = 0.021 * safezoneH;
     };
     class TruckCount: TruckCountLabel {
-        idc = 758014;
+        idc = IDC_TRUCK_COUNT;
         style = ST_RIGHT;
         x = (0.4145 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         w = (0.08 * safezoneW);
         text = "";
     };
     class LoadedSupplyLabel: StdText {
-        idc = 758015;
+        idc = IDC_LOADED_SUPPLY_TEXT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.4 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.07 * safezoneW);
         h = (0.02 * safezoneH);
         text = $STR_MANPOWER;
+        sizeEx = 0.021 * safezoneH;
     };
     class LoadedSupply: LoadedSupplyLabel {
-        idc = 758016;
+        idc = IDC_LOADED_SUPPLY;
         style = ST_RIGHT;
         x = (0.4145 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         w = (0.08 * safezoneW);
         text = "";
     };
     class LoadedAmmoLabel: StdText {
-        idc = 758017;
+        idc = IDC_LOADED_AMMO_TEXT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.43 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.07 * safezoneW);
         h = (0.02 * safezoneH);
         text = $STR_AMMO;
+        sizeEx = 0.021 * safezoneH;
     };
     class LoadedAmmo: LoadedAmmoLabel {
-        idc = 758018;
+        idc = IDC_LOADED_AMMO;
         style = ST_RIGHT;
         x = (0.4145 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         w = (0.08 * safezoneW);
         text = "";
     };
     class LoadedFuelLabel: StdText {
-        idc = 758019;
+        idc = IDC_LOADED_FUEL_TEXT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.46 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.07 * safezoneW);
         h = (0.02 * safezoneH);
         text = $STR_FUEL;
+        sizeEx = 0.021 * safezoneH;
     };
     class LoadedFuel: LoadedFuelLabel {
-        idc = 758020;
+        idc = IDC_LOADED_FUEL;
         style = ST_RIGHT;
         x = (0.4145 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         w = (0.08 * safezoneW);
         text = "";
     };
     class ButtonBuyTruck: StdButton {
-         idc = 758021;
+        idc = IDC_BUY_TRUCK_BUTTON;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
-        y = (0.49 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
+        y = (0.50 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.0725 * safezoneW) + BORDERSIZE;
-        h = (0.02 * safezoneH);
+        h = (0.025 * safezoneH);
         text = $STR_LOGSTIC_BUYTRUCK;
         tooltip = $STR_LOGISTIC_TT_BUYTRUCK;
-        action = "buyLogiTruck = 1";
+        sizeEx = 0.022 * safezoneH;
+        onButtonClick = "_this call KPLIB_fnc_logistic_addTruck";
     };
     class ButtonSellTRuck: StdButton {
-         idc = 758022;
+        idc = IDC_SELL_TRUCK_BUTTON;
         x = (0.4185 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
-        y = (0.49 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
+        y = (0.50 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.0725 * safezoneW) + BORDERSIZE;
-        h = (0.02 * safezoneH);
+        h = (0.025 * safezoneH);
         text = $STR_LOGSTIC_SELLTRUCK;
         tooltip = $STR_LOGISTIC_TT_SELLTRUCK;
-        action = "sellLogiTruck = 1";
+        sizeEx = 0.022 * safezoneH;
+        onButtonClick = "_this call KPLIB_fnc_logistic_deleteTruck";
     };
     class ATitle: StdText {
-        idc = 758023;
+        idc = IDC_A_TITLE;
         style = ST_CENTER;
         colorBackground[] = COLOR_BLACK_ALPHA;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.54 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.153 * safezoneW) + BORDERSIZE;
-        h = (0.02 * safezoneH);
+        h = (0.023 * safezoneH);
         text = $STR_LOGISTIC_LABELA;
+        sizeEx = 0.025 * safezoneH;
     };
     class ACombo: StdCombo {
-        idc = 758024;
-        sizeEx = 0.018 * safezoneH;
+        idc = IDC_A_COMBO;
+        sizeEx = 0.022 * safezoneH;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.57 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.153 * safezoneW) + BORDERSIZE;
         h = (0.02 * safezoneH);
+        onLBSelChanged = "_this call KPLIB_fnc_logistic_handleComboBox";
     };
     class ASupp: StdEdit {
-        idc = 758025;
+        idc = IDC_A_SUPPLY_EDIT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
-        y = (0.6 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
+        y = (0.595 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = 0.05 * safezoneW;
+        h = (0.025 * safezoneH);
+        sizeEx = 0.022 * safezoneH;
         text = "";
         tooltip = $STR_LOGISTIC_TT_SUPPLY;
         action = "";
         autocomplete = "";
     };
     class AAmmo: StdEdit {
-        idc = 758026;
+        idc = IDC_A_AMMO_EDIT;
         x = (0.392 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
-        y = (0.6 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
+        y = (0.595 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = 0.05 * safezoneW;
+        h = (0.025 * safezoneH);
+        sizeEx = 0.022 * safezoneH;
         text = "";
         tooltip = $STR_LOGISTIC_TT_AMMO;
         action = "";
         autocomplete = "";
     };
     class AFuel: StdEdit {
-        idc = 758027;
+        idc = IDC_A_FUEL_EDIT;
         x = (0.446 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
-        y = (0.6 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
+        y = (0.595 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = 0.05 * safezoneW;
+        h = (0.025 * safezoneH);
+        sizeEx = 0.022 * safezoneH;
         text = "";
         tooltip = $STR_LOGISTIC_TT_FUEL;
         action = "";
         autocomplete = "";
     };
     class BTitle: StdText {
-        idc = 758028;
+        idc = IDC_B_TITLE;
         style = ST_CENTER;
         colorBackground[] = COLOR_BLACK_ALPHA;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.63 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.153 * safezoneW) + BORDERSIZE;
-        h = (0.02 * safezoneH);
+        h = (0.023 * safezoneH);
         text = $STR_LOGISTIC_LABELB;
+        sizeEx = 0.025 * safezoneH;
     };
     class BCombo: StdCombo {
-        idc = 758029;
-        sizeEx = 0.018 * safezoneH;
+        idc = IDC_B_COMBO;
+        sizeEx = 0.022 * safezoneH;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.66 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.153 * safezoneW) + BORDERSIZE;
         h = (0.02 * safezoneH);
+        onLBSelChanged = "_this call KPLIB_fnc_logistic_handleComboBox";
     };
     class BSupp: StdEdit {
-        idc = 758030;
+        idc = IDC_B_SUPPLY_EDIT;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
-        y = (0.69 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
+        y = (0.685 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = 0.05 * safezoneW;
+        h = (0.025 * safezoneH);
+        sizeEx = 0.022 * safezoneH;
         text = "";
         tooltip = $STR_LOGISTIC_TT_SUPPLY;
         action = "";
         autocomplete = "";
     };
     class BAmmo: StdEdit {
-        idc = 758031;
+        idc = IDC_B_AMMO_EDIT;
         x = (0.392 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
-        y = (0.69 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
+        y = (0.685 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = 0.05 * safezoneW;
+        h = (0.025 * safezoneH);
+        sizeEx = 0.022 * safezoneH;
         text = "";
         tooltip = $STR_LOGISTIC_TT_AMMO;
         action = "";
         autocomplete = "";
     };
     class BFuel: StdEdit {
-        idc = 758032;
+        idc = IDC_B_FUEL_EDIT;
         x = (0.446 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
-        y = (0.69 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
+        y = (0.685 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = 0.05 * safezoneW;
+        h = (0.025 * safezoneH);
+        sizeEx = 0.022 * safezoneH;
         text = "";
         tooltip = $STR_LOGISTIC_TT_FUEL;
         action = "";
         autocomplete = "";
     };
     class ALabel: StdText {
-        idc = 758033;
+        idc = IDC_A_LABEL_TEXT;
         style = ST_CENTER;
         sizeEx = 0.018 * safezoneH;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
@@ -354,7 +389,7 @@ class liberation_logistic {
         text = "";
     };
     class BLabel: StdText {
-        idc = 758034;
+        idc = IDC_B_LABEL_TEXT;
         style = ST_CENTER;
         sizeEx = 0.018 * safezoneH;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
@@ -364,39 +399,40 @@ class liberation_logistic {
         text = "";
     };
     class ButtonSaveLogistic: StdButton {
-         idc = 758080;
-        sizeEx = 0.02 * safezoneH;
+        idc = IDC_SAVE_BUTTON;
+        sizeEx = 0.021 * safezoneH;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.7128 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.153 * safezoneW) + BORDERSIZE;
         h = (0.021 * safezoneH);
         text = $STR_LOGISTIC_CONFIRM;
-        action = "saveConvoySettings = 1";
+        onButtonClick = "_this call KPLIB_fnc_logistic_confirmConvoy";
     };
     class ButtonAbortLogistic: StdButton {
-         idc = 758081;
-        sizeEx = 0.02 * safezoneH;
+        idc = IDC_ABORT_BUTTON;
+        sizeEx = 0.021 * safezoneH;
         x = (0.338 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.7368 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.153 * safezoneW) + BORDERSIZE;
         h = (0.021 * safezoneH);
         text = $STR_LOGISTIC_CANCEL;
-        action = "convoyStandby = 1";
+        onButtonClick = "_this call KPLIB_fnc_logistic_abortConvoy";
     };
     class LogisticMap: kndr_MapControl {
-        idc = 758098;
+        idc = IDC_MAP;
         x = (0.51 * safezoneW + safezoneX) - (0.5 * BORDERSIZE);
         y = (0.2 * safezoneH + safezoneY) - (0.75 * BORDERSIZE);
         w = (0.29 * safezoneW) + BORDERSIZE;
         h = (0.55 * safezoneH) + (1.5 * BORDERSIZE);
     };
      class ButtonClose2: StdButton {
-         idc = 758099;
+        idc = IDC_CLOSE2_BUTTON;
         x = 0.455 * safezoneW + safezoneX;
         y = 0.77 * safezoneH + safezoneY;
         w = 0.09 * safezoneW;
         h = 0.035 * safezoneH;
         text = $STR_CLOSE;
-        action = "closeDialog 0";
+        onButtonClick = "(ctrlParent (_this # 0)) closeDisplay 1";
+        sizeEx = 0.025 * safezoneH;
     };
 };
