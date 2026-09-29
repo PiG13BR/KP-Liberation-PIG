@@ -13,12 +13,14 @@
 - Adapt AI spawn on airport sectors related to its area size.
 - FOB Defense UI for static weapons / handle ammo / handle crew.
 - Towers are GPS jammers and can cause radio interference (random towers, not all of them).
+- Save friendly forces near friendly captured zones (Aceb20).
 
 ## IDEAS 
 - Players have to stabilize town/cities after capturing them.
 - Factories need workers. Workers can come from captured and stabilized nearby town/cities to work on the factories.
 - Rearming friendly vehicles will cost ammo supplies (by using Jeroen's logistic system: https://github.com/Jeroen-Notenbomer/Limited-Arsenal).
 - Bomb jammer for important sectors.
+- Modifity High Command scripts to add options for managing AI squads on Liberation.
 
 ## HALLUCINATIONS
 - Limit arsenal by using Jeroen's framework https://github.com/Jeroen-Notenbomer/Limited-Arsenal
