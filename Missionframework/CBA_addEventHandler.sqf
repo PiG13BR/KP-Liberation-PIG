@@ -39,5 +39,9 @@ if (KPLIB_param_PAS && KPLIB_ace) then {
     #include "Extensions\Pylon_Armament_Selector\CBA_addEventHandler.sqf";
 };
 
+if (KPLIB_param_logistic) then {
+    #include "Interface\Logistic\CBA_addEventHandler.sqf";
+};
+
 #include "Extensions\Sector_Objects\CBA_addEventHandler.sqf"
 #include "Extensions\Drone_Jammer\CBA_addEventHandler.sqf"

@@ -3,7 +3,7 @@
     File: fn_logistic_updateControls.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 01/08/2026
-    Last Update: 28/09/2026
+    Last Update: 30/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -59,52 +59,77 @@ _logiData params [
 if ((_lbCurSel != -1) && (_logi_count > 0)) then {
     switch (_status) do {
         case LOGI_STATUS_STANDBY: {
-            "spawn_marker" setMarkerPosLocal _logiPos;
+            "start_marker" setMarkerPosLocal _logiPos;
+            "start_marker" setMarkerColorLocal "ColorGreen";
+            "destination_marker" setMarkerPosLocal markers_reset;
             _mapControl ctrlMapAnimAdd [0.5, 0.2, _logiPos]; 
             ctrlMapAnimCommit _mapControl;
         };
         case LOGI_STATUS_AT_A_LOADING: {
-            "spawn_marker" setMarkerPosLocal _posDestA; 
+            "start_marker" setMarkerPosLocal _posDestA;
+            "start_marker" setMarkerColorLocal "ColorOrange";
+            "destination_marker" setMarkerPosLocal markers_reset;
             _mapControl ctrlMapAnimAdd [0.5, 0.2, _posDestA]; 
             ctrlMapAnimCommit _mapControl;
         };
         case LOGI_STATUS_AT_A_UNLOADING: {
-            "spawn_marker" setMarkerPosLocal _posDestA; 
+            "start_marker" setMarkerPosLocal _posDestA;
+            "start_marker" setMarkerColorLocal "ColorOrange";
+            "destination_marker" setMarkerPosLocal markers_reset;
             _mapControl ctrlMapAnimAdd [0.5, 0.2, _posDestA]; 
             ctrlMapAnimCommit _mapControl;
         };
         case LOGI_STATUS_TO_B: {
             ctrlMapAnimClear _mapControl;
-            "spawn_marker" setMarkerPosLocal markers_reset;
+            "start_marker" setMarkerPosLocal _posDestA;
+            "start_marker" setMarkerColorLocal "ColorGreen";
+            "destination_marker" setMarkerPosLocal _posDestB;
+            "destination_marker" setMarkerColorLocal "ColorOrange";
         };
         case LOGI_STATUS_AT_B_LOADING: {
-            "spawn_marker" setMarkerPosLocal _posDestB; 
+
+            "start_marker" setMarkerPosLocal _posDestB;
+            "start_marker" setMarkerColorLocal "ColorOrange";
+            "destination_marker" setMarkerPosLocal markers_reset;
             _mapControl ctrlMapAnimAdd [0.5, 0.2, _posDestB]; 
             ctrlMapAnimCommit _mapControl;
         };
         case LOGI_STATUS_AT_B_UNLOADING: {
-            "spawn_marker" setMarkerPosLocal _posDestB; 
+            "start_marker" setMarkerPosLocal _posDestB;
+            "start_marker" setMarkerColorLocal "ColorOrange";
+            "destination_marker" setMarkerPosLocal markers_reset;
             _mapControl ctrlMapAnimAdd [0.5, 0.2, _posDestB]; 
             ctrlMapAnimCommit _mapControl;
         };
         case LOGI_STATUS_TO_A: {
             ctrlMapAnimClear _mapControl;
-            "spawn_marker" setMarkerPosLocal markers_reset;
+            "start_marker" setMarkerPosLocal _posDestB;
+            "start_marker" setMarkerColorLocal "ColorGreen";
+            "destination_marker" setMarkerPosLocal _posDestA;
+            "destination_marker" setMarkerColorLocal "ColorOrange";
         };
         case LOGI_STATUS_ABORTING_TO_A: {
             ctrlMapAnimClear _mapControl;
-            "spawn_marker" setMarkerPosLocal markers_reset;
+            "start_marker" setMarkerPosLocal _posDestB;
+            "start_marker" setMarkerColorLocal "ColorGreen";
+            "destination_marker" setMarkerPosLocal _posDestA;
+            "destination_marker" setMarkerColorLocal "ColorRed";
         };
         case LOGI_STATUS_ABORTING_TO_B: {
             ctrlMapAnimClear _mapControl;
-            "spawn_marker" setMarkerPosLocal markers_reset;
+            "start_marker" setMarkerPosLocal _posDestA;
+            "start_marker" setMarkerColorLocal "ColorGreen";
+            "destination_marker" setMarkerPosLocal _posDestB;
+            "destination_marker" setMarkerColorLocal "ColorRed";
         };
         case LOGI_STATUS_AMBUSHED: {
             ctrlMapAnimClear _mapControl;
-            "spawn_marker" setMarkerPosLocal markers_reset;
+            "start_marker" setMarkerPosLocal markers_reset;
+            "destination_marker" setMarkerPosLocal markers_reset;
         };
         default {
-            
+            "start_marker" setMarkerPosLocal markers_reset;
+            "destination_marker" setMarkerPosLocal markers_reset;
         };
     };
 };

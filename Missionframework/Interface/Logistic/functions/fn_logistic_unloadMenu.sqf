@@ -3,7 +3,7 @@
     File: fn_logistic_unloadMenu.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 31/07/2026
-    Last Update: 28/09/2026
+    Last Update: 30/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -18,7 +18,8 @@
 params[["_display", findDisplay IDD_LOGISTIC_MENU]];
 
 [_display, true] call KPLIB_fnc_logistic_drawArrow;
-"spawn_marker" setMarkerPosLocal markers_reset;
+deleteMarkerLocal "start_marker"; 
+deleteMarkerLocal "destination_marker";
 localNamespace setVariable ["KPLIB_logistic_nearFob", nil];
 localNamespace setVariable ["KPLIB_logistic_destinations", nil];
 uiNamespace setVariable ["KPLIB_logistic_display", nil];
