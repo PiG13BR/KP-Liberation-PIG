@@ -2,7 +2,7 @@
     File: fn_hintResurcesFactory.sqf
     Author: PiG13BR (https://github.com/PiG13BR)
     Date: 06/07/2026
-    Last update: 06/07/2026
+    Last update: 30/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -20,9 +20,11 @@ if (_sector isEqualTo "") exitWith {false};
 
 private _prodList = KPLIB_production get _sector;
 private _type = _prodList # 6;
-private _supply = _prodList # 8;
-private _ammo = _prodList # 9;
-private _fuel = _prodList # 10;
+
+private _storagePos = (_prodList # 2) # 0;
+
+private _storage = nearestObject [_storagePos, KPLIB_b_smallStorage];
+(_storage call KPLIB_fnc_getStorageValues) params ["_supply", "_ammo", "_fuel"];
 
 private _typeName = "";
 private _color = "";

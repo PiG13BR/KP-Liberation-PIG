@@ -3,7 +3,7 @@
     File: fn_logistic_loadMenu.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 31/07/2026
-    Last Update: 05/08/2026
+    Last Update: 30/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -77,6 +77,14 @@ if (_logi_count != (count KPLIB_logistics)) then {
 if ((_logi_count > 0) && (lbCurSel _logisticListBox == -1)) then {
     _logisticListBox lbSetCurSel 0;
 };
+
+createMarkerLocal ["start_marker", markers_reset];
+"start_marker" setMarkerColorLocal "ColorGreen";
+"start_marker" setMarkerTypeLocal "Select";
+
+createMarkerLocal ["destination_marker", markers_reset];
+"destination_marker" setMarkerColorLocal "ColorOrange";
+"destination_marker" setMarkerTypeLocal "selector_selectedMission";
 
 // Disable user actions
 inGameUISetEventHandler ["PrevAction", "true"];

@@ -3,7 +3,7 @@
     File: fn_logistic_loading.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: 02/08/2026
-    Last Update: 26/09/2026
+    Last Update: 30/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -130,10 +130,13 @@ private _maxGetFuel = _fuel;
 if (_maxGetFuel > _maxCargo) then {_maxGetFuel = _maxCargo;};
 
 // Get resources from storages (reserve these resources for transportation)
-private _processed = [_maxGetSupply, _maxGetAmmo, _maxGetFuel, _storageAreas] call KPLIB_fnc_subtractResources;
+private _processed = [];
+if (_currentLoaded isEqualTo [0,0,0]) then {
+    _processed = [_maxGetSupply, _maxGetAmmo, _maxGetFuel, _storageAreas] call KPLIB_fnc_subtractResources;
+};
 
 // Loading failed
-if (_processed isEqualTo []) exitWith {
+if ((_processed isEqualTo []) && (_currentLoaded isEqualTo [0,0,0])) exitWith {
     // Abort loading
     _nextState = switch _status do {
         case LOGI_STATUS_AT_A_LOADING: {LOGI_STATUS_STANDBY};
@@ -141,6 +144,8 @@ if (_processed isEqualTo []) exitWith {
     };
 
     _logiData set [STATUS_INDEX, _nextState];
+    _logiData set [TIME_LEFT_INDEX, -1];
+    _logiData set [SPECIAL_FLAG_INDEX, LOGI_NO_FLAG];
 
     [_logiID, _handler] call KPLIB_fnc_logistic_manager;
 };

@@ -3,7 +3,7 @@
     File: fn_logistic_addTruck.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 31/07/2026
-    Last Update: 05/08/2026
+    Last Update: 30/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -43,7 +43,7 @@ if ((_supplyPrice > _supplies) || (_ammoPrice > _ammo) || (_fuelPrice > _fuel)) 
 };
 
 // Buy truck
-[_supplyPrice, _ammoPrice, _fuelPrice, _storages] call KPLIB_fnc_subtractResources;
+["KPLIB_logi_addTruck", [_supplyPrice, _ammoPrice, _fuelPrice, _storages]] call CBA_fnc_serverEvent;
 
 // Add truck count
 private _group = _listBoxCtrl lbData _index;

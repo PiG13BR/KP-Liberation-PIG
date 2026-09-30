@@ -41,16 +41,19 @@ _logiData params [
 
 private _pointPos = [0,0,0]; // Get position point information
 private _transpRes = [0,0,0]; // Get resources transport count information
+private _transResOrigin = [0,0,0];
 
 // Check status
 switch _status do {
     case LOGI_STATUS_AT_A_UNLOADING: {
         _pointPos = _posDestA;
         _transpRes = _transpResourcesA;
+        _transResOrigin = _transpResourcesB;
     }; 
     case LOGI_STATUS_AT_B_UNLOADING: {
         _pointPos = _posDestB; 
         _transpRes = _transpResourcesB;
+        _transResOrigin = _transpResourcesA;
     };
 };
 
@@ -182,27 +185,45 @@ if (_timeLeft > 1 && (_currentLoaded isNotEqualTo [0,0,0])) then {
 } else {
     // Time is less than 1
     // Check for the next state
-    private _nextState = 0;
+    private _nextState = 0; // Stand by
     private _time = -1;
 
+    // Two possibilities once the unloading is finished:
+    // 1 - There is cargo to load at the destination >> Load
+    // 2 - There is still cargo to load at the origin >> Travel
+    // 3 - No cargo to load >> Stand by
+
     // Check for resources to transport and resources left on the cargo
-    if ((_transpResourcesA isEqualTo [0,0,0]) && (_transpResourcesB isEqualTo [0,0,0]) && (_currentLoaded isEqualTo [0,0,0])) then {
+    if ((_transpRes isEqualTo [0,0,0]) && (_transResOrigin isEqualTo [0,0,0]) && (_currentLoaded isEqualTo [0,0,0])) then {
+        // Stand by
         _logiData set [POINT_A_POS_INDEX, [0,0,0]];
         _logiData set [POINT_B_POS_INDEX, [0,0,0]];
     } else {
-        // Change status (unloading finished)
-        _nextState = switch _status do {
-            case LOGI_STATUS_AT_A_UNLOADING: {LOGI_STATUS_AT_A_LOADING};
-            case LOGI_STATUS_AT_B_UNLOADING: {LOGI_STATUS_AT_B_LOADING};
-        };
-        _transpRes params ["_supplyToLoad", "_ammoToLoad", "_fuelToLoad"];
-        _time = ceil (((ceil (_supplyToLoad / 100)) + (ceil (_ammoToLoad / 100)) + (ceil (_fuelToLoad / 100))) / 3);
-        
-        if (_time > _truckCount) then {
-            _time = _truckCount;
-        };
+        if (_transpRes isNotEqualTo [0,0,0]) then {
+            // Load
+            _nextState = switch _status do {
+                case LOGI_STATUS_AT_A_UNLOADING: {LOGI_STATUS_AT_A_LOADING};
+                case LOGI_STATUS_AT_B_UNLOADING: {LOGI_STATUS_AT_B_LOADING};
+            };
+            _transpRes params ["_supplyToLoad", "_ammoToLoad", "_fuelToLoad"];
+            _time = ceil (((ceil (_supplyToLoad / 100)) + (ceil (_ammoToLoad / 100)) + (ceil (_fuelToLoad / 100))) / 3);
+            
+            if (_time > _truckCount) then {
+                _time = _truckCount;
+            };
 
-        _time = _time + 2;
+            _time = _time + 2;
+        } else {
+            if (_transResOrigin isNotEqualTo [0,0,0]) then {
+                // Travel
+                _nextState = switch _status do {
+                    case LOGI_STATUS_AT_A_UNLOADING: {LOGI_STATUS_TO_B};
+                    case LOGI_STATUS_AT_B_UNLOADING: {LOGI_STATUS_TO_A};
+                };
+                _time = ceil ((_posDestA distance2D _posDestB) / 400);
+                _time = _time + 2;
+            };
+        };
     };
 
     _logiData set [STATUS_INDEX, _nextState];
@@ -210,8 +231,6 @@ if (_timeLeft > 1 && (_currentLoaded isNotEqualTo [0,0,0])) then {
     _logiData set [LAST_POS_INDEX, _pointPos]; // Change the last know logistic position
 
     if (KPLIB_logistic_debug > 0) then {[format ["Logistic group (%1) status updated (next status: %2) after unloading.", _logiID, _nextState], "VIRTUAL LOGISTIC"] call KPLIB_fnc_log;};
-
-    publicVariable "KPLIB_logistics";
 
     [_logiID, _handler] call KPLIB_fnc_logistic_manager;
 };
