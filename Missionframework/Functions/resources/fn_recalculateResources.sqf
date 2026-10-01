@@ -2,7 +2,7 @@
     File: fn_recalculateResources.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR (https://github.com/PiG13BR)
     Date: 10/09/2025
-    Last update: 23/07/2026
+    Last update: 30/09/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
     
     Description:
@@ -96,6 +96,22 @@ private _airport_buildings = [];
     _local_infantry_cap = _local_infantry_cap + ((10 * _countBarracks) * KPLIB_param_resourcesMulti);
 } forEach (KPLIB_player_fobs + KPLIB_player_outposts);
 
+// Update KPLIB_production
+{
+    private _sector = _x;
+    private _prodData = KPLIB_production getOrDefaultCall [_sector, {continue}];
+
+    private _storageData = (_prodData # 2);
+    if (_storageData isEqualTo []) then {continue};
+    private _storagePos = _storageData # 0;
+    private _storage = nearestObject [_storagePos, KPLIB_b_smallStorage];
+    (_storage call KPLIB_fnc_getStorageValues) params ["_supply", "_ammo", "_fuel"];
+
+    _prodData set [8, _supply];
+    _prodData set [9, _ammo];
+    _prodData set [10, _fuel];
+}forEach KPLIB_sectors_factory - (KPLIB_sectors_all - KPLIB_sectors_player);
+
 KPLIB_base_resources = _local_base_resource;
 KPLIB_supplies_global = _local_supplies_global;
 KPLIB_ammo_global = _local_ammo_global;
@@ -103,3 +119,5 @@ KPLIB_fuel_global = _local_fuel_global;
 KPLIB_heli_slots = _local_heli_slots;
 KPLIB_plane_slots = _local_plane_slots;
 KPLIB_infantry_cap = _local_infantry_cap;
+
+publicVariable "KPLIB_production";

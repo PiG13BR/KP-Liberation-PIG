@@ -685,3 +685,8 @@
         [], 4, -505, true, false, false, 2
     ] call BIS_fnc_holdActionAdd;
 }] call CBA_fnc_addEventHandler;
+
+// Starts the virtual logistic manager
+["KPLIB_logistic_startManager", {
+    _this call KPLIB_fnc_logistic_startManager;
+}] call CBA_fnc_addEventHandler;

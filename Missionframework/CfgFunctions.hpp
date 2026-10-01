@@ -76,6 +76,18 @@ class KPLIB {
         class setLoadout                {};
         class swapInventory             {};
     };
+    class Logistics {
+        file = "Functions\logistics";
+
+        class logistic_aborting         {};
+        class logistic_convoyAmbush     {};
+        class logistic_init             {};
+        class logistic_loading          {};
+        class logistic_manager          {};
+        class logistic_startManager     {};
+        class logistic_travelling       {};
+        class logistic_unloading        {};
+    };
     class Misc {
         file = "Functions\misc";
 
@@ -293,6 +305,7 @@ class KPLIB {
 
     // Interfaces
     #include "Interface\Build\cfgFunctions.hpp"
+    #include "Interface\Logistic\cfgFunctions.hpp"
     #include "Interface\Permissions\Build_Permissions\cfgFunctions.hpp"
     #include "Interface\Permissions\General_Permissions\cfgFunctions.hpp"
     #include "Interface\Production\cfgFunctions.hpp"

@@ -92,6 +92,12 @@ if (KPLIB_b_slotPlane isEqualType "") then {
     KPLIB_b_slotPlane pushBack _value;
 };
 
+// Compatibility check for logistic truck
+if (KPLIB_b_logiTruck isEqualType "") then {
+    private _value = KPLIB_b_logiTruck;
+    KPLIB_b_logiTruck = [_value,100,0,100];
+};
+
 // Remove any heli slots and planes from aesthetic buildings if they are in KPLIB_type_heliPads variable already
 {
     if (_x in KPLIB_type_heliPads) then {

@@ -4,14 +4,6 @@ prisonner_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remote
 reinforcements_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\reinforcements_remote_call.sqf";
 intel_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\intel_remote_call.sqf";
 start_secondary_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\start_secondary_remote_call.sqf";
-if (KPLIB_param_logistic) then {
-    add_logiGroup_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\add_logiGroup_remote_call.sqf";
-    del_logiGroup_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\del_logiGroup_remote_call.sqf";
-    add_logiTruck_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\add_logiTruck_remote_call.sqf";
-    del_logiTruck_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\del_logiTruck_remote_call.sqf";
-    save_logi_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\save_logi_remote_call.sqf";
-    abort_logi_remote_call = compile preprocessFileLineNumbers "Scripts\Server\remotecall\abort_logi_remote_call.sqf";
-};
 
 remote_call_sector = compile preprocessFileLineNumbers "Scripts\Client\remotecall\remote_call_sector.sqf";
 remote_call_fob = compile preprocessFileLineNumbers "Scripts\Client\remotecall\remote_call_fob.sqf";

@@ -289,11 +289,11 @@ class Params {
         texts[] = {$STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED};
         default = 1;
     };
-    class AiLogistics {
-        title = $STR_PARAMS_AILOGISTICS;
+    class VirtualLogistics {
+        title = $STR_PARAMS_VIRTUAL_LOGISTICS;
         values[] = {0, 1};
         texts[] = {$STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED};
-        default = 0;
+        default = 1;
     };
     class CR_Building {
         title = $STR_PARAM_CR_BUILDING;

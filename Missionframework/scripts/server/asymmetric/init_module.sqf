@@ -1,6 +1,4 @@
 // Scripts
-// Logistic convoy ambush
-logistic_convoy_ambush = compile preprocessFileLineNumbers "Scripts\Server\asymmetric\convoy\logistic_convoy_ambush.sqf";
 // IED spawner for blufor sectors
 manage_asymIED = compile preprocessFileLineNumbers "Scripts\Server\asymmetric\ied\manage_asymIED.sqf";
 // Spawner for guerilla ambushes in blufor sectors

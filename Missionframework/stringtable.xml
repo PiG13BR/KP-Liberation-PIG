@@ -5339,19 +5339,19 @@
             <Czech>Továrna postavena</Czech>
             <Japanese>工場を建設しました</Japanese>
         </Key>
-        <Key ID="STR_PARAMS_AILOGISTICS">
-            <Original>AI Logistics Module</Original>
-            <German>AI Logistik Modul</German>
+        <Key ID="STR_PARAMS_VIRTUAL_LOGISTICS">
+            <Original>Virtual Logistics Module</Original>
+            <German>Virtual Logistik Modul</German>
             <Spanish>Módulo de logística de IA</Spanish>
-            <Russian>Модуль логистики AI</Russian>
-            <Italian>AI Logistica</Italian>
-            <Chinesesimp>AI后勤模块</Chinesesimp>
-            <Chinese>AI 後勤模塊</Chinese>
-            <Turkish>AI Lojistiği</Turkish>
-            <Portuguese>Módulo Logístico automatizado</Portuguese>
-            <Korean>군수물자수송 AI 물류시스템</Korean>
-            <Czech>Modul AI logistiky</Czech>
-            <Japanese>AI物流モジュール</Japanese>
+            <Russian>Модуль логистики Virtual</Russian>
+            <Italian>Virtual Logistica</Italian>
+            <Chinesesimp>Virtual后勤模块</Chinesesimp>
+            <Chinese>Virtual 後勤模塊</Chinese>
+            <Turkish>Virtual Lojistiği</Turkish>
+            <Portuguese>Módulo Logístico Automatizado</Portuguese>
+            <Korean>군수물자수송 Virtual 물류시스템</Korean>
+            <Czech>Modul Virtual logistiky</Czech>
+            <Japanese>Virtual物流モジュール</Japanese>
         </Key>
         <Key ID="STR_LOGISTIC_ACTION">
             <Original>-- Logistic Overview</Original>
@@ -5368,7 +5368,7 @@
             <Japanese>-- 物流管理</Japanese>
         </Key>
         <Key ID="STR_LOGISTIC_HEADER">
-            <Original>Logistic Overview</Original>
+            <Original>Virtual Logistic Overview</Original>
             <German>Logistikübersicht</German>
             <Spanish>Resumen de logística</Spanish>
             <Russian>Обзор логистики</Russian>
@@ -5376,7 +5376,7 @@
             <Chinesesimp>后勤总览</Chinesesimp>
             <Chinese>後勤總覽</Chinese>
             <Turkish>Lojistikler</Turkish>
-            <Portuguese>Visão Geral da Logística</Portuguese>
+            <Portuguese>Visão Geral da Logística Virtual</Portuguese>
             <Korean>물류 개요</Korean>
             <Czech>Logistický přehled</Czech>
             <Japanese>物流管理</Japanese>
@@ -5423,6 +5423,10 @@
             <Czech>Stav:</Czech>
             <Japanese>状態:</Japanese>
         </Key>
+        <Key ID="STR_LOGISTIC_NO_TRUCKS">
+            <Original>No trucks</Original>
+            <Portuguese>Sem caminhões</Portuguese>
+        </Key>
         <Key ID="STR_LOGISTIC_STANDBY">
             <Original>Standby</Original>
             <German>Bereitschaft</German>
@@ -5437,6 +5441,14 @@
             <Czech>Nečinný</Czech>
             <Japanese>待機</Japanese>
         </Key>
+        <Key ID="STR_LOGISTIC_WAITING_AT">
+            <Original>Waiting at:</Original>
+            <Portuguese>Esperando em:</Portuguese>
+        </Key>
+        <Key ID="STR_LOGISTIC_RETURNING_TO">
+            <Original>Returning to:</Original>
+            <Portuguese>Retornando para:</Portuguese>
+        </Key>
         <Key ID="STR_LOGISTIC_LOADING">
             <Original>Loading</Original>
             <German>Verladen</German>
@@ -5450,6 +5462,10 @@
             <Korean>군수물자 상하차 중</Korean>
             <Czech>Nakládá</Czech>
             <Japanese>積載中</Japanese>
+        </Key>
+        <Key ID="STR_LOGISTIC_UNLOADING">
+            <Original>Unloading</Original>
+            <Portuguese>Descarregando</Portuguese>
         </Key>
         <Key ID="STR_LOGISTIC_TRAVEL">
             <Original>On the way</Original>
@@ -5478,6 +5494,10 @@
             <Korean>수송 중단</Korean>
             <Czech>Rušení mise</Czech>
             <Japanese>任務を中止</Japanese>
+        </Key>
+        <Key ID="STR_LOGISTIC_AMBUSHED">
+            <Original>Ambushed</Original>
+            <Portuguese>Emboscado</Portuguese>
         </Key>
         <Key ID="STR_LOGISTIC_NORESSOURCES">
             <Original>No resources</Original>
@@ -5662,7 +5682,7 @@
             <Japanese>任務計画</Japanese>
         </Key>
         <Key ID="STR_LOGISTIC_LABELA">
-            <Original>Destination A</Original>
+            <Original>Destination A / Origin</Original>
             <German>Ziel A</German>
             <Spanish>Destino A</Spanish>
             <Russian>Пункт назначения A</Russian>

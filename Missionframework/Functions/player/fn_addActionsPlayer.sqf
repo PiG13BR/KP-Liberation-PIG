@@ -2,7 +2,7 @@
     File: fn_addActionsPlayer.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2020-04-13
-    Last Update: 2026-07-23
+    Last Update: 2026-07-30
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -363,7 +363,7 @@ if (KPLIB_param_logistic) then {
     // Logistic
     _player addAction [
         ["<t color='#FF8000'>", localize "STR_LOGISTIC_ACTION", "</t>"] joinString "",
-        "Scripts\Client\commander\open_logistic.sqf",
+        {[] call KPLIB_fnc_logistic_createMenuRsc},
         nil,
         -830,
         false,

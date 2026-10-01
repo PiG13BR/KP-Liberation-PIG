@@ -127,7 +127,7 @@ if(isServer) then {
     GET_PARAM(KPLIB_param_fullHealCooldown, "FOBFullHealCooldown", 300);
     GET_PARAM_BOOL(KPLIB_param_timeweather, "FOBTimeWeather", 1);
     GET_PARAM_BOOL(KPLIB_param_fuelconsumption, "FuelConsumption", 1);
-    GET_PARAM_BOOL(KPLIB_param_logistic, "AiLogistics", 1);
+    GET_PARAM_BOOL(KPLIB_param_logistic, "VirtualLogistics", 1);
     GET_PARAM_BOOL(KPLIB_param_buildingDamaged, "CR_Building", 0);
     GET_PARAM(KPLIB_param_halo, "HaloJump", 1);
     GET_PARAM_BOOL(KPLIB_param_clearCargo, "ClearCargo", 1);
@@ -768,7 +768,7 @@ if (!isDedicated && hasInterface) then {
     _value = if (KPLIB_param_fuelconsumption) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 
-    _param = localize "STR_PARAMS_AILOGISTICS";
+    _param = localize "STR_PARAMS_VIRTUAL_LOGISTICS";
     _value = if (KPLIB_param_logistic) then {localize "STR_PARAMS_ENABLED";} else {localize "STR_PARAMS_DISABLED";};
     _text = _text + format ["<font color='#ff8000'>%1</font><br />%2<br /><br />", _param, _value];
 

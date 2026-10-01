@@ -14,6 +14,9 @@ Please, read the addition notes below for further explanation on important syste
 
 Feel free to report issues and make pull requests, I eventually will take a look at them.
 
+## COMPATIBILITY
+- The compatibility of Liberation versions like 0.96.7a and 0.96.8 is not guaranteed.
+
 ## HOW TO INSTALL
 1. [Download](https://github.com/PiG13BR/KP-Liberation-PIG/releases/download/v0.97.0-UNSTABLE/v0.97.0-PIG-UNSTABLE.zip) the whole content. 
 2. Take a map folder from `Missionbasefiles` and place in your missions folder (in your arma profile documents).
@@ -90,6 +93,11 @@ Below are listed the additions so far, all optional:
     *Note on arsenal: you can still fly the arsenal box to the outpost if mobile arsenal mission parameter is enabled.
     **Note on storages: for the outposts, players need to slingload transportable storages to the outposts to detect resources there.
 
+- **AI/Virtual Logistics**
+    - The AI logistics was refactored. The system is the same with some small changes on the UI and on the framework itself.
+    - On the UI, the player must select Origin or Destination A first and then Destination B.
+    - The logistic trucks now have a start location, so if the loading origin of the logistic convoy is far from the start location, the truck will travel first and then initiate the loading process. Once the logistic unloads all the cargo at the destination, the convoy start position is updated.
+    
 ## ISSUES
 If you having gameplay issues with this version of liberation, please, report them.
 
