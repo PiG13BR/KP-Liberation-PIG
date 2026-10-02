@@ -101,8 +101,6 @@ Below are listed the additions so far, all optional:
 ## ISSUES
 If you having gameplay issues with this version of liberation, please, report them.
 
-- Zeus whitelist (reported: 10/04/2026): some players can't do some ZEN actions and it's related to the whitelist module creation. If you're having this issue, don't use the whitelist for now. The gamemaster module placed on editor for the #loggedAdmin is working fine.
-
 ## CREDITS
 - [GREUH](https://github.com/GreuhZbug) and [KillahPotatoes](https://github.com/KillahPotatoes/);
 - [Apricot](https://github.com/Apricot-ale/) for making a stable fork to work with;

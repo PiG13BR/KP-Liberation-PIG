@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.97.1 (29/09/2026)
+## 0.97.1 (01/10/2026)
 * Added Extension: Enemy QRF from military bases based on tower detection. 
 * Added Extension: Commander can edit FOB/Outpost names.
 * Added Extension: Discord log for FOB resources (Added by Fernandim).
@@ -73,6 +73,7 @@
 * Fixed: Shorad in enemy SAM sites not firing at incoming missiles.
 * Fixed: Presets with spill spud for storages not converting to containers.
 * Fixed: Guerrilla IEDs not spawning and not exploding it.
+* Fixed: Features from zeus were not working if adding game master module midgame for the zeus whitelist.
 
 ## 0.97.0 (07/03/2026)
 * Added Extension: Enemy artillery.
