@@ -101,6 +101,8 @@ Below are listed the additions so far, all optional:
 ## ISSUES
 If you having gameplay issues with this version of liberation, please, report them.
 
+- Users reported problems with AI when using headless client.
+
 ## CREDITS
 - [GREUH](https://github.com/GreuhZbug) and [KillahPotatoes](https://github.com/KillahPotatoes/);
 - [Apricot](https://github.com/Apricot-ale/) for making a stable fork to work with;

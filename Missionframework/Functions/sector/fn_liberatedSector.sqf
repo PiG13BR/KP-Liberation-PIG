@@ -1,8 +1,8 @@
 /*
     File: fn_liberatedSector.sqf
-    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
+    Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BR
     Date: -
-    Last Update: 2026-07-29
+    Last Update: 02/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -92,7 +92,15 @@ if (_liberated_sector in KPLIB_sector_arsenalLink) then {
 };
 
 if (KPLIB_endgame == 0) then {
-    [{_this call KPLIB_fnc_sectorCounterAttack;}, _liberated_sector, 45] call CBA_fnc_waitAndExecute;
+    [{
+        private _hc = [] call KPLIB_fnc_getLessLoadedHC;
+
+        if (isNull _hc) then {
+            _this call KPLIB_fnc_sectorCounterAttack;
+        } else {
+            _this remoteExec ["KPLIB_fnc_sectorCounterAttack", _hc];
+        };
+    }, _liberated_sector, 45] call CBA_fnc_waitAndExecute;
 };
 
 [{_this call KPLIB_fnc_fireAtCapturedSector;}, _liberated_sector, 90] call CBA_fnc_waitAndExecute;

@@ -2,7 +2,7 @@
     File: fn_manageSectorPFH.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 02/12/2025
-    Last Update: 29/07/2026
+    Last Update: 02/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -50,11 +50,7 @@ private _maximum_additional_tickets = (KPLIB_param_maxDespawnDelay * 60 / SECTOR
     // Sector was captured
     if (([_sectorPos, _localCaptureSize] call KPLIB_fnc_getSectorOwnership == KPLIB_side_player) && (KPLIB_endgame == 0)) then {
         // Liberate sector
-        if (isServer) then {
-            [_sector] call KPLIB_fnc_liberatedSector;
-        } else {
-            [_sector] remoteExecCall ["KPLIB_fnc_liberatedSector", 2];
-        };
+        ["KPLIB_liberatedSector", [_sector]] call CBA_fnc_serverEvent;
 
         // Prisonners (only set them to be captured if there are players nearby)
         if (_localCaptureSize isEqualType []) then {

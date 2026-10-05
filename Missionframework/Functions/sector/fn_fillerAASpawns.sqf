@@ -2,7 +2,7 @@
     File: fn_fillerAASpawns.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 26/05/2026
-    Last Update: 30/07/2026
+    Last Update: 02/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -26,7 +26,7 @@ private _sectorUnits = [];
 private _sectorPos = markerPos _sector;
 
 // Create objects
-["KPLIB_createSectorObjects", [_sector]] call CBA_fnc_serverEvent;
+["KPLIB_createSectorObjects", [_sector]] call CBA_fnc_localEvent;
 
 // Get unit cap
 private _popfactor = 1;

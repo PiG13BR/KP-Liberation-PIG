@@ -2,7 +2,7 @@
     File: fn_sectorCitySpawns.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 02/12/2025
-    Last Update: 13/07/2026
+    Last Update: 02/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -23,10 +23,10 @@ private _sectorUnits = [];
 private _sectorPos = markerPos _sector;
 
 // Create objects
-["KPLIB_createSectorObjects", [_sector]] call CBA_fnc_serverEvent;
+["KPLIB_createSectorObjects", [_sector]] call CBA_fnc_localEvent;
 
 // Create mines
-["KPLIB_createSectorMines", _sector] call CBA_fnc_serverEvent;
+["KPLIB_createSectorMines", _sector] call CBA_fnc_localEvent;
 
 // Get unit cap
 private _popfactor = 1;
@@ -233,7 +233,7 @@ _sectorUnits append _boatUnits;
     params["_sector", "_localCaptureSize", "_sectorUnits"];
 
     // Reinforcements
-    ["KPLIB_sectorReinforcements", _sector] call CBA_fnc_serverEvent;
+    ["KPLIB_sectorReinforcements", _sector] call CBA_fnc_localEvent;
 
     if (KPLIB_sectorspawn_debug > 0) then {[format ["Sector %1 (%2) - populating done", (markerText _sector), _sector], "SECTORSPAWN"] remoteExecCall ["KPLIB_fnc_log", 2];};
 

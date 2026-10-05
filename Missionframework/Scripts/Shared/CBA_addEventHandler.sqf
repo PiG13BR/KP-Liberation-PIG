@@ -690,3 +690,7 @@
 ["KPLIB_logistic_startManager", {
     _this call KPLIB_fnc_logistic_startManager;
 }] call CBA_fnc_addEventHandler;
+
+["KPLIB_liberatedSector", {
+    _this call KPLIB_fnc_liberatedSector;
+}] call CBA_fnc_addEventHandler;
