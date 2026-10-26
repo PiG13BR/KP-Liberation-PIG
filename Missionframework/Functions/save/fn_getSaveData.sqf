@@ -2,7 +2,7 @@
     File: fn_getSaveData.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PIG13BR - https://github.com/PiG13BR 
     Date: 29/03/2020
-    Last Update: 24/07/2026
+    Last Update: 26/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -131,7 +131,7 @@ private ["_savedPos", "_savedVecDir", "_savedVecUp", "_class", "_hasCrew"];
     private _hitPoints = getAllHitPointsDamage _x;
     private _fuel = fuel _x;
     private _ammo = magazinesAllTurrets [_x, true];
-    private _getPyloninfo = getAllPylonsInfo _x;
+    private _getPyloninfo = (getAllPylonsInfo _x) resize 5;
 
     // Determine if vehicle is crewed
     if ((toLowerANSI _class) in KPLIB_b_allVeh_classes) then {

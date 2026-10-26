@@ -2,7 +2,7 @@
     File: fn_addActionsFob.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
     Date: 2020-04-13
-    Last Update: 2026-07-30
+    Last Update: 2026-10-26
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -82,11 +82,14 @@ if ((typeOf _obj) in [KPLIB_b_fobBox, KPLIB_b_fobTruck]) exitWith {
             };
 
             // Check if there is a FOB in airport area
-            private _inAirport = KPLIB_sectors_airport findIf {_target inArea _x};
-            private _fobInAirport = if (_inAirport >= 0) then {
-                private _airportArea = KPLIB_sectors_airport # _index;
-                KPLIB_player_fobs findIf {_x inArea _airportArea} >= 0 
+            private _fobInAirport = if (count KPLIB_sectors_airport < 1) then {false} else {
+                private _inAirport = KPLIB_sectors_airport findIf {_target inArea _x};
+                if (_inAirport >= 0) then {
+                    private _airportArea = KPLIB_sectors_airport # _index;
+                    KPLIB_player_fobs findIf {_x inArea _airportArea} >= 0
+                };
             };
+
             if (_fobInAirport) exitWith {
                 [localize "STR_FOB_BUILDING_IMPOSSIBLE_FOB_IN_AIRPORT", true, 3] call KPLIB_fnc_hint;
             };
