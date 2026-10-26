@@ -3,7 +3,7 @@
 	File: fn_handleAirMagazinesLb.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 27/06/2026
+	Last Update: 08/10/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -32,15 +32,16 @@ private _pylonIndex = localNameSpace getVariable ["PIG_PAS_pylonIndex", -1];
 //private _turret = PIG_PAS_pylonsTurret getOrDefault [_pylon, [-1]];
 private _turret = [_aircraft, _pylonIndex] call KPLIB_fnc_getPylonTurret;
 
+private _pylonLbSel = localNameSpace getVariable ["PIG_PAS_pylonLbIndex", -1];
+
 if (_selectedMag == "") then {
-    private _defaultName = _ctrlPylonsListBox lbData _pylonIndex; // Empty
-    _ctrlPylonsListBox lbSetText [_pylonIndex, _defaultName + " " + "-" + " " + "empty"];
-    _ctrlPylonsListBox lbSetColor [_pylonIndex, [1, 0, 0, 1]]; // RED COLOR
+    private _defaultName = _ctrlPylonsListBox lbData _pylonLbSel; // Empty
+    _ctrlPylonsListBox lbSetText [_pylonLbSel, _defaultName + " " + "-" + " " + "empty"];
+    _ctrlPylonsListBox lbSetColor [_pylonLbSel, [1, 0, 0, 1]]; // RED COLOR
 } else {
     private _magName = getText(configFile >> "cfgMagazines" >> _selectedMag >> "displayName");
-    _ctrlPylonsListBox lbSetText [_pylonIndex, _magName];
-    _ctrlPylonsListBox lbSetColor [_pylonIndex, [0, 0.7, 0, 1]]; // GREEN COLOR
+    _ctrlPylonsListBox lbSetText [_pylonLbSel, _magName];
+    _ctrlPylonsListBox lbSetColor [_pylonLbSel, [0, 0.7, 0, 1]]; // GREEN COLOR
 };
 
-["PAS_setPylonArmament", [_aircraft, _pylonIndex + 1, _selectedMag, _turret]] call CBA_fnc_globalEvent;
-//[_aircraft, _pylonIndex + 1, _selectedMag, _turret] call KPLIB_fnc_setPylonConfiguration;
+["PAS_setPylonArmament", [_aircraft, _pylonIndex, _selectedMag, _turret, _pylonLbSel]] call CBA_fnc_globalEvent;

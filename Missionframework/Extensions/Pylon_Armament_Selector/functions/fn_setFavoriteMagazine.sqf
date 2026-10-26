@@ -3,7 +3,7 @@
 	File: fn_setFavoriteMagazine.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 15/06/2026
-	Last Update: 22/06/2026
+	Last Update: 07/10/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -22,7 +22,6 @@ private _ctrlMagazinesListBox = _display displayCtrl IDC_MAGAZINES_LISTBOX;
 private _ctrlMagazinesCombo = _display displayCtrl IDC_MAGAZINES_COMBO;
 private _magazine = _control lbData _selectedIndex;
 
-private _pylonIndex = localNameSpace getVariable ["PIG_PAS_pylonIndex", 0];
 private _aircraft = localNameSpace getVariable ["PIG_PAS_aircraft", objNull];
 
 private _favorites = profileNamespace getVariable ["PIG_PAS_favorites", []];
@@ -47,5 +46,3 @@ if !(_magazine in _favorites) then {
         [_display, 1] call KPLIB_fnc_fillMagazinesListbox;
     };
 };
-
-

@@ -1,9 +1,10 @@
-class Pylon_Manager_Menu
+class Pylon_Armament_Selector
 {
     file = "Extensions\Pylon_Armament_Selector\functions";
 	
     class addPASAction {};
     class applyTurretPylon {};
+    class checkAirLoadout {};
     class createPASRsc {};
     class createTurretButtons {};
     class deleteAirPreset {};

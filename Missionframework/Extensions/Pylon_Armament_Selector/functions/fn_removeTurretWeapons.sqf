@@ -2,7 +2,7 @@
 	File: fn_removeTurretWeapons.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/06/2026
-	Last Update: 24/07/2026
+	Last Update: 07/10/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -32,6 +32,11 @@ _blacklistWeapons = _blacklistWeapons apply {toLowerANSI _x};
 private _leftovers = (_aircraft weaponsTurret _turret) select {!(toLowerANSI _x in _blacklistWeapons)};
 
 private _pylonWeaponToRemove = _allPylonWeapons param [_pylonIndex - 1, ""];
+
+// Failsafe: avoid removing weapons from upper pylons indexes
+_allPylonWeapons = _allPylonWeapons select {_x == toLowerANSI _pylonWeaponToRemove};
+if (count _allPylonWeapons > 1) exitWith {};
+
 {
 	private _weapon = _x;
 	if (_weapon == "") then {continue};

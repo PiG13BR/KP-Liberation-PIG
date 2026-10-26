@@ -5,19 +5,19 @@
     Author: Alganthe, johnb43
     Adaptation made by PiG13BR for Air Spawner Menu
     Date: 14/10/2025
-    Update Date: 06/07/2026
+    Update Date: 05/10/2026
     
     Description:
         Loads camera display
 
     Parameter(s):
         _display - display responsable
-        _aircraft - aircraft object to be center camera [OBJECT]
+        _aircraft - aircraft object to be center camera [OBJECT, defaults to objNull]
     
     Returns:
         -
 */
-params ["_display", "_aircraft"];
+params ["_display", ["_aircraft", objNull, [objNull]]];
 
 //--------------- Init
 PIG_PAS_mouseButtonState = [[], []];
@@ -27,7 +27,7 @@ cutText ["", "PLAIN"];
 showCommandingMenu "";
 
 PIG_PAS_cameraView = cameraView;
-//["hideHud", [false, true, true, true, true, true, true, false, true, true]] call ace_common_fnc_showHud;
+showHUD [false, false, false, false, false, false, false, false, false, false, true];
 
 private _mouseAreaCtrl = _display displayCtrl IDC_MOUSEAREA;
 ctrlSetFocus _mouseAreaCtrl;
@@ -54,12 +54,12 @@ PIG_PAS_camera camPrepareFov 0.35;
 PIG_PAS_camera camCommitPrepared 0;
 cameraEffectEnableHUD true;
 
-showCinemaBorder false;
-["#(argb,8,8,3)color(0,0,0,1)", false, nil, 0, [0, 0.5]] call BIS_fnc_textTiles;
-
 if (currentVisionMode player == 1) then {
     player action ["NVGogglesOff", player];
 };
+
+showCinemaBorder false;
+["#(argb,8,8,3)color(0,0,0,1)", false, nil, 0, [0, 0.5]] call BIS_fnc_textTiles;
 
 //--------------- Reset camera pos
 [nil, [controlNull, 0, 0]] call KPLIB_fnc_handleMouse;

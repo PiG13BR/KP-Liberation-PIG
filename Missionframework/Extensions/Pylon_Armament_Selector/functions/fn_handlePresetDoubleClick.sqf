@@ -3,7 +3,7 @@
 	File: fn_handlePresetDoubleClick.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 14/10/2025
-	Last Update: 22/06/2026
+	Last Update: 05/10/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -27,7 +27,7 @@ if (tolowerANSI _key isEqualTo "") exitWith {[localize "STR_PAS_LOAD_WARN", true
 
 private _aircraft = localNamespace getVariable ["PIG_PAS_aircraft", objNull];
 
-[] call KPLIB_fnc_reloadLoadout;
+_aircraft call KPLIB_fnc_reloadLoadout;
 
 // Load the preset on the local aircraft
 [_aircraft, _key, _display] call KPLIB_fnc_loadAirPreset;

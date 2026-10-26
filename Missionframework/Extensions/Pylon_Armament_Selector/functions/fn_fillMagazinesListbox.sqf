@@ -3,7 +3,7 @@
 	File: fn_fillMagazinesListBox.sqf
 	Author: PiG13BR - https://github.com/PiG13BR
 	Date: 15/06/2026
-	Last Update: 23/06/2026
+	Last Update: 07/10/2026
 	License: MIT License - http://www.opensource.org/licenses/MIT
 
 	Description:
@@ -24,7 +24,7 @@ lbClear _ctrlMagazinesListBox;
 private _pylonIndex = localNameSpace getVariable ["PIG_PAS_pylonIndex", 0];
 private _aircraft = localNameSpace getVariable ["PIG_PAS_aircraft", objNull];
 
-private _compatibleMagazines = ((typeOf _aircraft) getCompatiblePylonMagazines (_pylonIndex + 1));
+private _compatibleMagazines = ((typeOf _aircraft) getCompatiblePylonMagazines _pylonIndex);
 
 // Check for custom preset
 if (!(isNil "PIG_PAS_customPreset") && {count PIG_PAS_customPreset > 0}) then {
@@ -64,7 +64,8 @@ _ctrlMagazinesListBox lbSetPictureRight [0, "a3\ui_f\data\igui\cfg\actions\obsol
 private _favorites = profileNamespace getVariable ["PIG_PAS_favorites", []];
 
 // For Lb selector
-private _magazinePylon = (getPylonMagazines _aircraft) # _pylonIndex; 
+private _magazinePylon = (getPylonMagazines _aircraft) # (_pylonIndex - 1);
+
 private _magIndex = -1;
 switch _index do {
     case 0 : {
@@ -76,7 +77,7 @@ switch _index do {
                 _magIndex = _forEachIndex + 1;
             };
 
-            _name = getText(configFile >> "cfgMagazines" >> _magazine >> "displayName");
+            private _name = getText(configFile >> "cfgMagazines" >> _magazine >> "displayName");
             _ctrlMagazinesListBox lbAdd _name;
             _ctrlMagazinesListBox lbSetTooltip [(_forEachIndex + 1), str(parseText(getText(configFile >> "CfgMagazines" >> _x >> "descriptionShort")))];
             _ctrlMagazinesListBox lbSetData [(_forEachIndex + 1), _magazine]; // Store default list box data
@@ -102,7 +103,7 @@ switch _index do {
         };
 
         {
-            _name = getText(configFile >> "cfgMagazines" >> _x >> "displayName");
+            private _name = getText(configFile >> "cfgMagazines" >> _x >> "displayName");
             _ctrlMagazinesListBox lbAdd _name;
             _ctrlMagazinesListBox lbSetTooltip [(_forEachIndex + 1), getText(configFile >> "CfgMagazines" >> _x >> "descriptionShort")];
             _ctrlMagazinesListBox lbSetData [(_forEachIndex + 1), _x]; // Store default list box data

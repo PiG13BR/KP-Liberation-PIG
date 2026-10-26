@@ -9327,6 +9327,10 @@
 				<Original>NONE</Original>
 				<Portuguese>NENHUM</Portuguese>
 			</Key>
+            <Key ID="STR_PAS_ADD_FAVORITE_TOOLTIP">
+				<Original>Double click the ammunition to add as favorite</Original>
+				<Portuguese>Clique duas vezes com o botão esquerdo mouse na munição para colocar como favorito.</Portuguese>
+			</Key>
         </Container>
 
 

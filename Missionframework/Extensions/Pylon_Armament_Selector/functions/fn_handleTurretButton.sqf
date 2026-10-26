@@ -10,7 +10,7 @@
     Parameter(s):
         _ctrl - turret button control [CONTROL]
         _switch - switch turret [BOOL]
-        _pylon - pylon name [STRING]
+        _pylon - pylon index [NUMBER]
         _turret - pylon turret [ARRAY, defaults to []]
     
     Returns:
@@ -27,7 +27,8 @@ if (_switch) then {
 };
 
 PIG_PAS_pylonsTurret set [_pylon, _turret]; // Save turret for this pylon
-[_aircraft, _pylon + 1, _turret] call KPLIB_fnc_applyTurretPylon;
+private _lbIndex = localNameSpace getVariable ["PIG_PAS_pylonLbIndex", -1];
+[_aircraft, _pylon + 1, _turret, _lbIndex] call KPLIB_fnc_applyTurretPylon;
 
 if (_turret isEqualTo [-1]) then {
     _ctrl ctrlSetText "a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\role_driver_ca.paa";

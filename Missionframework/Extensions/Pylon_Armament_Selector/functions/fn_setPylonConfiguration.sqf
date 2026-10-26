@@ -17,10 +17,12 @@
 	Returns:
 		-
 */
-params["_aircraft", "_pylonIndex", "_magazine", ["_turret", [0]]];
+params["_aircraft", "_pylonIndex", "_magazine", ["_turret", [0]], ["_lbIndex", -1, [0]]];
+
+if (_lbIndex == -1) then {_lbIndex = _pylonIndex - 1;};
 
 if (!isNil "PIG_PAS_airLoadout") then {
-	PIG_PAS_airLoadout set [(_pylonIndex - 1), [_magazine, _turret]];
+	PIG_PAS_airLoadout set [_lbIndex, [_magazine, _turret]];
 };
 
 [_aircraft, _pylonIndex, _turret] call KPLIB_fnc_removeTurretWeapons;
