@@ -2,7 +2,7 @@
     File: fn_sectorMilitarySpawns.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 02/12/2025
-    Last Update: 02/10/2026
+    Last Update: 27/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -44,7 +44,7 @@ if (KPLIB_param_unitcap >= 1.5) then {_squad3 = ([_infType] call KPLIB_fnc_getSq
 {
     if (count _x < 1) then {continue};
 
-    private _grp = [_sector, _x] call KPLIB_fnc_spawnRegularSquad;
+    private _grp = [_sector, _x, KPLIB_dynamicSim] call KPLIB_fnc_spawnRegularSquad;
     if (KPLIB_LAMBS) then {
         [_grp, _sectorPos, _localCaptureSize, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {
@@ -87,7 +87,7 @@ if ((random 100) > (66 / KPLIB_param_difficulty)) then {
     }] call BIS_fnc_randomPos;
     
     if (_spawnPos isEqualTo [0,0]) then {[format["Couldn't find a position to spawn vehicle in sector: %1", markerText _sector], "SECTOR"] call KPLIB_fnc_log; continue};
-    private _vehicle = [_spawnPos, _x, 0] call KPLIB_fnc_spawnVehicle;
+    private _vehicle = [_spawnPos, _x, 0, true, KPLIB_dynamicSim] call KPLIB_fnc_spawnVehicle;
     _sectorUnits pushback _vehicle;
     {_sectorUnits pushback _x;} foreach (crew _vehicle);
     

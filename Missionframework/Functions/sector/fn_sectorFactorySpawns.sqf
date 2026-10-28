@@ -46,7 +46,7 @@ if (KPLIB_param_unitcap >= 1.25) then {_squad3 = ([_infType] call KPLIB_fnc_getS
 {
     if (count _x < 1) then {continue};
 
-    private _grp = [_sector, _x] call KPLIB_fnc_spawnRegularSquad;
+    private _grp = [_sector, _x, KPLIB_dynamicSim] call KPLIB_fnc_spawnRegularSquad;
     if (KPLIB_LAMBS) then {
         [_grp, _sectorPos, _localCaptureSize, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {
@@ -74,7 +74,7 @@ if ((random 100) > 66) then {_vehToSpawn pushback ([] call KPLIB_fnc_getAdaptive
     }] call BIS_fnc_randomPos;
 
     if (_spawnPos isEqualTo [0,0]) then {[format["Couldn't find a position to spawn vehicle in sector: %1", markerText _sector], "SECTOR"] call KPLIB_fnc_log; continue};
-    private _vehicle = [_spawnPos, _x, _localCaptureSize] call KPLIB_fnc_spawnVehicle;
+    private _vehicle = [_spawnPos, _x, _localCaptureSize, true, KPLIB_dynamicSim] call KPLIB_fnc_spawnVehicle;
     _sectorUnits pushback _vehicle;
     {_sectorUnits pushback _x;} foreach (crew _vehicle);
     
@@ -95,7 +95,7 @@ _sectorUnits append _garrisonedUnits;
 
 // Spawns civs
 if (KPLIB_param_civActivity > 0) then {
-    _sectorUnits = _sectorUnits + ([_sector] call KPLIB_fnc_spawnCivilians);
+    _sectorUnits = _sectorUnits + ([_sector, KPLIB_dynamicSim] call KPLIB_fnc_spawnCivilians);
 };
 
 sleep 1;

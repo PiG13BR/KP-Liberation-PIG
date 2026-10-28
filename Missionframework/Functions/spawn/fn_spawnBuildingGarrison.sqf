@@ -1,8 +1,8 @@
 /*
     File: fn_spawnBuildingGarrison.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
-    Date: 12/12/2025
-    Last Update: 07/06/2026
+    Date: 12/12/2026
+    Last Update: 27/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -11,12 +11,13 @@
     Parameter(s):
         _garrison - building to garrison [OBJECT]
         _infType - infantry type to spawn [STRING, defaults to "army"]
+        _dynSimulation - Enable dynamic simulation [BOOL, defaults to false]
         
     Returns:
         Spawned group
 */
 
-params["_garrison", ["_infType", "army"]];
+params["_garrison", ["_infType", "army"], ["_dynSimulation", false, [false]]];
 
 // Get all building positions
 private _buildingPositions = [_garrison] call CBA_fnc_buildingPositions;
@@ -157,6 +158,10 @@ if (!(typeOf _garrison in KPLIB_guardTowers_marksman) && !(typeOf _garrison in K
         params ["_unit"];
         _unit setCombatBehaviour "COMBAT";
     }];
+};
+
+if (_dynSimulation) then {
+    _grp enableDynamicSimulation true;
 };
 
 _grp

@@ -44,7 +44,7 @@ if (KPLIB_param_unitcap >= 1.25) then {_squad2 = KPLIB_o_squadAir;};
 {
     if (count _x < 1) then {continue};
 
-    private _grp = [_sector, _x] call KPLIB_fnc_spawnRegularSquad;
+    private _grp = [_sector, _x, KPLIB_dynamicSim] call KPLIB_fnc_spawnRegularSquad;
     if (KPLIB_LAMBS) then {
         [_grp, _sectorPos, _localCaptureSize, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {

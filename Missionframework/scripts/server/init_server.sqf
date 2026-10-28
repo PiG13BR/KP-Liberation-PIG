@@ -149,3 +149,12 @@ if (count KPLIB_whitelist_Zeus > 0) then {
         deleteVehicle _x
     }forEach allCurators;
 };
+
+if (KPLIB_dynamicSim) then {
+    // Dynamic Simulation (Global Settings)
+    enableDynamicSimulationSystem true;
+    "Group" setDynamicSimulationDistance (parseNumber KPLIB_dynamicSim_groups_distance);;
+    "Vehicle" setDynamicSimulationDistance (parseNumber KPLIB_dynamicSim_vehicles_distance);;
+    "EmptyVehicle" setDynamicSimulationDistance 250;
+    "Prop" setDynamicSimulationDistance 100;
+};

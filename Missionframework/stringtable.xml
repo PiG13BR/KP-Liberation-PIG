@@ -8938,6 +8938,8 @@
                 <Portuguese>Convite Discord</Portuguese>
             </Key>
         </Container> 
+
+
         <Container name="Factory Logging Discord">
             <Key ID="STR_FDC_TITLE">
                 <Original>Logs to discord</Original>
@@ -8946,6 +8948,37 @@
             <Key ID="STR_FDC_DESC">
                 <Original>Export captured factory data to RPT for Python parsing</Original>
                 <Portuguese>Exporta info de fabricas para RPT para Python parsing</Portuguese>
+            </Key>
+        </Container>
+
+        <Container name="Dynamic Simulation">
+            <Key ID="STR_DYNAMIC_SIM_TITLE">
+                <Original>Dynamic Simulation</Original>
+                <Portuguese>Simulação Dinâmica</Portuguese>
+            </Key>
+            <Key ID="STR_DYNAMIC_SIM_ENABLER">
+                <Original>Enable Dynamic Simulation</Original>
+                <Portuguese>Habilitar simulação dinâmica</Portuguese>
+            </Key>
+            <Key ID="STR_DYNAMIC_SIM_ENABLER_TOOLTIP">
+                <Original>Enable or disable dynamic simulation for AI groups. It doesn't affect battlegroups/attack units. Restart required.</Original>
+                <Portuguese>Ative ou desative a simulação dinamica de grupos de IA. Não afeta unidades de ataque. É necessário reiniciar a missão.</Portuguese>
+            </Key>
+            <Key ID="STR_DYNAMIC_SIM_GROUP">
+                <Original>Activation distance for groups</Original>
+                <Portuguese>Distancia de ativação para grupos</Portuguese>
+            </Key>
+            <Key ID="STR_DYNAMIC_SIM_VEHICLES">
+                <Original>Activation distance for active vehicles</Original>
+                <Portuguese>Distancia de ativação para veículos ativos</Portuguese>
+            </Key>
+            <Key ID="STR_DYNAMIC_SIM_GROUP_TOOLTIP">
+                <Original>Players will activated AI groups (infantry) within this distance</Original>
+                <Portuguese>Jogadores irão ativar grupos de IA (infantaria) dentro dessa distância.</Portuguese>
+            </Key>
+            <Key ID="STR_DYNAMIC_SIM_VEHICLES_TOOLTIP">
+                <Original>Players will activated AI manned vehicles within this distance</Original>
+                <Portuguese>Jogadores irão ativar veículos ocupados por IA dentro dessa distância.</Portuguese>
             </Key>
         </Container> 
 

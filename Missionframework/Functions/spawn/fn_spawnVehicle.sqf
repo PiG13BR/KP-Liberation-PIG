@@ -1,8 +1,8 @@
 /*
     File: fn_spawnVehicle.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
-    Date: 2019-12-03
-    Last Update: 2026-16-08
+    Date: 12/03/2019
+    Last Update: 27/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -13,6 +13,7 @@
         _classname  - Classname of the vehicle to spawn                                     [STRING, defaults to ""]
         _radius    - Selector if the vehicle should spawned precisely on given position     [NUMBER, defaults to 0]
         _rndDir     - Selector if the direction should be randomized                        [BOOL, defaults to true]
+        _dynSimulation - Enable dynamic simulation                                          [BOOL, defaults to false]
 
     Returns:
         Spawned vehicle [OBJECT]
@@ -22,7 +23,8 @@ params [
     ["_pos", [0, 0, 0], [[]], [2, 3]],
     ["_classname", "", [""]],
     ["_radius", 0, [0]],
-    ["_rndDir", true, [false]]
+    ["_rndDir", true, [false]],
+    ["_dynSimulation", false,[false]]
 ];
 
 if (_pos isEqualTo [0, 0, 0]) exitWith {["No or zero pos given"] call BIS_fnc_error; objNull};
@@ -76,7 +78,9 @@ if ((toLowerANSI _classname) in KPLIB_o_helicopters) then {
     }, _newvehicle, 3] call CBA_fnc_waitAndExecute;
 };
 
-if (isNull _newvehicle) exitWith {_newVehicle};
+if (_dynSimulation) then {
+    _newvehicle enableDynamicSimulation true;
+};
 
 _newVehicle lock true;
 // Clear cargo, if enabled
@@ -90,13 +94,17 @@ if (_classname in KPLIB_o_militiaVehicles) then {
     [_newvehicle] call KPLIB_fnc_spawnMilitiaCrew;
 } else {
     //private _grp = createGroup [KPLIB_side_enemy, true];
-    private _crew = units ([_newvehicle] call KPLIB_fnc_createCrew);
+    private _group = [_newvehicle] call KPLIB_fnc_createCrew;
     {
         _x addMPEventHandler ["MPKilled", {
             params ["_unit", "_killer"];
             ["KPLIB_manageKills", [_unit, _killer]] call CBA_fnc_localEvent;
         }];
-    } forEach _crew;
+    } forEach (units _group);
+
+    if (_dynSimulation) then {
+        _group enableDynamicSimulation true;
+    };
 };
 
 // Add Killed and GetIn EHs and enable damage again

@@ -48,7 +48,7 @@ if ((random 100) > (33 / KPLIB_param_difficulty)) then {
 {
     if (count _x < 1) then {continue};
 
-    private _grp = [_sector, _x] call KPLIB_fnc_spawnRegularSquad;
+    private _grp = [_sector, _x, KPLIB_dynamicSim] call KPLIB_fnc_spawnRegularSquad;
     if (KPLIB_LAMBS) then {
         [_grp, _sectorPos, _localCaptureSize, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {
@@ -83,7 +83,7 @@ if (_infType == "army") then {
     }] call BIS_fnc_randomPos;
     
     if (_roadSpawn isEqualTo [0,0]) then {[format["Couldn't find a position to spawn vehicle in sector: %1", markerText _sector], "SECTOR"] call KPLIB_fnc_log; continue};
-    private _vehicle = [_roadSpawn, _x, 3] call KPLIB_fnc_spawnVehicle;
+    private _vehicle = [_roadSpawn, _x, 3, true, KPLIB_dynamicSim] call KPLIB_fnc_spawnVehicle;
     _sectorUnits pushback _vehicle;
     {_sectorUnits pushback _x;} foreach (crew _vehicle);
 
@@ -193,7 +193,7 @@ if (_infType == "army") then {
 
 // Spawns civs
 if (KPLIB_param_civActivity > 0) then {
-    _sectorUnits = _sectorUnits + ([_sector] call KPLIB_fnc_spawnCivilians);
+    _sectorUnits = _sectorUnits + ([_sector, KPLIB_dynamicSim] call KPLIB_fnc_spawnCivilians);
 };
 
 sleep 1;

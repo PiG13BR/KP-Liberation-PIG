@@ -231,7 +231,7 @@ if (_samShorads isNotEqualTo []) then {
 
 	[{_this allowDamage true}, _garrison, 3] call CBA_fnc_waitAndExecute;
 
-	private _squadGrp = [_garrison] call KPLIB_fnc_spawnBuildingGarrison;
+	private _squadGrp = [_garrison, KPLIB_dynamicSim] call KPLIB_fnc_spawnBuildingGarrison;
 	
 	_samSiteObjects pushBack _garrison;
 	_infGarrison pushBack _squadGrp;
@@ -279,7 +279,7 @@ if (KPLIB_enemyReadiness >= 50) then {_squad2 = ["army"] call KPLIB_fnc_getSquad
 {
     if (count _x < 1) then {continue};
 	
-    private _grp = [_spawnMarker, _x] call KPLIB_fnc_spawnRegularSquad;
+    private _grp = [_spawnMarker, _x, KPLIB_dynamicSim] call KPLIB_fnc_spawnRegularSquad;
     if (KPLIB_LAMBS) then {
         [_grp, _samSitePos, 150, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {

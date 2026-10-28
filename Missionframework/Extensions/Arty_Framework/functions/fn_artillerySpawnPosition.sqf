@@ -2,7 +2,7 @@
     File: fn_artillerySpawnPositon.sqf
     Author: PiG13BR - https://github.com/PiG13BR
     Date: 26/08/2026
-    Last Update: 07/09/2026
+    Last Update: 27/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -159,7 +159,7 @@ if !(_spawn_marker isEqualTo "") then {
 
 	// Patrols
 	// AA Infantry Patrol
-	private _grppatrol1 = [_spawn_marker, KPLIB_o_squadAir] call KPLIB_fnc_spawnRegularSquad;
+	private _grppatrol1 = [_spawn_marker, KPLIB_o_squadAir, KPLIB_dynamicSim] call KPLIB_fnc_spawnRegularSquad;
 	[_grppatrol1, markerpos _spawn_marker] spawn KPLIB_fnc_addDefenseWaypoints;
 
 	KPLIB_artilleryPosition_groups pushBack _grppatrol1;
@@ -167,7 +167,7 @@ if !(_spawn_marker isEqualTo "") then {
 	// Standard Infantry Patrol
 	if (KPLIB_enemyReadiness >= (50 - (5 * KPLIB_param_difficulty))) then {
 		_patrol2 = ([] call KPLIB_fnc_getSquadComp);
-		private _grppatrol2 = [_spawn_marker, _patrol2] call KPLIB_fnc_spawnRegularSquad;
+		private _grppatrol2 = [_spawn_marker, _patrol2, KPLIB_dynamicSim] call KPLIB_fnc_spawnRegularSquad;
 		[_grppatrol2, markerpos _spawn_marker] spawn KPLIB_fnc_addDefenseWaypoints;
 
 		KPLIB_artilleryPosition_groups pushBack _grppatrol2;
@@ -198,7 +198,7 @@ if !(_spawn_marker isEqualTo "") then {
 			private _vehtospawn = selectRandom _vehicle_pool;
 			*/
 			_vehToSpawn = selectRandom KPLIB_o_antiAirVehicles;
-			private _aaVeh = [(getMarkerpos _spawn_marker) getPos [30 + (random 30), random 360], _vehToSpawn, 0, true] call KPLIB_fnc_spawnVehicle;
+			private _aaVeh = [(getMarkerpos _spawn_marker) getPos [30 + (random 30), random 360], _vehToSpawn, 0, true, KPLIB_dynamicSim] call KPLIB_fnc_spawnVehicle;
 			KPLIB_artilleryPosition_objects pushBack _aaVeh;
 			KPLIB_artilleryPosition_groups pushBack (group _aaVeh);
 		};

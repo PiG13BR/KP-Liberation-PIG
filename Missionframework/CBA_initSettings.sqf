@@ -210,3 +210,36 @@ if (KPLIB_param_SAMSite > 0) then {
         };
     }
 ] call CBA_fnc_addSetting;
+
+[
+    "KPLIB_dynamicSim",
+    "CHECKBOX",
+    [localize "STR_DYNAMIC_SIM_ENABLER", localize "STR_DYNAMIC_SIM_ENABLER_TOOLTIP"],
+    ["KP Liberation", localize "STR_DYNAMIC_SIM_TITLE"],
+    false,
+    1,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+[
+    "KPLIB_dynamicSim_groups_distance",
+    "EDITBOX",
+    [localize "STR_DYNAMIC_SIM_GROUP", localize "STR_DYNAMIC_SIM_GROUP_TOOLTIP"],
+    ["KP Liberation", localize "STR_DYNAMIC_SIM_TITLE"],
+    "1200",
+    1,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+[
+    "KPLIB_dynamicSim_vehicles_distance",
+    "EDITBOX",
+    [localize "STR_DYNAMIC_SIM_VEHICLES", localize "STR_DYNAMIC_SIM_VEHICLES_TOOLTIP"],
+    ["KP Liberation", localize "STR_DYNAMIC_SIM_TITLE"],
+    "1500",
+    1,
+    {},
+    true
+] call CBA_fnc_addSetting;

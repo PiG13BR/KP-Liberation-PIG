@@ -90,8 +90,8 @@ Below are listed the additions so far, all optional:
     | BUILD RANGE | 50m radius | 125m radius |
     | BUILD LIST | Only static and decorations items | All available |
     | REDEPLOY | Yes | Yes |
-    | ARSENAL* | No | Yes |
-    | STORAGES** | Transportable Storage | Any type of storage |
+    | ARSENAL | No* | Yes |
+    | STORAGES | Transportable Storage** | Any type of storage |
     | SAVE ASSETS | Yes | Yes |
 
     *Note on arsenal: the players can still fly the arsenal box to the outpost if mobile arsenal mission parameter is enabled.
@@ -108,6 +108,8 @@ Below are listed the additions so far, all optional:
     - Asset prices will oscillate depending on the civilian reputation.
     - To build vehicles, a salvage depot is required.
     - Airplanes have to be built on FOBs placed on an airport area (this is only valid if the map has an airport sector).
+- **Dynamic Simulation**
+    - You can enable [BIS dynamic simulation](https://community.bistudio.com/wiki/Arma_3:_Dynamic_Simulation) through CBA settings under KP Liberation label.
 
 ## ISSUES
 If you're having gameplay issues with this version of liberation, please, report them.

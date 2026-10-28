@@ -1,8 +1,8 @@
 /*
     File: fn_spawnRegularSquad.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
-    Date: 2019-12-03
-    Last Update: 2026-07-29
+    Date: 12/03/2019
+    Last Update: 27/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -11,6 +11,7 @@
     Parameter(s):
         _sector     - Sector to spawn the squad at          [STRING, defaults to ""]
         _classnames - Classnames of units to spawn in squad [ARRAY, defaults to []]
+        _dynSimulation - Enable dynamic simulation          [BOOL, defaults to false]
 
     Returns:
         Created squad [GROUP]
@@ -18,7 +19,8 @@
 
 params [
     ["_sector", "", [""]],
-    ["_classnames", [], [[]]]
+    ["_classnames", [], [[]]],
+    ["_dynSimulation", false, [false]]
 ];
 
 if (_sector isEqualTo "") exitWith {["Empty string given"] call BIS_fnc_error; grpNull};
@@ -57,5 +59,9 @@ _grp addEventHandler ["UnitKilled", {
     params ["_group", "_unit", "_killer"];
     ["KPLIB_onUnitKilled", [_group, _unit, _killer]] call CBA_fnc_localEvent;
 }];
+
+if (_dynSimulation) then {
+    _grp enableDynamicSimulation true;
+};
 
 _grp

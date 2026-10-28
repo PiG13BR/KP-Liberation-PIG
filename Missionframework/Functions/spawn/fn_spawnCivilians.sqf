@@ -1,8 +1,8 @@
 /*
     File: fn_spawnCivilians.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes
-    Date: 2019-12-03
-    Last Update: 2020-05-25
+    Date: 12/03/2019
+    Last Update: 27/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -10,13 +10,15 @@
 
     Parameter(s):
         _sector - Sector to spawn the civilians at [STRING, defaults to ""]
+        _dynSimulation - Enable dynamic simulation [BOOL, defaults to false]
 
     Returns:
         Spawned civilian units [ARRAY]
 */
 
 params [
-    ["_sector", "", [""]]
+    ["_sector", "", [""]],
+    ["_dynSimulation", false, [false]]
 ];
 
 if (_sector isEqualTo "") exitWith {["Empty string given"] call BIS_fnc_error; []};
@@ -51,6 +53,10 @@ for "_i" from 1 to _amount do {
     );
 
     [_grp] call add_civ_waypoints;
+};
+
+if (_dynSimulation) then {
+    _grp enableDynamicSimulation true;
 };
 
 _civs

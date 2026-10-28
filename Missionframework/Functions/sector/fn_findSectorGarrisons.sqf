@@ -2,7 +2,7 @@
     File: fn_findSectorGarrisons.sqf
     Author: PiG13BR - https://github.com/PiG13BBR
     Date: 02/12/2025
-    Last Update: 12/06/2026
+    Last Update: 27/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -57,7 +57,7 @@ for "_i" from 1 to _garrisonsCount do {
 
     private _buildingToGarrison = _allBuildings deleteAt (_allBuildings find (selectRandom _allBuildings));
 
-    private _grp = [_buildingToGarrison, _infType] call KPLIB_fnc_spawnBuildingGarrison;
+    private _grp = [_buildingToGarrison, _infType, KPLIB_dynamicSim] call KPLIB_fnc_spawnBuildingGarrison;
     _garrisonedUnits append (units _grp);
 };
 
@@ -68,7 +68,7 @@ for "_i" from 1 to (count _towers) do {
 
     private _buildingToGarrison = _towers deleteAt (_towers find (selectRandom _towers));
 
-    private _grp = [_buildingToGarrison, _infType] call KPLIB_fnc_spawnBuildingGarrison;
+    private _grp = [_buildingToGarrison, _infType, KPLIB_dynamicSim] call KPLIB_fnc_spawnBuildingGarrison;
     _garrisonedUnits append (units _grp);
 
     // Change group

@@ -2,7 +2,7 @@
     File: fn_sectorTowerSpawns.sqf
     Author: KP Liberation Dev Team - https://github.com/KillahPotatoes, PiG13BR - https://github.com/PiG13BBR
     Date: 02/12/2025
-    Last Update: 02/10/2026
+    Last Update: 27/10/2026
     License: MIT License - http://www.opensource.org/licenses/MIT
 
     Description:
@@ -43,7 +43,7 @@ if (KPLIB_enemyReadiness > 80) then {_squad4 = ([_infType] call KPLIB_fnc_getSqu
 {
     if (count _x < 1) then {continue};
 
-    private _grp = [_sector, _x] call KPLIB_fnc_spawnRegularSquad;
+    private _grp = [_sector, _x, KPLIB_dynamicSim] call KPLIB_fnc_spawnRegularSquad;
     if (KPLIB_LAMBS) then {
         [_grp, _sectorPos, _localCaptureSize, 4 + ceil(random 4), [], true] call lambs_wp_fnc_taskPatrol;
     } else {
